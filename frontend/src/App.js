@@ -6,7 +6,7 @@ import {
 } from "react-router-dom";
 
 import Landing from "./Pages/Landing";
-// import EShop from "./Pages/EShop";
+import EShop from "./Pages/EShop";
 
 
 function App() {
@@ -17,7 +17,7 @@ function App() {
           <Routes>
             <Route path={"/"} element={<Landing/>}/>
             <Route path={"/about-us"} element={<Landing/>}/> {/* add Contact Us component! */}
-            {/*<Route path={"/e-shop"} element={<EShop/>}/>*/}
+            <Route path={"/e-shop"} element={<EShop/>}/>
           </Routes>
         </BrowserRouter>
 
