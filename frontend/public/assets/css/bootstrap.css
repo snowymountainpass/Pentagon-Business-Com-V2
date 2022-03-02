@@ -9948,7 +9948,8 @@ a.text-secondary:hover, a.text-secondary:focus {
 }
 
 .text-success {
-  color: #00b517 !important;
+  color: #2a77d3 !important;
+  font-weight: bold;
 }
 
 a.text-success:hover, a.text-success:focus {

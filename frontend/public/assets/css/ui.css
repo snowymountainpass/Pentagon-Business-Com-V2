@@ -1063,10 +1063,16 @@ a[class*=card]:hover .title {
   color: #212529;
 }
 
+.price-new {
+  font-weight: bolder;
+  color: #106e21;
+}
+
 .price-old {
-  color: #969696;
+  color: #ec0522;
   margin-left: 3px;
-  font-size: 85%;
+  font-size: 95%;
+  font-weight: bold;
 }
 
 .icon-control {

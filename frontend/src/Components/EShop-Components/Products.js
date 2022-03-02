@@ -19,7 +19,7 @@ export default function Products(){
 
 
 
-    // console.log(products);
+    console.log(products);
 
     return(
 

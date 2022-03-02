@@ -7,7 +7,7 @@ export default function ProductCard(props){
                 <aside className="col-md-3">
                     <a href="#" className="img-wrap">
                         <span className="badge badge-danger"> NEW </span>
-                        <img src={props.product.img}/>
+                        <img src={props.product.img} alt={props.product.productName}/>
                     </a>
                 </aside>
                 <div className="col-md-6">
@@ -21,7 +21,7 @@ export default function ProductCard(props){
 
                                 </li>
                                 <li>
-                                    
+
                                     {[...Array(10)].map((e, i) => <i className="fa fa-star" key={i}></i>)}
 
                                 </li>
@@ -35,10 +35,10 @@ export default function ProductCard(props){
                 <aside className="col-sm-3">
                     <div className="info-aside">
                         <div className="price-wrap">
-                            <span className="price h5"> $140 </span>
-                            <del className="price-old"> $198</del>
+                            <span className="price-new h5"> {`€${props.product.price-20}`} </span>
+                            <del className="price-old"> {`€${props.product.price}`} </del>
                         </div>
-                        <p className="text-success">Free shipping</p>
+                        <p className="text-success">{`Delivery Cost: ${(parseInt(props.product.price)*10)/100}%`} </p>
                         <br/>
                         <p>
                             <a href="#" className="btn btn-primary btn-block"> Details </a>
