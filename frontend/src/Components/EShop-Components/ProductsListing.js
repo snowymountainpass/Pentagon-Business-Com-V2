@@ -93,7 +93,7 @@ export default function ProductsListing(){
                             <p>
                                 <a href="#" className="btn btn-primary btn-block"> Details </a>
                                 <a href="#" className="btn btn-light btn-block"><i className="fa fa-shopping-cart"></i>
-                                    <span className="text">Add to wishlist</span></a>
+                                    <span className="text">Add to cart</span></a>
                             </p>
                         </div>
                     </aside>
@@ -138,7 +138,7 @@ export default function ProductsListing(){
                             <p>
                                 <a href="#" className="btn btn-primary btn-block"> Details </a>
                                 <a href="#" className="btn btn-light btn-block"><i className="fa fa-shopping-cart"></i>
-                                    <span className="text">Add to wishlist</span>
+                                    <span className="text">Add to cart</span>
                                 </a>
                             </p>
                         </div>
@@ -184,7 +184,7 @@ export default function ProductsListing(){
                             <p>
                                 <a href="#" className="btn btn-primary btn-block"> Details </a>
                                 <a href="#" className="btn btn-light btn-block"><i className="fa fa-shopping-cart"></i>
-                                    <span className="text">Add to wishlist</span>
+                                    <span className="text">Add to cart</span>
                                 </a>
                             </p>
                         </div>

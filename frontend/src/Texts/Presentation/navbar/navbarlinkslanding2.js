@@ -38,7 +38,7 @@ const textProps = {
       children: "E-Shop",
     },
     {
-      href: "#pablo",
+      href: "/",
       children: "About Us",
     },
     // {

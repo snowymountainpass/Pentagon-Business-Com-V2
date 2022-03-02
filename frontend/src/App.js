@@ -16,9 +16,8 @@ function App() {
         <BrowserRouter>
           <Routes>
             <Route path={"/"} element={<Landing/>}/>
-            <Route path={"/about-us"} element={<Landing/>}/> {/* add Contact Us component! */}
+            <Route path={"/about-us"} element={<Landing/>}/> //TODO: add about us page
             <Route path={"/e-shop"} element={<EShop/>}/>
-          {/*    DE LUAT CA MODEL PAGINA DE SETTINGS*/}
           </Routes>
         </BrowserRouter>
 
