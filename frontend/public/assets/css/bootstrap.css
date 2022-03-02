@@ -4778,6 +4778,11 @@ a.badge-warning:focus, a.badge-warning.focus {
   box-shadow: 0 0 0 0.2rem rgba(255, 144, 23, 0.5);
 }
 
+.badge-new{
+  background-color: #6950a1 ;
+  color: #fff;
+}
+
 .badge-danger {
   color: #fff;
   background-color: #fa3434;
@@ -9945,6 +9950,11 @@ a.text-primary:hover, a.text-primary:focus {
 
 a.text-secondary:hover, a.text-secondary:focus {
   color: #2e2e2e !important;
+}
+
+.text-quantity{
+  color: #6950a1 !important;
+  font-weight: bold;
 }
 
 .text-success {

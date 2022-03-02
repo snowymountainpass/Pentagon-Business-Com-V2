@@ -6,7 +6,7 @@ export default function ProductCard(props){
             <div className="row no-gutters">
                 <aside className="col-md-3">
                     <a href="#" className="img-wrap">
-                        <span className="badge badge-danger"> NEW </span>
+                        <span className="badge badge-new"> NEW </span>
                         <img src={props.product.img} alt={props.product.productName}/>
                     </a>
                 </aside>
@@ -37,8 +37,12 @@ export default function ProductCard(props){
                         <div className="price-wrap">
                             <span className="price-new h5"> {`€${props.product.price-20}`} </span>
                             <del className="price-old"> {`€${props.product.price}`} </del>
+
+
                         </div>
                         <p className="text-success">{`Delivery Cost: ${(parseInt(props.product.price)*10)/100}%`} </p>
+                        <br/>
+                        <p className="text-quantity">{`Quantity Available: ${props.product.quantity}`}</p>
                         <br/>
                         <p>
                             <a href="#" className="btn btn-primary btn-block"> Details </a>
