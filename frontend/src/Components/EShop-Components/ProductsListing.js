@@ -1,14 +1,21 @@
 import ProductCard from "./ProductCard";
 
 
-export default function ProductsListing(){
+export default function ProductsListing(props){
 
     return(
         <>
 
-            <ProductCard/>
-            <ProductCard/>
-            <ProductCard/>
+            {
+                props.products.map(product =>(
+                    <ProductCard product={product} key={product.productID}/>
+                ))
+
+            }
+
+            {/*<ProductCard/>*/}
+            {/*<ProductCard/>*/}
+            {/*<ProductCard/>*/}
 
         </>
 

@@ -15,5 +15,6 @@ public class Product {
     int quantity;
     int price;
     String img;
+    int rating;
 
 }

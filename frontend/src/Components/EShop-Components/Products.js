@@ -32,7 +32,7 @@ export default function Products(){
                     <main className="col-md-9">
                         <ProductListingHeader products={products}/>
 
-                        <ProductsListing/>
+                        <ProductsListing products={products}/>
 
                         {/*<ProductsListingPagination/>*/}
 

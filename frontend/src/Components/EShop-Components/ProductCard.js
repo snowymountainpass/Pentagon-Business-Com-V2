@@ -1,5 +1,5 @@
 
-export default function ProductCard(){
+export default function ProductCard(props){
 
     return(
         <article className="card card-product-list">
@@ -7,30 +7,29 @@ export default function ProductCard(){
                 <aside className="col-md-3">
                     <a href="#" className="img-wrap">
                         <span className="badge badge-danger"> NEW </span>
-                        <img src="assets/images/items/3.jpg"/>
+                        <img src={props.product.img}/>
                     </a>
                 </aside>
                 <div className="col-md-6">
                     <div className="info-main">
-                        <a href="#" className="h5 title"> Great product name goes here </a>
+                        <a href="#" className="h5 title"> {props.product.productName} </a>
                         <div className="rating-wrap mb-3">
                             <ul className="rating-stars">
                                 <li className="stars-active w-80">
-                                    <i className="fa fa-star"></i> <i className="fa fa-star"></i>
-                                    <i className="fa fa-star"></i> <i className="fa fa-star"></i>
-                                    <i className="fa fa-star"></i>
+
+                                    {[...Array(props.product.rating)].map((e, i) => <i className="fa fa-star" key={i}></i>)}
+
                                 </li>
                                 <li>
-                                    <i className="fa fa-star"></i> <i className="fa fa-star"></i>
-                                    <i className="fa fa-star"></i> <i className="fa fa-star"></i>
-                                    <i className="fa fa-star"></i>
+                                    
+                                    {[...Array(10)].map((e, i) => <i className="fa fa-star" key={i}></i>)}
+
                                 </li>
                             </ul>
-                            <div className="label-rating">7/10</div>
+                            <div className="label-rating">{`${props.product.rating}/10`}</div>
                         </div>
 
-                        <p> Take it as demo specs, ipsum dolor sit amet, consectetuer adipiscing elit, Lorem ipsum dolor
-                            sit amet, consectetuer adipiscing elit, Ut wisi enim ad minim veniam </p>
+                        <p> {props.product.productDescription} </p>
                     </div>
                 </div>
                 <aside className="col-sm-3">

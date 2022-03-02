@@ -6,7 +6,7 @@ export default function ProductListingHeader({products}){
         <>
             <header className="border-bottom mb-4 pb-3">
                 <div className="form-inline">
-                    <span className="mr-md-auto">{products.length} Items found </span>
+                    <span className="mr-md-auto">{products.length} Item(s) found </span>
 
                     <select className="mr-2 form-inline" data-width="auto"> {/*data-width="auto" form-control*/}
                         <option>Price ↑</option>
