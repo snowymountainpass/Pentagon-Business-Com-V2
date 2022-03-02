@@ -16,7 +16,15 @@ import PreFooterLarge from "../Components/PreFooters/PreFooterLarge";
 import prefooterlarge from "../Texts/Presentation/prefooters/prefooterlarge";
 import FooterSmall from "../Components/Footers/Landing/FooterSmall";
 import footersmall from "../Texts/Presentation/footers/footersmall";
+import Sidebar from "../Components/Sidebar/Sidebar";
+import sidebar from "../Texts/General/sidebar/sidebar";
 
+//
+
+import Navbar from "../Components/EShop-Components/Navbar";
+import ProductListTitle from "../Components/EShop-Components/ProductListTitle"
+import Products from "../Components/EShop-Components/Products";
+import Footer from "../Components/EShop-Components/Footer";
 
 export default function EShop(){
 
@@ -26,12 +34,20 @@ export default function EShop(){
     }, [location]);
     return (
         <>
-            <NavbarLinks {...navbarlinkslanding2} />
-            <div className="container mx-auto px-4">
-            {/*    COMPONENTS*/}
-            </div>
-            <PreFooterLarge {...prefooterlarge} />
-            <FooterSmall {...footersmall} />
+            {/*<NavbarLinks {...navbarlinkslanding2} />*/}
+            {/*<div className="container mx-auto px-4">*/}
+            {/*/!*    COMPONENTS*!/*/}
+            {/*    <Sidebar{...sidebar}/>*/}
+            {/*</div>*/}
+            {/*<PreFooterLarge {...prefooterlarge} />*/}
+            {/*<FooterSmall {...footersmall} />*/}
+
+            <Navbar/>
+            <ProductListTitle/>
+            <Products/>
+            <Footer/>
+
+
         </>
     );
 

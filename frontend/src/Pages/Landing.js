@@ -46,7 +46,7 @@ export default function Landing2() {
             <HeaderVideoTitle {...headervideotitle} />
             <div className="container mx-auto px-4">
                 <Hero5 {...hero5} />
-                <Features3{...features3}/>
+                {/*<Features3{...features3}/>*/}
                 <Pricing1 {...pricing1} />
                 <ContactUs2{...contactus2}/>
             </div>

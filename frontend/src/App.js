@@ -18,6 +18,7 @@ function App() {
             <Route path={"/"} element={<Landing/>}/>
             <Route path={"/about-us"} element={<Landing/>}/> {/* add Contact Us component! */}
             <Route path={"/e-shop"} element={<EShop/>}/>
+          {/*    DE LUAT CA MODEL PAGINA DE SETTINGS*/}
           </Routes>
         </BrowserRouter>
 

@@ -1,4 +1,4 @@
-import infoArea1 from "../../../Texts/Presentation/infoarea/infoareaicontitlelinkcolor";
+// import infoArea1 from "../../../Texts/Presentation/infoarea/infoareaicontitlelinkcolor";
 
 const textProps = {
   heading2badge: {
@@ -8,9 +8,9 @@ const textProps = {
     alignment: "center",
   },
   infoAreas: [
-    {
-      ...infoArea1,
-    },
+    // {
+    //   ...infoArea1,
+    // },
     {
       color: "lightBlue",
       icon: "fas fa-atom",
@@ -28,6 +28,83 @@ const textProps = {
       title: "Servicii",
       description:
         "Descriere generala a serviciilor oferite de catre companie",
+      link: {
+        children: "Go to e-shop",
+        href: "#pablo",
+      },
+    },
+    {
+      color: "lightBlue",
+      icon: "fas fa-globe-europe",
+      title: "Servicii",
+      description:
+          "Descriere generala a serviciilor oferite de catre companie",
+      link: {
+        children: "Go to e-shop",
+        href: "#pablo",
+      },
+    },
+    {
+      color: "lightBlue",
+      icon: "fas fa-atom",
+      title: "Produse Parteneri",
+      description:
+          "Descriere generala a produselor oferite de catre parteneri prin intermediul companiei noastre",
+      link: {
+        children: "Go to e-shop",
+        href: "#pablo",
+      },
+    },
+    {
+      color: "lightBlue",
+      icon: "fas fa-globe-europe",
+      title: "Servicii",
+      description:
+          "Descriere generala a serviciilor oferite de catre companie",
+      link: {
+        children: "Go to e-shop",
+        href: "#pablo",
+      },
+    },
+    {
+      color: "lightBlue",
+      icon: "fas fa-globe-europe",
+      title: "Servicii",
+      description:
+          "Descriere generala a serviciilor oferite de catre companie",
+      link: {
+        children: "Go to e-shop",
+        href: "#pablo",
+      },
+    },
+    {
+      color: "lightBlue",
+      icon: "fas fa-atom",
+      title: "Produse Parteneri",
+      description:
+          "Descriere generala a produselor oferite de catre parteneri prin intermediul companiei noastre",
+      link: {
+        children: "Go to e-shop",
+        href: "#pablo",
+      },
+    },
+    {
+      color: "lightBlue",
+      icon: "fas fa-globe-europe",
+      title: "Servicii",
+      description:
+          "Descriere generala a serviciilor oferite de catre companie",
+      link: {
+        children: "Go to e-shop",
+        href: "#pablo",
+      },
+    },
+    {
+      color: "lightBlue",
+      icon: "fas fa-globe-europe",
+      title: "Servicii",
+      description:
+          "Descriere generala a serviciilor oferite de catre companie",
       link: {
         children: "Go to e-shop",
         href: "#pablo",
