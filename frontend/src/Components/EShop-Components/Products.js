@@ -8,18 +8,18 @@ import {element} from "prop-types";
 export default function Products(){
 
     const [products,setProducts] = useState([])
-
+    const url = "http://localhost:8080/e-shop";
     useEffect(
         ()=>{
-            fetch("http://localhost:8080/e-shop")
+            fetch(url)
                 .then(res => res.json())
                 .then(data => setProducts(data))
-        },[] // [] => runs only once (when the page loads) and not every time
+        },[url] // [] => runs every time the url changes
     )
 
 
 
-    console.log(products);
+    // console.log(products);
 
     return(
 
