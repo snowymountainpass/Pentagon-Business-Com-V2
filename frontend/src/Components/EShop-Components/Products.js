@@ -18,7 +18,7 @@ export default function Products(){
 
                         <ProductsListing/>
 
-                        <ProductsListingPagination/>
+                        {/*<ProductsListingPagination/>*/}
 
                     </main>
                 </div>

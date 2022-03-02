@@ -63,9 +63,9 @@ export default function Navbar()
 
                                 <div className="widgets-wrap float-md-right">
 
-                                    <ShoppingCart/>
+                                    {/*<ShoppingCart/>*/}
 
-                                    <RegistrationLogin/>
+                                    {/*<RegistrationLogin/>*/}
 
                                 </div>
                             </div>

@@ -14,5 +14,6 @@ public class Product {
     String productDescription;
     int quantity;
     int price;
+    String img;
 
 }

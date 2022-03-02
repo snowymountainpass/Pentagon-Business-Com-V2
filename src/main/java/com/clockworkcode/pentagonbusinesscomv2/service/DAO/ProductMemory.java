@@ -15,6 +15,11 @@ public class ProductMemory implements ProductDAO {
 
     public ProductMemory(List<Product> productList){this.productList=productList;}
 
+
+    public void addProductToList(Product newProduct){
+        productList.add(newProduct);
+    }
+
     @Override
     public List<Product> getAllProducts() {
         return productList;

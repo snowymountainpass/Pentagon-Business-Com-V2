@@ -45,8 +45,9 @@ export default function EShop(){
             <Navbar/>
             <ProductListTitle/>
             <Products/>
-            <Footer/>
-
+            {/*<Footer/>*/}
+            <PreFooterLarge {...prefooterlarge} />
+            <FooterSmall {...footersmall} />
 
         </>
     );
