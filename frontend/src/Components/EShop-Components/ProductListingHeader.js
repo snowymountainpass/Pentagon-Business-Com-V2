@@ -1,12 +1,12 @@
 
 
-export default function ProductListingHeader(){
+export default function ProductListingHeader(props){
 
     return(
         <>
             <header className="border-bottom mb-4 pb-3">
                 <div className="form-inline">
-                    <span className="mr-md-auto">32 Items found </span>
+                    <span className="mr-md-auto">{} Items found </span>
 
                     <select className="mr-2 form-inline" data-width="auto"> {/*data-width="auto" form-control*/}
                         <option>Price ↑</option>

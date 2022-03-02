@@ -15,14 +15,7 @@ export default function SidebarComponent(){
                     </header>
                     <div className="filter-content collapse show" id="collapse_1">
                         <div className="card-body">
-                            {/*<form className="pb-3">*/}
-                            {/*    <div className="input-group">*/}
-                            {/*        <input type="text" className="form-control" placeholder="Search"/>*/}
-                            {/*        <div className="input-group-append">*/}
-                            {/*            <button className="btn btn-light" type="button"><i className="fa fa-search"></i></button>*/}
-                            {/*        </div>*/}
-                            {/*    </div>*/}
-                            {/*</form>*/}
+
 
                             <ul className="list-menu">
                                 <li><a href="/e-shop/TELEFON_SIP">TELEFOANE SIP</a></li>

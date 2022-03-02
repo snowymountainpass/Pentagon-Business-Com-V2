@@ -7,7 +7,7 @@ export default function CompanyNameLogo(){
             {/*<a href="#" className="brand-wrap">*/}
             {/*    Pentagon Business Com*/}
             {/*</a>*/}
-            <a className={"text-sm font-bold leading-relaxed inline-flex items-center mr-4 py-3 whitespace-nowrap uppercase text-white"}>
+            <div className={"text-sm font-bold leading-relaxed inline-flex items-center mr-4 py-3 whitespace-nowrap uppercase text-white"}>
 
                 <img
                     src={require("../../../Assets/img/Pentagon Assets/pentagon logo mic.jpg")}
@@ -20,7 +20,7 @@ export default function CompanyNameLogo(){
                     </a>
                 </span>
 
-            </a>
+            </div>
 
 
 

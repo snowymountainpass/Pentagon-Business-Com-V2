@@ -3,6 +3,7 @@ package com.clockworkcode.pentagonbusinesscomv2.service;
 import com.clockworkcode.pentagonbusinesscomv2.model.Product;
 import com.clockworkcode.pentagonbusinesscomv2.model.ProductCategory;
 import com.clockworkcode.pentagonbusinesscomv2.service.DAO.ProductMemory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -12,6 +13,8 @@ import java.util.Collections;
 @Configuration
 public class ProductConfig {
 
+    @Autowired
+    ProductMemory productMemory;
 
     @Bean
     CommandLineRunner commandLineRunner(ProductMemory productMemory){
@@ -31,6 +34,9 @@ public class ProductConfig {
 //            Product product12 = new Product();
 
             Collections.addAll(productMemory.getAllProducts(),product1,product2);
+
+//            productMemory.getAllProducts().forEach(product -> System.out.println(product.getProductName()));
+
         };
     }
 }
