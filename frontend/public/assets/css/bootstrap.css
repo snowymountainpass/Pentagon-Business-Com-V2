@@ -1884,7 +1884,7 @@ pre code {
 
 .form-control {
   display: block;
-  width: 100%;
+  width: 50%;
   height: calc(1.5em + 0.9rem + 2px);
   padding: 0.45rem 0.85rem;
   font-size: 1rem;
@@ -1896,6 +1896,7 @@ pre code {
   border: 1px solid #ced4da;
   border-radius: 0.37rem;
   transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+
 }
 @media (prefers-reduced-motion: reduce) {
   .form-control {
@@ -2291,6 +2292,12 @@ textarea.form-control {
   display: flex;
   flex-flow: row wrap;
   align-items: center;
+
+  background-clip: padding-box;
+  /*border: 1px solid #ced4da;*/
+  border-radius: 0.37rem;
+  transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+
 }
 .form-inline .form-check {
   width: 100%;
@@ -3373,6 +3380,7 @@ input[type=button].btn-block {
   flex-wrap: wrap;
   align-items: stretch;
   width: 100%;
+
 }
 .input-group > .form-control,
 .input-group > .form-control-plaintext,

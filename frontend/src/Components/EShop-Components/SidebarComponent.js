@@ -8,29 +8,29 @@ export default function SidebarComponent(){
             <div className="card">
                 <article className="filter-group">
                     <header className="card-header">
-                        <a href="#" data-toggle="collapse" data-target="#collapse_1" aria-expanded="true" className="">
+                        <a  data-toggle="collapse" data-target="#collapse_1" aria-expanded="true" className="">
                             <i className="icon-control fa fa-chevron-down"></i>
                             <h6 className="title">Product type</h6>
                         </a>
                     </header>
                     <div className="filter-content collapse show" id="collapse_1">
                         <div className="card-body">
-                            <form className="pb-3">
-                                <div className="input-group">
-                                    <input type="text" className="form-control" placeholder="Search"/>
-                                    <div className="input-group-append">
-                                        <button className="btn btn-light" type="button"><i className="fa fa-search"></i></button>
-                                    </div>
-                                </div>
-                            </form>
+                            {/*<form className="pb-3">*/}
+                            {/*    <div className="input-group">*/}
+                            {/*        <input type="text" className="form-control" placeholder="Search"/>*/}
+                            {/*        <div className="input-group-append">*/}
+                            {/*            <button className="btn btn-light" type="button"><i className="fa fa-search"></i></button>*/}
+                            {/*        </div>*/}
+                            {/*    </div>*/}
+                            {/*</form>*/}
 
                             <ul className="list-menu">
-                                <li><a href="#">TELEFOANE SIP</a></li>
-                                <li><a href="#">SISTEME DE AUDIO CONFERINTA </a></li>
-                                <li><a href="#">CASTI CALL-CENTER</a></li>
-                                <li><a href="#">SWITCH</a></li>
-                                <li><a href="#">ACCESS POINT WIRELESS </a></li>
-                                <li><a href="#">SISTEME DE VIDEO CONFERINTA</a></li>
+                                <li><a href="/e-shop/TELEFON_SIP">TELEFOANE SIP</a></li>
+                                <li><a href="/e-shop/SISTEM_AUDIO_CONFERINTA">SISTEME DE AUDIO CONFERINTA </a></li>
+                                <li><a href="/e-shop/CASTI_CALLCENTER">CASTI CALL-CENTER</a></li>
+                                <li><a href="/e-shop/SWITCH">SWITCH</a></li>
+                                <li><a href="/e-shop/ACCESS_POINT_WIRELESS">ACCESS POINT WIRELESS </a></li>
+                                <li><a href="/e-shop/SISTEM_VIDEO_CONFERINTA">SISTEME DE VIDEO CONFERINTA</a></li>
 
                             </ul>
                         </div>
@@ -38,7 +38,7 @@ export default function SidebarComponent(){
                 </article>
                 <article className="filter-group">
                     <header className="card-header">
-                        <a href="#" data-toggle="collapse" data-target="#collapse_2" aria-expanded="true" className="">
+                        <a  data-toggle="collapse" data-target="#collapse_2" aria-expanded="true" className="">
                             <i className="icon-control fa fa-chevron-down"></i>
                             <h6 className="title">Brands </h6>
                         </a>
@@ -55,27 +55,13 @@ export default function SidebarComponent(){
                                 <div className="custom-control-label">KONFTEL
                                     <b className="badge badge-pill badge-light float-right">15</b></div>
                             </label>
-                            {/*<label className="custom-control custom-checkbox">*/}
-                            {/*    <input type="checkbox" className="custom-control-input"/>*/}
-                            {/*    <div className="custom-control-label">Mitsubishi*/}
-                            {/*        <b className="badge badge-pill badge-light float-right">35</b></div>*/}
-                            {/*</label>*/}
-                            {/*<label className="custom-control custom-checkbox">*/}
-                            {/*    <input type="checkbox" className="custom-control-input"/>*/}
-                            {/*    <div className="custom-control-label">Nissan*/}
-                            {/*        <b className="badge badge-pill badge-light float-right">89</b></div>*/}
-                            {/*</label>*/}
-                            {/*<label className="custom-control custom-checkbox">*/}
-                            {/*    <input type="checkbox" className="custom-control-input"/>*/}
-                            {/*    <div className="custom-control-label">Honda*/}
-                            {/*        <b className="badge badge-pill badge-light float-right">30</b></div>*/}
-                            {/*</label>*/}
+
                         </div>
                     </div>
                 </article>
                 <article className="filter-group">
                     <header className="card-header">
-                        <a href="#" data-toggle="collapse" data-target="#collapse_3" aria-expanded="true" className="">
+                        <a  data-toggle="collapse" data-target="#collapse_3" aria-expanded="true" className="">
                             <i className="icon-control fa fa-chevron-down"></i>
                             <h6 className="title">Price range </h6>
                         </a>
@@ -93,7 +79,7 @@ export default function SidebarComponent(){
                                     <input className="form-control" placeholder="$1,0000" type="number"/>
                                 </div>
                             </div>
-                            <button className="btn btn-block btn-primary">Apply</button>
+                            {/*<button className="btn btn-block btn-primary">Apply</button>*/}
                         </div>
                     </div>
                 </article>
@@ -127,7 +113,7 @@ export default function SidebarComponent(){
                 {/*</article>*/}
                 <article className="filter-group">
                     <header className="card-header">
-                        <a href="#" data-toggle="collapse" data-target="#collapse_5" aria-expanded="false" className="">
+                        <a  data-toggle="collapse" data-target="#collapse_5" aria-expanded="false" className="">
                             <i className="icon-control fa fa-chevron-down"></i>
                             <h6 className="title">Delivery Time </h6>
                         </a>
@@ -154,6 +140,7 @@ export default function SidebarComponent(){
                     </div>
                 </article>
             </div>
+            <button className="btn btn-block btn-primary mt-2">Apply</button>
         </aside>
 
     );
