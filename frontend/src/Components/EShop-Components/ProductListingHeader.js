@@ -1,7 +1,22 @@
-import {Route} from "react-router-dom";
+import {useEffect, useState} from "react";
 
 
-export default function ProductListingHeader({products}){
+export default function ProductListingHeader({products,setChangeProducts}){
+
+    const [query,setQuery] = useState('');
+
+    useEffect(() => {
+        // POST request using fetch inside useEffect React hook
+        const requestOptions = {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(query) //{ productName:  }
+        };
+        fetch('http://localhost:3000/e-shop/product-name', requestOptions)
+            .then(response => response.json())
+            .then(data => setChangeProducts(data));
+
+    }, [query]);
 
     return(
         <>
@@ -28,10 +43,16 @@ export default function ProductListingHeader({products}){
 
             <form className="pb-3">
                 <div className="input-group">
-                    <input type="text" className="form-control rounded-left" placeholder="Search"/>
-                    <div className="input-group-append">
-                        <button className="btn btn-light" type="button"><i className="fa fa-search"></i></button>
-                    </div>
+                    <input
+                        type="text"
+                        className="form-control rounded" //-left
+                        placeholder="Search"
+                        onChange={event => setQuery(event.target.value.toLowerCase())}
+
+                    />
+                    {/*<div className="input-group-append">*/}
+                    {/*    <button className="btn btn-light" type="button"><i className="fa fa-search"></i></button>*/}
+                    {/*</div>*/}
                 </div>
             </form>
         </>

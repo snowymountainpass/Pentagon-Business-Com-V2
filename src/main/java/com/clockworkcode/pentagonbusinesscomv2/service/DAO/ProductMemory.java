@@ -5,6 +5,7 @@ import org.springframework.stereotype.Repository;
 
 import java.util.Comparator;
 import java.util.List;
+import java.util.Locale;
 import java.util.Objects;
 import java.util.stream.Collectors;
 
@@ -32,7 +33,20 @@ public class ProductMemory implements ProductDAO {
 
     @Override
     public List<Product> getProductsByName(String productName) {
-        return productList.stream().filter(product -> product.getProductName().equals(productName)).collect(Collectors.toList());
+
+//        productList.forEach(product -> System.out.println(product.getProductName()));
+//        System.out.println("No. of products: "+ productList.size());
+//
+//        productList.stream().filter(product -> product.getProductName().contains(productName)).collect(Collectors.toList()).forEach(product -> System.out.println(product.getProductName()));
+
+        System.out.println("productName: "+productName);
+
+        String test = "alcatel h2";
+        boolean isFound = test.contains(productName); // true
+
+        System.out.println(isFound);
+
+        return productList.stream().filter(product -> product.getProductName().toLowerCase().contains(productName)).collect(Collectors.toList());
     }
 
     @Override

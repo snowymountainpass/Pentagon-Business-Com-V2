@@ -8,8 +8,8 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("e-shop")
-@CrossOrigin(origins ="http://localhost:3000/")
+@RequestMapping("/e-shop")
+@CrossOrigin(origins ="http://localhost:3000")
 public class ProductController {
 
     @Autowired
@@ -31,9 +31,11 @@ public class ProductController {
     }
 
     @GetMapping("/product-name")
-    public List<Product> getProductsByName(@RequestBody String productName){
+    public List<Product> getProductsByName(@RequestBody Product product){
 
-        return productService.getProductsByName(productName);
+        System.out.println("No. of products with this name: "+productService.getProductsByName(product.getProductName().toLowerCase()).size());
+
+        return productService.getProductsByName(product.getProductName().toLowerCase());
 
     }
 

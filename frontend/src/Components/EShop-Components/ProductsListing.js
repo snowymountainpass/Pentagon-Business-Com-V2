@@ -4,19 +4,6 @@ import {useEffect} from "react";
 
 export default function ProductsListing(props){
 
-
-    let location = useLocation();
-
-    console.log(location.pathname)
-
-    // if(location.pathname.toString().includes())
-    //
-    // useEffect(
-    //     ()={
-    //
-    //     },[]
-    // )
-
     return(
         <>
 
@@ -27,9 +14,7 @@ export default function ProductsListing(props){
 
             }
 
-            {/*<ProductCard/>*/}
-            {/*<ProductCard/>*/}
-            {/*<ProductCard/>*/}
+
 
         </>
 
