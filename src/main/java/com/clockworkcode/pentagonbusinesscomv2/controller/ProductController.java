@@ -18,7 +18,7 @@ public class ProductController {
     @GetMapping()
     public List<Product> getAllProducts(){
 
-        productService.getAllProducts().forEach(product -> System.out.println(product.getProductName()));
+//        productService.getAllProducts().forEach(product -> System.out.println(product.getProductName()));
 
         return productService.getAllProducts();
     }
@@ -30,10 +30,12 @@ public class ProductController {
 
     }
 
-    @GetMapping("/product-name")
+    @GetMapping("/product/")
     public List<Product> getProductsByName(@RequestBody Product product){
 
         System.out.println("No. of products with this name: "+productService.getProductsByName(product.getProductName().toLowerCase()).size());
+
+        productService.getProductsByName(product.getProductName().toLowerCase()).forEach(product1 -> System.out.println(product1.getProductName()));
 
         return productService.getProductsByName(product.getProductName().toLowerCase());
 

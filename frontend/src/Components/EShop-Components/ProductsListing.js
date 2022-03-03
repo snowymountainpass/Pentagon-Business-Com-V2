@@ -3,7 +3,7 @@ import {useLocation} from "react-router-dom";
 import {useEffect} from "react";
 
 export default function ProductsListing(props){
-
+    console.log(props.products)
     return(
         <>
 

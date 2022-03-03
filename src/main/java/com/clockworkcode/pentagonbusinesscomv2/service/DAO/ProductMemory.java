@@ -41,10 +41,10 @@ public class ProductMemory implements ProductDAO {
 
         System.out.println("productName: "+productName);
 
-        String test = "alcatel h2";
-        boolean isFound = test.contains(productName); // true
-
-        System.out.println(isFound);
+//        String test = "alcatel h2";
+//        boolean isFound = test.contains(productName); // true
+//
+//        System.out.println(isFound);
 
         return productList.stream().filter(product -> product.getProductName().toLowerCase().contains(productName)).collect(Collectors.toList());
     }

@@ -1,24 +1,28 @@
 import {useEffect, useState} from "react";
 
 
-export default function ProductListingHeader({products,setChangeProducts}){
+export default function ProductListingHeader({products, setChangeProducts,query,setChangeQuery}) {
 
-    const [query,setQuery] = useState('');
+    // const [query, setQuery] = useState('');
 
     useEffect(() => {
         // POST request using fetch inside useEffect React hook
         const requestOptions = {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify(query) //{ productName:  }
+            body: JSON.stringify({ "productName":query }) //
         };
-        fetch('http://localhost:3000/e-shop/product-name', requestOptions)
-            .then(response => response.json())
-            .then(data => setChangeProducts(data));
+        if(query!==''){
+            fetch('http://localhost:3000/e-shop/product/',requestOptions)//, requestOptions
+                .then(response => response.json())
+                .then(data => setChangeProducts(data));
+        }
+
 
     }, [query]);
 
-    return(
+
+    return (
         <>
             <header className="border-bottom mb-4 pb-3">
                 <div className="form-inline">
@@ -32,7 +36,8 @@ export default function ProductListingHeader({products,setChangeProducts}){
                         <option>Name (Z-A)</option>
                     </select>
                     <div className="btn-group">
-                        <a href="#" className="btn btn-outline-secondary active" data-toggle="tooltip" title="List view">
+                        <a href="#" className="btn btn-outline-secondary active" data-toggle="tooltip"
+                           title="List view">
                             <i className="fa fa-bars"></i></a>
                         <a href="#" className="btn  btn-outline-secondary" data-toggle="tooltip" title="Grid view">
                             <i className="fa fa-th"></i></a>
@@ -47,7 +52,7 @@ export default function ProductListingHeader({products,setChangeProducts}){
                         type="text"
                         className="form-control rounded" //-left
                         placeholder="Search"
-                        onChange={event => setQuery(event.target.value.toLowerCase())}
+                        onChange={event => setChangeQuery(event.target.value.toLowerCase())}
 
                     />
                     {/*<div className="input-group-append">*/}
@@ -56,8 +61,6 @@ export default function ProductListingHeader({products,setChangeProducts}){
                 </div>
             </form>
         </>
-
-
 
 
     );
