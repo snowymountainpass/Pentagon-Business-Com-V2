@@ -43,6 +43,7 @@ export default function CardInfoFullColor({
     purple: "bg-purple-500",
     "pink-gradient": "bg-gradient-to-r from-pink-400 to-pink-500 bg-pink-500",
     pink: "bg-pink-500",
+    alcatel:"alcatel-purple"
   };
 
   let iconColor = {
@@ -124,6 +125,7 @@ CardInfoFullColor.propTypes = {
     "indigo",
     "purple",
     "pink",
+    "alcatel-purple"
   ]),
   // if the background should have a gradient
   gradient: PropTypes.bool,
