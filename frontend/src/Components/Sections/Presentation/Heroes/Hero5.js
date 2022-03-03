@@ -21,7 +21,7 @@ export default function Hero5({ heading2badge, infoAreas }) {
                 key={key}
               >
                 {/*<InfoAreaIconTitleLinkColor {...prop} />*/}
-                <CardInfoFullColor{...prop}/>
+                <CardInfoFullColor {...prop}/>
               </div>
             );
           })}

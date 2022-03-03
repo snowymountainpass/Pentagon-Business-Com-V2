@@ -8,9 +8,9 @@ const textProps = {
     alignment: "center",
   },
   infoAreas: [
-    
+
     {
-      color: "alcatel-purple",
+      color: "alcatel",
       icon: "fas fa-atom",
       title: "Produse Parteneri",
       description:
@@ -21,7 +21,7 @@ const textProps = {
       },
     },
     {
-      color: "alcatel-purple",
+      color: "alcatel",
       icon: "fas fa-globe-europe",
       title: "Servicii",
       description:

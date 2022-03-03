@@ -1,6 +1,11 @@
+import {useState} from "react";
+import {useSearchParams} from "react-router-dom";
 
 
 export default function ProductListingHeader({products}){
+
+    let [searchParams, setSearchParams] = useSearchParams();
+
 
     return(
         <>
@@ -24,11 +29,11 @@ export default function ProductListingHeader({products}){
                 </div>
             </header>
 
-            <form className="pb-3">
+            <form className="pb-3" action={"/e-shop/"} method={"GET"}>
                 <div className="input-group">
-                    <input type="text" className="form-control rounded-left" placeholder="Search"/>
+                    <input name={"searchBar"} type="text" className="form-control rounded-left" placeholder="Search"/>
                     <div className="input-group-append">
-                        <button className="btn btn-light" type="button"><i className="fa fa-search"></i></button>
+                        <button className="btn btn-light" type="submit"><i className="fa fa-search"></i></button>
                     </div>
                 </div>
             </form>

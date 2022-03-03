@@ -43,7 +43,7 @@ export default function CardInfoFullColor({
     purple: "bg-purple-500",
     "pink-gradient": "bg-gradient-to-r from-pink-400 to-pink-500 bg-pink-500",
     pink: "bg-pink-500",
-    alcatel:"alcatel-purple"
+    alcatel:"alcatel-purple-500", "alcatel-gradient": "bg-gradient-to-r from-alcatel-purple-400 to-alcatel-purple-500 bg-alcatel-purple-500",
   };
 
   let iconColor = {
@@ -73,12 +73,15 @@ export default function CardInfoFullColor({
     pink: "text-white",
   };
   let gradientText = gradient ? "-gradient" : "";
+
+  console.log(color,color+gradientText,bgColor[color + gradientText]);
+
   return (
     <>
       <div
         className={
-          bgColor[color + gradientText] +
-          " mt-8 rounded-lg text-left p-6 flex items-start"
+
+          `${bgColor[color + gradientText]} mt-8 rounded-lg text-left p-6 flex items-start`
         }
       >
         <div className="flex-1">
@@ -125,7 +128,7 @@ CardInfoFullColor.propTypes = {
     "indigo",
     "purple",
     "pink",
-    "alcatel-purple"
+    "alcatel"
   ]),
   // if the background should have a gradient
   gradient: PropTypes.bool,

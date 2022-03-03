@@ -3,7 +3,6 @@ import ProductsListing from "./ProductsListing";
 import ProductsListingPagination from "./ProductsListingPagination";
 import SidebarComponent from "./SidebarComponent";
 import {useEffect, useState} from "react";
-import {element} from "prop-types";
 
 export default function Products(){
 
@@ -16,6 +15,7 @@ export default function Products(){
                 .then(data => setProducts(data))
         },[url] // [] => runs every time the url changes
     )
+
 
 
 

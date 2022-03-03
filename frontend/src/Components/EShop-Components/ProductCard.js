@@ -1,5 +1,14 @@
 
+import {useEffect} from "react";
+
+
+
+
 export default function ProductCard(props){
+
+    const img = props.product.img.replace("../../Assets/img/","/assets/images/");
+
+
 
     return(
         <article className="card card-product-list">
@@ -7,7 +16,7 @@ export default function ProductCard(props){
                 <aside className="col-md-3">
                     <a href="#" className="img-wrap">
                         <span className="badge badge-new"> NEW </span>
-                        <img src={props.product.img} alt={props.product.productName}/>
+                        <img src={img} alt={props.product.productName}/>
                     </a>
                 </aside>
                 <div className="col-md-6">
