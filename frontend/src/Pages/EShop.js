@@ -1,7 +1,5 @@
 import {useLocation} from "react-router-dom";
 import React from "react";
-import NavbarLinks from "../Components/Navbar/NavbarLinks";
-import navbarlinkslanding2 from "../Texts/Presentation/navbar/navbarlinkslanding2";
 // import HeaderVideoTitle from "../../Components/Headers/Presentation/HeaderVideoTitle";
 // import headervideotitle from "../../Texts/presentation/headers/headervideotitle";
 // import Hero5 from "../../Components/Sections/Presentation/Heroes/Hero5";
@@ -12,21 +10,14 @@ import navbarlinkslanding2 from "../Texts/Presentation/navbar/navbarlinkslanding
 // import pricing1 from "../../Texts/presentation/pricing/pricing1";
 // import ContactUs2 from "../../Components/Sections/Presentation/ContactUs/ContactUs2";
 // import contactus2 from "../../Texts/presentation/contactus/contactus2";
-import PreFooterLarge from "../Components/PreFooters/PreFooterLarge";
-import prefooterlarge from "../Texts/Presentation/prefooters/prefooterlarge";
 import FooterSmall from "../Components/Footers/Landing/FooterSmall";
 import footersmall from "../Texts/Presentation/footers/footersmall";
-import Sidebar from "../Components/Sidebar/Sidebar";
-import sidebar from "../Texts/General/sidebar/sidebar";
 
 //
-
 import Navbar from "../Components/EShop-Components/Navbar";
-import ProductListTitle from "../Components/EShop-Components/ProductListTitle"
 import Products from "../Components/EShop-Components/Products";
-import Footer from "../Components/EShop-Components/Footer";
 
-export default function EShop(){
+export default function EShop() {
 
     const location = useLocation();
     React.useEffect(() => {

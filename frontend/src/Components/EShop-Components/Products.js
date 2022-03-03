@@ -16,10 +16,9 @@ export default function Products(){
         },[url] // [] => runs every time the url changes
     )
 
+    // console.log(products);
 
 
-
-    console.log(products);
 
     return(
 
@@ -30,7 +29,8 @@ export default function Products(){
                     <SidebarComponent/>
 
                     <main className="col-md-9">
-                        <ProductListingHeader products={products}/>
+                        <ProductListingHeader
+                            products={products}/>
 
                         <ProductsListing products={products}/>
 

@@ -1,5 +1,4 @@
 import CompanyNameLogo from "./Navbar Components/CompanyNameLogo";
-import SearchBar from "./Navbar Components/SearchBar";
 import ShoppingCart from "./Navbar Components/ShoppingCart";
 import RegistrationLogin from "./Navbar Components/RegistrationLogin";
 import React from "react";

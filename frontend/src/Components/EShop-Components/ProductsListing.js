@@ -7,7 +7,7 @@ export default function ProductsListing(props){
 
     let location = useLocation();
 
-    console.log(location)
+    console.log(location.pathname)
 
     // if(location.pathname.toString().includes())
     //

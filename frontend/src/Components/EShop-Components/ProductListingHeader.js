@@ -1,11 +1,7 @@
-import {useState} from "react";
-import {useSearchParams} from "react-router-dom";
+import {Route} from "react-router-dom";
 
 
 export default function ProductListingHeader({products}){
-
-    let [searchParams, setSearchParams] = useSearchParams();
-
 
     return(
         <>
@@ -26,14 +22,15 @@ export default function ProductListingHeader({products}){
                         <a href="#" className="btn  btn-outline-secondary" data-toggle="tooltip" title="Grid view">
                             <i className="fa fa-th"></i></a>
                     </div>
+
                 </div>
             </header>
 
-            <form className="pb-3" action={"/e-shop/"} method={"GET"}>
+            <form className="pb-3">
                 <div className="input-group">
-                    <input name={"searchBar"} type="text" className="form-control rounded-left" placeholder="Search"/>
+                    <input type="text" className="form-control rounded-left" placeholder="Search"/>
                     <div className="input-group-append">
-                        <button className="btn btn-light" type="submit"><i className="fa fa-search"></i></button>
+                        <button className="btn btn-light" type="button"><i className="fa fa-search"></i></button>
                     </div>
                 </div>
             </form>
