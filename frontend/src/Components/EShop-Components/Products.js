@@ -29,6 +29,7 @@ export default function Products(){
         },[] // [] => runs every time the url changes
     )
 
+    console.log("Products: "+products.length)
 
     return(
 

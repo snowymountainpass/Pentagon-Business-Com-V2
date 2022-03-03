@@ -30,8 +30,10 @@ public class ProductController {
 
     }
 
-    @GetMapping("/product/")
+    @GetMapping("/product")
     public List<Product> getProductsByName(@RequestBody Product product){
+
+        System.out.println("productName: "+ product.getProductName());
 
         System.out.println("No. of products with this name: "+productService.getProductsByName(product.getProductName().toLowerCase()).size());
 
