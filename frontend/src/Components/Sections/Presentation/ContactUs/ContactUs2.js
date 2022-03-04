@@ -18,6 +18,12 @@ export default function ContactUs2({ image, heading2, button, infoAreas }) {
         <div className="p-0 flex items-center relative min-h-400-px h-400-px max-h-999-px mb-50-px">
           <img alt="..." className="w-full" src={image} />
         </div>
+        <div>
+          <br/>
+          <br/>
+          <br/>
+          <br/>
+        </div>
         <div className="pt-12 container mx-auto px-4">
           {heading2 && <Heading2 {...heading2} />}
           <div className="flex flex-wrap -mx-4 items-center justify-center -mt-6">

@@ -4,26 +4,27 @@ import PropTypes from "prop-types";
 // components
 import Button from "../../Elements/Button";
 import Skew from "../../Skews/Skew";
-
+import {toPadding} from "chart.js/helpers";
+//75
 export default function HeaderVideoTitle({
   video,
   title,
   subtitle,
-  buttonText,
-  buttonIcon,
-  buttonColor,
   skew,
 }) {
   return (
     <>
-      <div className="p-0 flex items-center overflow-hidden relative bg-black min-h-screen-75">
+      <br/>
+      <br/>
+      <br/>
+      <div className="p-5 flex items-center overflow-hidden relative bg-black min-h-screen-75">
         <div className="absolute w-full bg-indigo-500 h-full z-1 opacity-30 top-0 left-0"></div>
         <video
           playsInline="playsinline"
           autoPlay="autoplay"
           muted="muted"
           loop="loop"
-          className="absolute min-w-full max-w-none min-h-full z-0 transform -translate-x-1/2 -translate-y-1/2 top-7/20 left-1/2"
+          className="absolute min-w-full max-w-none min-h-full z-2 transform -translate-x-1/2 -translate-y-1/2 top-7/20 left-1/2 mt-xl-5"
         >
           <source src={video} type="video/mp4" />
         </video>
@@ -36,10 +37,10 @@ export default function HeaderVideoTitle({
               <h4 className="mt-2 text-lg text-white opacity-75 mb-8">
                 {subtitle}
               </h4>
-              <Button color={buttonColor} size="lg">
-                <i className={buttonIcon + " mr-2"}></i>
-                {buttonText}
-              </Button>
+              {/*<Button color={buttonColor} size="lg">*/}
+              {/*  <i className={buttonIcon + " mr-2"}></i>*/}
+              {/*  {buttonText}*/}
+              {/*</Button>*/}
             </div>
           </div>
         </div>

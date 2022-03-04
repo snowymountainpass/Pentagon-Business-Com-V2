@@ -11,7 +11,7 @@ import cardinfofullcolor from "../../../../Texts/Presentation/cards/cardinfofull
 export default function Hero5({ heading2badge, infoAreas }) {
   return (
     <>
-      <div className="py-12">
+      <div className="py-12 text-white">
         {heading2badge && <Heading2Badge {...heading2badge} />}
         <div className="items-center flex flex-wrap -mx-4">
           {infoAreas.map((prop, key) => {

@@ -2,9 +2,9 @@
 
 const textProps = {
   heading2badge: {
-    title: "Bringing people together since 1996",
+    title: "ALCATEL LUCENT-EXPERT CERTIFIED BUSINESS PARTNER",
     description:
-      "La ora actuala Pentagon Business Com este unul dintre principalii importatori si are statutul de ALCATEL CERTIFIED PARTNER - Expert Level - pentru Alcatel Lucent Enterprise Franta",
+      "Bringing the best equipment, solutions and services to our clients since 1996 in various domains such as: unified communication and collaboration, video and audio conference, call centres, recording, IP PBX, all types of phones terminals, UPS, switches, wireless network  and any kind of customized solution.",
     alignment: "center",
   },
   infoAreas: [
@@ -12,9 +12,9 @@ const textProps = {
     {
       color: "alcatel",
       icon: "fas fa-atom",
-      title: "Produse Parteneri",
+      title: "ALCATEL-LUCENT Networking Infrastructure",
       description:
-        "Descriere generala a produselor oferite de catre parteneri prin intermediul companiei noastre",
+        "Find out more here!",
       link: {
         children: "Go to e-shop",
         href: "#pablo",
@@ -23,86 +23,86 @@ const textProps = {
     {
       color: "alcatel",
       icon: "fas fa-globe-europe",
-      title: "Servicii",
+      title: "Unified multimedia communication solution",
       description:
-        "Descriere generala a serviciilor oferite de catre companie",
+        "In the ALCATEL-LUCENT Cloud. Find out more here!",
       link: {
         children: "Go to e-shop",
         href: "#pablo",
       },
     },
     {
-      color: "lightBlue",
+      color: "alcatel",
       icon: "fas fa-globe-europe",
-      title: "Servicii",
+      title: "UPS equipments & Maintenance Services",
       description:
-          "Descriere generala a serviciilor oferite de catre companie",
+          "Find out more here!",
       link: {
         children: "Go to e-shop",
         href: "#pablo",
       },
     },
     {
-      color: "lightBlue",
+      color: "alcatel",
       icon: "fas fa-atom",
-      title: "Produse Parteneri",
+      title: "ALCATEL LUCENT IP communication equipments ",
       description:
-          "Descriere generala a produselor oferite de catre parteneri prin intermediul companiei noastre",
+          "Find out more here!",
       link: {
         children: "Go to e-shop",
         href: "#pablo",
       },
     },
     {
-      color: "lightBlue",
+      color: "alcatel",
       icon: "fas fa-globe-europe",
-      title: "Servicii",
+      title: "ALCATEL-LUCENT IP / SIP / Digital Phones",
       description:
-          "Descriere generala a serviciilor oferite de catre companie",
+          "Find out more here!",
       link: {
         children: "Go to e-shop",
         href: "#pablo",
       },
     },
     {
-      color: "lightBlue",
+      color: "alcatel",
       icon: "fas fa-globe-europe",
-      title: "Servicii",
+      title: "Enterprise Audio-Video Conference equipments",
       description:
-          "Descriere generala a serviciilor oferite de catre companie",
+          "Find out more here!",
       link: {
         children: "Go to e-shop",
         href: "#pablo",
       },
     },
     {
-      color: "lightBlue",
+      color: "alcatel",
       icon: "fas fa-atom",
-      title: "Produse Parteneri",
+      title: "Call center,Recorder, IVR, Chat Bot solutions",
       description:
-          "Descriere generala a produselor oferite de catre parteneri prin intermediul companiei noastre",
+          "Find out more here!",
       link: {
         children: "Go to e-shop",
         href: "#pablo",
       },
     },
     {
-      color: "lightBlue",
+      color: "alcatel",
       icon: "fas fa-globe-europe",
-      title: "Servicii",
+      title: "Customizable Session Board Controller, Visual AA & Audio Conference solutions",
       description:
-          "Descriere generala a serviciilor oferite de catre companie",
+          "Find out more here!",
       link: {
         children: "Go to e-shop",
         href: "#pablo",
       },
     },
     {
-      color: "lightBlue",
+      color: "alcatel",
       icon: "fas fa-globe-europe",
-      title: "Servicii",
+      title: "Turnkey customizable communication solutions",
       description:
-          "Descriere generala a serviciilor oferite de catre companie",
+          "Find out more here!",
       link: {
         children: "Go to e-shop",
         href: "#pablo",

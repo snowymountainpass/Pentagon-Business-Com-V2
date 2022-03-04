@@ -64,9 +64,9 @@ export default function Pricing1({
                     <CardPricing {...cardcontactustitleProps} />
                   </div>
 
-                  <div className="px-4 relative w-full md:w-6/12">
-                    <CardPricing {...cardinfoimageProps} />
-                  </div>
+                  {/*<div className="px-4 relative w-full md:w-6/12">*/}
+                  {/*  <CardPricing {...cardinfoimageProps} />*/}
+                  {/*</div>*/}
                 </div>
               </div>
             </div>

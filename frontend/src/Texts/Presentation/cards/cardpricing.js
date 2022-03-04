@@ -1,23 +1,23 @@
 const textProps = {
-  headText: "Standard(TBD)",
-  price: "$TBD",
-  unit: "per month",
+  headText: "Essential",
+  price: "Free",
+  unit: "",
   list: [
     {
-      feature: "(TBD)",
-      text: "(TBD)",
+      feature: "Good for: ",
+      text: "Small Teams",
     },
     {
-      feature: "(TBD)",
-      text: "(TBD)",
+      feature: "Good for: ",
+      text: "Individul Users",
     },
     {
-      feature: "(TBD)",
-      text: "(TBD)",
+      feature: "No Service Level Agreement:",
+      text: "Available for an unlimited period of time!",
     },
   ],
   link: {
-    href: "#pablo",
+    href: "https://www.openrainbow.com/",
     children: "Request a quotation",
   },
 };

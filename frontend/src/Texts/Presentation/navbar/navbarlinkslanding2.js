@@ -38,7 +38,7 @@ const textProps = {
       children: "E-Shop",
     },
     {
-      href: "/",
+      href: "mailto:office@pentagon.ro",
       children: "About Us",
     },
     // {

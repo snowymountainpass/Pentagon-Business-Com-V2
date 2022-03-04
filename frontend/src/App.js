@@ -16,11 +16,11 @@ function App() {
         <BrowserRouter>
           <Routes>
             <Route path={"/"} element={<Landing/>}/>
-            <Route path={"/about-us"} element={<Landing/>}/> //TODO: add about us page
+            <Route path={"/about-us"}
+            /> //TODO: add about us page
             <Route path={"/e-shop"} element={<EShop/>}/>
           </Routes>
         </BrowserRouter>
-
 
       </div>
   );

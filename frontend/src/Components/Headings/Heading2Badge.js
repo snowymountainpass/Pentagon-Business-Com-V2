@@ -40,8 +40,8 @@ export default function Heading2Badge({
           {description && (
             <p
               className={
-                "mt-2 mb-4 text-xl leading-relaxed " +
-                (whiteContent ? "text-white" : "text-blueGray-400")
+                "mt-2 mb-4 text-xl leading-relaxed font-bold " +
+                (whiteContent ? "text-white" : "text-blueGray-500")
               }
             >
               {description}

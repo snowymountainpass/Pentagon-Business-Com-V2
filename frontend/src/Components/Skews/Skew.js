@@ -15,13 +15,14 @@ export default function Skew({ color }) {
         style={{ transform: "translateZ(0)" }}
       >
         <svg
-          className="absolute bottom-0 overflow-hidden"
+          className="absolute bottom-0 top-auto overflow-hidden"
           xmlns="http://www.w3.org/2000/svg"
           preserveAspectRatio="none"
           version="1.1"
-          viewBox="0 0 2560 100"
+          viewBox="0 0 2000 100"
           x="0"
           y="0"
+
         >
           <polygon
             className={textColor + " fill-current"}
@@ -39,3 +40,5 @@ Skew.defaultProps = {
 Skew.propTypes = {
   color: PropTypes.oneOf(["white", "blueGray", "dark"]),
 };
+
+// {/*  2560 100*/}

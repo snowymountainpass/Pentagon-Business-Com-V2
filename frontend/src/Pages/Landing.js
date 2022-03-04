@@ -18,7 +18,6 @@ import FooterSmall from "../Components/Footers/Landing/FooterSmall";
 // import hero5 from "../../Texts/presentation/heroes/hero5";
 import hero5 from "../Texts/Presentation/heroes/hero5";
 import pricing1 from "../Texts/Presentation/pricing/pricing1";
-import features3 from "../Texts/Presentation/general/features/features3";
 import contactus2 from "../Texts/Presentation/contactus/contactus2";
 
 
@@ -28,13 +27,6 @@ import headervideotitle from "../Texts/Presentation/headers/headervideotitle";
 import prefooterlarge from "../Texts/Presentation/prefooters/prefooterlarge";
 import footersmall from "../Texts/Presentation/footers/footersmall";
 
-
-
-
-
-
-
-
 export default function Landing2() {
     const location = useLocation();
     React.useEffect(() => {
@@ -43,10 +35,10 @@ export default function Landing2() {
     return (
         <>
             <NavbarLinks {...navbarlinkslanding2} />
+            <br/>
             <HeaderVideoTitle {...headervideotitle} />
             <div className="container mx-auto px-4">
                 <Hero5 {...hero5} />
-                {/*<Features3{...features3}/>*/}
                 <Pricing1 {...pricing1} />
                 <ContactUs2{...contactus2}/>
             </div>

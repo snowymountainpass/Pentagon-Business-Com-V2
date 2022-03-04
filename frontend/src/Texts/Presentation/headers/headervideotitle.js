@@ -1,5 +1,5 @@
 const textProps = {
-  // video: require("../../../Assets/videos/Lights - 26607.mp4").default, // DE SCHIMBAT VIDEO - CEVA LEGAT DE ALCATEL
+  video: require("../../../Assets/img/Pentagon Assets/Alcatel-Lucent-Header-Video.mp4"),
 
 
   title: "Welcome to our most special company",
