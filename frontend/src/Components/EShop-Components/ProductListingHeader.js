@@ -5,35 +5,20 @@ export default function ProductListingHeader({products, setChangeProducts,query,
 
     // const [query, setQuery] = useState('');
 
-    // useEffect(() => {
-    //     // POST request using fetch inside useEffect React hook
-    //     const requestOptions = {
-    //         method: 'POST',
-    //         headers: { 'Content-Type': 'application/json' },
-    //         body: JSON.stringify({ "productName":query }) //
-    //     };
-    //     if(query!==''){
-    //         fetch('http://localhost:3000/e-shop/product/',requestOptions)//, requestOptions
-    //             .then(response => response.json())
-    //             .then(data => setChangeProducts(data));
-    //     }
-    //
-    //
-    // }, [query]);
-    // WORKS DON'T DELETE
+    const searchBar = document.getElementById('searchBar');
 
     function handleClick(e) {
         e.preventDefault();
 
         const requestOptions = {
-            method: 'POST',
+            method: 'GET',
             headers: { Accept: 'application/json','Content-Type': 'application/json' },
-            body: JSON.stringify({ "productName":query }) //
+            // body: JSON.stringify({ "productName":query }) //
         };
 
         if(query!==''){
 
-            fetch('http://localhost:3000/e-shop/product',requestOptions)
+            fetch(`http://localhost:3000/e-shop/product/` + searchBar.innerHTML ,requestOptions)
                 .then(response => response.json())
                 .then(data => setChangeProducts(data));
         }
@@ -67,11 +52,12 @@ export default function ProductListingHeader({products, setChangeProducts,query,
             <form className="pb-3">
                 <div className="input-group">
                     <input
+                        id = 'searchBar'
                         type="text"
                         className="form-control rounded-left"
                         placeholder="Search"
-                        onChange={event => setChangeQuery(event.target.value.toLowerCase())}
-
+                        // value={query}
+                        // onChange={event => setChangeQuery(event.target.value.toLowerCase())}
                     />
                     <div className="input-group-append" onClick={handleClick}>
                         <button className="btn btn-light" type="button"><i className="fa fa-search"></i></button>

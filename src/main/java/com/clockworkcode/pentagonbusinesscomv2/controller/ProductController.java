@@ -30,16 +30,16 @@ public class ProductController {
 
     }
 
-    @GetMapping("/product")
-    public List<Product> getProductsByName(@RequestBody Product product){
+    @GetMapping("/product/{productName}")
+    public List<Product> getProductsByName(@PathVariable String productName){
 
-        System.out.println("productName: "+ product.getProductName());
+        System.out.println("productName: "+ productName);
 
-        System.out.println("No. of products with this name: "+productService.getProductsByName(product.getProductName().toLowerCase()).size());
+//        System.out.println("No. of products with this name: "+productService.getProductsByName(productName).size());
 
-        productService.getProductsByName(product.getProductName().toLowerCase()).forEach(product1 -> System.out.println(product1.getProductName()));
+        productService.getProductsByName(productName.toLowerCase()).forEach(product1 -> System.out.println(product1.getProductName()));
 
-        return productService.getProductsByName(product.getProductName().toLowerCase());
+        return productService.getProductsByName(productName.toLowerCase());
 
     }
 
