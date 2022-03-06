@@ -3,9 +3,9 @@ import {useEffect, useState} from "react";
 
 export default function ProductListingHeader({products, setChangeProducts,query,setChangeQuery}) {
 
-    // const [query, setQuery] = useState('');
+    const [searchInput,setSearchInput] = useState("");
 
-    const searchBar = document.getElementById('searchBar');
+    // const searchBar = document.getElementById('searchBar'); //searchBar.innerHTML
 
     function handleClick(e) {
         e.preventDefault();
@@ -18,11 +18,18 @@ export default function ProductListingHeader({products, setChangeProducts,query,
 
         if(query!==''){
 
-            fetch(`http://localhost:3000/e-shop/product/` + searchBar.innerHTML ,requestOptions)
-                .then(response => response.json())
-                .then(data => setChangeProducts(data));
+            fetch(`http://localhost:8080/e-shop/product/` + query,requestOptions)
+                .then(response => {
+                    return response.json();
+                    // console.log(response);
+                })
+                .then(data => {
+                    setChangeProducts(data);
+                });
         }
         console.log("ProductsListingHeader: "+products);
+        // console.log("query: "+query);
+
     }
 
     return (
@@ -57,7 +64,7 @@ export default function ProductListingHeader({products, setChangeProducts,query,
                         className="form-control rounded-left"
                         placeholder="Search"
                         // value={query}
-                        // onChange={event => setChangeQuery(event.target.value.toLowerCase())}
+                        onChange={event => setChangeQuery(event.target.value.toLowerCase())}
                     />
                     <div className="input-group-append" onClick={handleClick}>
                         <button className="btn btn-light" type="button"><i className="fa fa-search"></i></button>
