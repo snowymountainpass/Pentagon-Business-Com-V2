@@ -1,7 +1,4 @@
 
-import {useEffect} from "react";
-
-
 
 
 export default function ProductCard(props){
@@ -26,12 +23,12 @@ export default function ProductCard(props){
                             <ul className="rating-stars">
                                 <li className="stars-active w-80">
 
-                                    {[...Array(props.product.rating)].map((e, i) => <i className="fa fa-star" key={i}></i>)}
+                                    {[...Array(props.product.rating)].map((e, i) => <i className="fa fa-star" key={i}/>)}
 
                                 </li>
                                 <li>
 
-                                    {[...Array(10)].map((e, i) => <i className="fa fa-star" key={i}></i>)}
+                                    {[...Array(10)].map((e, i) => <i className="fa fa-star" key={i}/>)}
 
                                 </li>
                             </ul>
@@ -55,7 +52,7 @@ export default function ProductCard(props){
                         <br/>
                         <p>
                             <a href="#" className="btn btn-primary btn-block"> Details </a>
-                            <a href="#" className="btn btn-light btn-block"><i className="fa fa-shopping-cart"></i>
+                            <a href="#" className="btn btn-light btn-block"><i className="fa fa-shopping-cart"/>
                                 <span className="text">Add to Cart</span>
                             </a>
                         </p>

@@ -6,7 +6,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping("/e-shop")
@@ -24,15 +26,6 @@ public class ProductController {
         return productService.getAllProducts();
     }
 
-    @GetMapping("/{productCategory}")
-    public ResponseEntity<List<Product>>getProductsByCategory(@PathVariable String productCategory) {
-
-        System.out.println("SELECTED Product Category: "+ productCategory);
-
-        return ResponseEntity.ok().body( productService.getAllProductsByCategory(productCategory) );
-
-    }
-
     @GetMapping("/product/{productName}")
     public ResponseEntity<List<Product>> getProductsByName(@PathVariable String productName) {
 
@@ -45,6 +38,28 @@ public class ProductController {
 
         return ResponseEntity.ok().body(listOfProducts);
 
+    }
+
+
+    @GetMapping("/{productCategory}")
+    public ResponseEntity<List<Product>>getProductsByCategory(@PathVariable String productCategory) {
+
+        System.out.println("SELECTED Product Category: "+ productCategory);
+
+        return ResponseEntity.ok().body( productService.getAllProductsByCategory(productCategory) );
+
+    }
+
+    @GetMapping("/brands")
+    public ResponseEntity<List<Product>> getProductsByBrands(@RequestBody List<String> brandsList){
+        System.out.println("List of Brands: ");
+        brandsList.stream().forEach(s -> System.out.print(s+", "));
+
+        List<Product> productsFromBrands = new ArrayList<>();
+
+        brandsList.forEach(s -> productsFromBrands.addAll(getAllProducts().stream().filter(product -> product.getBrand().equals(s)).collect(Collectors.toList())));
+
+        return ResponseEntity.ok().body(productsFromBrands);
     }
 
     @GetMapping("/price-descending")

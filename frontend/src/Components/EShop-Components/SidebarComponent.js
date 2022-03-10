@@ -1,8 +1,13 @@
 // import {useSearchParams} from "react-router-dom";
+// const [searchParams, setSearchParams] = useSearchParams();
 
-export default function SidebarComponent( {setChangeProducts}  ){
 
-    // const [searchParams, setSearchParams] = useSearchParams();
+import {useState} from "react";
+import Checkbox from "../EShop-Components/Checkbox";
+
+export default function SidebarComponent({products,setChangeProducts}  ){
+
+
 
     function handleCategoryClick(event){
         event.preventDefault();
@@ -24,9 +29,7 @@ export default function SidebarComponent( {setChangeProducts}  ){
                 setChangeProducts(data);
             });
 
-
     }
-
 
 
     return(
@@ -37,42 +40,27 @@ export default function SidebarComponent( {setChangeProducts}  ){
                 <article className="filter-group">
                     <header className="card-header">
                         <a  data-toggle="collapse" data-target="#collapse_1" aria-expanded="true" className="">
-                            <i className="icon-control fa fa-chevron-down"></i>
+                            <i className="icon-control fa fa-chevron-down"/>
                             <h6 className="title">Product type</h6>
                         </a>
                     </header>
                     <div className="filter-content collapse show" id="collapse_1">
                         <div className="card-body">
 
-
-                            {/*<ul className="list-menu">*/}
-                            {/*    <li><a href="/e-shop/TELEFON_SIP">TELEFOANE SIP</a></li>*/}
-                            {/*    <li><a href="/e-shop/SISTEM_AUDIO_CONFERINTA">SISTEME DE AUDIO CONFERINTA </a></li>*/}
-                            {/*    <li><a href="/e-shop/CASTI_CALLCENTER">CASTI CALL-CENTER</a></li>*/}
-                            {/*    <li><a href="/e-shop/SWITCH">SWITCH</a></li>*/}
-                            {/*    <li><a href="/e-shop/ACCESS_POINT_WIRELESS">ACCESS POINT WIRELESS </a></li>*/}
-                            {/*    <li><a href="/e-shop/SISTEM_VIDEO_CONFERINTA">SISTEME DE VIDEO CONFERINTA</a></li>*/}
-
-                            {/*</ul>*/}
-
                             <ul className="list-menu"
-                                onClick={event=> {
+                                onClick={ event=> {
                                     handleCategoryClick(event);
                                     event.target.style.color="blue";
-                                }
-                            }
-                                onMouseOut={event=> {
+                                } }
+                                onMouseOut={ event=> {
                                     event.target.style.color="black";
-                                }}
-                                // onMouse={event => {event.target.style.color="blue"}}
-                            >
+                                } }>
                                 <li><a id="TELEFON_SIP">TELEFOANE SIP</a></li>
                                 <li><a id="SISTEM_AUDIO_CONFERINTA">SISTEME DE AUDIO CONFERINTA </a></li>
                                 <li><a id="CASTI_CALLCENTER">CASTI CALL-CENTER</a></li>
                                 <li><a id="SWITCH">SWITCH</a></li>
                                 <li><a id="ACCESS_POINT_WIRELESS">ACCESS POINT WIRELESS </a></li>
                                 <li><a id="SISTEM_VIDEO_CONFERINTA">SISTEME DE VIDEO CONFERINTA</a></li>
-
                             </ul>
 
                         </div>
@@ -82,12 +70,13 @@ export default function SidebarComponent( {setChangeProducts}  ){
                 <article className="filter-group">
                     <header className="card-header">
                         <a  data-toggle="collapse" data-target="#collapse_2" aria-expanded="true" className="">
-                            <i className="icon-control fa fa-chevron-down"></i>
-                            <h6 className="title">Brands </h6>
+                            <i className="icon-control fa fa-chevron-down"/>
+                            <h6 className="title">Brands</h6>
                         </a>
                     </header>
                     <div className="filter-content collapse show" id="collapse_2">
                         <div className="card-body">
+
                             <label className="custom-control custom-checkbox">
                                 <input type="checkbox" className="custom-control-input"/>
                                 <div className="custom-control-label">ALCATEL-LUCENT

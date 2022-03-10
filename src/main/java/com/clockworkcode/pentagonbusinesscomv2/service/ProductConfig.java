@@ -30,14 +30,14 @@ public class ProductConfig {
                     "● Depth:47mm (1.9 inches)\n" +
                     "● Weight:700g (1.54 lbs) incl. handset and foot stand\n" +
                     "● Color:Gray"
-                    ,"Alcatel",10,150,"../../Assets/img/Pentagon Assets/Product Images/ALCATEL-H2.png",8,0);
+                    ,"Alcatel-Lucent",10,150,"../../Assets/img/Pentagon Assets/Product Images/ALCATEL-H2.png",8,0);
 
 
             Product product2 = new Product(2,"ALCATEL M5", ProductCategory.TELEFON_SIP,
                     "● Mid-level enterprise-grade IP deskphone with 2.8” color display. " +
                             "● The M5 offers richer visual experiences to users. " +
                             "● It is built with advanced super wideband audio for immersive voice communication experiences. " +
-                            "● In addition to enhanced telephony features, the phone is also integrated with customizable faceplate for brand advocate.","Alcatel",10,200,"../../Assets/img/Pentagon Assets/Product Images/ALCATEL-M5.png",
+                            "● In addition to enhanced telephony features, the phone is also integrated with customizable faceplate for brand advocate.","Alcatel-Lucent",10,200,"../../Assets/img/Pentagon Assets/Product Images/ALCATEL-M5.png",
                     9,0);
 
             Product product3 = new Product(3,"EGO PERSONAL MODULE",ProductCategory.SISTEM_AUDIO_CONFERINTA,
@@ -92,7 +92,7 @@ public class ProductConfig {
                     "headband are fit for long-time wearing.\n" +
                     "Multiple connection interfaces: new models have connection options available including\n" +
                     "3.5mm connector, USB A connector, and USB A to C converter, providing diverse connections\n" +
-                    "to softphones on personal computers, deskphones, mobile phones and tablets.","Alcatel",10,20,"../../Assets/img/Pentagon Assets/Product Images/ALCATEL-AH-22-U-II.png",8,0);
+                    "to softphones on personal computers, deskphones, mobile phones and tablets.","Alcatel-Lucent",10,20,"../../Assets/img/Pentagon Assets/Product Images/ALCATEL-AH-22-U-II.png",8,0);
 
             Product product6 = new Product(
                 6,
@@ -106,7 +106,7 @@ public class ProductConfig {
             );
 
             Product product7 = new Product(
-                    7,"Switch PoE 2260 24RJ45+4 SFP",ProductCategory.SWITCH," Fixed 1RU chassis 24 RJ 45 PoE 10/100/1G BaseT, 4 SFP (1G) uplink ports, 195W power budget","Alcatel",10,500,
+                    7,"Switch PoE 2260 24RJ45+4 SFP",ProductCategory.SWITCH," Fixed 1RU chassis 24 RJ 45 PoE 10/100/1G BaseT, 4 SFP (1G) uplink ports, 195W power budget","Alcatel-Lucent",10,500,
                     "../../Assets/img/Pentagon Assets/Product Images/Switch-PoE-2260-24RJ45+4-SFP.png",8,0
 
             );

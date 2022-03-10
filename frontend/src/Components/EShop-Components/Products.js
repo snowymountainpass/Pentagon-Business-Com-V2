@@ -39,6 +39,7 @@ export default function Products(){
                 <div className="row">
 
                     <SidebarComponent
+                        products = {products}
                         setChangeProducts = {setProducts}
                     />
 
