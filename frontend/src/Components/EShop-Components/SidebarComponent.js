@@ -7,7 +7,7 @@ import Checkbox from "../EShop-Components/Checkbox";
 
 export default function SidebarComponent({products,setChangeProducts}  ){
 
-
+    const OPTIONS = ["Alcatel-Lucent", "Konftel"];
 
     function handleCategoryClick(event){
         event.preventDefault();
@@ -31,6 +31,50 @@ export default function SidebarComponent({products,setChangeProducts}  ){
 
     }
 
+    const [state,setState] = useState(
+        {
+            checkboxes: OPTIONS.reduce(
+                (options, option) => ({
+                    ...options,
+                    [option]: false
+                }),
+                {}
+            )
+        }
+
+    );
+
+    const handleCheckboxChange = changeEvent => {
+        const { name } = changeEvent.target;
+
+        setState(prevState => ({
+            checkboxes: {
+                ...prevState.checkboxes,
+                [name]: !prevState.checkboxes[name]
+            }
+        }));
+    };
+
+    const handleFormSubmit = formSubmitEvent => {
+        formSubmitEvent.preventDefault();
+
+        Object.keys(state.checkboxes)
+            .filter(checkbox => state.checkboxes[checkbox])
+            .forEach(checkbox => {
+                console.log(checkbox, "is selected.");
+            });
+    };
+
+    const createCheckbox = option => (
+        <Checkbox
+            label={option}
+            isSelected={state.checkboxes[option]}
+            onCheckboxChange={handleCheckboxChange}
+            key={option}
+        />
+    );
+
+    const createCheckboxes = () => OPTIONS.map(createCheckbox);
 
     return(
 
@@ -75,18 +119,18 @@ export default function SidebarComponent({products,setChangeProducts}  ){
                         </a>
                     </header>
                     <div className="filter-content collapse show" id="collapse_2">
-                        <div className="card-body">
-
-                            <label className="custom-control custom-checkbox">
-                                <input type="checkbox" className="custom-control-input"/>
-                                <div className="custom-control-label">ALCATEL-LUCENT
-                                    <b className="badge badge-pill badge-light float-right">120</b></div>
-                            </label>
-                            <label className="custom-control custom-checkbox">
-                                <input type="checkbox" className="custom-control-input"/>
-                                <div className="custom-control-label">KONFTEL
-                                    <b className="badge badge-pill badge-light float-right">15</b></div>
-                            </label>
+                        <div className="card-body" onChange={handleFormSubmit}>
+                            {createCheckboxes()}
+                            {/*<label className="custom-control custom-checkbox">*/}
+                            {/*    <input type="checkbox" className="custom-control-input"/>*/}
+                            {/*    <div className="custom-control-label">ALCATEL-LUCENT*/}
+                            {/*        <b className="badge badge-pill badge-light float-right">120</b></div>*/}
+                            {/*</label>*/}
+                            {/*<label className="custom-control custom-checkbox">*/}
+                            {/*    <input type="checkbox" className="custom-control-input"/>*/}
+                            {/*    <div className="custom-control-label">KONFTEL*/}
+                            {/*        <b className="badge badge-pill badge-light float-right">15</b></div>*/}
+                            {/*</label>*/}
 
                         </div>
                     </div>
