@@ -25,6 +25,9 @@ export default function SidebarComponent(){
                                 <li><a href="/e-shop/ACCESS_POINT_WIRELESS">ACCESS POINT WIRELESS </a></li>
                                 <li><a href="/e-shop/SISTEM_VIDEO_CONFERINTA">SISTEME DE VIDEO CONFERINTA</a></li>
 
+
+                                
+
                             </ul>
                         </div>
                     </div>

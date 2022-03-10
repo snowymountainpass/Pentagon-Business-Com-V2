@@ -12,13 +12,13 @@ export default function ProductListingHeader({products, setChangeProducts,query,
 
         const requestOptions = {
             method: 'GET',
-            headers: { Accept: 'application/json','Content-Type': 'application/json' },
+            headers: {Accept: 'application/json', 'Content-Type': 'application/json'},
             // body: JSON.stringify({ "productName":query }) //
         };
 
-        if(query!==''){
+        if (query !== "") {
 
-            fetch(`http://localhost:8080/e-shop/product/` + query,requestOptions)
+            fetch(`http://localhost:8080/e-shop/product/` + query, requestOptions)
                 .then(response => {
                     return response.json();
                     // console.log(response);
@@ -26,8 +26,21 @@ export default function ProductListingHeader({products, setChangeProducts,query,
                 .then(data => {
                     setChangeProducts(data);
                 });
+        } else {
+
+             fetch(`http://localhost:8080/e-shop`, requestOptions)
+                .then(response => {
+                    return response.json();
+                    // console.log(response);
+                })
+                .then(data => {
+                    setChangeProducts(data);
+                });
+
         }
-        console.log("ProductsListingHeader: "+products);
+
+
+        // console.log("ProductsListingHeader: "+products);
         // console.log("query: "+query);
 
     }
@@ -64,11 +77,15 @@ export default function ProductListingHeader({products, setChangeProducts,query,
                         className="form-control rounded-left"
                         placeholder="Search"
                         // value={query}
-                        onChange={event => setChangeQuery(event.target.value.toLowerCase())}
+                        onChange={event => {
+                            setChangeQuery(event.target.value.toLowerCase());
+                            handleClick(event);
+                        }}
+
                     />
-                    <div className="input-group-append" onClick={handleClick}>
-                        <button className="btn btn-light" type="button"><i className="fa fa-search"></i></button>
-                    </div>
+                    {/*<div className="input-group-append" onClick={handleClick}>*/}
+                    {/*    <button className="btn btn-light" type="button"><i className="fa fa-search"></i></button>*/}
+                    {/*</div>*/}
                 </div>
             </form>
         </>

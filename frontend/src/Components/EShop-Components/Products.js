@@ -26,6 +26,7 @@ export default function Products(){
             fetch(url)
                 .then(res => res.json())
                 .then(data => setProducts(data))
+
         },[] // [] => runs every time the url changes
     )
 
