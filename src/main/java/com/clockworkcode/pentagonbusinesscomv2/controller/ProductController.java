@@ -25,9 +25,11 @@ public class ProductController {
     }
 
     @GetMapping("/{productCategory}")
-    public List<Product> getProductsByCategory(@PathVariable String productCategory) {
+    public ResponseEntity<List<Product>>getProductsByCategory(@PathVariable String productCategory) {
 
-        return productService.getAllProductsByCategory(productCategory);
+        System.out.println("SELECTED Product Category: "+ productCategory);
+
+        return ResponseEntity.ok().body( productService.getAllProductsByCategory(productCategory) );
 
     }
 

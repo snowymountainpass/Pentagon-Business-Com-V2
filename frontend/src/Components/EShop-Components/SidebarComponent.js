@@ -1,5 +1,33 @@
+// import {useSearchParams} from "react-router-dom";
 
-export default function SidebarComponent(){
+export default function SidebarComponent( {setChangeProducts}  ){
+
+    // const [searchParams, setSearchParams] = useSearchParams();
+
+    function handleCategoryClick(event){
+        event.preventDefault();
+        let productCategory = event.target.id;
+        console.log(productCategory);
+
+        const requestOptions = {
+            method: 'GET',
+            headers: {Accept: 'application/json', 'Content-Type': 'application/json'},
+            // body: JSON.stringify({ "productName":query }) //
+        };
+
+        fetch(`http://localhost:8080/e-shop/`+productCategory, requestOptions)
+            .then(response => {
+                return response.json();
+                // console.log(response);
+            })
+            .then(data => {
+                setChangeProducts(data);
+            });
+
+
+    }
+
+
 
     return(
 
@@ -17,21 +45,40 @@ export default function SidebarComponent(){
                         <div className="card-body">
 
 
-                            <ul className="list-menu">
-                                <li><a href="/e-shop/TELEFON_SIP">TELEFOANE SIP</a></li>
-                                <li><a href="/e-shop/SISTEM_AUDIO_CONFERINTA">SISTEME DE AUDIO CONFERINTA </a></li>
-                                <li><a href="/e-shop/CASTI_CALLCENTER">CASTI CALL-CENTER</a></li>
-                                <li><a href="/e-shop/SWITCH">SWITCH</a></li>
-                                <li><a href="/e-shop/ACCESS_POINT_WIRELESS">ACCESS POINT WIRELESS </a></li>
-                                <li><a href="/e-shop/SISTEM_VIDEO_CONFERINTA">SISTEME DE VIDEO CONFERINTA</a></li>
+                            {/*<ul className="list-menu">*/}
+                            {/*    <li><a href="/e-shop/TELEFON_SIP">TELEFOANE SIP</a></li>*/}
+                            {/*    <li><a href="/e-shop/SISTEM_AUDIO_CONFERINTA">SISTEME DE AUDIO CONFERINTA </a></li>*/}
+                            {/*    <li><a href="/e-shop/CASTI_CALLCENTER">CASTI CALL-CENTER</a></li>*/}
+                            {/*    <li><a href="/e-shop/SWITCH">SWITCH</a></li>*/}
+                            {/*    <li><a href="/e-shop/ACCESS_POINT_WIRELESS">ACCESS POINT WIRELESS </a></li>*/}
+                            {/*    <li><a href="/e-shop/SISTEM_VIDEO_CONFERINTA">SISTEME DE VIDEO CONFERINTA</a></li>*/}
 
+                            {/*</ul>*/}
 
-                                
+                            <ul className="list-menu"
+                                onClick={event=> {
+                                    handleCategoryClick(event);
+                                    event.target.style.color="blue";
+                                }
+                            }
+                                onMouseOut={event=> {
+                                    event.target.style.color="black";
+                                }}
+                                // onMouse={event => {event.target.style.color="blue"}}
+                            >
+                                <li><a id="TELEFON_SIP">TELEFOANE SIP</a></li>
+                                <li><a id="SISTEM_AUDIO_CONFERINTA">SISTEME DE AUDIO CONFERINTA </a></li>
+                                <li><a id="CASTI_CALLCENTER">CASTI CALL-CENTER</a></li>
+                                <li><a id="SWITCH">SWITCH</a></li>
+                                <li><a id="ACCESS_POINT_WIRELESS">ACCESS POINT WIRELESS </a></li>
+                                <li><a id="SISTEM_VIDEO_CONFERINTA">SISTEME DE VIDEO CONFERINTA</a></li>
 
                             </ul>
+
                         </div>
                     </div>
                 </article>
+
                 <article className="filter-group">
                     <header className="card-header">
                         <a  data-toggle="collapse" data-target="#collapse_2" aria-expanded="true" className="">
@@ -55,6 +102,7 @@ export default function SidebarComponent(){
                         </div>
                     </div>
                 </article>
+
                 <article className="filter-group">
                     <header className="card-header">
                         <a  data-toggle="collapse" data-target="#collapse_3" aria-expanded="true" className="">
@@ -79,6 +127,7 @@ export default function SidebarComponent(){
                         </div>
                     </div>
                 </article>
+
                 {/*<article className="filter-group">*/}
                 {/*    <header className="card-header">*/}
                 {/*        <a href="#" data-toggle="collapse" data-target="#collapse_4" aria-expanded="true" className="">*/}
@@ -107,6 +156,7 @@ export default function SidebarComponent(){
                 {/*        </div>*/}
                 {/*    </div>*/}
                 {/*</article>*/}
+
                 <article className="filter-group">
                     <header className="card-header">
                         <a  data-toggle="collapse" data-target="#collapse_5" aria-expanded="false" className="">
@@ -135,6 +185,7 @@ export default function SidebarComponent(){
                         </div>
                     </div>
                 </article>
+
             </div>
             <button className="btn btn-block btn-primary mt-2">Apply</button>
         </aside>

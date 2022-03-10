@@ -38,7 +38,9 @@ export default function Products(){
             <div className="container">
                 <div className="row">
 
-                    <SidebarComponent/>
+                    <SidebarComponent
+                        setChangeProducts = {setProducts}
+                    />
 
                     <main className="col-md-9">
                         <ProductListingHeader
