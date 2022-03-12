@@ -62,6 +62,19 @@ public class ProductController {
         return ResponseEntity.ok().body(productsFromBrands);
     }
 
+    @GetMapping("/min-price-only")
+    public  ResponseEntity<List<Product>> getProductsAboveMinPrice(@RequestParam Integer minPrice){
+
+        return ResponseEntity.ok().body( productService.getAllProducts().stream().filter(product -> product.getPrice()>=minPrice).collect(Collectors.toList()) );
+    }
+
+    @GetMapping("/min-max-prices")
+    public  ResponseEntity<List<Product>> getProductsAboveMinPrice(@RequestParam Integer minPrice,@RequestParam Integer maxPrice) {
+
+        return ResponseEntity.ok().body( productService.getAllProducts().stream().filter(product -> product.getPrice()>=minPrice && product.getPrice()<=maxPrice).collect(Collectors.toList()) );
+    }
+
+
     @GetMapping("/price-descending")
     public List<Product> getProductsPriceDecreasing() {
 
