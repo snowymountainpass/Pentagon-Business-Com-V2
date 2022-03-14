@@ -24,16 +24,16 @@ public class AppUser {
     @Column(nullable = false,columnDefinition = "text")
     private String password;
     @Column(nullable = false,columnDefinition = "text")
-    private String first_name;
+    private String firstName;
     @Column(nullable = false,columnDefinition = "text")
-    private String last_name;
+    private String lastName;
     @Column(nullable = false,columnDefinition = "text")
     private String telephone;
     @Column(nullable = false,columnDefinition = "text",unique = false)
     private String email;
     @Column(nullable = false)
-    private Timestamp create_at;
+    private Timestamp createAt;
     @Column(nullable = false)
-    private Timestamp modified_at;
+    private Timestamp modifiedAt;
 
 }

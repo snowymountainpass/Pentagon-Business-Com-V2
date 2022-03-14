@@ -6,6 +6,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
+import java.sql.Timestamp;
 
 @Getter
 @Setter
@@ -31,5 +32,12 @@ public class AdminAppUser {
     private String last_name;
     @Column(nullable = false,columnDefinition = "integer")
     private Integer typeID;
+
+    @Column(nullable = false)
+    private Timestamp lastLogin;
+    @Column(nullable = false)
+    private Timestamp createdAt;
+    @Column(nullable = false)
+    private Timestamp modifiedAt;
 
 }
