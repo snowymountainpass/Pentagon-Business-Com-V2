@@ -16,7 +16,7 @@ import java.sql.Timestamp;
 
 @Entity(name = "ProductInventory") //singular !!
 @Table(name = "ProductInventories") //plural !!
-public class Product_Inventory {
+public class ProductInventory {
 
     @Id
     @SequenceGenerator(name ="productinventory_sequence" ,sequenceName ="productinventory_sequence" ,allocationSize = 1)

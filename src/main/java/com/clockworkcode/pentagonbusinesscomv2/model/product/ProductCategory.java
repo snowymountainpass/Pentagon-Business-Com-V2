@@ -16,7 +16,7 @@ import java.sql.Timestamp;
 
 @Entity(name = "ProductCategory") //singular !!
 @Table(name = "ProductCategories") //plural !!
-public class Product_Category {
+public class ProductCategory {
 
 
     @Id
