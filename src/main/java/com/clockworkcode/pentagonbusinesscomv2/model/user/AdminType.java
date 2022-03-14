@@ -20,7 +20,7 @@ public class AdminType {
     @Id
     @SequenceGenerator(name ="admintype_sequence" ,sequenceName ="admintype_sequence" ,allocationSize = 1)
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "admintype_sequence")
-    private Long id;
+    private Long adminTypeID;
 
     @Column(nullable = false,columnDefinition = "text")
     private String adminType;
@@ -31,4 +31,6 @@ public class AdminType {
     @Column(nullable = false)
     private Timestamp modifiedAt;
 
+    @OneToOne(mappedBy = "adminType")
+    private AdminAppUser adminAppUser;
 }

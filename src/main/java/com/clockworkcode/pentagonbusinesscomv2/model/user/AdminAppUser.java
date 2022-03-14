@@ -20,7 +20,7 @@ public class AdminAppUser {
     @Id
     @SequenceGenerator(name ="adminappuser_sequence" ,sequenceName ="adminappuser_sequence" ,allocationSize = 1)
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "adminappuser_sequence")
-    private Long id;
+    private Long adminAppUserID;
 
     @Column(nullable = false,columnDefinition = "text")
     private String username;
@@ -40,4 +40,7 @@ public class AdminAppUser {
     @Column(nullable = false)
     private Timestamp modifiedAt;
 
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "adminTypeID", referencedColumnName ="adminTypeID" )
+    private AdminType adminType;
 }
