@@ -27,6 +27,7 @@ public class Product {
     private String productName;
     private String productDescription;
     private String productSKU;
+    private Long productBrandID;
     private Long productCategoryID;
     private Long productInventoryID;
     private Long supplierID;
