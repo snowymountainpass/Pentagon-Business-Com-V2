@@ -33,6 +33,7 @@ public class AppUserPayment {
     @Column(nullable = false)
     private Date expirationDate;
 
-
-
+    @ManyToOne
+    @JoinColumn(name = "appUserID",nullable = false)
+    private AppUser appUser;
 }

@@ -56,6 +56,6 @@ public class AppUserAddress {
     // ONE TO MANY => One user can have many addresses && one address can belong to many users
     @ManyToOne
     @JoinColumn(name="appUserID",nullable = false) //O
-    private AppUser appUser; //X
+    private AppUser appUser; //X   //Y- appUserID
 
 }

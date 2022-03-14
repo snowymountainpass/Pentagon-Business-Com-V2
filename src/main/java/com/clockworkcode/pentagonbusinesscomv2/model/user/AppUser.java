@@ -18,7 +18,7 @@ public class AppUser {
     @Id
     @SequenceGenerator(name ="appuser_sequence" ,sequenceName ="appuser_sequence" ,allocationSize = 1)
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "appuser_sequence")
-    private Long appUserID;
+    private Long appUserID; //Y - appUserID
 
 
 
@@ -32,7 +32,7 @@ public class AppUser {
     private String lastName;
     @Column(nullable = false,columnDefinition = "text")
     private String telephone;
-    @Column(nullable = false,columnDefinition = "text",unique = false)
+    @Column(nullable = false,columnDefinition = "text",unique = true)
     private String email;
     @Column(nullable = false)
     private Timestamp createAt;
@@ -41,5 +41,8 @@ public class AppUser {
 
     @OneToMany(mappedBy = "appUser") //X
     private List<AppUserAddress> appUserAddresses; //O
+
+    @OneToMany(mappedBy = "appUser")
+    private List<AppUserPayment> appUserPayments;
 
 }
