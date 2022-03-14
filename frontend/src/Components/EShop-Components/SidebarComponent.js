@@ -39,14 +39,15 @@ export default function SidebarComponent({products,setChangeProducts}  ){
         data.map((item)=>{
             selectedBrandsSet.add(item.label);
         })
+        // console.log(selectedBrandsSet);
         const selectedBrandsList = Array.from(selectedBrandsSet)
         // console.log(selectedBrandsSet);
         console.log(selectedBrandsList);
 
         const requestOptions = {
-            method: 'GET',
+            method: 'POST',
             headers: {Accept: 'application/json', 'Content-Type': 'application/json'},
-            body: JSON.stringify({ "brandList":selectedBrandsList }) //
+            body: JSON.stringify(selectedBrandsList) //
         };
 
         fetch(`http://localhost:8080/e-shop/brands`, requestOptions)

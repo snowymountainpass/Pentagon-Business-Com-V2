@@ -50,10 +50,8 @@ public class ProductController {
 
     }
 
-    @GetMapping("/brands")
+    @PostMapping("/brands")
     public ResponseEntity<List<Product>> getProductsByBrands(@RequestBody List<String> brandsList){
-        System.out.println("List of Brands: ");
-        brandsList.stream().forEach(s -> System.out.print(s+", "));
 
         List<Product> productsFromBrands = new ArrayList<>();
 
