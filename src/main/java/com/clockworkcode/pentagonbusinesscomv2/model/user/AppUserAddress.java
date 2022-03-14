@@ -9,9 +9,9 @@ import javax.persistence.*;
 @NoArgsConstructor
 @AllArgsConstructor
 
-@Entity(name = "AppUser_Address") //singular !!
-@Table(name = "AppUser_Addresses") //plural !!
-public class AppUser_Address {
+@Entity(name = "AppUserAddress") //singular !!
+@Table(name = "AppUserAddresses") //plural !!
+public class AppUserAddress {
 
     @Id
     @SequenceGenerator(name ="appuseraddress_sequence" ,sequenceName ="appuseraddress_sequence" ,allocationSize = 1)
