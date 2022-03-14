@@ -4,6 +4,7 @@ import lombok.*;
 
 import javax.persistence.*;
 import java.sql.Timestamp;
+import java.util.List;
 
 @Getter
 @Setter
@@ -17,7 +18,9 @@ public class AppUser {
     @Id
     @SequenceGenerator(name ="appuser_sequence" ,sequenceName ="appuser_sequence" ,allocationSize = 1)
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "appuser_sequence")
-    private Long id;
+    private Long appUserID;
+
+
 
     @Column(nullable = false,columnDefinition = "text")
     private String username;
@@ -35,5 +38,8 @@ public class AppUser {
     private Timestamp createAt;
     @Column(nullable = false)
     private Timestamp modifiedAt;
+
+    @OneToMany(mappedBy = "appUser") //X
+    private List<AppUserAddress> appUserAddresses; //O
 
 }

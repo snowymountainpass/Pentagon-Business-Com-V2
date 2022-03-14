@@ -16,9 +16,7 @@ public class AppUserAddress {
     @Id
     @SequenceGenerator(name ="appuseraddress_sequence" ,sequenceName ="appuseraddress_sequence" ,allocationSize = 1)
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "appuseraddress_sequence")
-    private Long id;
-
-    private Long appUserID; // MANY TO MANY => One user can have many addresses && one address can belong to many users
+    private Long appUserAddressID;
 
     @Column(nullable = false,columnDefinition = "text")
     private String addressLine1;
@@ -55,6 +53,9 @@ public class AppUserAddress {
     @Column(nullable = false,columnDefinition = "text")
     private String shippingCountry;
 
-
+    // ONE TO MANY => One user can have many addresses && one address can belong to many users
+    @ManyToOne
+    @JoinColumn(name="appUserID",nullable = false) //O
+    private AppUser appUser; //X
 
 }
