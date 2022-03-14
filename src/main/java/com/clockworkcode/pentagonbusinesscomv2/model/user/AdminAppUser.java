@@ -1,4 +1,35 @@
 package com.clockworkcode.pentagonbusinesscomv2.model.user;
 
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
+import javax.persistence.*;
+
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
+
+@Entity(name = "AdminAppUser") //singular !!
+@Table(name = "AdminAppUsers") //plural !!
 public class AdminAppUser {
+
+    @Id
+    @SequenceGenerator(name ="adminappuser_sequence" ,sequenceName ="adminappuser_sequence" ,allocationSize = 1)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "adminappuser_sequence")
+    private Long id;
+
+    @Column(nullable = false,columnDefinition = "text")
+    private String username;
+    @Column(nullable = false,columnDefinition = "text")
+    private String password;
+    @Column(nullable = false,columnDefinition = "text")
+    private String first_name;
+    @Column(nullable = false,columnDefinition = "text")
+    private String last_name;
+    @Column(nullable = false,columnDefinition = "integer")
+    private Integer typeID;
+
 }
