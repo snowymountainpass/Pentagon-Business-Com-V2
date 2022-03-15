@@ -1,5 +1,6 @@
 package com.clockworkcode.pentagonbusinesscomv2.model.order;
 
+import com.clockworkcode.pentagonbusinesscomv2.model.user.AppUser;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -21,9 +22,12 @@ public class OrderDetails {
     @Id
     @SequenceGenerator(name ="orderdetail_sequence" ,sequenceName ="orderdetail_sequence" ,allocationSize = 1)
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "orderdetail_sequence")
-    private Long orderdetailID;
+    private Long orderDetailID;
 
-    private Long appUserID;
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name="app_userid")
+    private AppUser appUser;
+
     private BigDecimal total;
     private Long paymentID;
 
