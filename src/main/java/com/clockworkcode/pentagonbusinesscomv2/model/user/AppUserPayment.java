@@ -22,8 +22,6 @@ public class AppUserPayment {
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "appuserpayment_sequence")
     private Long id;
 
-    private Long appUserID; // ONE TO MANY => One user can have many payments && Many PAYMENTS can belong to one user
-
     @Column(nullable = false,columnDefinition = "text")
     private String paymentType;
     @Column(nullable = false,columnDefinition = "text")
@@ -35,5 +33,5 @@ public class AppUserPayment {
 
     @ManyToOne
     @JoinColumn(name = "appUserID",nullable = false)
-    private AppUser appUser;
+    private AppUser appUser; // ONE TO MANY => One user can have many payments && Many PAYMENTS can belong to one user
 }
