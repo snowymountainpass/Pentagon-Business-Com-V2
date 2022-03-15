@@ -53,7 +53,8 @@ public class Product {
 
     private BigInteger productPrice;
 
-    private Long discountID;
+    @OneToMany(mappedBy = "product")
+    private Set<Discount> discounts;
 
     @Column(nullable = false)
     private Timestamp createdAt;

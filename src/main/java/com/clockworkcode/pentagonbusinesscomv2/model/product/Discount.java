@@ -43,4 +43,9 @@ public class Discount {
     @ManyToOne
     @JoinColumn(name = "supplierid", nullable = false)
     private Supplier supplier;
+
+    @ManyToOne
+    @JoinColumn(name = "productid",nullable = false)
+    private Product product;
+
 }
