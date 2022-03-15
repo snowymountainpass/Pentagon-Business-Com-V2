@@ -32,7 +32,7 @@ public class ProductInventory {
     @Column(nullable = false)
     private Timestamp deletedAt;
 
-//    @OneToOne(mappedBy = "productInventory")
-//    private Product product;
+    @OneToOne(mappedBy = "productInventory")
+    private Product product;
 
 }
