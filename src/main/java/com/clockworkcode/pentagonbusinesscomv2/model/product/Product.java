@@ -35,10 +35,10 @@ public class Product {
 
     private Long productBrandID;
 
-//    @OneToOne(cascade = CascadeType.ALL)
-//    @JoinColumn(name = "product_categoryID",referencedColumnName = "product_categoryID")
-//    private ProductCategory productCategory;
-//
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "product_categoryID")
+    private ProductCategory productCategory;
+
 //    @OneToOne(cascade = CascadeType.ALL)
 //    @JoinColumn(name="product_inventoryID",referencedColumnName = "product_inventoryID")
 //    private ProductInventory productInventory;

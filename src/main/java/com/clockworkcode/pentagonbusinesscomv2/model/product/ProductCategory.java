@@ -36,8 +36,8 @@ public class ProductCategory {
     private Timestamp deletedAt;
 
 
-//    @OneToOne(mappedBy = "productCategory")
-//    private Product product;
+    @OneToOne(mappedBy = "productCategory")
+    private Product product;
 
 
 }
