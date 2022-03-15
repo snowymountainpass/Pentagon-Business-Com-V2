@@ -32,8 +32,12 @@ public class OrderDetail {
     @OneToMany(mappedBy = "orderDetail")
     private Set<OrderItem> orderItems;
 
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "payment_detailid")
+    private PaymentDetail paymentDetail;
+
+
     private BigDecimal total;
-    private Long paymentID;
 
     @Column(nullable = false)
     private Timestamp createdAt;
