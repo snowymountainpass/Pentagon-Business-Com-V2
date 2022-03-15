@@ -24,12 +24,23 @@ public class Discount {
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "discount_sequence")
     private Long discountID;
 
+    @Column(nullable = false,columnDefinition = "text")
     private String discountName;
+    @Column(nullable = false,columnDefinition = "text")
     private String discountDescription;
+    @Column(nullable = false)
     private BigDecimal discountPercent;
+    @Column(nullable = false)
     private Boolean activeDiscount;
+    @Column(nullable = false)
     private Timestamp createdAt;
+    @Column(nullable = false)
     private Timestamp modifiedAt;
+    @Column(nullable = false)
     private Timestamp deletedAt;
 
+
+    @ManyToOne
+    @JoinColumn(name = "supplierid", nullable = false)
+    private Supplier supplier;
 }

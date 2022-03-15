@@ -53,7 +53,8 @@ public class Supplier {
     private String supplierURL;
     @Column(nullable = false,columnDefinition = "text")
 
-    private Long discountID;
+    @OneToMany(mappedBy = "supplier")
+    private Set<Discount> discounts;
 
     @Column(nullable = false,columnDefinition = "text")
     private String notesOnSupplier;
