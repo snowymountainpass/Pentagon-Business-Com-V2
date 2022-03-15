@@ -23,18 +23,33 @@ public class Product {
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "product_sequence")
     private Long productID;
 
-
+    @Column(nullable = false,columnDefinition = "text")
     private String productName;
+    @Column(nullable = false,columnDefinition = "text")
     private String productDescription;
+    @Column(nullable = false,columnDefinition = "text")
     private String productSKU;
+
+
     private Long productBrandID;
-    private Long productCategoryID;
+
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "product_categoryID",referencedColumnName = "product_categoryID")
+    private ProductCategory productCategory;
+
     private Long productInventoryID;
+
     private Long supplierID;
+
     private BigInteger productPrice;
+
     private Long discountID;
+
+    @Column(nullable = false)
     private Timestamp createdAt;
+    @Column(nullable = false)
     private Timestamp modifiedAt;
+    @Column(nullable = false)
     private Timestamp deletedAt;
 
 }

@@ -24,9 +24,19 @@ public class ProductCategory {
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "productcategory_sequence")
     private Long productCategoryID;
 
+    @Column(nullable = false,columnDefinition = "text")
     private String productCategoryName;
+    @Column(nullable = false,columnDefinition = "text")
     private String productCategoryDescription;
+    @Column(nullable = false)
     private Timestamp createdAt;
+    @Column(nullable = false)
     private Timestamp modifiedAt;
+    @Column(nullable = false)
     private Timestamp deletedAt;
+
+
+    @OneToOne(mappedBy = "productCategory")
+    private Product product;
+
 }
