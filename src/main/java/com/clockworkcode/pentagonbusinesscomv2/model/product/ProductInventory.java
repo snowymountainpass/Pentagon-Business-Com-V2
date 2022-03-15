@@ -15,7 +15,7 @@ import java.sql.Timestamp;
 @AllArgsConstructor
 
 @Entity(name = "ProductInventory") //singular !!
-@Table(name = "ProductInventories") //plural !!
+@Table(name = "product_inventories") //plural !!
 public class ProductInventory {
 
     @Id

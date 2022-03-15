@@ -14,7 +14,7 @@ import java.sql.Timestamp;
 @AllArgsConstructor
 
 @Entity(name = "AdminType") //singular !!
-@Table(name = "AdminTypes") //plural !!
+@Table(name = "admin_types") //plural !!
 public class AdminType {
 
     @Id

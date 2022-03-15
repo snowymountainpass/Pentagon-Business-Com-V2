@@ -10,7 +10,7 @@ import javax.persistence.*;
 @AllArgsConstructor
 
 @Entity(name = "AppUserAddress") //singular !!
-@Table(name = "AppUserAddresses") //plural !!
+@Table(name = "app_user_addresses") //plural !!
 public class AppUserAddress {
 
     @Id
@@ -55,7 +55,7 @@ public class AppUserAddress {
 
     // ONE TO MANY => One user can have many addresses && one address can belong to many users
     @ManyToOne
-    @JoinColumn(name="appUserID",nullable = false) //O
+    @JoinColumn(name="app_userID",nullable = false) //O
     private AppUser appUser; //X   //Y- appUserID
 
 }

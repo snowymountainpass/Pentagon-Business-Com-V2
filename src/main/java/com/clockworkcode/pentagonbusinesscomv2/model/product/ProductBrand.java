@@ -13,7 +13,7 @@ import javax.persistence.*;
 @AllArgsConstructor
 
 @Entity(name = "ProductBrand") //singular !!
-@Table(name = "ProductBrands") //plural !!
+@Table(name = "product_brands") //plural !!
 public class ProductBrand {
 
     @Id

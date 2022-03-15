@@ -175,7 +175,7 @@ export default function SidebarComponent({products,setChangeProducts}  ){
                     <div className="card-body">
                         {/*<input type="range" className="custom-range" min="0" max="100000" name=""/>*/}
                         <div className="form-row">
-                            <div className="form-group col-md-6">
+                            <div className="form-group col-md-6 ">
                                 <label>Min</label>
                                 <input className="form-control" placeholder="€0" type="number" min="0"/>
                             </div>

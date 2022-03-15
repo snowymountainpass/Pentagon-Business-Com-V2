@@ -12,7 +12,7 @@ import java.util.List;
 @AllArgsConstructor
 
 @Entity(name = "AppUser") //singular !!
-@Table(name = "AppUsers") //plural !!
+@Table(name = "app_users") //plural !!
 public class AppUser {
 
     @Id

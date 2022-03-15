@@ -14,7 +14,7 @@ import java.sql.Timestamp;
 @AllArgsConstructor
 
 @Entity(name = "AdminAppUser") //singular !!
-@Table(name = "AdminAppUsers") //plural !!
+@Table(name = "admin_app_users") //plural !!
 public class AdminAppUser {
 
     @Id
@@ -41,6 +41,6 @@ public class AdminAppUser {
     private Timestamp modifiedAt;
 
     @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "adminTypeID", referencedColumnName ="adminTypeID" )
+    @JoinColumn(name = "admin_typeID", referencedColumnName ="admin_typeID" )
     private AdminType adminType;
 }
