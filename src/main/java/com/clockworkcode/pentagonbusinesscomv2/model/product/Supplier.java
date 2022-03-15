@@ -58,7 +58,7 @@ public class Supplier {
     @Column(nullable = false,columnDefinition = "text")
     private String notesOnSupplier;
 
-//    @ManyToMany(mappedBy = "suppliers")
-//    private Set<Product> products;
+    @ManyToMany(mappedBy = "suppliers")
+    private Set<Product> products;
 
 }

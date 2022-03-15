@@ -43,13 +43,13 @@ public class Product {
     @JoinColumn(name="product_inventoryID")
     private ProductInventory productInventory;
 
-//    @ManyToMany(cascade = CascadeType.ALL)
-//    @JoinTable(
-//            name = "product_supplier",
-//            joinColumns = {@JoinColumn(name = "productid")},
-//            inverseJoinColumns = {@JoinColumn(name = "supplierid")}
-//    )
-//    private Set<Supplier> suppliers = new HashSet<>(); // A product can have many suppliers && a supplier can have many products
+    @ManyToMany(cascade = CascadeType.ALL)
+    @JoinTable(
+            name = "product_supplier",
+            joinColumns = {@JoinColumn(name = "productid")},
+            inverseJoinColumns = {@JoinColumn(name = "supplierid")}
+    )
+    private Set<Supplier> suppliers = new HashSet<>(); // A product can have many suppliers && a supplier can have many products
 
     private BigInteger productPrice;
 
