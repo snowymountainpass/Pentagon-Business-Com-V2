@@ -37,7 +37,9 @@ public class Product {
     @JoinColumn(name = "product_categoryID",referencedColumnName = "product_categoryID")
     private ProductCategory productCategory;
 
-    private Long productInventoryID;
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name="product_inventoryID",referencedColumnName = "product_inventoryID")
+    private ProductInventory productInventory;
 
     private Long supplierID;
 

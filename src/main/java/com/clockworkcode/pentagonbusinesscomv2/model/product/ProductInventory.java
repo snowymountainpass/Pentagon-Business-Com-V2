@@ -23,9 +23,16 @@ public class ProductInventory {
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "productinventory_sequence")
     private Long productInventoryID;
 
+    @Column(nullable = false,columnDefinition = "integer")
     private Integer quantity;
+    @Column(nullable = false)
     private Timestamp createdAt;
+    @Column(nullable = false)
     private Timestamp modifiedAt;
+    @Column(nullable = false)
     private Timestamp deletedAt;
+
+    @OneToOne(mappedBy = "productInventory")
+    private Product product;
 
 }
