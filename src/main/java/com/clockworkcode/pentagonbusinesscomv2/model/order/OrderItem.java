@@ -1,5 +1,6 @@
 package com.clockworkcode.pentagonbusinesscomv2.model.order;
 
+import com.clockworkcode.pentagonbusinesscomv2.model.product.Product;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -26,7 +27,10 @@ public class OrderItem {
     @JoinColumn(name = "order_detailid",nullable = false)
     private OrderDetail orderDetail;
 
-    private Long productID;
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "order_itemid")
+    private Product product;
+
     private Integer quantity;
 
     @Column(nullable = false)

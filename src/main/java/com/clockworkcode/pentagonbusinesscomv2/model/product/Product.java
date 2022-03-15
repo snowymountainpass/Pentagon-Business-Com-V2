@@ -1,5 +1,6 @@
 package com.clockworkcode.pentagonbusinesscomv2.model.product;
 
+import com.clockworkcode.pentagonbusinesscomv2.model.order.OrderItem;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -62,5 +63,8 @@ public class Product {
     private Timestamp modifiedAt;
     @Column(nullable = false)
     private Timestamp deletedAt;
+
+    @OneToOne(mappedBy = "product")
+    private OrderItem orderItem;
 
 }
