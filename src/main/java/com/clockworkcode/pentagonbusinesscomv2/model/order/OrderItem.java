@@ -22,8 +22,10 @@ public class OrderItem {
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "orderitem_sequence")
     private Long orderItemID;
 
+    @ManyToOne
+    @JoinColumn(name = "order_detailid",nullable = false)
+    private OrderDetail orderDetail;
 
-    private Long orderDetailID;
     private Long productID;
     private Integer quantity;
 

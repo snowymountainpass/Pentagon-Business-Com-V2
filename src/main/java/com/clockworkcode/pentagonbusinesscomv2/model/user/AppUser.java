@@ -1,6 +1,6 @@
 package com.clockworkcode.pentagonbusinesscomv2.model.user;
 
-import com.clockworkcode.pentagonbusinesscomv2.model.order.OrderDetails;
+import com.clockworkcode.pentagonbusinesscomv2.model.order.OrderDetail;
 import lombok.*;
 
 import javax.persistence.*;
@@ -47,5 +47,5 @@ public class AppUser {
     private List<AppUserPayment> appUserPayments;
 
     @OneToOne(mappedBy = "appUser")
-    private OrderDetails orderDetails;
+    private OrderDetail orderDetail;
 }
