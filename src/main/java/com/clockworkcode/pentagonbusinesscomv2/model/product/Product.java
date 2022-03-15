@@ -8,6 +8,8 @@ import lombok.Setter;
 import javax.persistence.*;
 import java.math.BigInteger;
 import java.sql.Timestamp;
+import java.util.HashSet;
+import java.util.Set;
 
 @Getter
 @Setter
@@ -33,15 +35,21 @@ public class Product {
 
     private Long productBrandID;
 
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "product_categoryID",referencedColumnName = "product_categoryID")
-    private ProductCategory productCategory;
+//    @OneToOne(cascade = CascadeType.ALL)
+//    @JoinColumn(name = "product_categoryID",referencedColumnName = "product_categoryID")
+//    private ProductCategory productCategory;
+//
+//    @OneToOne(cascade = CascadeType.ALL)
+//    @JoinColumn(name="product_inventoryID",referencedColumnName = "product_inventoryID")
+//    private ProductInventory productInventory;
 
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name="product_inventoryID",referencedColumnName = "product_inventoryID")
-    private ProductInventory productInventory;
-
-    private Long supplierID;
+//    @ManyToMany(cascade = CascadeType.ALL)
+//    @JoinTable(
+//            name = "product_supplier",
+//            joinColumns = {@JoinColumn(name = "productid")},
+//            inverseJoinColumns = {@JoinColumn(name = "supplierid")}
+//    )
+//    private Set<Supplier> suppliers = new HashSet<>(); // A product can have many suppliers && a supplier can have many products
 
     private BigInteger productPrice;
 

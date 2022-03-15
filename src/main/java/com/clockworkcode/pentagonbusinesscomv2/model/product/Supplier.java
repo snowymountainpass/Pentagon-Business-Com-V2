@@ -6,6 +6,8 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
+import java.util.HashSet;
+import java.util.Set;
 
 @Getter
 @Setter
@@ -21,21 +23,42 @@ public class Supplier {
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "supplier_sequence")
     private Long supplierID;
 
+    @Column(nullable = false,columnDefinition = "text")
     private String companyName;
+    @Column(nullable = false,columnDefinition = "text")
     private String contactFirstName;
+    @Column(nullable = false,columnDefinition = "text")
     private String contactLastName;
+    @Column(nullable = false,columnDefinition = "text")
     private String contactTitle;
+    @Column(nullable = false,columnDefinition = "text")
     private String supplierAddressLine1;
+    @Column(nullable = false,columnDefinition = "text")
     private String supplierAddressLine2;
+    @Column(nullable = false,columnDefinition = "text")
     private String supplierCity;
+    @Column(nullable = false,columnDefinition = "text")
     private String supplierCounty;
+    @Column(nullable = false,columnDefinition = "text")
     private String supplierPostalCode;
+    @Column(nullable = false,columnDefinition = "text")
     private String supplierCountry;
+    @Column(nullable = false,columnDefinition = "text")
     private String supplierTelephone;
+    @Column(nullable = false,columnDefinition = "text")
     private String supplierMobile;
+    @Column(nullable = false,columnDefinition = "text")
     private String supplierEmail;
+    @Column(nullable = false,columnDefinition = "text")
     private String supplierURL;
+    @Column(nullable = false,columnDefinition = "text")
+
     private Long discountID;
+
+    @Column(nullable = false,columnDefinition = "text")
     private String notesOnSupplier;
+
+//    @ManyToMany(mappedBy = "suppliers")
+//    private Set<Product> products;
 
 }

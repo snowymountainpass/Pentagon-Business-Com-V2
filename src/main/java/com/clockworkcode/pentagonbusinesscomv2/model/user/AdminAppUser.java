@@ -40,7 +40,15 @@ public class AdminAppUser {
     @Column(nullable = false)
     private Timestamp modifiedAt;
 
+//    @OneToOne(cascade = CascadeType.ALL)
+//    @JoinColumn(name = "admin_typeID", referencedColumnName ="admin_typeID" )
+//    private AdminType adminType;
+
+
+
+
     @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "admin_typeID", referencedColumnName ="admin_typeID" )
+    @JoinColumn(name = "admin_typeid")
     private AdminType adminType;
+
 }

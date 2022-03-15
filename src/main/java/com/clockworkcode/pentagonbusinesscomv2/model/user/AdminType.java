@@ -31,6 +31,9 @@ public class AdminType {
     @Column(nullable = false)
     private Timestamp modifiedAt;
 
+//    @OneToOne(mappedBy = "adminType")
+//    private AdminAppUser adminAppUser;
+
     @OneToOne(mappedBy = "adminType")
     private AdminAppUser adminAppUser;
 }
