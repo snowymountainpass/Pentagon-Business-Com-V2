@@ -40,4 +40,13 @@ public class ProductBrand {
         product1.setProductBrand(this);
 
     }
+
+    public void addProducts(Set<Product> productsSet){
+
+        products.addAll(productsSet);
+
+        productsSet.forEach(product -> product.setProductBrand(this));
+
+    }
+
 }

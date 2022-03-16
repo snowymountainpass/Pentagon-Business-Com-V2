@@ -33,6 +33,7 @@
 //                    , "Alcatel-Lucent", 10, 150, "../../Assets/img/Pentagon Assets/Product Images/ALCATEL-H2.png", 8, 0);
 //
 //            //https://drive.google.com/file/d/1PCjwRMzDuIQkXVBkwQ-VFnjHWvgAkEse/view?usp=sharing //../assets/images/Pentagon Assets/Product Images/ALCATEL-H2.png
+
 //            Product product2 = new Product(2, "ALCATEL M5", ProductCategoryLocal.TELEFON_SIP,
 //                    "● Mid-level enterprise-grade IP deskphone with 2.8” color display. " +
 //                            "● The M5 offers richer visual experiences to users. " +
