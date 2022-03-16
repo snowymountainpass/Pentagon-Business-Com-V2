@@ -17,4 +17,6 @@ public interface ProductRepository extends JpaRepository<Product,Long> {
 
     List<Product> getProductsByProductBrand(ProductBrand productBrand);
 
+    List<Product> getProductsByProductPriceBetween(Integer minPrice,Integer maxPrice);
+
 }

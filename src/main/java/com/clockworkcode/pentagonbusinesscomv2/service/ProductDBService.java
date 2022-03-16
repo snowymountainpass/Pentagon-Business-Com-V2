@@ -41,6 +41,9 @@ public class ProductDBService {
         return productRepository.getProductsByProductBrand(productBrand);
     }
 
+    public List<Product> getProductsInPriceRange(Integer minPrice,Integer maxPrice){
 
+        return productRepository.getProductsByProductPriceBetween(minPrice, maxPrice);
+    }
 
 }
