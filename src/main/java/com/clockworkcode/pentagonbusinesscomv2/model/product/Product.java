@@ -52,6 +52,7 @@ public class Product {
     )
     private Set<Supplier> suppliers = new HashSet<>(); // A product can have many suppliers && a supplier can have many products
 
+    @Column(nullable = false)
     private BigInteger productPrice;
 
     @OneToMany(mappedBy = "product")

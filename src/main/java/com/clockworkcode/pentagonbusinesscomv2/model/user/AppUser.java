@@ -1,6 +1,7 @@
 package com.clockworkcode.pentagonbusinesscomv2.model.user;
 
 import com.clockworkcode.pentagonbusinesscomv2.model.order.OrderDetail;
+import com.clockworkcode.pentagonbusinesscomv2.model.shopping.ShoppingSession;
 import lombok.*;
 
 import javax.persistence.*;
@@ -48,4 +49,7 @@ public class AppUser {
 
     @OneToOne(mappedBy = "appUser")
     private OrderDetail orderDetail;
+
+    @OneToOne(mappedBy = "appUser")
+    private ShoppingSession shoppingSession;
 }
