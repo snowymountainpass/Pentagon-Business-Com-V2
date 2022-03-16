@@ -22,8 +22,11 @@ public class CartItem {
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "cartitem_sequence")
     private Long cartItemID;
 
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "shopping_sessionid")
+    private ShoppingSession shoppingSession;
 
-    private Long shoppingSessionID;
+
     private Long productID;
 
     private Integer quantity;

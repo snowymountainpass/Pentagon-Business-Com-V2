@@ -36,4 +36,7 @@ public class ShoppingSession {
     @Column(nullable = false)
     private Timestamp modifiedAt;
 
+    @OneToOne(mappedBy = "shoppingSession")
+    private CartItem cartItem;
+
 }
