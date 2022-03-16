@@ -92,6 +92,9 @@ public class Product {
         this.rating = rating;
         this.deliveryCost = calculateDeliveryCost();
         this.img = img;
+        this.createdAt=new Timestamp(System.currentTimeMillis());
+        this.modifiedAt=new Timestamp(System.currentTimeMillis());
+        this.deletedAt=new Timestamp(System.currentTimeMillis());
     }
 
     public Float calculateDeliveryCost() {

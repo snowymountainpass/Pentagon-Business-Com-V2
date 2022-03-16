@@ -43,13 +43,13 @@ public class ProductConfig {
             ProductCategory productCategory5 = new ProductCategory("ACCESS_POINT_WIRELESS","access point-uri wireless");
             ProductCategory productCategory6 = new ProductCategory("SISTEM_VIDEO_CONFERINTA","sisteme video pentru conferinta");
 
-            productCategoryRepository.saveAll(Arrays.asList(productCategory1,productCategory2,productCategory3,productCategory4,productCategory5,productCategory6));
+//            productCategoryRepository.saveAll(Arrays.asList(productCategory1,productCategory2,productCategory3,productCategory4,productCategory5,productCategory6));
 
 
             ProductBrand productBrand1 = new ProductBrand("Alcatel-Lucent","https://www.al-enterprise.com/");
             ProductBrand productBrand2 = new ProductBrand("Konftel","https://www.konftel.com/");
 
-            productBrandRepository.saveAll(Arrays.asList(productBrand1,productBrand2));
+//            productBrandRepository.saveAll(Arrays.asList(productBrand1,productBrand2));
 
             ProductInventory productInventory1 = new ProductInventory(10);
             ProductInventory productInventory2 = new ProductInventory(20);
@@ -58,7 +58,7 @@ public class ProductConfig {
             ProductInventory productInventory5 = new ProductInventory(100);
             ProductInventory productInventory6 = new ProductInventory(0);
 
-            productInventoryRepository.saveAll(Arrays.asList(productInventory1,productInventory2,productInventory3,productInventory4,productInventory5,productInventory6));
+//            productInventoryRepository.saveAll(Arrays.asList(productInventory1,productInventory2,productInventory3,productInventory4,productInventory5,productInventory6));
 
             Product product1 = new Product("ALCATEL H2",
                     "Model Number:H2,Type:VoIP Phone,Brand Name: Alcatel Lucent",
@@ -71,7 +71,11 @@ public class ProductConfig {
                     "Alcatel-Lucent\", 10, 150, \"../../Assets/img/Pentagon Assets/Product Images/ALCATEL-H2.png"
                     );
 
-            productRepository.saveAll(Arrays.asList(product1));
+            productBrand1.addProduct(product1);
+            productBrandRepository.save(productBrand1);
+
+            productRepository.save(product1);
+//            productRepository.sa;
 
 //            Product product1 = new Product(1, "ALCATEL H2", ProductCategoryLocal.TELEFON_SIP, "● Model Number:H2\n" +
 //                    "● Type:VoIP Phone\n" +
