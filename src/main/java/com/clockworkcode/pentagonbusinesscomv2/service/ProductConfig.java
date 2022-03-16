@@ -145,6 +145,73 @@ public class ProductConfig {
             );
 
 
+            // 8 & 9 - ACCESS POINT WIRELESS
+            Product product8 = new Product(
+                    "OAW-AP1201-RW",
+                    "AP type: Indoor, dual radio, 5 GHz 802.11ac 2x2:2 MU-MIMO and 2.4 GHz 802.11n 2x2:2 MIMO;5 GHz: Two spatial stream single user (SU) /multi user (MU) MIMO for up to 867 Mb/s wireless data rate;Support up to 8 SSID per radio. Total 16 SSIDs (HW ready to extend to 32 SSID);Support for up to 512 associated client devices per AP;Up to 4K APs when managed by OV2500. There is no limit on the number of AP groups; Supports direct DC power and Power over Ethernet (PoE)",
+                    "78901",
+                    productBrand1,
+                    productCategory5,
+                    productInventory3,
+                    200,
+                    9,
+                    "../../Assets/img/Pentagon Assets/Product Images/OAW-AP1201-RW.png"
+
+            );
+
+            Product product9 = new Product(
+                    "OAW-AP1221-RW",
+                    "AP type: Indoor, dual radio, 5 GHz 802.11ac 4x4:4 MU-MIMO and 2.4 GHz 802.11n 2x2:2 MIMO;5 GHz: Four spatial stream single user (SU) MIMO for up to 1733 Mb/s wireless data rate to individual 4x4 VHT80 or 2x2 VHT160* client devices;1x 10/100/1000Base-T autosensing (RJ-45) port, Power over Ethernet (PoE);1x USB 2.0 (Type A connector);1x management console port (RJ-45);Reset button: Factory reset;Kensington security slot;AP1222: 4x RP-SMA antenna connectors",
+                    "89012",
+                    productBrand1,
+                    productCategory5,
+                    productInventory4,
+                    350,
+                    9,
+                    "../../Assets/img/Pentagon Assets/Product Images/OAW-AP1221-RW.png"
+            );
+
+            Product product10 = new Product(
+                    "OAW-AP1321-RW",
+                    "AP type: Indoor, integrated four radios;Dual Radio, 5 GHz 802.11ax 4x4:4 and 2.4 GHz 802.11ax 2x2:2;Advanced Cellular Coexistence (ACC);Full band 1x1 radio, dedicated for scanning;Bluetooth Low Energy (BLE) 5.1/ Zigbee radio, integrated antenna;1x 10BASE-Te/100BASE-TX/1000BASE-T/2500BASE-T IEEE 802.3 compliant autosensing (RJ-45) port, ENET0, Power over Ethernet (PoE) 802.3at compliant; 1x 10/100/1000 BASE-T IEEE 802.3 compliant auto-sensing (RJ-45) port, ENET1, Power over Ethernet (PoE) 802.3at compliant;1x USB 2.0 Type A (5V, 500mA);802.11i, WPA2, WPA3, Enterprise with CNSA Option, Personal (SAE), Enhanced Open (OWE);802.1X;WEP, Advanced Encryption Standard (AES), Temporal Key Integrity Protocol (TKIP);Firewall: ACL, wIPS/wIDS and DPI application policy enforcement with OmniVista;Portal page authentication;AP1321: 2×2:2 @ 2.4GHz, 4x4:4 @ 5GHz;AP1322: 2×2:2 @ 2.4GHz, 4x4:4 @ 5GHz;• MTBF: 1,104,490h (126.08 years) at +25ºC operating temperature",
+                    "90123",
+                    productBrand1,
+                    productCategory5,
+                    productInventory3,
+                    400,
+                    9,
+                    "../../Assets/img/Pentagon Assets/Product Images/OAW-AP1321-RW.png"
+            );
+
+            //SISTEME DE VIDEO CONFERINTA - KONFTEL
+            Product product11 = new Product(
+                    "KONFTEL Huddle Room (CAM20 + EGO)",
+                    "Video conference system composed of CAM20 video conference camera and EGO PERSONAL MODULE",
+                    "01234",
+                    productBrand2,
+                    productCategory6,
+                    productInventory2,
+                    700,
+                    9,
+                    "../../Assets/img/Pentagon Assets/Product Images/Huddle Room (CAM20 + EGO).png"
+
+            );
+
+
+
+            Product product12 = new Product(
+                    "KONFTEL Speakerphone personal kit (CAM10 + EGO)",
+                    "Video conference system composed of CAM10 video conference camera and EGO PERSONAL MODULE",
+                    "01234",
+                    productBrand2,
+                    productCategory6,
+                    productInventory2,
+                    650,
+                    8,
+                    "../../Assets/img/Pentagon Assets/Product Images/Speakerphone personal kit (CAM10 + EGO).png"
+
+
+            );
 
 
 //            productBrand1.addProduct(product1);
@@ -152,20 +219,16 @@ public class ProductConfig {
 //
 //            productRepository.save(product1);
 
-            productBrand1.addProducts(Stream.of(product1,product2,product5,product6,product7).collect(Collectors.toSet()));
-            productBrand2.addProducts(Stream.of(product3,product4).collect(Collectors.toSet()));
+            productBrand1.addProducts(Stream.of(product1,product2,product5,product6,product7,product8,product9,product10).collect(Collectors.toSet()));
+            productBrand2.addProducts(Stream.of(product3,product4,product11,product12).collect(Collectors.toSet()));
 
             productBrandRepository.saveAll(Arrays.asList(productBrand1,productBrand2));
 //            productBrandRepository.save(productBrand1);
 //            productBrandRepository.save(productBrand2);
 
-            productRepository.saveAll(Arrays.asList(product1,product2,product5,product6,product7,product3,product4));
+            productRepository.saveAll(Arrays.asList(product1,product2,product5,product6,product7,product3,product4,product8,product9,product10,product11,product12));
 
-//            Product product8 = new Product();
-//            Product product9 = new Product();
-//            Product product10 = new Product();
-//            Product product11 = new Product();
-//            Product product12 = new Product();
+
 
 //            productMemory.getAllProducts().forEach(product -> System.out.println(product.getProductName()));
 
