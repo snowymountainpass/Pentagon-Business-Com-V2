@@ -2,23 +2,51 @@ package com.clockworkcode.pentagonbusinesscomv2.service;
 
 import com.clockworkcode.pentagonbusinesscomv2.model.Product;
 import com.clockworkcode.pentagonbusinesscomv2.model.ProductCategoryLocal;
+import com.clockworkcode.pentagonbusinesscomv2.model.product.ProductBrand;
+import com.clockworkcode.pentagonbusinesscomv2.model.product.ProductCategory;
+import com.clockworkcode.pentagonbusinesscomv2.repository.ProductBrandRepository;
+import com.clockworkcode.pentagonbusinesscomv2.repository.ProductCategoryRepository;
+import com.clockworkcode.pentagonbusinesscomv2.repository.ProductRepository;
 import com.clockworkcode.pentagonbusinesscomv2.service.DAO.ProductMemory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
+import java.time.Instant;
+import java.util.Arrays;
 import java.util.Collections;
+import java.util.Date;
 
 @Configuration
 public class ProductConfig {
 
     @Autowired
-    ProductMemory productMemory;
+    ProductRepository productRepository;
+    @Autowired
+    ProductCategoryRepository productCategoryRepository;
+    @Autowired
+    ProductBrandRepository productBrandRepository;
+
 
     @Bean
-    CommandLineRunner commandLineRunner(ProductMemory productMemory) {
+    CommandLineRunner commandLineRunner(ProductRepository productRepository,ProductCategoryRepository productCategoryRepository,ProductRepository ProductBrandRepository) {
         return args -> {
+
+            ProductCategory productCategory1 = new ProductCategory("TELEFON_SIP","telefoane SIP");
+            ProductCategory productCategory2 = new ProductCategory("SISTEM_AUDIO_CONFERINTA","sisteme audio de conferinta");
+            ProductCategory productCategory3 = new ProductCategory("CASTI_CALLCENTER","casti pentru uz in callcenter");
+            ProductCategory productCategory4 = new ProductCategory("SWITCH","switch");
+            ProductCategory productCategory5 = new ProductCategory("ACCESS_POINT_WIRELESS","access point-uri wireless");
+            ProductCategory productCategory6 = new ProductCategory("SISTEM_VIDEO_CONFERINTA","sisteme video pentru conferinta");
+
+            productCategoryRepository.saveAll(Arrays.asList(productCategory1,productCategory2,productCategory3,productCategory4,productCategory5,productCategory6));
+
+
+            ProductBrand productBrand1 = new ProductBrand("Alcatel-Lucent","https://www.al-enterprise.com/");
+            ProductBrand productBrand2 = new ProductBrand("Konftel","https://www.konftel.com/");
+
+            productBrandRepository.saveAll(Arrays.asList(productBrand1,productBrand2));
 
             Product product1 = new Product(1, "ALCATEL H2", ProductCategoryLocal.TELEFON_SIP, "● Model Number:H2\n" +
                     "● Type:VoIP Phone\n" +
@@ -117,7 +145,9 @@ public class ProductConfig {
 //            Product product11 = new Product();
 //            Product product12 = new Product();
 
-            Collections.addAll(productMemory.getAllProducts(), product1, product2, product3, product4, product5, product6, product7);
+
+
+//            Collections.addAll(productMemory.getAllProducts(), product1, product2, product3, product4, product5, product6, product7);
 
 //            productMemory.getAllProducts().forEach(product -> System.out.println(product.getProductName()));
 

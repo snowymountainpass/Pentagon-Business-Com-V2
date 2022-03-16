@@ -27,4 +27,9 @@ public class ProductBrand {
 
     @OneToMany(mappedBy = "productBrand")
     private Set<Product> products;
+
+    public ProductBrand(String productBrandName, String productBrandDescription) {
+        this.productBrandName = productBrandName;
+        this.productBrandDescription = productBrandDescription;
+    }
 }

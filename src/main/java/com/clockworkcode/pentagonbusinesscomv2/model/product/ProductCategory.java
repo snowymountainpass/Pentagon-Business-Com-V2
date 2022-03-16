@@ -28,16 +28,12 @@ public class ProductCategory {
     private String productCategoryName;
     @Column(nullable = false,columnDefinition = "text")
     private String productCategoryDescription;
-    @Column(nullable = false)
-    private Timestamp createdAt;
-    @Column(nullable = false)
-    private Timestamp modifiedAt;
-    @Column(nullable = false)
-    private Timestamp deletedAt;
-
 
     @OneToOne(mappedBy = "productCategory")
     private Product product;
 
-
+    public ProductCategory(String productCategoryName, String productCategoryDescription) {
+        this.productCategoryName = productCategoryName;
+        this.productCategoryDescription = productCategoryDescription;
+    }
 }
