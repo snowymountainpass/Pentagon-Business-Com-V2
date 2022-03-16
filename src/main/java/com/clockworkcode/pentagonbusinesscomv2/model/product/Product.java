@@ -54,7 +54,7 @@ public class Product {
     private Set<Supplier> suppliers = new HashSet<>(); // A product can have many suppliers && a supplier can have many products
 
     @Column(nullable = false)
-    private BigInteger productPrice;
+    private Integer productPrice;
 
     @OneToMany(mappedBy = "product")
     private Set<Discount> discounts;
@@ -71,4 +71,17 @@ public class Product {
 
     @OneToOne(mappedBy = "product")
     private CartItem cartItem;
+
+    @Column(nullable = false, columnDefinition = "integer")
+    private Integer rating;
+
+    @Column(nullable = false, columnDefinition = "integer")
+    private Float deliveryCost;
+
+    @Column(nullable = false,columnDefinition = "text")
+    private String img;
+
+    public void setDeliveryCost() {
+        this.deliveryCost = (float) ((productPrice * 15) / 100);
+    }
 }
