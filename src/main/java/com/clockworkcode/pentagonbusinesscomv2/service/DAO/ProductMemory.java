@@ -5,7 +5,6 @@ import org.springframework.stereotype.Repository;
 
 import java.util.Comparator;
 import java.util.List;
-import java.util.Locale;
 import java.util.Objects;
 import java.util.stream.Collectors;
 
@@ -28,7 +27,7 @@ public class ProductMemory implements ProductDAO {
 
     @Override
     public List<Product> getAllProductsByCategory(String productCategory) {
-        return productList.stream().filter(product -> Objects.equals(product.getProductCategory().toString(), productCategory)).collect(Collectors.toList());
+        return productList.stream().filter(product -> Objects.equals(product.getProductCategoryLocal().toString(), productCategory)).collect(Collectors.toList());
     }
 
     @Override

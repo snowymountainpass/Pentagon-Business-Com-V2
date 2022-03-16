@@ -2,7 +2,9 @@ package com.clockworkcode.pentagonbusinesscomv2.service;
 
 import com.clockworkcode.pentagonbusinesscomv2.model.product.Product;
 import com.clockworkcode.pentagonbusinesscomv2.model.product.ProductBrand;
+import com.clockworkcode.pentagonbusinesscomv2.model.product.ProductCategory;
 import com.clockworkcode.pentagonbusinesscomv2.repository.ProductBrandRepository;
+import com.clockworkcode.pentagonbusinesscomv2.repository.ProductCategoryRepository;
 import com.clockworkcode.pentagonbusinesscomv2.repository.ProductRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -14,11 +16,13 @@ public class ProductDBService {
 
     private final ProductRepository productRepository;
     private final ProductBrandRepository productBrandRepository;
+    private final ProductCategoryRepository productCategoryRepository;
 
     @Autowired
-    public ProductDBService(ProductRepository productRepository,ProductBrandRepository productBrandRepository) {
+    public ProductDBService(ProductRepository productRepository, ProductBrandRepository productBrandRepository, ProductCategoryRepository productCategoryRepository) {
         this.productRepository = productRepository;
         this.productBrandRepository = productBrandRepository;
+        this.productCategoryRepository = productCategoryRepository;
     }
 
     public List<Product> getAllProducts(){return productRepository.findAll();}
@@ -27,8 +31,9 @@ public class ProductDBService {
         return productRepository.getProductsByProductName(productName);
     }
 
-    public List<Product> getProductsByProductCategory(String productCategory){
-        
+    public List<Product> getProductsByProductCategoryName(String productCategoryName){
+        ProductCategory productCategory = productCategoryRepository.getProductCategoryByProductCategoryName(productCategoryName);
+        return productRepository.getProductsByProductCategory(productCategory);
     }
 
     public List<Product> getProductsByBrandName(String productBrandName){

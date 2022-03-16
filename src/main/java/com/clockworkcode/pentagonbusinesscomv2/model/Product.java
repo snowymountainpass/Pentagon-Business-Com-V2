@@ -10,7 +10,7 @@ public class Product {
 
     int productID;
     String productName;
-    ProductCategory productCategory;
+    ProductCategoryLocal productCategoryLocal;
     String productDescription;
     String brand;
     int quantity;

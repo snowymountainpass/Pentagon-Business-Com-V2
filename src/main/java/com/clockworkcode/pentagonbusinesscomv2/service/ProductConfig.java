@@ -1,7 +1,7 @@
 package com.clockworkcode.pentagonbusinesscomv2.service;
 
 import com.clockworkcode.pentagonbusinesscomv2.model.Product;
-import com.clockworkcode.pentagonbusinesscomv2.model.ProductCategory;
+import com.clockworkcode.pentagonbusinesscomv2.model.ProductCategoryLocal;
 import com.clockworkcode.pentagonbusinesscomv2.service.DAO.ProductMemory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
@@ -20,7 +20,7 @@ public class ProductConfig {
     CommandLineRunner commandLineRunner(ProductMemory productMemory) {
         return args -> {
 
-            Product product1 = new Product(1, "ALCATEL H2", ProductCategory.TELEFON_SIP, "● Model Number:H2\n" +
+            Product product1 = new Product(1, "ALCATEL H2", ProductCategoryLocal.TELEFON_SIP, "● Model Number:H2\n" +
                     "● Type:VoIP Phone\n" +
                     "● Brand Name: Alcatel Lucent\n" +
                     "● Network:Wireless Lan, Wired LAN, wifi\n" +
@@ -33,14 +33,14 @@ public class ProductConfig {
                     , "Alcatel-Lucent", 10, 150, "../../Assets/img/Pentagon Assets/Product Images/ALCATEL-H2.png", 8, 0);
 
             //https://drive.google.com/file/d/1PCjwRMzDuIQkXVBkwQ-VFnjHWvgAkEse/view?usp=sharing //../assets/images/Pentagon Assets/Product Images/ALCATEL-H2.png
-            Product product2 = new Product(2, "ALCATEL M5", ProductCategory.TELEFON_SIP,
+            Product product2 = new Product(2, "ALCATEL M5", ProductCategoryLocal.TELEFON_SIP,
                     "● Mid-level enterprise-grade IP deskphone with 2.8” color display. " +
                             "● The M5 offers richer visual experiences to users. " +
                             "● It is built with advanced super wideband audio for immersive voice communication experiences. " +
                             "● In addition to enhanced telephony features, the phone is also integrated with customizable faceplate for brand advocate.", "Alcatel-Lucent", 10, 200, "../../Assets/img/Pentagon Assets/Product Images/ALCATEL-M5.png",
                     9, 0);
 
-            Product product3 = new Product(3, "EGO PERSONAL MODULE", ProductCategory.SISTEM_AUDIO_CONFERINTA,
+            Product product3 = new Product(3, "EGO PERSONAL MODULE", ProductCategoryLocal.SISTEM_AUDIO_CONFERINTA,
                     "Meeting size: Up to 6 people\n" +
                             "-Bluetooth®\n" +
                             "- Small and portable\n" +
@@ -51,7 +51,7 @@ public class ProductConfig {
                             "- Wireless headset connection\n", "Konftel", 10, 500, "../../Assets/img/Pentagon Assets/Product Images/Konftel-EGO-PERSONAL-MODULE.png", 8, 0);
 
 
-            Product product4 = new Product(4, "Konftel 800 SIP (USB)", ProductCategory.SISTEM_AUDIO_CONFERINTA, " Specifications\n" +
+            Product product4 = new Product(4, "Konftel 800 SIP (USB)", ProductCategoryLocal.SISTEM_AUDIO_CONFERINTA, " Specifications\n" +
                     "Room type: Small to Large\n" +
                     "SIP\n" +
                     "USB\n" +
@@ -77,7 +77,7 @@ public class ProductConfig {
                     "Climate Neutral Certified", "Konftel", 10, 320, "../../Assets/img/Pentagon Assets/Product Images/Konftel-800-SIP-USB.png", 9, 0);
 
 
-            Product product5 = new Product(5, "ALCATEL AH 22 U II  BINAURAL USB-A", ProductCategory.CASTI_CALLCENTER, "The second-generation Alcatel-Lucent Enterprise Aries 20 Series\n" +
+            Product product5 = new Product(5, "ALCATEL AH 22 U II  BINAURAL USB-A", ProductCategoryLocal.CASTI_CALLCENTER, "The second-generation Alcatel-Lucent Enterprise Aries 20 Series\n" +
                     "(Aries 20 Series II) headsets are now available, offering crisp audio,\n" +
                     "sophisticated comfort and increased durability. The new models of\n" +
                     "Aries 20 Series II headsets are suitable for call centers, financial\n" +
@@ -96,7 +96,7 @@ public class ProductConfig {
             Product product6 = new Product(
                     6,
                     "Switch 2260 8RJ45+4 SFP",
-                    ProductCategory.SWITCH,
+                    ProductCategoryLocal.SWITCH,
                     "Fixed 1RU ½ rack chassis 8 RJ 45 10/100/1G BaseT, 4 SFP (1G) uplink ports, Fan-less"
                     , "Alcatel-Lucent",
                     10, 600,
@@ -105,7 +105,7 @@ public class ProductConfig {
             );
 
             Product product7 = new Product(
-                    7, "Switch PoE 2260 24RJ45+4 SFP", ProductCategory.SWITCH, " Fixed 1RU chassis 24 RJ 45 PoE 10/100/1G BaseT, 4 SFP (1G) uplink ports, 195W power budget", "Alcatel-Lucent", 10, 500,
+                    7, "Switch PoE 2260 24RJ45+4 SFP", ProductCategoryLocal.SWITCH, " Fixed 1RU chassis 24 RJ 45 PoE 10/100/1G BaseT, 4 SFP (1G) uplink ports, 195W power budget", "Alcatel-Lucent", 10, 500,
                     "../../Assets/img/Pentagon Assets/Product Images/Switch-PoE-2260-24RJ45+4-SFP.png", 8, 0
 
             );

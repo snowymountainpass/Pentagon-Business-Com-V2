@@ -1,6 +1,6 @@
 package com.clockworkcode.pentagonbusinesscomv2.model;
 
-public enum ProductCategory {
+public enum ProductCategoryLocal {
     TELEFON_SIP,
     SISTEM_AUDIO_CONFERINTA,
     CASTI_CALLCENTER,
