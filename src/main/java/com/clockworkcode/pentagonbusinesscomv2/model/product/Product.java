@@ -34,8 +34,8 @@ public class Product {
     @Column(nullable = false,columnDefinition = "text")
     private String productSKU;
 
-
-    private Long productBrandID;
+    @ManyToOne
+    private ProductBrand productBrand;
 
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "product_categoryID")
