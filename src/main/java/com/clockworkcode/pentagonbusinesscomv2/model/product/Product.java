@@ -1,6 +1,7 @@
 package com.clockworkcode.pentagonbusinesscomv2.model.product;
 
 import com.clockworkcode.pentagonbusinesscomv2.model.order.OrderItem;
+import com.clockworkcode.pentagonbusinesscomv2.model.shopping.CartItem;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -68,4 +69,6 @@ public class Product {
     @OneToOne(mappedBy = "product")
     private OrderItem orderItem;
 
+    @OneToOne(mappedBy = "product")
+    private CartItem cartItem;
 }

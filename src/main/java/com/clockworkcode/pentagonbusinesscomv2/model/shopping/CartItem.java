@@ -1,5 +1,6 @@
 package com.clockworkcode.pentagonbusinesscomv2.model.shopping;
 
+import com.clockworkcode.pentagonbusinesscomv2.model.product.Product;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -26,8 +27,9 @@ public class CartItem {
     @JoinColumn(name = "shopping_sessionid")
     private ShoppingSession shoppingSession;
 
-
-    private Long productID;
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "productid")
+    private Product product;
 
     private Integer quantity;
 
