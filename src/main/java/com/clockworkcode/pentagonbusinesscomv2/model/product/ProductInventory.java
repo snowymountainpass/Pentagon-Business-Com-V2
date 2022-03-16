@@ -7,7 +7,6 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
-import java.sql.Timestamp;
 
 @Getter
 @Setter
@@ -35,4 +34,7 @@ public class ProductInventory {
     @OneToOne(mappedBy = "productInventory")
     private Product product;
 
+    public ProductInventory(Integer quantity) {
+        this.quantity = quantity;
+    }
 }

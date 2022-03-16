@@ -1,11 +1,13 @@
 package com.clockworkcode.pentagonbusinesscomv2.service;
 
-import com.clockworkcode.pentagonbusinesscomv2.model.Product;
 import com.clockworkcode.pentagonbusinesscomv2.model.ProductCategoryLocal;
+import com.clockworkcode.pentagonbusinesscomv2.model.product.Product;
 import com.clockworkcode.pentagonbusinesscomv2.model.product.ProductBrand;
 import com.clockworkcode.pentagonbusinesscomv2.model.product.ProductCategory;
+import com.clockworkcode.pentagonbusinesscomv2.model.product.ProductInventory;
 import com.clockworkcode.pentagonbusinesscomv2.repository.ProductBrandRepository;
 import com.clockworkcode.pentagonbusinesscomv2.repository.ProductCategoryRepository;
+import com.clockworkcode.pentagonbusinesscomv2.repository.ProductInventoryRepository;
 import com.clockworkcode.pentagonbusinesscomv2.repository.ProductRepository;
 import com.clockworkcode.pentagonbusinesscomv2.service.DAO.ProductMemory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,10 +29,11 @@ public class ProductConfig {
     ProductCategoryRepository productCategoryRepository;
     @Autowired
     ProductBrandRepository productBrandRepository;
-
+    @Autowired
+    ProductInventoryRepository productInventoryRepository;
 
     @Bean
-    CommandLineRunner commandLineRunner(ProductRepository productRepository,ProductCategoryRepository productCategoryRepository,ProductRepository ProductBrandRepository) {
+    CommandLineRunner commandLineRunner(ProductRepository productRepository,ProductCategoryRepository productCategoryRepository,ProductBrandRepository productBrandRepository,ProductInventoryRepository productInventoryRepository) {
         return args -> {
 
             ProductCategory productCategory1 = new ProductCategory("TELEFON_SIP","telefoane SIP");
@@ -48,8 +51,27 @@ public class ProductConfig {
 
             productBrandRepository.saveAll(Arrays.asList(productBrand1,productBrand2));
 
+            ProductInventory productInventory1 = new ProductInventory(10);
+            ProductInventory productInventory2 = new ProductInventory(20);
+            ProductInventory productInventory3 = new ProductInventory(50);
+            ProductInventory productInventory4 = new ProductInventory(70);
+            ProductInventory productInventory5 = new ProductInventory(100);
+            ProductInventory productInventory6 = new ProductInventory(0);
 
-//            Product product1 = new Product()
+            productInventoryRepository.saveAll(Arrays.asList(productInventory1,productInventory2,productInventory3,productInventory4,productInventory5,productInventory6));
+
+            Product product1 = new Product("ALCATEL H2",
+                    "Model Number:H2,Type:VoIP Phone,Brand Name: Alcatel Lucent",
+                    "12345",
+                    productBrand1,
+                    productCategory1,
+                    productInventory1,
+                    150,
+                    8,
+                    "Alcatel-Lucent\", 10, 150, \"../../Assets/img/Pentagon Assets/Product Images/ALCATEL-H2.png"
+                    );
+
+            productRepository.saveAll(Arrays.asList(product1));
 
 //            Product product1 = new Product(1, "ALCATEL H2", ProductCategoryLocal.TELEFON_SIP, "● Model Number:H2\n" +
 //                    "● Type:VoIP Phone\n" +
