@@ -25,12 +25,12 @@ public class ProductInventory {
 
     @Column(nullable = false,columnDefinition = "integer")
     private Integer quantity;
-    @Column(nullable = false)
-    private Timestamp createdAt;
-    @Column(nullable = false)
-    private Timestamp modifiedAt;
-    @Column(nullable = false)
-    private Timestamp deletedAt;
+//    @Column(nullable = false)
+//    private Timestamp createdAt;
+//    @Column(nullable = false)
+//    private Timestamp modifiedAt;
+//    @Column(nullable = false)
+//    private Timestamp deletedAt;
 
     @OneToOne(mappedBy = "productInventory")
     private Product product;

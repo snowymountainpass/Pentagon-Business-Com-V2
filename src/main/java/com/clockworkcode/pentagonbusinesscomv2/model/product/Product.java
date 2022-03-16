@@ -81,6 +81,19 @@ public class Product {
     @Column(nullable = false,columnDefinition = "text")
     private String img;
 
+    public Product(String productName, String productDescription, String productSKU, ProductBrand productBrand, ProductCategory productCategory, ProductInventory productInventory, Integer productPrice, Integer rating, Float deliveryCost, String img) {
+        this.productName = productName;
+        this.productDescription = productDescription;
+        this.productSKU = productSKU;
+        this.productBrand = productBrand;
+        this.productCategory = productCategory;
+        this.productInventory = productInventory;
+        this.productPrice = productPrice;
+        this.rating = rating;
+        this.deliveryCost = deliveryCost;
+        this.img = img;
+    }
+
     public void setDeliveryCost() {
         this.deliveryCost = (float) ((productPrice * 15) / 100);
     }
