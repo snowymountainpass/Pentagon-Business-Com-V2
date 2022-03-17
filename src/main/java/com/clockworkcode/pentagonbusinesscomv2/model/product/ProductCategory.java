@@ -29,7 +29,7 @@ public class ProductCategory {
     @Column(nullable = false,columnDefinition = "text")
     private String productCategoryDescription;
 
-    @OneToOne(mappedBy = "productCategory")
+    @OneToOne(mappedBy = "productCategory", orphanRemoval = true)
     private Product product;
 
     public ProductCategory(String productCategoryName, String productCategoryDescription) {

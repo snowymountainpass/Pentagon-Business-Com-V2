@@ -31,7 +31,7 @@ public class ProductInventory {
 //    @Column(nullable = false)
 //    private Timestamp deletedAt;
 
-    @OneToOne(mappedBy = "productInventory")
+    @OneToOne(mappedBy = "productInventory", orphanRemoval = true)
     private Product product;
 
     public ProductInventory(Integer quantity) {

@@ -34,14 +34,14 @@ public class Product {
     @Column(nullable = false,columnDefinition = "text")
     private String productSKU;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     private ProductBrand productBrand;
 
-    @OneToOne(cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToOne(cascade = CascadeType.ALL,fetch = FetchType.LAZY)
     @JoinColumn(name = "product_categoryID")
     private ProductCategory productCategory;
 
-    @OneToOne(cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToOne(cascade = CascadeType.ALL,fetch = FetchType.LAZY)
     @JoinColumn(name="product_inventoryID")
     private ProductInventory productInventory;
 
