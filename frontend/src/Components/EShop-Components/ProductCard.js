@@ -41,12 +41,12 @@ export default function ProductCard(props){
                 <aside className="col-sm-3">
                     <div className="info-aside">
                         <div className="price-wrap">
-                            <span className="price-new h5"> {`€${props.product.price-20}`} </span>
-                            <del className="price-old"> {`€${props.product.price}`} </del>
+                            <span className="price-new h5"> {`€${props.product.productPrice-20}`} </span>
+                            <del className="price-old"> {`€${props.product.productPrice}`} </del>
 
 
                         </div>
-                        <p className="text-success">{`Delivery Cost: ${(parseInt(props.product.price)*10)/100}%`} </p>
+                        <p className="text-success">{`Delivery Cost: ${(parseInt(props.product.productPrice)*10)/100}%`}</p>
                         <br/>
                         <p className="text-quantity">{`Quantity Available: ${props.product.quantity}`}</p>
                         <br/>

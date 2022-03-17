@@ -30,7 +30,8 @@ export default function Products(){
         },[] // [] => runs every time the url changes
     )
 
-    console.log("Products: "+products.length)
+    console.log("Products size: "+products.length);
+    console.log("Products objects: "+products);
 
     return(
 

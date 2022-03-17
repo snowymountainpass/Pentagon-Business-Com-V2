@@ -24,6 +24,8 @@ public class ProductController {
 
 //        productService.getAllProducts().forEach(product -> System.out.println(product.getProductName()));
 
+        List<Product> productList = productDBService.getAllProducts();
+
         return productDBService.getAllProducts();
     }
 
