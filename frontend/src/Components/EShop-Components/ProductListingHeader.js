@@ -20,8 +20,9 @@ export default function ProductListingHeader({products, setChangeProducts,query,
 
             fetch(`http://localhost:8080/e-shop/product/` + query, requestOptions)
                 .then(response => {
+                    console.log(response);
                     return response.json();
-                    // console.log(response);
+
                 })
                 .then(data => {
                     setChangeProducts(data);
