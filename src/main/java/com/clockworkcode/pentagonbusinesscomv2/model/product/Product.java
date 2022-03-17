@@ -46,6 +46,7 @@ public class Product {
 
     @OneToOne(cascade = CascadeType.ALL,fetch = FetchType.LAZY)
     @JoinColumn(name="product_inventoryID")
+    @JsonIgnore
     private ProductInventory productInventory;
 
     @ManyToMany(cascade = CascadeType.ALL)
