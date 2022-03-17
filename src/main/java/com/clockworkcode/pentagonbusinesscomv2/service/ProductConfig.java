@@ -1,6 +1,6 @@
 package com.clockworkcode.pentagonbusinesscomv2.service;
 
-import com.clockworkcode.pentagonbusinesscomv2.model.ProductCategoryLocal;
+//import com.clockworkcode.pentagonbusinesscomv2.model.ProductCategoryLocal;
 import com.clockworkcode.pentagonbusinesscomv2.model.product.Product;
 import com.clockworkcode.pentagonbusinesscomv2.model.product.ProductBrand;
 import com.clockworkcode.pentagonbusinesscomv2.model.product.ProductCategory;
@@ -9,7 +9,7 @@ import com.clockworkcode.pentagonbusinesscomv2.repository.ProductBrandRepository
 import com.clockworkcode.pentagonbusinesscomv2.repository.ProductCategoryRepository;
 import com.clockworkcode.pentagonbusinesscomv2.repository.ProductInventoryRepository;
 import com.clockworkcode.pentagonbusinesscomv2.repository.ProductRepository;
-import com.clockworkcode.pentagonbusinesscomv2.service.DAO.ProductMemory;
+//import com.clockworkcode.pentagonbusinesscomv2.service.DAO.ProductMemory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Bean;

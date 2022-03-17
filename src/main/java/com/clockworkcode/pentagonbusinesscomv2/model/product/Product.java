@@ -37,11 +37,11 @@ public class Product {
     @ManyToOne
     private ProductBrand productBrand;
 
-    @OneToOne(cascade = CascadeType.ALL)
+    @OneToOne(cascade = CascadeType.ALL, orphanRemoval = true)
     @JoinColumn(name = "product_categoryID")
     private ProductCategory productCategory;
 
-    @OneToOne(cascade = CascadeType.ALL)
+    @OneToOne(cascade = CascadeType.ALL, orphanRemoval = true)
     @JoinColumn(name="product_inventoryID")
     private ProductInventory productInventory;
 
@@ -66,10 +66,10 @@ public class Product {
     @Column(nullable = false)
     private Timestamp deletedAt;
 
-    @OneToOne(mappedBy = "product")
+    @OneToOne(mappedBy = "product", orphanRemoval = true)
     private OrderItem orderItem;
 
-    @OneToOne(mappedBy = "product")
+    @OneToOne(mappedBy = "product", orphanRemoval = true)
     private CartItem cartItem;
 
     @Column(nullable = false, columnDefinition = "integer")

@@ -2,7 +2,7 @@ package com.clockworkcode.pentagonbusinesscomv2.controller;
 
 import com.clockworkcode.pentagonbusinesscomv2.model.product.Product;
 import com.clockworkcode.pentagonbusinesscomv2.service.ProductDBService;
-import com.clockworkcode.pentagonbusinesscomv2.service.ProductService;
+//import com.clockworkcode.pentagonbusinesscomv2.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
