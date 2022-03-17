@@ -240,7 +240,7 @@ public class ProductConfig {
 //            productBrandRepository.save(productBrand2);
 
 
-//            productRepository.saveAll(Arrays.asList(product1,product2,product5,product6,product7,product3,product4,product8,product9,product10,product11,product12));
+            productRepository.saveAll(Arrays.asList(product1,product2,product5,product6,product7,product3,product4,product8,product9,product10,product11,product12));
 
 
 
