@@ -2,6 +2,7 @@ package com.clockworkcode.pentagonbusinesscomv2.model.product;
 
 import com.clockworkcode.pentagonbusinesscomv2.model.order.OrderItem;
 import com.clockworkcode.pentagonbusinesscomv2.model.shopping.CartItem;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -35,10 +36,12 @@ public class Product {
     private String productSKU;
 
     @ManyToOne(fetch = FetchType.LAZY)
+    @JsonIgnore
     private ProductBrand productBrand;
 
-    @OneToOne(cascade = CascadeType.ALL,fetch = FetchType.LAZY)
-    @JoinColumn(name = "product_categoryID")
+    //prod cat
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JsonIgnore
     private ProductCategory productCategory;
 
     @OneToOne(cascade = CascadeType.ALL,fetch = FetchType.LAZY)

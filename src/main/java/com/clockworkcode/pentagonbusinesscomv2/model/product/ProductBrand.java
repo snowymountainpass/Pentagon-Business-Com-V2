@@ -26,7 +26,7 @@ public class ProductBrand {
     private String productBrandName;
     private String productBrandDescription;
 
-    @OneToMany(mappedBy = "productBrand")
+    @OneToMany(cascade = CascadeType.ALL,mappedBy = "productBrand",orphanRemoval = true)
     private Set<Product> products = new HashSet<>();
 
     public ProductBrand(String productBrandName, String productBrandDescription) {
@@ -43,7 +43,7 @@ public class ProductBrand {
 
     public void addProducts(Set<Product> productsSet){
 
-        products.addAll(productsSet);
+        this.products.addAll(productsSet);
 
         productsSet.forEach(product -> product.setProductBrand(this));
 

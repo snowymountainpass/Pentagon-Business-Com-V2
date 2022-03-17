@@ -219,14 +219,35 @@ public class ProductConfig {
 //
 //            productRepository.save(product1);
 
+            productCategoryRepository.saveAll(Arrays.asList(productCategory1,productCategory2,productCategory3,productCategory4,productCategory5,productCategory6));
+
+            productCategory1.addProducts(Stream.of(product1,product2).collect(Collectors.toSet()));
+            productCategory2.addProducts(Stream.of(product3,product4).collect(Collectors.toSet()));
+            productCategory3.addProducts(Stream.of(product5).collect(Collectors.toSet()));
+            productCategory4.addProducts(Stream.of(product6,product7).collect(Collectors.toSet()));
+            productCategory5.addProducts(Stream.of(product8,product9,product10).collect(Collectors.toSet()));
+            productCategory6.addProducts(Stream.of(product11,product12).collect(Collectors.toSet()));
+
+
+            productBrandRepository.saveAll(Arrays.asList(productBrand1,productBrand2));
+
             productBrand1.addProducts(Stream.of(product1,product2,product5,product6,product7,product8,product9,product10).collect(Collectors.toSet()));
             productBrand2.addProducts(Stream.of(product3,product4,product11,product12).collect(Collectors.toSet()));
 
-            productBrandRepository.saveAll(Arrays.asList(productBrand1,productBrand2));
+
+
 //            productBrandRepository.save(productBrand1);
 //            productBrandRepository.save(productBrand2);
 
-            productRepository.saveAll(Arrays.asList(product1,product2,product5,product6,product7,product3,product4,product8,product9,product10,product11,product12));
+
+//            productRepository.saveAll(Arrays.asList(product1,product2,product5,product6,product7,product3,product4,product8,product9,product10,product11,product12));
+
+
+
+//            productBrandRepository.save(productBrand1);
+//            productBrandRepository.save(productBrand2);
+
+
 
 
 

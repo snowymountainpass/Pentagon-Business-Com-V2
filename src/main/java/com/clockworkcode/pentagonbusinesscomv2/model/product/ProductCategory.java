@@ -8,6 +8,8 @@ import lombok.Setter;
 
 import javax.persistence.*;
 import java.sql.Timestamp;
+import java.util.HashSet;
+import java.util.Set;
 
 @Getter
 @Setter
@@ -29,11 +31,21 @@ public class ProductCategory {
     @Column(nullable = false,columnDefinition = "text")
     private String productCategoryDescription;
 
-    @OneToOne(mappedBy = "productCategory", orphanRemoval = true)
-    private Product product;
+    // prod cat
+    @OneToMany(cascade = CascadeType.ALL,mappedBy = "productCategory",orphanRemoval = true)
+    private Set<Product> products=new HashSet<>();
 
     public ProductCategory(String productCategoryName, String productCategoryDescription) {
         this.productCategoryName = productCategoryName;
         this.productCategoryDescription = productCategoryDescription;
     }
+
+    public void addProducts(Set<Product> productsSet){
+
+        this.products.addAll(productsSet);
+
+        productsSet.forEach(product -> product.setProductCategory(this));
+
+    }
+
 }
