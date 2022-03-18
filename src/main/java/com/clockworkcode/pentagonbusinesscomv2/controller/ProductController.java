@@ -41,11 +41,14 @@ public class ProductController {
 //        List<Product> listOfProducts = productDBService.getProductsByName(productName.toLowerCase());
         List<Product> listOfProducts = productDBService.getAllProducts()
                 .stream()
-                .filter(product -> product.getProductName().equals( productName.toLowerCase() ) ||
-                        product.getProductBrand().getProductBrandName().equals( productName.toLowerCase() ) ||
-                        product.getProductCategory().getProductCategoryName().equals( productName.toLowerCase() )
+                .filter(product -> product.getProductName().toLowerCase().contains(productName.toLowerCase())
                 )
                 .collect(Collectors.toList());
+
+//                .filter(product -> product.getProductName().contains( productName.toLowerCase() ) ||
+//                product.getProductBrand().getProductBrandName().contains( productName.toLowerCase() ) ||
+//                product.getProductCategory().getProductCategoryName().contains( productName.toLowerCase() )
+//        )
 
         return ResponseEntity.ok().body(listOfProducts);
 
