@@ -12,8 +12,8 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 @RestController
-@RequestMapping("/e-shop")
-@CrossOrigin(origins = "http://localhost:3000")
+@RequestMapping("e-shop/")
+@CrossOrigin(origins = "http://localhost:3000/")
 public class ProductController {
 
     @Autowired
@@ -22,23 +22,14 @@ public class ProductController {
     @GetMapping()
     public List<Product> getAllProducts() {
 
-//        productService.getAllProducts().forEach(product -> System.out.println(product.getProductName()));
-
-
-
         return productDBService.getAllProducts();
     }
 
-    @GetMapping("/product/{productName}")
-    public ResponseEntity<List<Product>> getProductsByName(@PathVariable String productName) {
+    @GetMapping("product/{productName}")
+    public ResponseEntity<List<Product>> getProductsByName(@PathVariable(name = "productName") String productName) {
 
-//        System.out.println("productName: " + productName);
-//        System.out.println("No. of products with this name: "+productService.getProductsByName(productName).size());
-//        productService.getProductsByName(productName.toLowerCase()).forEach(product1 -> System.out.println(product1.getProductName()));
 
-//        List<Product> listOfProducts = productService.getProductsByName(productName.toLowerCase());
         System.out.println("Product search value: " + productName);
-//        List<Product> listOfProducts = productDBService.getProductsByName(productName.toLowerCase());
         List<Product> listOfProducts = productDBService.getAllProducts()
                 .stream()
                 .filter(product -> product.getProductName().toLowerCase().contains( productName.toLowerCase() ) ||

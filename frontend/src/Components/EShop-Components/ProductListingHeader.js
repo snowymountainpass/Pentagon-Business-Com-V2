@@ -1,48 +1,16 @@
 import {useEffect, useState} from "react";
 
 
-export default function ProductListingHeader({products, setChangeProducts,query,setChangeQuery}) {
+export default function ProductListingHeader({products,setChangeQuery}) {
 
-    const [searchInput,setSearchInput] = useState("");
 
-    // const searchBar = document.getElementById('searchBar'); //searchBar.innerHTML
+    function searchInputChange(event){
 
-    function handleClick(e) {
-        e.preventDefault();
+        event.preventDefault();
 
-        const requestOptions = {
-            method: 'GET',
-            headers: {Accept: 'application/json', 'Content-Type': 'application/json'},
-            // body: JSON.stringify({ "productName":query }) //
-        };
-
-        if (query !== "") {
-
-            fetch(`http://localhost:8080/e-shop/product/` + query, requestOptions)
-                .then(response => {
-                    console.log(response);
-                    return response.json();
-
-                })
-                .then(data => {
-                    setChangeProducts(data);
-                });
-        } else {
-
-             fetch(`http://localhost:8080/e-shop`, requestOptions)
-                .then(response => {
-                    return response.json();
-                    // console.log(response);
-                })
-                .then(data => {
-                    setChangeProducts(data);
-                });
-
+        if(event.target.value!=="" || event.target.value!=null){
+            setChangeQuery(event.target.value);
         }
-
-
-        // console.log("ProductsListingHeader: "+products);
-        // console.log("query: "+query);
 
     }
 
@@ -77,12 +45,8 @@ export default function ProductListingHeader({products, setChangeProducts,query,
                         type="text"
                         className="form-control rounded-left"
                         placeholder="Search"
-                        // value={query}
-                        onChange={event => {
-                            setChangeQuery(event.target.value.toLowerCase());
-                            handleClick(event);
-                        }}
-
+                        onChange={event => searchInputChange(event)}
+                        onPaste={event => searchInputChange(event)}
                     />
                     {/*<div className="input-group-append" onClick={handleClick}>*/}
                     {/*    <button className="btn btn-light" type="button"><i className="fa fa-search"></i></button>*/}

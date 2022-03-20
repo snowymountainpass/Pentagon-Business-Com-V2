@@ -11,20 +11,25 @@ export default function Products(){
     const [products,setProducts] = useState([]);
     const [query, setQuery] = useState('');
 
-    let url = "http://localhost:8080/e-shop";
+    let url = "http://localhost:8080/e-shop/";
 
     useEffect(
         ()=>{
-            if(query!==""){url=url+"/product"}
+            if(query!==""){url=url+"product/"+query;
+                console.log("Query: "+query);
+                console.log("Url: "+url);
+            }
             fetch(url)
                 .then(res => res.json())
                 .then(data => setProducts(data))
 
-        },[]
+        },[query]
     )
 
     console.log("Products size: "+products.length);
     console.log("Products objects: "+products);
+    // console.log("Query: "+query);
+    // console.log("Url: "+url);
 
 
     const [brandsList, setBrandsList] = useState([]);
@@ -56,9 +61,9 @@ export default function Products(){
                     <main className="col-md-9">
                         <ProductListingHeader
                             products = {products}
-                            setChangeProducts = {setProducts}
+                            // setChangeProducts = {setProducts}
                             setChangeQuery = {setQuery}
-                            query={query}
+                            // query={query}
                         />
 
                         <ProductsListing products={products}/>
