@@ -3,12 +3,8 @@
 
 
 import {useState} from "react";
-import Checkbox from "../EShop-Components/Checkbox";
 
 export default function SidebarComponent({products,setChangeProducts}  ){
-
-    // const brandOptions = ["Alcatel-Lucent", "Konftel"];
-    const brandOptions = [{ label: 'Alcatel-Lucent' }, { label: 'Konftel' }];
 
     function handleCategoryClick(event){
         event.preventDefault();
@@ -32,68 +28,40 @@ export default function SidebarComponent({products,setChangeProducts}  ){
 
     }
 
-    function handleBrandClick(data){
+    const brandsList = ["Alcatel-Lucent", "Konftel"];
+    const [checked, setChecked] = useState([]);
 
-        const selectedBrandsSet = new Set();
+    const handleCheck = (event) => {
+        let updatedList = [...checked];
+        if (event.target.checked) {
+            updatedList = [...checked, event.target.value];
+        } else {
+            updatedList.splice(checked.indexOf(event.target.value), 1);
+        }
+        setChecked(updatedList);
 
-        data.map((item)=>{
-            selectedBrandsSet.add(item.label);
-        })
-        // console.log(selectedBrandsSet);
-        const selectedBrandsList = Array.from(selectedBrandsSet)
-        // console.log(selectedBrandsSet);
-        console.log(selectedBrandsList);
+        console.log(updatedList);
 
+        handleBrandClick(updatedList);
+
+    };
+
+    function handleBrandClick(checkedBrandsList){
         const requestOptions = {
             method: 'POST',
             headers: {Accept: 'application/json', 'Content-Type': 'application/json'},
-            body: JSON.stringify(selectedBrandsList) //
+            body: JSON.stringify(checkedBrandsList)
         };
 
-        fetch(`http://localhost:8080/e-shop/brands`, requestOptions)
+        fetch( `http://localhost:8080/e-shop/brands`, requestOptions)
             .then(response => {
                 return response.json();
-                // console.log(response);
             })
             .then(data => {
                 setChangeProducts(data);
             });
 
     }
-
-
-    const MultiselectCheckbox = ({ options, onChange }) => {
-        const [data, setData] = useState(options);
-
-        const toggle = index => {
-            const newData = [...data];
-            newData.splice(index, 1, {
-                label: data[index].label,
-                checked: !data[index].checked
-            });
-            setData(newData);
-            onChange(newData.filter(x => x.checked));
-        };
-
-        return (
-            <>
-                {data.map((item, index) => (
-                    <label key={item.label} className="custom-control custom-checkbox">
-                        <input
-                            readOnly
-                            type="checkbox"
-                            checked={item.checked || false}
-                            onClick={() => toggle(index)}
-                            className="custom-control-input"
-                        />
-                        <div className="custom-control-label">
-                             {item.label}
-                        </div>
-                    </label>
-                ))}
-            </>
-        );
-    };
 
 
     return(
@@ -140,15 +108,28 @@ export default function SidebarComponent({products,setChangeProducts}  ){
                 </header>
                 <div className="filter-content collapse show" id="collapse_2">
                     <div className="card-body">
-                        {/*{createCheckboxes()}*/}
 
-                        {<MultiselectCheckbox
-                            options={brandOptions}
-                            onChange={data => {
-                                // console.log(data);
-                                handleBrandClick(data)
-                            }}
-                        />}
+                        {brandsList.map((item, index) => (
+                            // <div key={index}>
+                            //
+                            //     <input value={item} type="checkbox" onChange={handleCheck} />
+                            //     <span>{item}</span>
+                            // </div>
+
+                            <label key={item} className="custom-control custom-checkbox">
+                            <input className="custom-control-input"
+                                   value={item} type="checkbox" onClick={handleCheck}
+                            />
+                                <div className="custom-control-label">
+                                     {item}
+                                </div>
+                            </label>
+
+
+
+                            ))}
+
+
                         {/*<label className="custom-control custom-checkbox">*/}
                         {/*    <input type="checkbox" className="custom-control-input"/>*/}
                         {/*    <div className="custom-control-label">ALCATEL-LUCENT*/}

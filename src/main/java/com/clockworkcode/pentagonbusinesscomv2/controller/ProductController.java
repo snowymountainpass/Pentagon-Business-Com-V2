@@ -68,14 +68,16 @@ public class ProductController {
 
         List<Product> productsFromBrands = new ArrayList<>();
 
-//        brandsList.forEach(s -> productsFromBrands.addAll(getAllProducts().stream().filter(product -> product.getBrand().equals(s)).collect(Collectors.toList())));
+
         brandsList
                 .forEach(s -> productsFromBrands
                         .addAll(getAllProducts().stream()
                                 .filter(product -> product.getProductBrand().getProductBrandName().equals(s))
                                 .collect(Collectors.toList())));
 
-        return ResponseEntity.ok().body(productsFromBrands);
+
+
+        return productsFromBrands.size()!=0 ? ResponseEntity.ok().body(productsFromBrands) : ResponseEntity.ok().body(productDBService.getAllProducts());
     }
 //
 //    @GetMapping("/min-price-only")
