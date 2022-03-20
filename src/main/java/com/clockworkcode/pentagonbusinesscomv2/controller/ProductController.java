@@ -8,6 +8,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -76,20 +77,40 @@ public class ProductController {
 
         return productsFromBrands.size()!=0 ? ResponseEntity.ok().body(productsFromBrands) : ResponseEntity.ok().body(productDBService.getAllProducts());
     }
-//
-//    @GetMapping("/min-price-only")
-//    public  ResponseEntity<List<Product>> getProductsAboveMinPrice(@RequestParam Integer minPrice){
-//
-//        return ResponseEntity.ok().body( productService.getAllProducts().stream().filter(product -> product.getPrice()>=minPrice).collect(Collectors.toList()) );
-//    }
-//
-//    @GetMapping("/min-max-prices")
-//    public  ResponseEntity<List<Product>> getProductsAboveMinPrice(@RequestParam Integer minPrice,@RequestParam Integer maxPrice) {
-//
-//        return ResponseEntity.ok().body( productService.getAllProducts().stream().filter(product -> product.getPrice()>=minPrice && product.getPrice()<=maxPrice).collect(Collectors.toList()) );
-//    }
-//
-//
+
+    @GetMapping("/get-min-max-price")
+    public  ResponseEntity<List<Integer>> getMinPrice(){
+
+        List<Integer> minMaxValuesList = new ArrayList<>();
+
+        minMaxValuesList.add(productDBService.getAllProducts().stream().min(Comparator.comparingInt(Product::getProductPrice)).get().getProductPrice());
+        minMaxValuesList.add(productDBService.getAllProducts().stream().max(Comparator.comparingInt(Product::getProductPrice)).get().getProductPrice());
+
+        System.out.println(minMaxValuesList);
+
+        return ResponseEntity.ok().body(minMaxValuesList);
+    }
+
+
+    @GetMapping("/min-price-only")
+    public  ResponseEntity<List<Product>> getProductsAboveMinPrice(@RequestParam Integer minPrice){
+
+        return ResponseEntity.ok().body( productDBService.getAllProducts().stream().filter(product -> product.getProductPrice()>=minPrice).collect(Collectors.toList()) );
+    }
+
+    @GetMapping("/max-price-only")
+    public  ResponseEntity<List<Product>> getProductsBelowMaxPrice(@RequestParam Integer maxPrice){
+
+        return ResponseEntity.ok().body( productDBService.getAllProducts().stream().filter(product -> product.getProductPrice()<=maxPrice).collect(Collectors.toList()) );
+    }
+
+    @GetMapping("/min-max-prices")
+    public  ResponseEntity<List<Product>> getProductsAboveMinPrice(@RequestParam Integer minPrice,@RequestParam Integer maxPrice) {
+
+        return ResponseEntity.ok().body( productDBService.getAllProducts().stream().filter(product -> product.getProductPrice()>=minPrice && product.getProductPrice()<=maxPrice).collect(Collectors.toList()) );
+    }
+
+
 //    @GetMapping("/price-descending")
 //    public List<Product> getProductsPriceDecreasing() {
 //

@@ -4,7 +4,7 @@
 
 import {useState} from "react";
 
-export default function SidebarComponent({products,setChangeProducts,brandsList}  ){
+export default function SidebarComponent({setChangeProducts,brandsList,minmaxPrice}  ){
 
     function handleCategoryClick(event){
         event.preventDefault();
@@ -168,11 +168,11 @@ export default function SidebarComponent({products,setChangeProducts,brandsList}
                         {/*    </div>*/}
                         {/*</div>*/}
                         <div className="input-group">
-                            <input className="form-control" placeholder="€0" type="number" min="0" max="10000"/>
+                            <input className="form-control" placeholder={"€"+minmaxPrice[0]} type="number" min="0" max={minmaxPrice[0]}/>
                             <div className="input-group-prepend">
                                 <span className="input-group-text">-</span>
                             </div>
-                            <input className="form-control" placeholder="€20,000" type="number" min="0" max="20000"/>
+                            <input className="form-control" placeholder={"€"+minmaxPrice[1]} type="number" min="0" max={minmaxPrice[1]}/>
                         </div>
 
 

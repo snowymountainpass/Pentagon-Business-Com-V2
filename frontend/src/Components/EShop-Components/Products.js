@@ -40,6 +40,15 @@ export default function Products(){
 
     )
 
+    const [minMaxPrice,setMinMaxPrice] = useState([]);
+
+    useEffect(
+        ()=>{
+            fetch("http://localhost:8080/e-shop/get-min-max-price")
+                .then(res => res.json())
+                .then(data => {setMinMaxPrice(data);console.log("Min Max Prices List: "+minMaxPrice)})
+        },[]
+    )
 
 
     return(
@@ -52,6 +61,7 @@ export default function Products(){
                         products = {products}
                         setChangeProducts = {setProducts}
                         brandsList = {brandsList}
+                        minmaxPrice = {minMaxPrice}
                     />
 
                     <main className="col-md-9">
