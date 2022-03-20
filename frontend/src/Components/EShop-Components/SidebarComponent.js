@@ -81,7 +81,26 @@ export default function SidebarComponent({setChangeProducts,brandsList,minmaxPri
         console.log("minMaxState is now: "+minMaxState);
         console.log("Min price is now: "+minMaxState.minPrice);
         console.log("Max price is now: "+minMaxState.maxPrice);
-        
+
+        if(minMaxState.minPrice || minMaxState.maxPrice){
+
+            const requestOptions = {
+                method: 'GET',
+                headers: {Accept: 'application/json', 'Content-Type': 'application/json'},
+            };
+
+            fetch( `http://localhost:8080/e-shop/min-max-prices/${minMaxState.minPrice}-${minMaxState.maxPrice}`, requestOptions)
+                .then(response => {
+                    return response.json();
+                })
+                .then(data => {
+                    setChangeProducts(data);
+                });
+
+
+        }
+
+
     }
 
     return(

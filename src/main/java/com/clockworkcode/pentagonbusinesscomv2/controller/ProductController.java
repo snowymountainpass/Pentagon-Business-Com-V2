@@ -110,6 +110,12 @@ public class ProductController {
 //        return ResponseEntity.ok().body( productDBService.getAllProducts().stream().filter(product -> product.getProductPrice()>=minMaxPrices.get(0) && product.getProductPrice()<=minMaxPrices.get(1)).collect(Collectors.toList()) );
 //    }
 
+    @GetMapping("/min-max-prices/{minPrice}-{maxPrice}")
+    public  ResponseEntity<List<Product>> getProductsInInterval(@PathVariable Integer minPrice,@PathVariable Integer maxPrice) {
+
+        return ResponseEntity.ok().body( productDBService.getAllProducts().stream().filter(product -> product.getProductPrice()>=minPrice && product.getProductPrice()<=maxPrice).collect(Collectors.toList()) );
+    }
+
 
 //    @GetMapping("/price-descending")
 //    public List<Product> getProductsPriceDecreasing() {
