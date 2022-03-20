@@ -4,7 +4,7 @@
 
 import {useState} from "react";
 
-export default function SidebarComponent({products,setChangeProducts}  ){
+export default function SidebarComponent({products,setChangeProducts,brandsList}  ){
 
     function handleCategoryClick(event){
         event.preventDefault();
@@ -28,7 +28,9 @@ export default function SidebarComponent({products,setChangeProducts}  ){
 
     }
 
-    const brandsList = ["Alcatel-Lucent", "Konftel"];
+
+    const brandsNamesList = brandsList;
+
     const [checked, setChecked] = useState([]);
 
     const handleCheck = (event) => {
@@ -40,7 +42,7 @@ export default function SidebarComponent({products,setChangeProducts}  ){
         }
         setChecked(updatedList);
 
-        console.log(updatedList);
+        // console.log(updatedList);
 
         handleBrandClick(updatedList);
 
@@ -109,7 +111,7 @@ export default function SidebarComponent({products,setChangeProducts}  ){
                 <div className="filter-content collapse show" id="collapse_2">
                     <div className="card-body">
 
-                        {brandsList.map((item, index) => (
+                        {brandsNamesList.map((item, index) => (
                             // <div key={index}>
                             //
                             //     <input value={item} type="checkbox" onChange={handleCheck} />

@@ -24,7 +24,7 @@ public class ProductController {
 
 //        productService.getAllProducts().forEach(product -> System.out.println(product.getProductName()));
 
-        List<Product> productList = productDBService.getAllProducts();
+
 
         return productDBService.getAllProducts();
     }
@@ -61,6 +61,12 @@ public class ProductController {
 //        return ResponseEntity.ok().body( productDBService.getAllProductsByCategory(productCategory) );
         return ResponseEntity.ok().body( productDBService.getProductsByProductCategoryName(productCategory) );
 
+    }
+
+    @GetMapping("/unique-brands")
+    public ResponseEntity<List<String>> getAllBrands(){
+
+        return ResponseEntity.ok().body( productDBService.getAllProductBrands());
     }
 
     @PostMapping("/brands")

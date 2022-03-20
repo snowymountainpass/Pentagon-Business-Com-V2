@@ -48,6 +48,7 @@ public class ProductConfig {
 
             ProductBrand productBrand1 = new ProductBrand("Alcatel-Lucent","https://www.al-enterprise.com/");
             ProductBrand productBrand2 = new ProductBrand("Konftel","https://www.konftel.com/");
+            ProductBrand productBrand3 = new ProductBrand("Cisco","https://www.cisco.com/");
 
 //            productBrandRepository.saveAll(Arrays.asList(productBrand1,productBrand2));
 
@@ -222,7 +223,7 @@ public class ProductConfig {
             productCategory5.addProducts(Stream.of(product8,product9,product10).collect(Collectors.toSet()));
             productCategory6.addProducts(Stream.of(product11,product12).collect(Collectors.toSet()));
 
-            productBrandRepository.saveAll(Arrays.asList(productBrand1,productBrand2));
+            productBrandRepository.saveAll(Arrays.asList(productBrand1,productBrand2,productBrand3));
 
             productBrand1.addProducts(Stream.of(product1,product2,product5,product6,product7,product8,product9,product10).collect(Collectors.toSet()));
             productBrand2.addProducts(Stream.of(product3,product4,product11,product12).collect(Collectors.toSet()));

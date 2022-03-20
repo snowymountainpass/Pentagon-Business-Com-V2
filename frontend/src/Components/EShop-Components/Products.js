@@ -12,13 +12,6 @@ export default function Products(){
     const [query, setQuery] = useState('');
 
     let url = "http://localhost:8080/e-shop";
-    // useEffect(
-    //     ()=>{
-    //         fetch(url)
-    //             .then(res => res.json())
-    //             .then(data => setProducts(data))
-    //     },[] // [] => runs every time the url changes
-    // ) WORKS DON'T DELETE
 
     useEffect(
         ()=>{
@@ -27,11 +20,26 @@ export default function Products(){
                 .then(res => res.json())
                 .then(data => setProducts(data))
 
-        },[] // [] => runs every time the url changes
+        },[]
     )
 
     console.log("Products size: "+products.length);
     console.log("Products objects: "+products);
+
+
+    const [brandsList, setBrandsList] = useState([]);
+
+    useEffect(
+
+        ()=>{
+            fetch("http://localhost:8080/e-shop/unique-brands")
+                .then( res => res.json())
+                .then( data => {setBrandsList(data);console.log("Brands List: "+brandsList)} )
+        },[]
+
+    )
+
+
 
     return(
 
@@ -42,6 +50,7 @@ export default function Products(){
                     <SidebarComponent
                         products = {products}
                         setChangeProducts = {setProducts}
+                        brandsList = {brandsList}
                     />
 
                     <main className="col-md-9">

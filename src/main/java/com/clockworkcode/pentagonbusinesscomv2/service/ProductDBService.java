@@ -10,7 +10,11 @@ import com.clockworkcode.pentagonbusinesscomv2.repository.ProductRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
+import java.util.stream.Collectors;
 
 @Service
 public class ProductDBService {
@@ -26,6 +30,15 @@ public class ProductDBService {
         this.productBrandRepository = productBrandRepository;
         this.productCategoryRepository = productCategoryRepository;
         this.productInventoryRepository = productInventoryRepository;
+    }
+
+    public List<String> getAllProductBrands(){
+
+        List<String> uniqueBrandNames = new ArrayList<>();
+
+        productBrandRepository.findAll().forEach(productBrand -> uniqueBrandNames.add( productBrand.getProductBrandName() ) );
+
+        return uniqueBrandNames.stream().distinct().collect(Collectors.toList());
     }
 
     public List<Product> getAllProducts(){return productRepository.findAll();}
