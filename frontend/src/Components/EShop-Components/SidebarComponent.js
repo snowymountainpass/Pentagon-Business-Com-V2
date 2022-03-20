@@ -65,6 +65,24 @@ export default function SidebarComponent({setChangeProducts,brandsList,minmaxPri
 
     }
 
+    // const [minValue,setMinValue] = useState(minmaxPrice[0]);
+    // const [maxValue,setMaxValue] = useState(minmaxPrice[1]);
+
+    const [minMaxState,setMinMaxState] = useState({
+        minPrice:minmaxPrice[0],
+        maxPrice:minmaxPrice[1],
+    })
+
+    const handlePriceChange = e => {
+        setMinMaxState(
+            {...minMaxState,[e.target.name]:e.target.value,
+            })
+
+        console.log("minMaxState is now: "+minMaxState);
+        console.log("Min price is now: "+minMaxState.minPrice);
+        console.log("Max price is now: "+minMaxState.maxPrice);
+        
+    }
 
     return(
 
@@ -168,11 +186,28 @@ export default function SidebarComponent({setChangeProducts,brandsList,minmaxPri
                         {/*    </div>*/}
                         {/*</div>*/}
                         <div className="input-group">
-                            <input className="form-control" placeholder={"€"+minmaxPrice[0]} type="number" min="0" max={minmaxPrice[0]}/>
+                            <input className="form-control"
+                                   placeholder={"€"+minmaxPrice[0]}
+                                   type="number" min={minmaxPrice[0]}
+                                   max={minmaxPrice[1]}
+                                   value={minMaxState.minPrice}
+                                   name="minPrice"
+                                   onChange={handlePriceChange}
+                            />
+
                             <div className="input-group-prepend">
                                 <span className="input-group-text">-</span>
                             </div>
-                            <input className="form-control" placeholder={"€"+minmaxPrice[1]} type="number" min="0" max={minmaxPrice[1]}/>
+
+                            <input className="form-control"
+                                   placeholder={"€"+minmaxPrice[1]}
+                                   type="number" min={minmaxPrice[0]}
+                                   max={minmaxPrice[1]}
+                                   value={minMaxState.maxPrice}
+                                   name="maxPrice"
+                                   onChange={handlePriceChange}
+                            />
+
                         </div>
 
 

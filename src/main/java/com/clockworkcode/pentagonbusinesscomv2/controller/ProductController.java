@@ -92,23 +92,23 @@ public class ProductController {
     }
 
 
-    @GetMapping("/min-price-only")
-    public  ResponseEntity<List<Product>> getProductsAboveMinPrice(@RequestParam Integer minPrice){
+    @GetMapping("/min-price/{minPrice}")
+    public  ResponseEntity<List<Product>> getProductsAboveMinPrice(@PathVariable Integer minPrice){
 
         return ResponseEntity.ok().body( productDBService.getAllProducts().stream().filter(product -> product.getProductPrice()>=minPrice).collect(Collectors.toList()) );
     }
 
-    @GetMapping("/max-price-only")
-    public  ResponseEntity<List<Product>> getProductsBelowMaxPrice(@RequestParam Integer maxPrice){
+    @GetMapping("/max-price/{maxPrice}")
+    public  ResponseEntity<List<Product>> getProductsBelowMaxPrice(@PathVariable Integer maxPrice){
 
         return ResponseEntity.ok().body( productDBService.getAllProducts().stream().filter(product -> product.getProductPrice()<=maxPrice).collect(Collectors.toList()) );
     }
 
-    @GetMapping("/min-max-prices")
-    public  ResponseEntity<List<Product>> getProductsAboveMinPrice(@RequestParam Integer minPrice,@RequestParam Integer maxPrice) {
-
-        return ResponseEntity.ok().body( productDBService.getAllProducts().stream().filter(product -> product.getProductPrice()>=minPrice && product.getProductPrice()<=maxPrice).collect(Collectors.toList()) );
-    }
+//    @GetMapping("/min-max-prices")
+//    public  ResponseEntity<List<Product>> getProductsInInterval(@RequestBody List<Integer> minMaxPrices) {
+//
+//        return ResponseEntity.ok().body( productDBService.getAllProducts().stream().filter(product -> product.getProductPrice()>=minMaxPrices.get(0) && product.getProductPrice()<=minMaxPrices.get(1)).collect(Collectors.toList()) );
+//    }
 
 
 //    @GetMapping("/price-descending")
