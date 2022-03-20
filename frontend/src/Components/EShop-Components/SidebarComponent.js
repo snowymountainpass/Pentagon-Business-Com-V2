@@ -97,6 +97,8 @@ export default function SidebarComponent({setChangeProducts,brandsList,minmaxPri
                     setChangeProducts(data);
                 });
 
+                //TODO DE INCERCAT (21.03.2022) O VARIANTA CA LA BRANDS LIST => SI ACOLO TRIMITEAM A LISTA
+                //TODO AICI AR TREBUI FORMATA O LISTA DIN CELE DOUA VALORI (MIN,MAX) SI DUPA TRIMISA IN BACKEND (@RequestBody)
 
         }
 
