@@ -88,9 +88,9 @@ public class ProductController {
         minMaxValuesList.add(productDBService.getAllProducts().stream().min(Comparator.comparingInt(Product::getProductPrice)).get().getProductPrice());
         minMaxValuesList.add(productDBService.getAllProducts().stream().max(Comparator.comparingInt(Product::getProductPrice)).get().getProductPrice());
 
-//        System.out.println(minMaxValuesList);
 
-        return ResponseEntity.ok().body(minMaxValuesList);
+
+        return ResponseEntity.ok().body( minMaxValuesList.stream().distinct().collect(Collectors.toList()) );
     }
 
 

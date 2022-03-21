@@ -66,6 +66,11 @@ export default function SidebarComponent({setChangeProducts,brandsList,minmaxPri
     }
 
 
+
+    // console.log("Min DEFAULT price: "+minmaxPrice[0]);
+    // console.log("Max DEFAULT price: "+minmaxPrice[1]);
+    // console.log("DEFAULT: "+minmaxPrice);
+
     const [minMaxState,setMinMaxState] = useState({
         // minPrice:minmaxPrice[0],
         // maxPrice:minmaxPrice[1],
@@ -75,13 +80,10 @@ export default function SidebarComponent({setChangeProducts,brandsList,minmaxPri
         maxDefault:minmaxPrice[1],
     })
 
-    // console.log("Min price is now: "+minMaxState.minPrice);
-    // console.log("Max price is now: "+minMaxState.maxPrice); // aici vedem (corect) pretul curent
-
 
     const handlePriceChange = e => {
 
-        // e.preventDefault();
+        e.preventDefault();
 
         setMinMaxState(
             {...minMaxState,[e.target.name]:e.target.value,}
@@ -89,10 +91,12 @@ export default function SidebarComponent({setChangeProducts,brandsList,minmaxPri
 
     }
 
+
+
     function logCurrentValue(event){
         event.preventDefault();
 
-        console.log("Current value is: "+event.target.value);
+        // console.log("Current value is: "+event.target.value);
 
     }
 
@@ -113,7 +117,7 @@ export default function SidebarComponent({setChangeProducts,brandsList,minmaxPri
 
         if(minMaxState.minPrice==null && minMaxState.maxPrice==null ){
 
-            fetch(`http://localhost:8080/e-shop/min-max-prices/${minMaxState.minDefault}-${minMaxState.maxDefault}`,requestOptions)
+            fetch(`http://localhost:8080/e-shop/min-max-prices/${minmaxPrice[0]}-${minmaxPrice[1]}`,requestOptions)
                 .then(response => {
                     return response.json();
                 })
@@ -134,24 +138,13 @@ export default function SidebarComponent({setChangeProducts,brandsList,minmaxPri
 
         }
 
-
-        // fetch(`http://localhost:8080/e-shop/min-max-prices/${minMaxState.minPrice}-${minMaxState.maxPrice}`,requestOptions)
-        //     .then(response => {
-        //         return response.json();
-        //     })
-        //     .then(data => {
-        //         setChangeProducts(data);
-        //     });
-
-
     }
 
     useEffect(
         ()=>{
             passPriceValues();
-        },[minMaxState]
+        },[minMaxState.minPrice,minMaxState.maxPrice]
     )
-
 
     return(
 
