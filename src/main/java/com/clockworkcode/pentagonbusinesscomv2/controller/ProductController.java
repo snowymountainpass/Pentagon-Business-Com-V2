@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
+import java.util.Objects;
 import java.util.stream.Collectors;
 
 @RestController
@@ -20,7 +21,7 @@ public class ProductController {
     @Autowired
     ProductDBService productDBService;
 
-    List<Integer> minMaxValuesList = new ArrayList<>();
+//    List<Integer> minMaxValuesList = new ArrayList<>();
 
     @GetMapping()
     public List<Product> getAllProducts() {
@@ -83,7 +84,7 @@ public class ProductController {
     @GetMapping("/get-min-max-price")
     public  ResponseEntity<List<Integer>> getMinPrice(){
 
-//        List<Integer> minMaxValuesList = new ArrayList<>();
+        List<Integer> minMaxValuesList = new ArrayList<>();
 
         minMaxValuesList.add(productDBService.getAllProducts().stream().min(Comparator.comparingInt(Product::getProductPrice)).get().getProductPrice());
         minMaxValuesList.add(productDBService.getAllProducts().stream().max(Comparator.comparingInt(Product::getProductPrice)).get().getProductPrice());
@@ -119,11 +120,24 @@ public class ProductController {
     @GetMapping("/min-max-prices/{minVal}-{maxVal}")
     public  ResponseEntity<List<Product>> getProductsInInterval(@PathVariable String minVal,@PathVariable String maxVal) {
 
-        System.out.println("minval:"+minVal);
-        System.out.println("maxval:"+maxVal);
+        List<Integer> minMaxValuesList = new ArrayList<>();
 
-        Integer minPrice = minMaxValuesList.get(0);
-        Integer maxPrice = minMaxValuesList.get(1);
+        minMaxValuesList.add(productDBService.getAllProducts().stream().min(Comparator.comparingInt(Product::getProductPrice)).get().getProductPrice());
+        minMaxValuesList.add(productDBService.getAllProducts().stream().max(Comparator.comparingInt(Product::getProductPrice)).get().getProductPrice());
+
+        Integer minPrice;
+        Integer maxPrice;
+
+        if(Objects.equals(maxVal, "") & Objects.equals(maxVal, "")){
+             minPrice = minMaxValuesList.get(0);
+             maxPrice = minMaxValuesList.get(1);
+        }
+        else {
+             minPrice = Integer.parseInt(minVal);
+             maxPrice = Integer.parseInt(maxVal);
+        }
+
+        System.out.println("minPrice: "+minPrice+" - "+"maxPrice: "+maxPrice);
 
         return ResponseEntity.ok().body( productDBService.getAllProducts().stream().filter(product -> product.getProductPrice()>=minPrice && product.getProductPrice()<=maxPrice).collect(Collectors.toList()) );
     }

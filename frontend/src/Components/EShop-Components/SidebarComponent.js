@@ -67,19 +67,21 @@ export default function SidebarComponent({setChangeProducts,brandsList,minmaxPri
 
 
 
-    // console.log("Min DEFAULT price: "+minmaxPrice[0]);
-    // console.log("Max DEFAULT price: "+minmaxPrice[1]);
-    // console.log("DEFAULT: "+minmaxPrice);
 
     const [minMaxState,setMinMaxState] = useState({
         // minPrice:minmaxPrice[0],
         // maxPrice:minmaxPrice[1],
         minPrice:"",
         maxPrice:"",
-        minDefault:minmaxPrice[0],
-        maxDefault:minmaxPrice[1],
+        // minDefault:minmaxPrice[0],
+        // maxDefault:minmaxPrice[1],
     })
 
+    // console.log("Min DEFAULT price: "+minMaxState.minDefault);
+    // console.log("Max DEFAULT price: "+minMaxState.maxDefault);
+    // console.log("-----------------------------------");
+    // console.log("Min DEFAULT price: "+minmaxPrice[0]);
+    // console.log("Max DEFAULT price: "+minmaxPrice[1]);
 
     const handlePriceChange = e => {
 
@@ -104,10 +106,12 @@ export default function SidebarComponent({setChangeProducts,brandsList,minmaxPri
 
         console.log("Min price: "+minMaxState.minPrice);
         console.log("Max price: "+minMaxState.maxPrice);
-        console.log("Min DEFAULT price: "+minMaxState.minDefault);
-        console.log("Max DEFAULT price: "+minMaxState.maxDefault);
+        // console.log("Min DEFAULT price: "+minMaxState.minDefault);
+        // console.log("Max DEFAULT price: "+minMaxState.maxDefault);
 
-
+        console.log("-----------------------------------");
+        console.log("Min DEFAULT price: "+minmaxPrice[0]);
+        console.log("Max DEFAULT price: "+minmaxPrice[1]);
 
         const requestOptions = {
             method: 'GET',
@@ -143,7 +147,7 @@ export default function SidebarComponent({setChangeProducts,brandsList,minmaxPri
     useEffect(
         ()=>{
             passPriceValues();
-        },[minMaxState.minPrice,minMaxState.maxPrice]
+        },[minMaxState]
     )
 
     return(
