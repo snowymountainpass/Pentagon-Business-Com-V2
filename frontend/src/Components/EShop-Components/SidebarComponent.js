@@ -67,8 +67,10 @@ export default function SidebarComponent({setChangeProducts,brandsList,minmaxPri
 
 
     const [minMaxState,setMinMaxState] = useState({
-        minPrice:minmaxPrice[0],
-        maxPrice:minmaxPrice[1],
+        // minPrice:minmaxPrice[0],
+        // maxPrice:minmaxPrice[1],
+        minPrice:"",
+        maxPrice:"",
     })
 
     // console.log("Min price is now: "+minMaxState.minPrice);
@@ -77,13 +79,11 @@ export default function SidebarComponent({setChangeProducts,brandsList,minmaxPri
 
     const handlePriceChange = e => {
 
-        e.preventDefault();
+        // e.preventDefault();
 
         setMinMaxState(
             {...minMaxState,[e.target.name]:e.target.value,}
         )
-
-
 
     }
 
@@ -98,6 +98,14 @@ export default function SidebarComponent({setChangeProducts,brandsList,minmaxPri
 
         console.log("Min price: "+minMaxState.minPrice);
         console.log("Max price: "+minMaxState.maxPrice);
+
+
+        const requestOptions = {
+            method: 'GET',
+            headers: {Accept: 'application/json', 'Content-Type': 'application/json'},
+        };
+
+        
 
     }
 
@@ -204,8 +212,8 @@ export default function SidebarComponent({setChangeProducts,brandsList,minmaxPri
                                    placeholder={"€"+minmaxPrice[0]}
                                    type="number" min={minmaxPrice[0]}
                                    max={minmaxPrice[1]}
-                                   // value={minMaxState.minPrice}
                                    value={minMaxState.minPrice}
+                                   // value={minmaxPrice[0]}
                                    name="minPrice"
                                    // onChange={handlePriceChange}
                                    onChange={ event => {handlePriceChange(event);logCurrentValue(event);passPriceValues(event)}
@@ -220,8 +228,8 @@ export default function SidebarComponent({setChangeProducts,brandsList,minmaxPri
                                    placeholder={"€"+minmaxPrice[1]}
                                    type="number" min={minmaxPrice[0]}
                                    max={minmaxPrice[1]}
-                                   // value={minMaxState.maxPrice}
                                    value={minMaxState.maxPrice}
+                                   // value={minmaxPrice[1]}
                                    name="maxPrice"
                                    // onChange={handlePriceChange}
                                    onChange={ event => {handlePriceChange(event);logCurrentValue(event)}
