@@ -25,7 +25,7 @@ export default function Products(){
     )
 
     console.log("Products size: "+products.length);
-    console.log("Products objects: "+products);
+    // console.log("Products objects: "+products);
 
 
     const [brandsList, setBrandsList] = useState([]);
@@ -35,7 +35,7 @@ export default function Products(){
         ()=>{
             fetch("http://localhost:8080/e-shop/unique-brands")
                 .then( res => res.json())
-                .then( data => {setBrandsList(data);console.log("Brands List: "+brandsList)} )
+                .then( data => {setBrandsList(data);} )
         },[]
 
     )
@@ -46,7 +46,7 @@ export default function Products(){
         ()=>{
             fetch("http://localhost:8080/e-shop/get-min-max-price")
                 .then(res => res.json())
-                .then(data => {setMinMaxPrice(data);console.log("Min Max Prices List: "+minMaxPrice)})
+                .then(data => {setMinMaxPrice(data)})
         },[]
     )
 

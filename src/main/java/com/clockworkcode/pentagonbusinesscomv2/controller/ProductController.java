@@ -20,6 +20,8 @@ public class ProductController {
     @Autowired
     ProductDBService productDBService;
 
+    List<Integer> minMaxValuesList = new ArrayList<>();
+
     @GetMapping()
     public List<Product> getAllProducts() {
 
@@ -81,25 +83,29 @@ public class ProductController {
     @GetMapping("/get-min-max-price")
     public  ResponseEntity<List<Integer>> getMinPrice(){
 
-        List<Integer> minMaxValuesList = new ArrayList<>();
+//        List<Integer> minMaxValuesList = new ArrayList<>();
 
         minMaxValuesList.add(productDBService.getAllProducts().stream().min(Comparator.comparingInt(Product::getProductPrice)).get().getProductPrice());
         minMaxValuesList.add(productDBService.getAllProducts().stream().max(Comparator.comparingInt(Product::getProductPrice)).get().getProductPrice());
 
-        System.out.println(minMaxValuesList);
+//        System.out.println(minMaxValuesList);
 
         return ResponseEntity.ok().body(minMaxValuesList);
     }
 
 
     @GetMapping("/min-price/{minPrice}")
-    public  ResponseEntity<List<Product>> getProductsAboveMinPrice(@PathVariable Integer minPrice){
+    public  ResponseEntity<List<Product>> getProductsAboveMinPrice(@PathVariable(name = "minPrice") Integer minPrice){
+
+        System.out.println("Current minPrice: "+minPrice);
 
         return ResponseEntity.ok().body( productDBService.getAllProducts().stream().filter(product -> product.getProductPrice()>=minPrice).collect(Collectors.toList()) );
     }
 
     @GetMapping("/max-price/{maxPrice}")
-    public  ResponseEntity<List<Product>> getProductsBelowMaxPrice(@PathVariable Integer maxPrice){
+    public  ResponseEntity<List<Product>> getProductsBelowMaxPrice(@PathVariable(name = "maxPrice") Integer maxPrice){
+
+        System.out.println("Current maxPrice: "+maxPrice);
 
         return ResponseEntity.ok().body( productDBService.getAllProducts().stream().filter(product -> product.getProductPrice()<=maxPrice).collect(Collectors.toList()) );
     }
@@ -110,8 +116,14 @@ public class ProductController {
 //        return ResponseEntity.ok().body( productDBService.getAllProducts().stream().filter(product -> product.getProductPrice()>=minMaxPrices.get(0) && product.getProductPrice()<=minMaxPrices.get(1)).collect(Collectors.toList()) );
 //    }
 
-    @GetMapping("/min-max-prices/{minPrice}-{maxPrice}")
-    public  ResponseEntity<List<Product>> getProductsInInterval(@PathVariable Integer minPrice,@PathVariable Integer maxPrice) {
+    @GetMapping("/min-max-prices/{minVal}-{maxVal}")
+    public  ResponseEntity<List<Product>> getProductsInInterval(@PathVariable String minVal,@PathVariable String maxVal) {
+
+        System.out.println("minval:"+minVal);
+        System.out.println("maxval:"+maxVal);
+
+        Integer minPrice = minMaxValuesList.get(0);
+        Integer maxPrice = minMaxValuesList.get(1);
 
         return ResponseEntity.ok().body( productDBService.getAllProducts().stream().filter(product -> product.getProductPrice()>=minPrice && product.getProductPrice()<=maxPrice).collect(Collectors.toList()) );
     }

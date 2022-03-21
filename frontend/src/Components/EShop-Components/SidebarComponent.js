@@ -2,14 +2,14 @@
 // const [searchParams, setSearchParams] = useSearchParams();
 
 
-import {useState} from "react";
+import {useEffect, useState} from "react";
 
 export default function SidebarComponent({setChangeProducts,brandsList,minmaxPrice}  ){
 
     function handleCategoryClick(event){
         event.preventDefault();
         let productCategory = event.target.id;
-        console.log(productCategory);
+        // console.log(productCategory);
 
         const requestOptions = {
             method: 'GET',
@@ -65,45 +65,41 @@ export default function SidebarComponent({setChangeProducts,brandsList,minmaxPri
 
     }
 
-    // const [minValue,setMinValue] = useState(minmaxPrice[0]);
-    // const [maxValue,setMaxValue] = useState(minmaxPrice[1]);
 
     const [minMaxState,setMinMaxState] = useState({
         minPrice:minmaxPrice[0],
         maxPrice:minmaxPrice[1],
     })
 
+    console.log("Min price is now: "+minMaxState.minPrice);
+    console.log("Max price is now: "+minMaxState.maxPrice); // aici vedem (corect) pretul curent
+
+    // useEffect(
+    //     ()=>{
+    //
+    //     },[minMaxState]
+    // )
+
     const handlePriceChange = e => {
+
+        e.preventDefault();
+
         setMinMaxState(
-            {...minMaxState,[e.target.name]:e.target.value,
-            })
+            {...minMaxState,[e.target.name]:e.target.value,}
+        )
 
-        console.log("minMaxState is now: "+minMaxState);
-        console.log("Min price is now: "+minMaxState.minPrice);
-        console.log("Max price is now: "+minMaxState.maxPrice);
-
-        if(minMaxState.minPrice || minMaxState.maxPrice){
-
-            const requestOptions = {
-                method: 'GET',
-                headers: {Accept: 'application/json', 'Content-Type': 'application/json'},
-            };
-
-            fetch( `http://localhost:8080/e-shop/min-max-prices/${minMaxState.minPrice}-${minMaxState.maxPrice}`, requestOptions)
-                .then(response => {
-                    return response.json();
-                })
-                .then(data => {
-                    setChangeProducts(data);
-                });
-
-                //TODO DE INCERCAT (21.03.2022) O VARIANTA CA LA BRANDS LIST => SI ACOLO TRIMITEAM A LISTA
-                //TODO AICI AR TREBUI FORMATA O LISTA DIN CELE DOUA VALORI (MIN,MAX) SI DUPA TRIMISA IN BACKEND (@RequestBody)
-
-        }
-
+        // console.log("Min price (handlepricechange): "+minMaxState.minPrice);
+        // console.log("Max price (handlepricechange): "+minMaxState.maxPrice);
 
     }
+
+    function logCurrentValue(event){
+        event.preventDefault();
+
+        console.log("Current value is: "+event.target.value);
+
+    }
+
 
     return(
 
@@ -195,25 +191,18 @@ export default function SidebarComponent({setChangeProducts,brandsList,minmaxPri
                 </header>
                 <div className="filter-content collapse show" id="collapse_3">
                     <div className="card-body">
-                        {/*<input type="range" className="custom-range" min="0" max="100000" name=""/>*/}
-                        {/*<div className="form-row">*/}
-                        {/*    <div className="form-group col-md-6 ">*/}
-                        {/*        <label>Min</label>*/}
-                        {/*        <input className="form-control" placeholder="€0" type="number" min="0"/>*/}
-                        {/*    </div>*/}
-                        {/*    <div className="form-group text-right col-md-6">*/}
-                        {/*        <label>Max</label>*/}
-                        {/*        <input className="form-control" placeholder="€1,0000" type="number" min="0"/>*/}
-                        {/*    </div>*/}
-                        {/*</div>*/}
+
                         <div className="input-group">
                             <input className="form-control"
                                    placeholder={"€"+minmaxPrice[0]}
                                    type="number" min={minmaxPrice[0]}
                                    max={minmaxPrice[1]}
+                                   // value={minMaxState.minPrice}
                                    value={minMaxState.minPrice}
                                    name="minPrice"
-                                   onChange={handlePriceChange}
+                                   // onChange={handlePriceChange}
+                                   onChange={ event => {handlePriceChange(event);logCurrentValue(event)}
+                                   }
                             />
 
                             <div className="input-group-prepend">
@@ -224,9 +213,12 @@ export default function SidebarComponent({setChangeProducts,brandsList,minmaxPri
                                    placeholder={"€"+minmaxPrice[1]}
                                    type="number" min={minmaxPrice[0]}
                                    max={minmaxPrice[1]}
+                                   // value={minMaxState.maxPrice}
                                    value={minMaxState.maxPrice}
                                    name="maxPrice"
-                                   onChange={handlePriceChange}
+                                   // onChange={handlePriceChange}
+                                   onChange={ event => {handlePriceChange(event);logCurrentValue(event)}
+                                   }
                             />
 
                         </div>

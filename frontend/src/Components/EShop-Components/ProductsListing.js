@@ -1,7 +1,7 @@
 import ProductCard from "./ProductCard";
 
 export default function ProductsListing(props){
-    console.log("ProductsListing: " + props.products)
+    // console.log("ProductsListing: " + props.products)
     return(
         <>
 
