@@ -71,14 +71,9 @@ export default function SidebarComponent({setChangeProducts,brandsList,minmaxPri
         maxPrice:minmaxPrice[1],
     })
 
-    console.log("Min price is now: "+minMaxState.minPrice);
-    console.log("Max price is now: "+minMaxState.maxPrice); // aici vedem (corect) pretul curent
+    // console.log("Min price is now: "+minMaxState.minPrice);
+    // console.log("Max price is now: "+minMaxState.maxPrice); // aici vedem (corect) pretul curent
 
-    // useEffect(
-    //     ()=>{
-    //
-    //     },[minMaxState]
-    // )
 
     const handlePriceChange = e => {
 
@@ -88,8 +83,7 @@ export default function SidebarComponent({setChangeProducts,brandsList,minmaxPri
             {...minMaxState,[e.target.name]:e.target.value,}
         )
 
-        // console.log("Min price (handlepricechange): "+minMaxState.minPrice);
-        // console.log("Max price (handlepricechange): "+minMaxState.maxPrice);
+
 
     }
 
@@ -99,6 +93,19 @@ export default function SidebarComponent({setChangeProducts,brandsList,minmaxPri
         console.log("Current value is: "+event.target.value);
 
     }
+
+    function passPriceValues(){
+
+        console.log("Min price: "+minMaxState.minPrice);
+        console.log("Max price: "+minMaxState.maxPrice);
+
+    }
+
+    useEffect(
+        ()=>{
+            passPriceValues();
+        },[minMaxState]
+    )
 
 
     return(
@@ -201,7 +208,7 @@ export default function SidebarComponent({setChangeProducts,brandsList,minmaxPri
                                    value={minMaxState.minPrice}
                                    name="minPrice"
                                    // onChange={handlePriceChange}
-                                   onChange={ event => {handlePriceChange(event);logCurrentValue(event)}
+                                   onChange={ event => {handlePriceChange(event);logCurrentValue(event);passPriceValues(event)}
                                    }
                             />
 
