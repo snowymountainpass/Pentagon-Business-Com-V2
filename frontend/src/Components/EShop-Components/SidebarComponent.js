@@ -71,6 +71,8 @@ export default function SidebarComponent({setChangeProducts,brandsList,minmaxPri
         // maxPrice:minmaxPrice[1],
         minPrice:"",
         maxPrice:"",
+        minDefault:minmaxPrice[0],
+        maxDefault:minmaxPrice[1],
     })
 
     // console.log("Min price is now: "+minMaxState.minPrice);
@@ -98,6 +100,9 @@ export default function SidebarComponent({setChangeProducts,brandsList,minmaxPri
 
         console.log("Min price: "+minMaxState.minPrice);
         console.log("Max price: "+minMaxState.maxPrice);
+        console.log("Min DEFAULT price: "+minMaxState.minDefault);
+        console.log("Max DEFAULT price: "+minMaxState.maxDefault);
+
 
 
         const requestOptions = {
@@ -105,7 +110,39 @@ export default function SidebarComponent({setChangeProducts,brandsList,minmaxPri
             headers: {Accept: 'application/json', 'Content-Type': 'application/json'},
         };
 
-        
+
+        if(minMaxState.minPrice==null && minMaxState.maxPrice==null ){
+
+            fetch(`http://localhost:8080/e-shop/min-max-prices/${minMaxState.minDefault}-${minMaxState.maxDefault}`,requestOptions)
+                .then(response => {
+                    return response.json();
+                })
+                .then(data => {
+                    setChangeProducts(data);
+                });
+
+        }
+        else if( minMaxState.minPrice!==null && minMaxState.maxPrice!==null ){
+
+            fetch(`http://localhost:8080/e-shop/min-max-prices/${minMaxState.minPrice}-${minMaxState.maxPrice}`,requestOptions)
+                .then(response => {
+                    return response.json();
+                })
+                .then(data => {
+                    setChangeProducts(data);
+                });
+
+        }
+
+
+        // fetch(`http://localhost:8080/e-shop/min-max-prices/${minMaxState.minPrice}-${minMaxState.maxPrice}`,requestOptions)
+        //     .then(response => {
+        //         return response.json();
+        //     })
+        //     .then(data => {
+        //         setChangeProducts(data);
+        //     });
+
 
     }
 
