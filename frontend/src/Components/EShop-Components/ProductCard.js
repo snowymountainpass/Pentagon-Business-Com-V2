@@ -41,8 +41,8 @@ export default function ProductCard(props){
                 <aside className="col-sm-3">
                     <div className="info-aside">
                         <div className="price-wrap">
-                            <span className="price-new h5"> {`€${props.product.productPrice-20}`} </span>
-                            <del className="price-old"> {`€${props.product.productPrice}`} </del>
+                            <span className="price-new h5"> {`€${props.product.productPrice}`} </span>
+                            <del className="price-old"> {`€${props.product.productPrice+20}`} </del>
 
 
                         </div>
