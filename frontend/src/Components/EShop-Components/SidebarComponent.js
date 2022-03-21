@@ -277,35 +277,6 @@ export default function SidebarComponent({setChangeProducts,brandsList,minmaxPri
                 </div>
             </article>
 
-            {/*<article className="filter-group">*/}
-            {/*    <header className="card-header">*/}
-            {/*        <a href="#" data-toggle="collapse" data-target="#collapse_4" aria-expanded="true" className="">*/}
-            {/*            <i className="icon-control fa fa-chevron-down"></i>*/}
-            {/*            <h6 className="title">Sizes </h6>*/}
-            {/*        </a>*/}
-            {/*    </header>*/}
-            {/*    <div className="filter-content collapse show" id="collapse_4">*/}
-            {/*        <div className="card-body">*/}
-            {/*            <label className="checkbox-btn">*/}
-            {/*                <input type="checkbox"/>*/}
-            {/*                <span className="btn btn-light"> XS </span>*/}
-            {/*            </label>*/}
-            {/*            <label className="checkbox-btn">*/}
-            {/*                <input type="checkbox"/>*/}
-            {/*                <span className="btn btn-light"> SM </span>*/}
-            {/*            </label>*/}
-            {/*            <label className="checkbox-btn">*/}
-            {/*                <input type="checkbox"/>*/}
-            {/*                <span className="btn btn-light"> LG </span>*/}
-            {/*            </label>*/}
-            {/*            <label className="checkbox-btn">*/}
-            {/*                <input type="checkbox"/>*/}
-            {/*                <span className="btn btn-light"> XXL </span>*/}
-            {/*            </label>*/}
-            {/*        </div>*/}
-            {/*    </div>*/}
-            {/*</article>*/}
-
             <article className="filter-group">
                 <header className="card-header">
                     <a  data-toggle="collapse" data-target="#collapse_5" aria-expanded="false" className="">
@@ -315,10 +286,7 @@ export default function SidebarComponent({setChangeProducts,brandsList,minmaxPri
                 </header>
                 <div className="filter-content collapse in" id="collapse_5">
                     <div className="card-body">
-                        {/*<label className="custom-control custom-radio">*/}
-                        {/*    <input type="radio" name="myfilter_radio" checked="" className="custom-control-input"/>*/}
-                        {/*    <div className="custom-control-label">Any condition</div>*/}
-                        {/*</label>*/}
+
                         <label className="custom-control custom-radio">
                             <input type="radio" name="myfilter_radio" className="custom-control-input"/>
                             <div className="custom-control-label">In stock</div>
@@ -327,10 +295,10 @@ export default function SidebarComponent({setChangeProducts,brandsList,minmaxPri
                             <input type="radio" name="myfilter_radio" className="custom-control-input"/>
                             <div className="custom-control-label">14 Days</div>
                         </label>
-                        {/*<label className="custom-control custom-radio">*/}
-                        {/*    <input type="radio" name="myfilter_radio" className="custom-control-input"/>*/}
-                        {/*    <div className="custom-control-label">Very old</div>*/}
-                        {/*</label>*/}
+                        <label className="custom-control custom-radio">
+                            <input type="radio" name="myfilter_radio" className="custom-control-input"/>
+                            <div className="custom-control-label">All</div>
+                        </label>
                     </div>
                 </div>
             </article>
