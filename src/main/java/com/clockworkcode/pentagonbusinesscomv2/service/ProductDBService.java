@@ -5,15 +5,12 @@ import com.clockworkcode.pentagonbusinesscomv2.model.product.ProductBrand;
 import com.clockworkcode.pentagonbusinesscomv2.model.product.ProductCategory;
 import com.clockworkcode.pentagonbusinesscomv2.repository.ProductBrandRepository;
 import com.clockworkcode.pentagonbusinesscomv2.repository.ProductCategoryRepository;
-import com.clockworkcode.pentagonbusinesscomv2.repository.ProductInventoryRepository;
 import com.clockworkcode.pentagonbusinesscomv2.repository.ProductRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 import java.util.stream.Collectors;
 
 @Service
@@ -22,14 +19,13 @@ public class ProductDBService {
     private final ProductRepository productRepository;
     private final ProductBrandRepository productBrandRepository;
     private final ProductCategoryRepository productCategoryRepository;
-    private final ProductInventoryRepository productInventoryRepository;
+
 
     @Autowired
-    public ProductDBService(ProductRepository productRepository, ProductBrandRepository productBrandRepository, ProductCategoryRepository productCategoryRepository, ProductInventoryRepository productInventoryRepository) {
+    public ProductDBService(ProductRepository productRepository, ProductBrandRepository productBrandRepository, ProductCategoryRepository productCategoryRepository) {
         this.productRepository = productRepository;
         this.productBrandRepository = productBrandRepository;
         this.productCategoryRepository = productCategoryRepository;
-        this.productInventoryRepository = productInventoryRepository;
     }
 
     public List<String> getAllProductBrands(){
@@ -63,7 +59,7 @@ public class ProductDBService {
     }
 
     public Integer getAvailableQuantityByProductID(Long productID){
-        return productRepository.getById(productID).getProductInventory().getQuantity();
+        return productRepository.getById(productID).getProductInventory();
     }
 
 

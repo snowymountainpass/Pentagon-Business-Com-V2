@@ -4,10 +4,8 @@ package com.clockworkcode.pentagonbusinesscomv2.service;
 import com.clockworkcode.pentagonbusinesscomv2.model.product.Product;
 import com.clockworkcode.pentagonbusinesscomv2.model.product.ProductBrand;
 import com.clockworkcode.pentagonbusinesscomv2.model.product.ProductCategory;
-import com.clockworkcode.pentagonbusinesscomv2.model.product.ProductInventory;
 import com.clockworkcode.pentagonbusinesscomv2.repository.ProductBrandRepository;
 import com.clockworkcode.pentagonbusinesscomv2.repository.ProductCategoryRepository;
-import com.clockworkcode.pentagonbusinesscomv2.repository.ProductInventoryRepository;
 import com.clockworkcode.pentagonbusinesscomv2.repository.ProductRepository;
 //import com.clockworkcode.pentagonbusinesscomv2.service.DAO.ProductMemory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,11 +27,10 @@ public class ProductConfig {
     ProductCategoryRepository productCategoryRepository;
     @Autowired
     ProductBrandRepository productBrandRepository;
-    @Autowired
-    ProductInventoryRepository productInventoryRepository;
+
 
     @Bean
-    CommandLineRunner commandLineRunner(ProductRepository productRepository,ProductCategoryRepository productCategoryRepository,ProductBrandRepository productBrandRepository,ProductInventoryRepository productInventoryRepository) {
+    CommandLineRunner commandLineRunner(ProductRepository productRepository,ProductCategoryRepository productCategoryRepository,ProductBrandRepository productBrandRepository) {
         return args -> {
 
             ProductCategory productCategory1 = new ProductCategory("TELEFON_SIP","telefoane SIP");
@@ -52,12 +49,12 @@ public class ProductConfig {
 
 //            productBrandRepository.saveAll(Arrays.asList(productBrand1,productBrand2));
 
-            ProductInventory productInventory1 = new ProductInventory(10);
-            ProductInventory productInventory2 = new ProductInventory(20);
-            ProductInventory productInventory3 = new ProductInventory(50);
-            ProductInventory productInventory4 = new ProductInventory(70);
-            ProductInventory productInventory5 = new ProductInventory(100);
-            ProductInventory productInventory6 = new ProductInventory(0);
+//            ProductInventory productInventory1 = new ProductInventory(10);
+//            ProductInventory productInventory2 = new ProductInventory(20);
+//            ProductInventory productInventory3 = new ProductInventory(50);
+//            ProductInventory productInventory4 = new ProductInventory(70);
+//            ProductInventory productInventory5 = new ProductInventory(100);
+//            ProductInventory productInventory6 = new ProductInventory(0);
 
 //            productInventoryRepository.saveAll(Arrays.asList(productInventory1,productInventory2,productInventory3,productInventory4,productInventory5,productInventory6));
 
@@ -66,7 +63,7 @@ public class ProductConfig {
                     "12345",
                     productBrand1,
                     productCategory1,
-                    productInventory1,
+                    10,
                     150,
                     8,
                     "../../Assets/img/Pentagon Assets/Product Images/ALCATEL-H2.png"
@@ -78,7 +75,7 @@ public class ProductConfig {
                     "23456",
                     productBrand1,
                     productCategory1,
-                    productInventory2,
+                    20,
                     200,
                     9,
                     "../../Assets/img/Pentagon Assets/Product Images/ALCATEL-M5.png"
@@ -89,7 +86,7 @@ public class ProductConfig {
                     "34567",
                     productBrand2,
                     productCategory2,
-                    productInventory2,
+                    20,
                     500,
                     8,
                     "../../Assets/img/Pentagon Assets/Product Images/Konftel-EGO-PERSONAL-MODULE.png"
@@ -100,7 +97,7 @@ public class ProductConfig {
                     "45678",
                     productBrand2,
                     productCategory2,
-                    productInventory3,
+                    50,
                     320,
                     8,
                     "../../Assets/img/Pentagon Assets/Product Images/Konftel-800-SIP-USB.png"
@@ -113,7 +110,7 @@ public class ProductConfig {
                     "56789",
                     productBrand1,
                     productCategory3,
-                    productInventory4,
+                    70,
                     90,
                     9,
                     "../../Assets/img/Pentagon Assets/Product Images/ALCATEL-AH-22-U-II.png"
@@ -125,7 +122,7 @@ public class ProductConfig {
                     "67890",
                     productBrand1,
                     productCategory4,
-                    productInventory5,
+                    100,
                     600,
                     9,
                     "../../Assets/img/Pentagon Assets/Product Images/Switch-2260-8RJ45+4-SFP.png"
@@ -139,7 +136,7 @@ public class ProductConfig {
                     "67890",
                     productBrand1,
                     productCategory4,
-                    productInventory6,
+                    0,
                     650,
                     8,
                     "../../Assets/img/Pentagon Assets/Product Images/Switch-PoE-2260-24RJ45+4-SFP.png"
@@ -153,7 +150,7 @@ public class ProductConfig {
                     "78901",
                     productBrand1,
                     productCategory5,
-                    productInventory3,
+                    50,
                     200,
                     9,
                     "../../Assets/img/Pentagon Assets/Product Images/OAW-AP1201-RW.png"
@@ -166,7 +163,7 @@ public class ProductConfig {
                     "89012",
                     productBrand1,
                     productCategory5,
-                    productInventory4,
+                    70,
                     350,
                     9,
                     "../../Assets/img/Pentagon Assets/Product Images/OAW-AP1221-RW.png"
@@ -178,7 +175,7 @@ public class ProductConfig {
                     "90123",
                     productBrand1,
                     productCategory5,
-                    productInventory3,
+                    50,
                     400,
                     9,
                     "../../Assets/img/Pentagon Assets/Product Images/OAW-AP1321-RW.png"
@@ -191,7 +188,7 @@ public class ProductConfig {
                     "01234",
                     productBrand2,
                     productCategory6,
-                    productInventory2,
+                    20,
                     700,
                     9,
                     "../../Assets/img/Pentagon Assets/Product Images/Huddle Room (CAM20 + EGO).png"
@@ -206,7 +203,7 @@ public class ProductConfig {
                     "01234",
                     productBrand2,
                     productCategory6,
-                    productInventory2,
+                    20,
                     650,
                     8,
                     "../../Assets/img/Pentagon Assets/Product Images/Speakerphone personal kit (CAM10 + EGO).png"

@@ -48,7 +48,7 @@ export default function ProductCard(props){
                         </div>
                         <p className="text-success">{`Delivery Cost: ${(parseInt(props.product.productPrice)*10)/100}%`}</p>
                         <br/>
-                        <p className="text-quantity">{`Quantity Available: ${props.product.quantity}`}</p>
+                        <p className="text-quantity">{`Quantity Available: ${props.product.productInventory}`}</p>
                         <br/>
                         <p>
                             <a href="#" className="btn btn-primary btn-block"> Details </a>

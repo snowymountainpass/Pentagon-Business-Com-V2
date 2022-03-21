@@ -1,5 +1,6 @@
 package com.clockworkcode.pentagonbusinesscomv2.model.product;
 
+import com.clockworkcode.pentagonbusinesscomv2.model.Base;
 import com.clockworkcode.pentagonbusinesscomv2.model.order.OrderItem;
 import com.clockworkcode.pentagonbusinesscomv2.model.shopping.CartItem;
 import com.fasterxml.jackson.annotation.JsonIgnore;
@@ -21,7 +22,7 @@ import java.util.Set;
 
 @Entity(name = "Product") //singular !!
 @Table(name = "products") //plural !!
-public class Product {
+public class Product extends Base {
 
     @Id
     @SequenceGenerator(name ="product_sequence" ,sequenceName ="product_sequence" ,allocationSize = 1)
@@ -44,10 +45,8 @@ public class Product {
     @JsonIgnore
     private ProductCategory productCategory;
 
-    @OneToOne(cascade = CascadeType.ALL,fetch = FetchType.LAZY)
-    @JoinColumn(name="product_inventoryID")
-    @JsonIgnore
-    private ProductInventory productInventory;
+    @Column(nullable = false)
+    private Integer productInventory;
 
     @ManyToMany(cascade = CascadeType.ALL)
     @JoinTable(
@@ -85,7 +84,7 @@ public class Product {
     @Column(nullable = false,columnDefinition = "text")
     private String img;
 
-    public Product(String productName, String productDescription, String productSKU, ProductBrand productBrand, ProductCategory productCategory, ProductInventory productInventory, Integer productPrice, Integer rating, String img) {
+    public Product(String productName, String productDescription, String productSKU, ProductBrand productBrand, ProductCategory productCategory, Integer productInventory, Integer productPrice, Integer rating, String img) {
         this.productName = productName;
         this.productDescription = productDescription;
         this.productSKU = productSKU;
