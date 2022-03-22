@@ -124,9 +124,17 @@ public class ProductController {
         Integer minPrice;
         Integer maxPrice;
 
-        if(Objects.equals(maxVal, "") & Objects.equals(maxVal, "")){
+        if(Objects.equals(minVal, "") && Objects.equals(maxVal, "")){
              minPrice = minMaxValuesList.get(0);
              maxPrice = minMaxValuesList.get(1);
+        }
+        else if( Objects.equals(minVal, "") && !Objects.equals(maxVal, "") ){
+            minPrice = minMaxValuesList.get(0);
+            maxPrice = Integer.parseInt(maxVal);
+        }
+        else if( !Objects.equals(minVal, "") && Objects.equals(maxVal, "") ){
+            minPrice = Integer.parseInt(minVal);
+            maxPrice = minMaxValuesList.get(1);
         }
         else {
              minPrice = Integer.parseInt(minVal);
