@@ -2,6 +2,7 @@
 
 import {useEffect, useState} from "react";
 import DeliveryTimeComponent from "./Sidebar Components/DeliveryTimeComponent";
+import PriceIntervalComponent from "./Sidebar Components/PriceIntervalComponent";
 
 export default function SidebarComponent({setChangeProducts,brandsList,minmaxPrice}  ){
 
@@ -64,73 +65,6 @@ export default function SidebarComponent({setChangeProducts,brandsList,minmaxPri
 
     }
 
-
-    const [minMaxState,setMinMaxState] = useState({
-        // minPrice:minmaxPrice[0],
-        // maxPrice:minmaxPrice[1],
-        minPrice:"",
-        maxPrice:"",
-        // minDefault:minmaxPrice[0],
-        // maxDefault:minmaxPrice[1],
-    })
-
-
-    const handlePriceChange = e => {
-
-        e.preventDefault();
-
-        setMinMaxState(
-            {...minMaxState,[e.target.name]:e.target.value,}
-        )
-
-    }
-
-
-    function passPriceValues(){
-
-        // console.log("Min price: "+minMaxState.minPrice);
-        // console.log("Max price: "+minMaxState.maxPrice);
-        //
-        // console.log("-----------------------------------");
-        // console.log("Min DEFAULT price: "+minmaxPrice[0]);
-        // console.log("Max DEFAULT price: "+minmaxPrice[1]);
-
-        const requestOptions = {
-            method: 'GET',
-            headers: {Accept: 'application/json', 'Content-Type': 'application/json'},
-        };
-
-
-        if(minMaxState.minPrice==null && minMaxState.maxPrice==null ){
-
-            fetch(`http://localhost:8080/e-shop/min-max-prices/${minmaxPrice[0]}-${minmaxPrice[1]}`,requestOptions)
-                .then(response => {
-                    return response.json();
-                })
-                .then(data => {
-                    setChangeProducts(data);
-                });
-
-        }
-        else if( minMaxState.minPrice!==null && minMaxState.maxPrice!==null ){
-
-            fetch(`http://localhost:8080/e-shop/min-max-prices/${minMaxState.minPrice}-${minMaxState.maxPrice}`,requestOptions)
-                .then(response => {
-                    return response.json();
-                })
-                .then(data => {
-                    setChangeProducts(data);
-                });
-
-        }
-
-    }
-
-    useEffect(
-        ()=>{
-            passPriceValues();
-        },[minMaxState]
-    )
 
 
 
@@ -225,32 +159,10 @@ export default function SidebarComponent({setChangeProducts,brandsList,minmaxPri
                 <div className="filter-content collapse show" id="collapse_3">
                     <div className="card-body">
 
-                        <div className="input-group">
-                            <input className="form-control"
-                                   placeholder={"€"+minmaxPrice[0]}
-                                   type="number" min={minmaxPrice[0]}
-                                   max={minmaxPrice[1]}
-                                   value={minMaxState.minPrice}
-                                   name="minPrice"
-                                   onChange={ event => {handlePriceChange(event);passPriceValues(event)}
-                                   }
-                            />
-
-                            <div className="input-group-prepend">
-                                <span className="input-group-text">-</span>
-                            </div>
-
-                            <input className="form-control"
-                                   placeholder={"€"+minmaxPrice[1]}
-                                   type="number" min={minmaxPrice[0]}
-                                   max={minmaxPrice[1]}
-                                   value={minMaxState.maxPrice}
-                                   name="maxPrice"
-                                   onChange={ event => {handlePriceChange(event);passPriceValues(event)}
-                                   }
-                            />
-
-                        </div>
+                        <PriceIntervalComponent
+                            setChangeProducts={setChangeProducts}
+                            minmaxPrice={minmaxPrice}
+                        />
 
 
                     </div>
