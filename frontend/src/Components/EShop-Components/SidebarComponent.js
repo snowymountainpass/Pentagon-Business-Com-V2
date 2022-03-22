@@ -1,5 +1,3 @@
-// import {useSearchParams} from "react-router-dom";
-// const [searchParams, setSearchParams] = useSearchParams();
 
 
 import {useEffect, useState} from "react";
@@ -66,8 +64,6 @@ export default function SidebarComponent({setChangeProducts,brandsList,minmaxPri
     }
 
 
-
-
     const [minMaxState,setMinMaxState] = useState({
         // minPrice:minmaxPrice[0],
         // maxPrice:minmaxPrice[1],
@@ -77,11 +73,6 @@ export default function SidebarComponent({setChangeProducts,brandsList,minmaxPri
         // maxDefault:minmaxPrice[1],
     })
 
-    // console.log("Min DEFAULT price: "+minMaxState.minDefault);
-    // console.log("Max DEFAULT price: "+minMaxState.maxDefault);
-    // console.log("-----------------------------------");
-    // console.log("Min DEFAULT price: "+minmaxPrice[0]);
-    // console.log("Max DEFAULT price: "+minmaxPrice[1]);
 
     const handlePriceChange = e => {
 
@@ -94,24 +85,14 @@ export default function SidebarComponent({setChangeProducts,brandsList,minmaxPri
     }
 
 
-
-    function logCurrentValue(event){
-        event.preventDefault();
-
-        // console.log("Current value is: "+event.target.value);
-
-    }
-
     function passPriceValues(){
 
-        console.log("Min price: "+minMaxState.minPrice);
-        console.log("Max price: "+minMaxState.maxPrice);
-        // console.log("Min DEFAULT price: "+minMaxState.minDefault);
-        // console.log("Max DEFAULT price: "+minMaxState.maxDefault);
-
-        console.log("-----------------------------------");
-        console.log("Min DEFAULT price: "+minmaxPrice[0]);
-        console.log("Max DEFAULT price: "+minmaxPrice[1]);
+        // console.log("Min price: "+minMaxState.minPrice);
+        // console.log("Max price: "+minMaxState.maxPrice);
+        //
+        // console.log("-----------------------------------");
+        // console.log("Min DEFAULT price: "+minmaxPrice[0]);
+        // console.log("Max DEFAULT price: "+minmaxPrice[1]);
 
         const requestOptions = {
             method: 'GET',
@@ -247,10 +228,8 @@ export default function SidebarComponent({setChangeProducts,brandsList,minmaxPri
                                    type="number" min={minmaxPrice[0]}
                                    max={minmaxPrice[1]}
                                    value={minMaxState.minPrice}
-                                   // value={minmaxPrice[0]}
                                    name="minPrice"
-                                   // onChange={handlePriceChange}
-                                   onChange={ event => {handlePriceChange(event);logCurrentValue(event);passPriceValues(event)}
+                                   onChange={ event => {handlePriceChange(event);passPriceValues(event)}
                                    }
                             />
 
@@ -263,10 +242,8 @@ export default function SidebarComponent({setChangeProducts,brandsList,minmaxPri
                                    type="number" min={minmaxPrice[0]}
                                    max={minmaxPrice[1]}
                                    value={minMaxState.maxPrice}
-                                   // value={minmaxPrice[1]}
                                    name="maxPrice"
-                                   // onChange={handlePriceChange}
-                                   onChange={ event => {handlePriceChange(event);logCurrentValue(event)}
+                                   onChange={ event => {handlePriceChange(event);passPriceValues(event)}
                                    }
                             />
 
@@ -280,7 +257,7 @@ export default function SidebarComponent({setChangeProducts,brandsList,minmaxPri
             <article className="filter-group">
                 <header className="card-header">
                     <a  data-toggle="collapse" data-target="#collapse_5" aria-expanded="false" className="">
-                        <i className="icon-control fa fa-chevron-down"></i>
+                        <i className="icon-control fa fa-chevron-down"/>
                         <h6 className="title">Delivery Time </h6>
                     </a>
                 </header>
