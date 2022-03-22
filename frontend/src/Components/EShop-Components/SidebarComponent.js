@@ -3,6 +3,7 @@
 import {useEffect, useState} from "react";
 import DeliveryTimeComponent from "./Sidebar Components/DeliveryTimeComponent";
 import PriceIntervalComponent from "./Sidebar Components/PriceIntervalComponent";
+import BrandSelectionComponent from "./Sidebar Components/BrandSelectionComponent";
 
 export default function SidebarComponent({setChangeProducts,brandsList,minmaxPrice}  ){
 
@@ -27,45 +28,6 @@ export default function SidebarComponent({setChangeProducts,brandsList,minmaxPri
             });
 
     }
-
-
-    const brandsNamesList = brandsList;
-
-    const [checked, setChecked] = useState([]);
-
-    const handleCheck = (event) => {
-        let updatedList = [...checked];
-        if (event.target.checked) {
-            updatedList = [...checked, event.target.value];
-        } else {
-            updatedList.splice(checked.indexOf(event.target.value), 1);
-        }
-        setChecked(updatedList);
-
-        // console.log(updatedList);
-
-        handleBrandClick(updatedList);
-
-    };
-
-    function handleBrandClick(checkedBrandsList){
-        const requestOptions = {
-            method: 'POST',
-            headers: {Accept: 'application/json', 'Content-Type': 'application/json'},
-            body: JSON.stringify(checkedBrandsList)
-        };
-
-        fetch( `http://localhost:8080/e-shop/brands`, requestOptions)
-            .then(response => {
-                return response.json();
-            })
-            .then(data => {
-                setChangeProducts(data);
-            });
-
-    }
-
-
 
 
     return(
@@ -113,37 +75,10 @@ export default function SidebarComponent({setChangeProducts,brandsList,minmaxPri
                 <div className="filter-content collapse show" id="collapse_2">
                     <div className="card-body">
 
-                        {brandsNamesList.map((item, index) => (
-                            // <div key={index}>
-                            //
-                            //     <input value={item} type="checkbox" onChange={handleCheck} />
-                            //     <span>{item}</span>
-                            // </div>
-
-                            <label key={item} className="custom-control custom-checkbox">
-                            <input className="custom-control-input"
-                                   value={item} type="checkbox" onClick={handleCheck}
-                            />
-                                <div className="custom-control-label">
-                                     {item}
-                                </div>
-                            </label>
-
-
-
-                            ))}
-
-
-                        {/*<label className="custom-control custom-checkbox">*/}
-                        {/*    <input type="checkbox" className="custom-control-input"/>*/}
-                        {/*    <div className="custom-control-label">ALCATEL-LUCENT*/}
-                        {/*        <b className="badge badge-pill badge-light float-right">120</b></div>*/}
-                        {/*</label>*/}
-                        {/*<label className="custom-control custom-checkbox">*/}
-                        {/*    <input type="checkbox" className="custom-control-input"/>*/}
-                        {/*    <div className="custom-control-label">KONFTEL*/}
-                        {/*        <b className="badge badge-pill badge-light float-right">15</b></div>*/}
-                        {/*</label>*/}
+                        <BrandSelectionComponent
+                            setChangeProducts={setChangeProducts}
+                            brandsList={brandsList}
+                        />
 
                     </div>
                 </div>
