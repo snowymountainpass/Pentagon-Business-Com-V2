@@ -28,6 +28,15 @@ public class ProductDBService {
         this.productCategoryRepository = productCategoryRepository;
     }
 
+
+    public List<String> getAllProductCategories(){
+        List<String> uniqueProductCategoryNames = new ArrayList<>();
+
+        productRepository.findAll().forEach(product -> uniqueProductCategoryNames.add(product.getProductCategory().getProductCategoryName() ));
+
+        return uniqueProductCategoryNames.stream().distinct().collect(Collectors.toList());
+    }
+
     public List<String> getAllProductBrands(){
 
         List<String> uniqueBrandNames = new ArrayList<>();

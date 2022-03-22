@@ -45,6 +45,11 @@ public class ProductController {
 
     }
 
+    @GetMapping("/unique-product-categories")
+    public ResponseEntity<List<String>> getAllProductCategories(){
+        return ResponseEntity.ok().body( productDBService.getAllProductCategories() );
+    }
+
     @GetMapping("/{productCategory}")
     public ResponseEntity<List<Product>>getProductsByCategory(@PathVariable String productCategory) {
 

@@ -2,7 +2,7 @@ import {useState} from "react";
 
 
 export default function BrandSelectionComponent({setChangeProducts,brandsList}){
-    
+
     const [checked, setChecked] = useState([]);
 
     const handleCheck = (event) => {
