@@ -51,6 +51,20 @@ export default function Products(){
     )
 
 
+    const [categoriesList, setCategoriesList] = useState([]);
+
+    useEffect(
+
+        ()=>{
+            fetch("http://localhost:8080/e-shop/unique-product-categories")
+                .then( res => res.json())
+                .then( data => {setCategoriesList(data);} )
+        },[]
+
+    )
+
+
+
     return(
 
         <section className="section-content padding-y">
@@ -62,6 +76,7 @@ export default function Products(){
                         setChangeProducts = {setProducts}
                         brandsList = {brandsList}
                         minmaxPrice = {minMaxPrice}
+                        categoriesList={categoriesList}
                     />
 
                     <main className="col-md-9">

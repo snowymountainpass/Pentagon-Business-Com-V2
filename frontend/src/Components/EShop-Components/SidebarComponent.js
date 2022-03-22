@@ -4,30 +4,11 @@ import {useEffect, useState} from "react";
 import DeliveryTimeComponent from "./Sidebar Components/DeliveryTimeComponent";
 import PriceIntervalComponent from "./Sidebar Components/PriceIntervalComponent";
 import BrandSelectionComponent from "./Sidebar Components/BrandSelectionComponent";
+import ProductCategoryComponent from "./Sidebar Components/ProductCategoryComponent";
 
-export default function SidebarComponent({setChangeProducts,brandsList,minmaxPrice}  ){
+export default function SidebarComponent({setChangeProducts,categoriesList,brandsList,minmaxPrice}  ){
 
-    function handleCategoryClick(event){
-        event.preventDefault();
-        let productCategory = event.target.id;
-        // console.log(productCategory);
 
-        const requestOptions = {
-            method: 'GET',
-            headers: {Accept: 'application/json', 'Content-Type': 'application/json'},
-            // body: JSON.stringify({ "productName":query }) //
-        };
-
-        fetch(`http://localhost:8080/e-shop/`+productCategory, requestOptions)
-            .then(response => {
-                return response.json();
-                // console.log(response);
-            })
-            .then(data => {
-                setChangeProducts(data);
-            });
-
-    }
 
 
     return(
@@ -45,21 +26,10 @@ export default function SidebarComponent({setChangeProducts,brandsList,minmaxPri
                 <div className="filter-content collapse show" id="collapse_1">
                     <div className="card-body">
 
-                        <ul className="list-menu"
-                            onClick={ event=> {
-                                handleCategoryClick(event);
-                                event.target.style.color="blue";
-                            } }
-                            onMouseOut={ event=> {
-                                event.target.style.color="black";
-                            } }>
-                            <li><a id="TELEFON_SIP">TELEFOANE SIP</a></li>
-                            <li><a id="SISTEM_AUDIO_CONFERINTA">SISTEME DE AUDIO CONFERINTA </a></li>
-                            <li><a id="CASTI_CALLCENTER">CASTI CALL-CENTER</a></li>
-                            <li><a id="SWITCH">SWITCH</a></li>
-                            <li><a id="ACCESS_POINT_WIRELESS">ACCESS POINT WIRELESS </a></li>
-                            <li><a id="SISTEM_VIDEO_CONFERINTA">SISTEME DE VIDEO CONFERINTA</a></li>
-                        </ul>
+                        <ProductCategoryComponent
+                            setChangeProducts={setChangeProducts}
+                            categoriesList={categoriesList}
+                        />
 
                     </div>
                 </div>

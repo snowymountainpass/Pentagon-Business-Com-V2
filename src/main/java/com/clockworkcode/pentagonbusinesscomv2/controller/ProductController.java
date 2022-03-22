@@ -53,10 +53,16 @@ public class ProductController {
     @GetMapping("/{productCategory}")
     public ResponseEntity<List<Product>>getProductsByCategory(@PathVariable String productCategory) {
 
-//        System.out.println("SELECTED Product Category: "+ productCategory);
+        List<Product> products;
 
-//        return ResponseEntity.ok().body( productDBService.getAllProductsByCategory(productCategory) );
-        return ResponseEntity.ok().body( productDBService.getProductsByProductCategoryName(productCategory) );
+        if(Objects.equals(productCategory, "ALL TYPES")){
+            products = getAllProducts();
+        }
+        else {
+            products = productDBService.getProductsByProductCategoryName(productCategory);
+        }
+
+        return ResponseEntity.ok().body( products );
 
     }
 

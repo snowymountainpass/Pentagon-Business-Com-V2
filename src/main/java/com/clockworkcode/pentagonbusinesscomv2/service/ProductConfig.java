@@ -33,30 +33,19 @@ public class ProductConfig {
     CommandLineRunner commandLineRunner(ProductRepository productRepository,ProductCategoryRepository productCategoryRepository,ProductBrandRepository productBrandRepository) {
         return args -> {
 
-            ProductCategory productCategory1 = new ProductCategory("TELEFON_SIP","telefoane SIP");
-            ProductCategory productCategory2 = new ProductCategory("SISTEM_AUDIO_CONFERINTA","sisteme audio de conferinta");
-            ProductCategory productCategory3 = new ProductCategory("CASTI_CALLCENTER","casti pentru uz in callcenter");
+            ProductCategory productCategory1 = new ProductCategory("TELEFONE SIP","telefoane SIP");
+            ProductCategory productCategory2 = new ProductCategory("SISTEME AUDIO CONFERINTA","sisteme audio de conferinta");
+            ProductCategory productCategory3 = new ProductCategory("CASTI CALL-CENTER","casti pentru uz in callcenter");
             ProductCategory productCategory4 = new ProductCategory("SWITCH","switch");
-            ProductCategory productCategory5 = new ProductCategory("ACCESS_POINT_WIRELESS","access point-uri wireless");
-            ProductCategory productCategory6 = new ProductCategory("SISTEM_VIDEO_CONFERINTA","sisteme video pentru conferinta");
-
-//            productCategoryRepository.saveAll(Arrays.asList(productCategory1,productCategory2,productCategory3,productCategory4,productCategory5,productCategory6));
+            ProductCategory productCategory5 = new ProductCategory("ACCESS POINT WIRELESS","access point-uri wireless");
+            ProductCategory productCategory6 = new ProductCategory("SISTEM VIDEO CONFERINTA","sisteme video pentru conferinta");
 
 
             ProductBrand productBrand1 = new ProductBrand("Alcatel-Lucent","https://www.al-enterprise.com/");
             ProductBrand productBrand2 = new ProductBrand("Konftel","https://www.konftel.com/");
             ProductBrand productBrand3 = new ProductBrand("Cisco","https://www.cisco.com/");
 
-//            productBrandRepository.saveAll(Arrays.asList(productBrand1,productBrand2));
 
-//            ProductInventory productInventory1 = new ProductInventory(10);
-//            ProductInventory productInventory2 = new ProductInventory(20);
-//            ProductInventory productInventory3 = new ProductInventory(50);
-//            ProductInventory productInventory4 = new ProductInventory(70);
-//            ProductInventory productInventory5 = new ProductInventory(100);
-//            ProductInventory productInventory6 = new ProductInventory(0);
-
-//            productInventoryRepository.saveAll(Arrays.asList(productInventory1,productInventory2,productInventory3,productInventory4,productInventory5,productInventory6));
 
             Product product1 = new Product("ALCATEL H2",
                     "Model Number:H2;Type:VoIP Phone;Brand Name: Alcatel Lucent",
@@ -66,7 +55,7 @@ public class ProductConfig {
                     10,
                     150,
                     8,
-                    "../../Assets/img/Pentagon Assets/Product Images/ALCATEL-H2.png"
+                    "https://storage.cloud.google.com/pentagon-v2/ALCATEL-H2.png"
                     );
 
 
@@ -78,7 +67,7 @@ public class ProductConfig {
                     20,
                     200,
                     9,
-                    "../../Assets/img/Pentagon Assets/Product Images/ALCATEL-M5.png"
+                    "https://storage.cloud.google.com/pentagon-v2/ALCATEL-M5.png"
             );
 
             Product product3 = new Product("EGO PERSONAL MODULE",
@@ -89,7 +78,7 @@ public class ProductConfig {
                     20,
                     500,
                     8,
-                    "../../Assets/img/Pentagon Assets/Product Images/Konftel-EGO-PERSONAL-MODULE.png"
+                    "https://storage.cloud.google.com/pentagon-v2/Konftel-EGO-PERSONAL-MODULE.png"
             );
 
             Product product4 = new Product("Konftel 800 SIP (USB)",
@@ -100,7 +89,7 @@ public class ProductConfig {
                     50,
                     320,
                     8,
-                    "../../Assets/img/Pentagon Assets/Product Images/Konftel-800-SIP-USB.png"
+                    "https://storage.cloud.google.com/pentagon-v2/Konftel-800-SIP-USB.png"
             );
 
 
@@ -113,7 +102,7 @@ public class ProductConfig {
                     70,
                     90,
                     9,
-                    "../../Assets/img/Pentagon Assets/Product Images/ALCATEL-AH-22-U-II.png"
+                    "https://storage.cloud.google.com/pentagon-v2/ALCATEL-AH-22-U-II.png"
             );
 
 
@@ -125,7 +114,7 @@ public class ProductConfig {
                     100,
                     600,
                     9,
-                    "../../Assets/img/Pentagon Assets/Product Images/Switch-2260-8RJ45+4-SFP.png"
+                    "https://storage.cloud.google.com/pentagon-v2/Switch-2260-8RJ45%2B4-SFP.png"
             );
 
 
@@ -139,7 +128,7 @@ public class ProductConfig {
                     0,
                     650,
                     8,
-                    "../../Assets/img/Pentagon Assets/Product Images/Switch-PoE-2260-24RJ45+4-SFP.png"
+                    "https://storage.cloud.google.com/pentagon-v2/Switch-PoE-2260-24RJ45%2B4-SFP.png"
             );
 
 
@@ -153,7 +142,7 @@ public class ProductConfig {
                     50,
                     200,
                     9,
-                    "../../Assets/img/Pentagon Assets/Product Images/OAW-AP1201-RW.png"
+                    "https://storage.cloud.google.com/pentagon-v2/OAW-AP1201-RW.png"
 
             );
 
@@ -166,7 +155,7 @@ public class ProductConfig {
                     70,
                     350,
                     9,
-                    "../../Assets/img/Pentagon Assets/Product Images/OAW-AP1221-RW.png"
+                    "https://storage.cloud.google.com/pentagon-v2/OAW-AP1221-RW.png"
             );
 
             Product product10 = new Product(
@@ -178,7 +167,7 @@ public class ProductConfig {
                     50,
                     400,
                     9,
-                    "../../Assets/img/Pentagon Assets/Product Images/OAW-AP1321-RW.png"
+                    "https://storage.cloud.google.com/pentagon-v2/OAW-AP1321-RW.png"
             );
 
             //SISTEME DE VIDEO CONFERINTA - KONFTEL
@@ -191,7 +180,7 @@ public class ProductConfig {
                     20,
                     700,
                     9,
-                    "../../Assets/img/Pentagon Assets/Product Images/Huddle Room (CAM20 + EGO).png"
+                    "https://storage.cloud.google.com/pentagon-v2/Huddle%20Room%20(CAM20%20%2B%20EGO).png"
 
             );
 
@@ -206,7 +195,7 @@ public class ProductConfig {
                     20,
                     650,
                     8,
-                    "../../Assets/img/Pentagon Assets/Product Images/Speakerphone personal kit (CAM10 + EGO).png"
+                    "https://storage.cloud.google.com/pentagon-v2/Speakerphone%20personal%20kit%20(CAM10%20%2B%20EGO).png"
 
 
             );

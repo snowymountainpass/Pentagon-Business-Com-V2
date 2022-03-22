@@ -43,7 +43,7 @@ export default function BrandSelectionComponent({setChangeProducts,brandsList}){
                 //     <span>{item}</span>
                 // </div>
 
-                <label key={item} className="custom-control custom-checkbox">
+                <label key={index} className="custom-control custom-checkbox">
                     <input className="custom-control-input"
                            value={item} type="checkbox" onClick={handleCheck}
                     />
