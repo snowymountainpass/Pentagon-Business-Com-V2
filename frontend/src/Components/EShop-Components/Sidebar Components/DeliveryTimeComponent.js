@@ -1,7 +1,8 @@
+import {useState} from "react";
 
 export default function DeliveryTimeComponent({setChangeProducts}){
 
-    // const [isChecked, setIsChecked] = useState(false);
+    const [isChecked, setIsChecked] = useState(false);
 
     function handleDeliveryClick(event){
         event.preventDefault();
@@ -34,6 +35,7 @@ export default function DeliveryTimeComponent({setChangeProducts}){
                        className="custom-control-input"
                        value="instock"
                        onChange={event => {
+                           setIsChecked(!isChecked);
                            handleDeliveryClick(event);
                        }}
                 />
@@ -45,6 +47,7 @@ export default function DeliveryTimeComponent({setChangeProducts}){
                        className="custom-control-input"
                        value="14days"
                        onChange={event => {
+                           setIsChecked(!isChecked);
                            handleDeliveryClick(event);
                        }}
                 />
@@ -56,6 +59,7 @@ export default function DeliveryTimeComponent({setChangeProducts}){
                        className="custom-control-input"
                        value="all"
                        onChange={event => {
+                           setIsChecked(!isChecked);
                            handleDeliveryClick(event);
                        }}
                 />
