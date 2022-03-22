@@ -1,6 +1,7 @@
 
 
 import {useEffect, useState} from "react";
+import DeliveryTimeComponent from "./Sidebar Components/DeliveryTimeComponent";
 
 export default function SidebarComponent({setChangeProducts,brandsList,minmaxPrice}  ){
 
@@ -130,6 +131,8 @@ export default function SidebarComponent({setChangeProducts,brandsList,minmaxPri
             passPriceValues();
         },[minMaxState]
     )
+
+
 
     return(
 
@@ -263,19 +266,9 @@ export default function SidebarComponent({setChangeProducts,brandsList,minmaxPri
                 </header>
                 <div className="filter-content collapse in" id="collapse_5">
                     <div className="card-body">
-
-                        <label className="custom-control custom-radio">
-                            <input type="radio" name="myfilter_radio" className="custom-control-input"/>
-                            <div className="custom-control-label">In stock</div>
-                        </label>
-                        <label className="custom-control custom-radio">
-                            <input type="radio" name="myfilter_radio" className="custom-control-input"/>
-                            <div className="custom-control-label">14 Days</div>
-                        </label>
-                        <label className="custom-control custom-radio">
-                            <input type="radio" name="myfilter_radio" className="custom-control-input"/>
-                            <div className="custom-control-label">All</div>
-                        </label>
+                        <DeliveryTimeComponent
+                            setChangeProducts={setChangeProducts}
+                        />
                     </div>
                 </div>
             </article>

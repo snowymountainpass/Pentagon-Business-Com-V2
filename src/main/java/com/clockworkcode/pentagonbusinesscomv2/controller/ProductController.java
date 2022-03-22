@@ -2,7 +2,6 @@ package com.clockworkcode.pentagonbusinesscomv2.controller;
 
 import com.clockworkcode.pentagonbusinesscomv2.model.product.Product;
 import com.clockworkcode.pentagonbusinesscomv2.service.ProductDBService;
-//import com.clockworkcode.pentagonbusinesscomv2.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -20,9 +19,7 @@ public class ProductController {
 
     @Autowired
     ProductDBService productDBService;
-
-//    List<Integer> minMaxValuesList = new ArrayList<>();
-
+    
     @GetMapping()
     public List<Product> getAllProducts() {
 
@@ -82,7 +79,7 @@ public class ProductController {
     }
 
     @GetMapping("/get-min-max-price")
-    public  ResponseEntity<List<Integer>> getMinPrice(){
+    public ResponseEntity<List<Integer>> getMinPrice(){
 
         List<Integer> minMaxValuesList = new ArrayList<>();
 
@@ -93,37 +90,17 @@ public class ProductController {
 
         return ResponseEntity.ok().body( minMaxValuesList.stream().distinct().collect(Collectors.toList()) );
     }
-
-
-    @GetMapping("/min-price/{minPrice}")
-    public  ResponseEntity<List<Product>> getProductsAboveMinPrice(@PathVariable(name = "minPrice") Integer minPrice){
-
-        System.out.println("Current minPrice: "+minPrice);
-
-        return ResponseEntity.ok().body( productDBService.getAllProducts().stream().filter(product -> product.getProductPrice()>=minPrice).collect(Collectors.toList()) );
-    }
-
-    @GetMapping("/max-price/{maxPrice}")
-    public  ResponseEntity<List<Product>> getProductsBelowMaxPrice(@PathVariable(name = "maxPrice") Integer maxPrice){
-
-        System.out.println("Current maxPrice: "+maxPrice);
-
-        return ResponseEntity.ok().body( productDBService.getAllProducts().stream().filter(product -> product.getProductPrice()<=maxPrice).collect(Collectors.toList()) );
-    }
-
-
-
+    
     @GetMapping("/min-max-prices/{minVal}-{maxVal}")
-    public  ResponseEntity<List<Product>> getProductsInInterval(@PathVariable String minVal,@PathVariable String maxVal) {
-
+    public ResponseEntity<List<Product>> getProductsInInterval(@PathVariable String minVal,@PathVariable String maxVal) {
+        Integer minPrice;
+        Integer maxPrice;
         List<Integer> minMaxValuesList = new ArrayList<>();
 
         minMaxValuesList.add(productDBService.getAllProducts().stream().min(Comparator.comparingInt(Product::getProductPrice)).get().getProductPrice());
         minMaxValuesList.add(productDBService.getAllProducts().stream().max(Comparator.comparingInt(Product::getProductPrice)).get().getProductPrice());
 
-        Integer minPrice;
-        Integer maxPrice;
-
+        
         if(Objects.equals(minVal, "") && Objects.equals(maxVal, "")){
              minPrice = minMaxValuesList.get(0);
              maxPrice = minMaxValuesList.get(1);
@@ -141,11 +118,32 @@ public class ProductController {
              maxPrice = Integer.parseInt(maxVal);
         }
 
-        System.out.println("minPrice: "+minPrice+" - "+"maxPrice: "+maxPrice);
+//        System.out.println("minPrice: "+minPrice+" - "+"maxPrice: "+maxPrice);
 
         return ResponseEntity.ok().body( productDBService.getAllProducts().stream().filter(product -> product.getProductPrice()>=minPrice && product.getProductPrice()<=maxPrice).collect(Collectors.toList()) );
     }
-
+    
+    @GetMapping("/delivery-time/{deliveryTime}")
+    public ResponseEntity<List<Product>> getProductsByDeliveryTime(@PathVariable String deliveryTime){
+        
+        List<Product> products = new ArrayList<>();
+        
+        switch (deliveryTime){
+            case "instock":{
+                products=productDBService.getProductsInStock();
+                break;
+            }
+            case "14days":{
+                products=productDBService.getProductsOutOfStock();
+                break;
+            }
+            case "all":{
+                products=productDBService.getAllProducts();
+                break;
+            }
+        }
+        return ResponseEntity.ok().body(products);
+    }
 
 //    @GetMapping("/price-descending")
 //    public List<Product> getProductsPriceDecreasing() {
