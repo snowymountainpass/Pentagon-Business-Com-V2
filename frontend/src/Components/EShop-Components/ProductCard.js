@@ -51,7 +51,7 @@ export default function ProductCard(props){
                         <p className="text-quantity">{`Quantity Available: ${props.product.productInventory}`}</p>
                         <br/>
                         <p>
-                            <a href="#" className="btn btn-primary btn-block"> Details </a>
+                            <a href="#" className="btn btn-primary btn-block">Details</a>
                             <a href="#" className="btn btn-light btn-block"><i className="fa fa-shopping-cart"/>
                                 <span className="text">Add to Cart</span>
                             </a>
