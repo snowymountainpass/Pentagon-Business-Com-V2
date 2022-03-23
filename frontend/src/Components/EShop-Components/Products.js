@@ -24,7 +24,7 @@ export default function Products(){
         },[query]
     )
 
-    console.log("Products size: "+products.length);
+    // console.log("Products size: "+products.length);
     // console.log("Products objects: "+products);
 
 

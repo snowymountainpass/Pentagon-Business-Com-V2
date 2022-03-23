@@ -46,9 +46,6 @@ export default function ProductListingHeader({products,setChangeQuery}) {
                         onChange={event => searchInputChange(event)}
                         onPaste={event => searchInputChange(event)}
                     />
-                    {/*<div className="input-group-append" onClick={handleClick}>*/}
-                    {/*    <button className="btn btn-light" type="button"><i className="fa fa-search"></i></button>*/}
-                    {/*</div>*/}
                 </div>
             </form>
         </>
