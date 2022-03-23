@@ -46,12 +46,14 @@ export default function Navbar()
 
 
 
-
+    //className={"w-full h-full bg-blueGray-800 shadow-md text-white"} - ORIGINAL
+    //<section className=" border-bottom "> {/**/} - BELOW HEADER SECTION HEADER
     return(
-        <nav className={"w-full h-full bg-blueGray-800 shadow-md text-white"}>
+        <nav className={"w-full h-full z-50 flex flex-wrap items-center justify-between px-2 py-3 mb-3 bg-blueGray-800 shadow-md text-white"
+        }>
             {/*className={"fixed w-full z-50 flex flex-wrap items-center justify-between px-2 py-3 mb-3 bg-blueGray-800 shadow-md"}*/}
             <header className="section-header  ">
-                <section className=" border-bottom "> {/**/}
+                <section> {/**/}
                     <div className="container ">
                         <div className=" row align-items-center" >
                             <CompanyNameLogo/>

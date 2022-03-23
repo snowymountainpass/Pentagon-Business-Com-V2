@@ -7,7 +7,7 @@ import {
 
 import Landing from "./Pages/Landing";
 import EShop from "./Pages/EShop";
-import Product from "./Components/EShop-Components/ProductPage Components/Product";
+import ProductDetails from "./Components/EShop-Components/ProductPage Components/Product";
 
 
 function App() {
@@ -20,7 +20,8 @@ function App() {
             <Route path={"/about-us"}
             /> //TODO: add about us page
             <Route path={"/e-shop"} element={<EShop/>}/>
-            <Route path={"/product-page"} element={<Product/>}/>
+              <Route path="/e-shop/products/:id/*" element={<ProductDetails/>}/>
+            <Route path={"/product-page"} element={<ProductDetails/>}/>
           </Routes>
         </BrowserRouter>
 
