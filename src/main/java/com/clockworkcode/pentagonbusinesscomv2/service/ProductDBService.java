@@ -52,6 +52,10 @@ public class ProductDBService {
         return productRepository.getProductsByProductName(productName);
     }
 
+    public Product getProductByProductID(String productID){
+        return productRepository.getById(Long.valueOf(productID));
+    }
+
     public List<Product> getProductsByProductCategoryName(String productCategoryName){
         ProductCategory productCategory = productCategoryRepository.getProductCategoryByProductCategoryName(productCategoryName);
         return productRepository.getProductsByProductCategory(productCategory);

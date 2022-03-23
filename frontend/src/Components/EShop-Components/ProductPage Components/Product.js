@@ -1,5 +1,5 @@
-import React from "react";
-import { useLocation } from "react-router-dom";
+import React, {useState} from "react";
+import { useLocation,useParams } from "react-router-dom";
 
 // sections
 import Product1 from "../../Sections/ECommerce/Product/Product1.js"
@@ -26,6 +26,16 @@ export default function Product() {
   React.useEffect(() => {
     window.scrollTo(0, 0);
   }, [location]);
+
+  const {id} = useParams();
+
+  const [product,setProduct] = useState([]);
+
+  fetch()
+      .then()
+      .then()
+
+
   return (
     <>
       <NavbarLinks {...navbarlinkslanding2} />

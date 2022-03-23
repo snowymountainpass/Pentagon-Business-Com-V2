@@ -156,6 +156,10 @@ public class ProductController {
         return ResponseEntity.ok().body(products);
     }
 
+    @GetMapping("/get-product-by-id/{productID}")
+    public ResponseEntity<Product> getProductById(@PathVariable String productID){
+        return ResponseEntity.ok().body( productDBService.getProductByProductID(productID));
+    }
 
 //    @GetMapping("/price-descending")
 //    public List<Product> getProductsPriceDecreasing() {
