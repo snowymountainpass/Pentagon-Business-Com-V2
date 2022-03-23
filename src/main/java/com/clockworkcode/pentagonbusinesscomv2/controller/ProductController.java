@@ -13,7 +13,7 @@ import java.util.Objects;
 import java.util.stream.Collectors;
 
 @RestController
-@RequestMapping("e-shop/")
+@RequestMapping("e-shop")
 @CrossOrigin(origins = "http://localhost:3000/")
 public class ProductController {
 
@@ -26,7 +26,7 @@ public class ProductController {
         return productDBService.getAllProducts();
     }
 
-    @GetMapping("product/{productName}")
+    @GetMapping("/product/{productName}")
     public ResponseEntity<List<Product>> getProductsByName(@PathVariable(name = "productName") String productName) {
 
 
@@ -157,11 +157,11 @@ public class ProductController {
     }
 
     @GetMapping("/product-id/{productID}")
-    public ResponseEntity<Product> getProductById(@PathVariable String productID){
-
+    public void getProductById(@PathVariable String productID){
+//        ResponseEntity<Product>
         System.out.println("Product ID: "+productID);
 
-        return ResponseEntity.ok().body( productDBService.getProductByProductID(productID));
+//        return ResponseEntity.ok().body( productDBService.getProductByProductID(productID));
     }
 
 //    @GetMapping("/price-descending")

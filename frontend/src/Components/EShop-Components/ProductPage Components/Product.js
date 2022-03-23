@@ -26,24 +26,39 @@ export default function Product() {
 
     console.log("PRODUCT ID: "+id);
 
+    const requestOptions = {
+        method: 'GET',
+        headers: {Accept: 'application/json', 'Content-Type': 'application/json'},
 
-    useEffect(
-        ()=>{
+    };
 
-            const requestOptions = {
-                method: 'GET',
-                headers: {Accept: 'application/json', 'Content-Type': 'application/json'},
+    fetch("http://localhost:3000/e-shop/product-id/"+id,requestOptions)
+        .then(response => response.json())
+        .then(data => {
+                setProduct(data);
+                console.log("DATA: "+data);
+            }
+        );
 
-            };
-
-            fetch("http://localhost:3000/e-shop/product-id/"+id,requestOptions)
-                .then(response => response.json())
-                .then(data => {
-                    setProduct(data);
-                });
-
-        },[id]
-    )
+    // useEffect(
+    //     ()=>{
+    //
+    //         const requestOptions = {
+    //             method: 'GET',
+    //             headers: {Accept: 'application/json', 'Content-Type': 'application/json'},
+    //
+    //         };
+    //
+    //         fetch("http://localhost:3000/e-shop/product-id/"+id,requestOptions)
+    //             .then(response => response.json())
+    //             .then(data => {
+    //                 setProduct(data);
+    //                 console.log("DATA: "+data);
+    //             }
+    //         );
+    //
+    //     },[id]
+    // )
 
 
 
