@@ -20,7 +20,11 @@ export default function Product1({
   addToCart,
   inputs,
   ratings,
+  product
 }) {
+
+  // console.log(product);
+
   return (
     <>
       <section className="relative">
@@ -39,7 +43,7 @@ export default function Product1({
             <div className="mr-auto px-4 relative w-full lg:w-6/12 w-full md:w-full">
 
               <h2 className="text-3xl font-bold leading-tight mt-0 mb-0">
-                {name}
+                {product.productName}
               </h2>
 
               <div className="pt-2">
@@ -47,31 +51,31 @@ export default function Product1({
               </div>
 
               <h2 className="text-3xl font-normal mt-2 mb-2">{price}</h2>
-              <p className="text-blueGray-500">{description}</p>
-              <div className="mt-12 mb-6 flex flex-wrap -mx-4">
-                {inputs.map((prop, key) => {
-                  if (prop.input) {
-                    return (
-                      <div key={key} className="px-4 relative w-full lg:w-6/12">
-                        <label className="inline-block mb-2">
-                          {prop.label}
-                        </label>
-                        <Input {...prop.input} />
-                      </div>
-                    );
-                  } else if (prop.select) {
-                    return (
-                      <div key={key} className="px-4 relative w-full lg:w-6/12">
-                        <label className="inline-block mb-2">
-                          {prop.label}
-                        </label>
-                        <Select {...prop.select} />
-                      </div>
-                    );
-                  }
-                  return null;
-                })}
-              </div>
+              <p className="text-blueGray-500">{product.productDescription}</p>
+              {/*<div className="mt-12 mb-6 flex flex-wrap -mx-4">*/}
+              {/*  {inputs.map((prop, key) => {*/}
+              {/*    if (prop.input) {*/}
+              {/*      return (*/}
+              {/*        <div key={key} className="px-4 relative w-full lg:w-6/12">*/}
+              {/*          <label className="inline-block mb-2">*/}
+              {/*            {prop.label}*/}
+              {/*          </label>*/}
+              {/*          <Input {...prop.input} />*/}
+              {/*        </div>*/}
+              {/*      );*/}
+              {/*    } else if (prop.select) {*/}
+              {/*      return (*/}
+              {/*        <div key={key} className="px-4 relative w-full lg:w-6/12">*/}
+              {/*          <label className="inline-block mb-2">*/}
+              {/*            {prop.label}*/}
+              {/*          </label>*/}
+              {/*          <Select {...prop.select} />*/}
+              {/*        </div>*/}
+              {/*      );*/}
+              {/*    }*/}
+              {/*    return null;*/}
+              {/*  })}*/}
+              {/*</div>*/}
 
               <div className="mb-6 flex flex-wrap -mx-4">
                 <div className="px-4 relative w-full lg:w-5/12">

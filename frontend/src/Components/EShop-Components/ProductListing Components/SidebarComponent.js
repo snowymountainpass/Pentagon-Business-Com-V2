@@ -1,7 +1,7 @@
-import DeliveryTimeComponent from "./Sidebar Components/DeliveryTimeComponent";
-import PriceIntervalComponent from "./Sidebar Components/PriceIntervalComponent";
-import BrandSelectionComponent from "./Sidebar Components/BrandSelectionComponent";
-import ProductCategoryComponent from "./Sidebar Components/ProductCategoryComponent";
+import DeliveryTimeComponent from "../Sidebar Components/DeliveryTimeComponent";
+import PriceIntervalComponent from "../Sidebar Components/PriceIntervalComponent";
+import BrandSelectionComponent from "../Sidebar Components/BrandSelectionComponent";
+import ProductCategoryComponent from "../Sidebar Components/ProductCategoryComponent";
 
 export default function SidebarComponent({setChangeProducts, categoriesList, brandsList, minmaxPrice}) {
 

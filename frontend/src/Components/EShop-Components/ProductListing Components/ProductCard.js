@@ -1,9 +1,7 @@
-import {Link} from "react-router-dom";
-
 
 export default function ProductCard(props){
 
-    const img = props.product.img.replace("../../Assets/img/","/assets/images/");
+    // const img = props.product.img.replace("../../Assets/img/","/assets/images/");
 
 
 
@@ -13,7 +11,7 @@ export default function ProductCard(props){
                 <aside className="col-md-3">
                     <a href="#" className="img-wrap">
                         <span className="badge badge-new"> NEW </span>
-                        <img src={img} alt={props.product.productName}/>
+                        <img src={props.product.img} alt={props.product.productName}/>
                     </a>
                 </aside>
                 <div className="col-md-6">
@@ -51,7 +49,7 @@ export default function ProductCard(props){
                         <p className="text-quantity">{`Quantity Available: ${props.product.productInventory}`}</p>
                         <br/>
                         <p>
-                            <a href={`/e-shop/products/${props.product.productID}`} className="btn btn-primary btn-block">Details</a>
+                            <a href={`/e-shop/product/${props.product.productID}`} className="btn btn-primary btn-block">Details</a>
 
                             <a href="#" className="btn btn-light btn-block"><i className="fa fa-shopping-cart"/>
                                 <span className="text">Add to Cart</span>

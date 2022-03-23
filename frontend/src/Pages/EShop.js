@@ -14,8 +14,8 @@ import FooterSmall from "../Components/Footers/Landing/FooterSmall";
 import footersmall from "../Texts/Presentation/footers/footersmall";
 
 //
-import Navbar from "../Components/EShop-Components/Navbar";
-import Products from "../Components/EShop-Components/Products";
+import Navbar from "../Components/EShop-Components/ProductListing Components/Navbar";
+import Products from "../Components/EShop-Components/ProductListing Components/Products";
 
 export default function EShop() {
 

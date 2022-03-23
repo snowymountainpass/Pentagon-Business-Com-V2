@@ -1,11 +1,10 @@
-import React, {useState} from "react";
-import { useLocation,useParams } from "react-router-dom";
+import {useEffect, useState} from "react";
+import {useLocation, useParams} from "react-router-dom";
 
 // sections
 import Product1 from "../../Sections/ECommerce/Product/Product1.js"
 // import Testimonials1 from "components/Sections/ECommerce/Testimonials/Testimonials1.js";
 // import Hero8 from "components/Sections/ECommerce/Heroes/Hero8.js";
-
 // components
 import NavbarLinks from "../../Navbar/NavbarLinks";
 // import HeaderImageTitleLeft from "../../Headers/ECommerce/HeaderImageTitleLeft.js";
@@ -22,29 +21,61 @@ import product1 from "../../../Texts/Ecommerce/Sections/product1.js";
 import footersmall from "../../../Texts/Presentation/footers/footersmall.js";
 
 export default function Product() {
-  const location = useLocation();
-  React.useEffect(() => {
-    window.scrollTo(0, 0);
-  }, [location]);
+    const {id} = useParams();
+    const [product, setProduct] = useState([]);
 
-  const {id} = useParams();
-
-  const [product,setProduct] = useState([]);
-
-  fetch()
-      .then()
-      .then()
+    console.log("PRODUCT ID: "+id);
 
 
-  return (
-    <>
-      <NavbarLinks {...navbarlinkslanding2} />
-      {/*<HeaderImageTitleLeft {...headerimagetitleleft} />*/}
-      <Product1 {...product1} />
-      {/*<Testimonials1 {...testimonials1} />*/}
-      {/*<Hero8 {...hero8} />*/}
-      {/*<PreFooterLarge {...prefooterlarge} />*/}
-      <FooterSmall {...footersmall} />
-    </>
-  );
+    useEffect(
+        ()=>{
+
+            const requestOptions = {
+                method: 'GET',
+                headers: {Accept: 'application/json', 'Content-Type': 'application/json'},
+
+            };
+
+            fetch("http://localhost:3000/e-shop/product-id/"+id,requestOptions)
+                .then(response => response.json())
+                .then(data => {
+                    setProduct(data);
+                });
+
+        },[id]
+    )
+
+
+
+    const location = useLocation();
+    useEffect(() => {
+        window.scrollTo(0, 0);
+
+    }, [location]);
+
+
+
+    console.log("Product content: "+product);
+
+
+    // fetch(`http://localhost:3000/e-shop/get-product-by-id/${id}`)
+    //     .then(response => {
+    //         return response.json();
+    //     })
+    //     .then(data => {
+    //         setProduct(data);
+    //     })
+
+
+    return (
+        <>
+            <NavbarLinks {...navbarlinkslanding2}/>
+            {/*<HeaderImageTitleLeft {...headerimagetitleleft} />*/}
+            <Product1 {...product1} product={product}/>
+            {/*<Testimonials1 {...testimonials1} />*/}
+            {/*<Hero8 {...hero8} />*/}
+            {/*<PreFooterLarge {...prefooterlarge} />*/}
+            <FooterSmall {...footersmall} />
+        </>
+    );
 }

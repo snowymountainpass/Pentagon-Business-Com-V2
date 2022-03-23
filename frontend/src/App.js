@@ -20,7 +20,7 @@ function App() {
             <Route path={"/about-us"}
             /> //TODO: add about us page
             <Route path={"/e-shop"} element={<EShop/>}/>
-              <Route path="/e-shop/products/:id/*" element={<ProductDetails/>}/>
+              <Route path="/e-shop/product/:id" element={<ProductDetails/>}/>
             <Route path={"/product-page"} element={<ProductDetails/>}/>
           </Routes>
         </BrowserRouter>

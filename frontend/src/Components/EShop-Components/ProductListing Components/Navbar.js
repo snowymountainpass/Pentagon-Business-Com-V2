@@ -1,6 +1,6 @@
-import CompanyNameLogo from "./Navbar Components/CompanyNameLogo";
-import ShoppingCart from "./Navbar Components/ShoppingCart";
-import RegistrationLogin from "./Navbar Components/RegistrationLogin";
+import CompanyNameLogo from "../Navbar Components/CompanyNameLogo";
+import ShoppingCart from "../Navbar Components/ShoppingCart";
+import RegistrationLogin from "../Navbar Components/RegistrationLogin";
 import React from "react";
 
 
