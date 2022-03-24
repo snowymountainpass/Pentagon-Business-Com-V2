@@ -32,7 +32,7 @@ export default function Product() {
 
     };
 
-    fetch("http://localhost:3000/e-shop/product-id/"+id,requestOptions)
+    fetch("http://localhost:3000/e-shop/product-get-by-id/"+id,requestOptions)
         .then(response => response.json())
         .then(data => {
                 setProduct(data);

@@ -53,7 +53,7 @@ public class ProductDBService {
     }
 
     public Product getProductByProductID(String productID){
-        return productRepository.getById(Long.valueOf(productID));
+        return productRepository.getProductByProductID(Long.valueOf(productID));
     }
 
     public List<Product> getProductsByProductCategoryName(String productCategoryName){
