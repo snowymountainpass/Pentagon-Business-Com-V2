@@ -27,6 +27,14 @@ public class AppUserService implements UserDetailsService {
 
     public String signUpUSer(AppUser appUser){
 
+        boolean userExists = appUserRepository.findByEmail(appUser.getEmail()).isPresent();
+
+        if(userExists){
+            throw new IllegalStateException("email already taken!");
+        }
+
+        String encodedPassword = bCryptPasswordEncoder.encode(appUser.getPassword());
+
         return "";
     }
 
