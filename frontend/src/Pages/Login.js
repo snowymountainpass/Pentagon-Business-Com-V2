@@ -13,7 +13,9 @@ import cardloginsocial from "../Texts/Auth/Card/cardloginsocial.js";
 // import navbarlinkslanding1 from "_texts/presentation/navbars/navbarlinkslanding1.js";
 import navbarlinkslanding1 from "../Texts/Presentation/navbar/navbarlinkslanding2";
 // import footerauth from "_texts/auth/footers/footerauth.js";
-import footerauth from "../Texts/auth/Footer/footerauth.js";
+import footerauth from "../Texts/Auth/Footer/footerauth.js";
+
+import backgroundImage from "../Components/Cards/Register-Login-Components/register_bg_2.png";
 
 export default function Login() {
   const location = useLocation();
@@ -29,7 +31,7 @@ export default function Login() {
     className="absolute top-0 w-full h-full bg-blueGray-900 bg-no-repeat bg-full"
     style={{
       backgroundImage:
-          "url(" + require("../../public/assets/images/backgrounds/register_bg_2.png").default + ")",
+          "url(" + require(backgroundImage).default + ")",
     }}
     />
           <div className="container mx-auto px-4 h-full">

@@ -23,7 +23,7 @@ function App() {
             <Route path={"/e-shop"} element={<EShop/>}/>
             <Route path={"/e-shop/product-id/:id/*"} element={<Product/>}/>
             <Route path={"/e-shop/login"} element={<Login/>}/>
-            <Route path={"/e-shop/register"} element={}/>
+            <Route path={"/e-shop/register"} element={<Login/>}/>
           </Routes>
         </BrowserRouter>
 

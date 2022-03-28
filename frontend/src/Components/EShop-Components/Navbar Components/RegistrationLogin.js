@@ -1,3 +1,4 @@
+import {Link} from "react-router-dom";
 
 export default function RegistrationLogin(){
 
@@ -7,8 +8,12 @@ export default function RegistrationLogin(){
             <div className="text text-white-50" >
                 <span className="text-muted">Welcome!</span>
                 <div>
-                    <a href="#" >Sign in </a>
-                    <a href="#">Register</a>
+                    {/*<a href="#" >Sign in </a>*/}
+                    {/*<a href="#">Register</a>*/}
+
+                    <Link to="/e-shop/login">Sign in</Link>
+                    <Link to="/">Register</Link>
+
                 </div>
             </div>
         </div>
