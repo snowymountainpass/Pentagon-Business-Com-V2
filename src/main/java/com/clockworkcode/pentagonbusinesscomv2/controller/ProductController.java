@@ -23,6 +23,8 @@ public class ProductController {
     @GetMapping()
     public List<Product> getAllProducts() {
 
+        List<Product> allProducts = productDBService.getAllProducts();
+
         return productDBService.getAllProducts();
     }
 
