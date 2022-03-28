@@ -8,6 +8,7 @@ import {
 import Landing from "./Pages/Landing";
 import EShop from "./Pages/EShop";
 import Product from "./Components/EShop-Components/ProductPage Components/Product";
+import Login from "./Pages/Login";
 
 
 function App() {
@@ -21,7 +22,8 @@ function App() {
             /> //TODO: add about us page
             <Route path={"/e-shop"} element={<EShop/>}/>
             <Route path={"/e-shop/product-id/:id/*"} element={<Product/>}/>
-            {/*<Route path={"/product-page"} element={<ProductDetails/>}/>*/}
+            <Route path={"/e-shop/login"} element={<Login/>}/>
+            <Route path={"/e-shop/register"} element={}/>
           </Routes>
         </BrowserRouter>
 
