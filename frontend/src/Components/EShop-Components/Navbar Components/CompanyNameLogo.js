@@ -3,7 +3,8 @@ import React from "react";
 export default function CompanyNameLogo(){
 
     return(
-        <div className="col-lg-2 col-4 flex-fill">
+        <div className="col-lg-2 col-4 flex-fill mr-auto">
+            {/*className="col-lg-2 col-4 flex-fill"*/}
             {/*<a href="#" className="brand-wrap">*/}
             {/*    Pentagon Business Com*/}
             {/*</a>*/}

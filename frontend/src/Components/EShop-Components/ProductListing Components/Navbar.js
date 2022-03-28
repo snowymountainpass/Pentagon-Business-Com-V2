@@ -49,24 +49,20 @@ export default function Navbar()
     //className={"w-full h-full bg-blueGray-800 shadow-md text-white"} - ORIGINAL
     //<section className=" border-bottom "> {/**/} - BELOW HEADER SECTION HEADER
     return(
-        <nav className={"w-full h-full z-50 flex flex-wrap items-center justify-between px-2 py-3 mb-3 bg-blueGray-800 shadow-md text-white"
+        <nav className={"w-full h-full z-50  flex-wrap items-center justify-between px-2 py-3 mb-3 bg-blueGray-800 shadow-md text-white"
         }>
             {/*className={"fixed w-full z-50 flex flex-wrap items-center justify-between px-2 py-3 mb-3 bg-blueGray-800 shadow-md"}*/}
-            <header className="section-header  ">
+            <header className="section-header">
                 <section> {/**/}
-                    <div className="container ">
-                        <div className=" row align-items-center" >
+                    <div className="container-fluid">
+                        <div className="row align-items-center">
                             <CompanyNameLogo/>
+                            <div className="col-lg-4 col-sm-6 col-12 text-white">
 
-                            {/*<SearchBar/>*/}
+                                <div className="widgets-wrap float-md-right text-white">
+                                    <ShoppingCart/>
 
-                            <div className="col-lg-4 col-sm-6 col-12 text-white ">
-
-                                <div className="widgets-wrap float-md-right">
-
-                                    {/*<ShoppingCart/>*/}
-
-                                    {/*<RegistrationLogin/>*/}
+                                    <RegistrationLogin/>
 
                                 </div>
                             </div>
@@ -75,7 +71,13 @@ export default function Navbar()
                 </section>
             </header>
 
+
+
+
+
         </nav>
+
+
 
 
 
