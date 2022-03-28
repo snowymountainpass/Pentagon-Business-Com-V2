@@ -52,6 +52,9 @@ public class AppUser implements UserDetails {
     @OneToMany(mappedBy = "appUser")
     private List<AppUserPayment> appUserPayments;
 
+//    @OneToMany(mappedBy = "a")
+//    private
+
     @OneToOne(mappedBy = "appUser")
     private OrderDetail orderDetail;
 
@@ -63,6 +66,8 @@ public class AppUser implements UserDetails {
 
     private Boolean locked = false;
     private Boolean enabled= false;
+
+
 
     public AppUser(String password, String firstName, String lastName, String email, AppUserRole appUserRole) {
         this.password = password;

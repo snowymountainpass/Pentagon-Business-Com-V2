@@ -3,9 +3,11 @@ package com.clockworkcode.pentagonbusinesscomv2.service;
 import com.clockworkcode.pentagonbusinesscomv2.model.registration.RegistrationRequest;
 import com.clockworkcode.pentagonbusinesscomv2.model.user.AppUser;
 import com.clockworkcode.pentagonbusinesscomv2.model.user.AppUserRole;
+import com.clockworkcode.pentagonbusinesscomv2.security.token.ConfirmationToken;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 @Service
 @AllArgsConstructor
@@ -39,5 +41,11 @@ public class RegistrationService {
         return token;
 
     }
+
+    @Transactional
+    public String confirmToken(String token){
+        ConfirmationToken confirmationToken =
+    }
+
 
 }
