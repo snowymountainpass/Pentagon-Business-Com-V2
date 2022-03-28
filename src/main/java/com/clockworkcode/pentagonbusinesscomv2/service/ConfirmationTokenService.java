@@ -5,6 +5,7 @@ import com.clockworkcode.pentagonbusinesscomv2.security.token.ConfirmationToken;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDateTime;
 import java.util.Optional;
 
 @Service
@@ -18,6 +19,10 @@ public class ConfirmationTokenService {
     }
     public Optional<ConfirmationToken> getToken(String token){
        return confirmationTokenRepository.findByToken(token);
+    }
+
+    public int setConfirmedAt(String token){
+        return confirmationTokenRepository.updateConfirmedAt(token, LocalDateTime.now());
     }
 
 }
