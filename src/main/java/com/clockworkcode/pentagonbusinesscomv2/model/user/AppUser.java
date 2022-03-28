@@ -2,6 +2,7 @@ package com.clockworkcode.pentagonbusinesscomv2.model.user;
 
 import com.clockworkcode.pentagonbusinesscomv2.model.order.OrderDetail;
 import com.clockworkcode.pentagonbusinesscomv2.model.shopping.ShoppingSession;
+import com.clockworkcode.pentagonbusinesscomv2.security.token.ConfirmationToken;
 import lombok.*;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -52,8 +53,8 @@ public class AppUser implements UserDetails {
     @OneToMany(mappedBy = "appUser")
     private List<AppUserPayment> appUserPayments;
 
-//    @OneToMany(mappedBy = "a")
-//    private
+    @OneToMany(mappedBy = "appUser")
+    private List<ConfirmationToken> confirmationTokens;
 
     @OneToOne(mappedBy = "appUser")
     private OrderDetail orderDetail;
