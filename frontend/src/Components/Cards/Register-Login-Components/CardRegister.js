@@ -1,9 +1,9 @@
 import React from "react";
 import PropTypes from "prop-types";
 // components
-import Button from "../../../components/Elements/Button.js";
-import Input from "../../../components/Elements/Input.js";
-import Checkbox from "../../../components/Elements/Checkbox.js";
+import Button from "../../../Components/Elements/Button";
+import Input from "../../../Components/Elements/Input.js";
+import Checkbox from "../../../Components/Elements/Checkbox.js";
 
 export default function CardRegister({
   title,
@@ -30,7 +30,7 @@ export default function CardRegister({
                 color={prop.icon}
                 fullWidth={false}
               >
-                <i className={"mr-1 fab fa-" + prop.icon}></i> {prop.icon}
+                <i className={"mr-1 fab fa-" + prop.icon}/> {prop.icon}
               </Button>
             ))}
           </div>

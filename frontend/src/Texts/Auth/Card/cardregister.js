@@ -1,24 +1,23 @@
 const textProps = {
-  title: "Sign in with",
-  subtitle: "Or sign in with credentials",
+  title: "Signup with",
+  subtitle: "Or Register with credentials",
   socials: [
-    { icon: "github", button: { href: "#pablo" } },
-    { icon: "facebook", button: { href: "#pablo" } },
     { icon: "twitter", button: { href: "#pablo" } },
+    { icon: "facebook", button: { href: "#pablo" } },
   ],
   button: {
-    fullWidth: true,
     color: "dark",
-    children: "Sign in",
+    children: "Register",
   },
   forgotPassword: {
     href: "#pablo",
   },
   createAccount: {
-    href: "register",
+    // href: "/e-shop/register",
+    // href: "/e-shop/",
   },
   checkbox: {
-    label: "Remember me",
+    label: "Subscribe to Newsletter",
   },
   inputs: [
     {
@@ -26,6 +25,7 @@ const textProps = {
       input: {
         type: "email",
         placeholder: "Email",
+        border: "borderless",
       },
     },
     {
@@ -33,6 +33,15 @@ const textProps = {
       input: {
         type: "password",
         placeholder: "Password",
+        border: "borderless",
+      },
+    },
+    {
+      label: "Password Confirmation",
+      input: {
+        type: "password",
+        placeholder: "Password again",
+        border: "borderless",
       },
     },
   ],

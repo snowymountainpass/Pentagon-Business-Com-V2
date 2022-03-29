@@ -12,7 +12,7 @@ export default function RegistrationLogin(){
                     {/*<a href="#">Register</a>*/}
 
                     <Link to="/e-shop/login">Sign in</Link>
-                    <Link to="/">Register</Link>
+                    <Link to="/e-shop/register">Register</Link>
 
                 </div>
             </div>
