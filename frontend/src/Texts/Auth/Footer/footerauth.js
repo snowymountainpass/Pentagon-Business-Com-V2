@@ -1,23 +1,23 @@
 const textProps = {
   copyright: {
-    children: "Creative Tim",
-    href: "https://www.creative-tim.com",
+    children: "Pentagon Business Com",
+    href: "http://www.pentagon.ro/",
     target: "_blank",
   },
   links: [
     {
-      children: "Creative Tim",
-      href: "https://www.creative-tim.com",
+      children: "E-Shop",
+      href: "http://www.pentagon.ro/",
       target: "_blank",
     },
     {
       children: "About us",
-      href: "https://www.creative-tim.com/presentation",
+      href: "http://www.pentagon.ro/",
       target: "_blank",
     },
     {
       children: "Blog",
-      href: "https://www.creative-tim.com/blog",
+      href: "http://www.pentagon.ro/",
       target: "_blank",
     },
   ],

@@ -15,7 +15,7 @@ import navbarlinkslanding1 from "../Texts/Presentation/navbar/navbarlinkslanding
 // import footerauth from "_texts/auth/footers/footerauth.js";
 import footerauth from "../Texts/Auth/Footer/footerauth.js";
 
-import backgroundImage from "../Components/Cards/Register-Login-Components/register_bg_2.png";
+import backgroundImageDesign from "../Components/Cards/Register-Login-Components/register_bg_2.png";
 
 export default function Login() {
   const location = useLocation();
@@ -30,8 +30,10 @@ export default function Login() {
           <div
     className="absolute top-0 w-full h-full bg-blueGray-900 bg-no-repeat bg-full"
     style={{
-      backgroundImage:
-          "url(" + require(backgroundImage).default + ")",
+      // backgroundImage:
+      //     "url(" + require(backgroundImageDesign).default + ")",
+        backgroundImage:
+            `url(${backgroundImageDesign})`
     }}
     />
           <div className="container mx-auto px-4 h-full">

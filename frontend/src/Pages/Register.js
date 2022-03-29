@@ -2,9 +2,14 @@ import React from "react";
 import { useLocation } from "react-router-dom";
 
 // components
-import NavbarLinks from "components/Navbars/NavbarLinks.js";
-import CardLoginSocial from "components/Cards/Auth/CardLoginSocial.js";
-import FooterAuth from "components/Footers/Auth/FooterAuth.js";
+// import NavbarLinks from "components/Navbars/NavbarLinks.js";
+import NavbarLinks from "../Components/Navbar/NavbarLinks.js";
+
+// import CardLoginSocial from "components/Cards/Auth/CardLoginSocial.js";
+
+// import FooterAuth from "components/Footers/Auth/FooterAuth.js";
+import FooterAuth from "../Components/Footers/Auth/FooterAuth.js";
+
 // texts
 import cardloginsocial from "_texts/auth/cards/cardloginsocial.js";
 import navbarlinkslanding1 from "_texts/presentation/navbars/navbarlinkslanding1.js";
@@ -31,6 +36,9 @@ export default function Register() {
             <div className="flex content-center items-center justify-center h-full">
               <div className="w-full lg:w-4/12 px-4">
                 <CardLoginSocial {...cardloginsocial} />
+
+
+
               </div>
             </div>
           </div>
