@@ -12,7 +12,7 @@ const textProps = {
     children: "Sign in",
   },
   forgotPassword: {
-    href: "#pablo",
+    href: "restore-password",
   },
   createAccount: {
     href: "register",
