@@ -8,9 +8,6 @@ export default function RegistrationLogin(){
             <div className="text text-white-50" >
                 <span className="text-muted">Welcome!</span>
                 <div>
-                    {/*<a href="#" >Sign in </a>*/}
-                    {/*<a href="#">Register</a>*/}
-
                     <Link to="/e-shop/login">Sign in</Link>
                     <Link to="/e-shop/register">Register</Link>
 

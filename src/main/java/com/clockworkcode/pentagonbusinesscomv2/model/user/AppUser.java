@@ -69,6 +69,13 @@ public class AppUser implements UserDetails {
     private Boolean enabled= false;
 
 
+    public AppUser(String password,  String email) {
+        this.password = password;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.email = email;
+        this.appUserRole = AppUserRole.USER;
+    }
 
     public AppUser(String password, String firstName, String lastName, String email, AppUserRole appUserRole) {
         this.password = password;

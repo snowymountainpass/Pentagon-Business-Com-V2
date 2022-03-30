@@ -10,11 +10,10 @@ const textProps = {
     children: "Register",
   },
   forgotPassword: {
-    href: "#pablo",
+    href: "", // RUTA CATRE BACKEND => AICI O SA TRIMITEM DATELE DIN BACKEND => CAZUL "GET NEW PASSWORD"
   },
   createAccount: {
-    // href: "/e-shop/register",
-    // href: "/e-shop/",
+    href: "", // RUTA CATRE BACKEND => AICI O SA TRIMITEM DATELE DIN BACKEND => CAZUL "CREEM CONT NOU"
   },
   checkbox: {
     label: "Subscribe to Newsletter",
