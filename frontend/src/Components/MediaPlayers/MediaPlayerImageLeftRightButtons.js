@@ -5,6 +5,7 @@ import classnames from "classnames";
 export default function MediaPlayerImageLeftRightButtons({
   items,
   defaultOpened,
+  product
 }) {
   const [open, setOpen] = React.useState(defaultOpened);
   const [oldInTransition, setOldInTransition] = React.useState(false);
@@ -43,30 +44,31 @@ export default function MediaPlayerImageLeftRightButtons({
                 )}
                 key={key}
               >
-                <img alt="..." src={prop} className="w-full h-auto mx-auto" />
+                {/*<img alt="..." src={prop} className="w-full h-auto mx-auto" />*/}
+                <img alt="..." src={product.img} className="w-full h-auto mx-auto" />
               </div>
             );
           })}
         </div>
         <a
-          href="#pablo"
+          // href="#pablo"
           className="absolute z-1 top-0 bottom-0 flex items-center justify-center w-1/6 text-white text-center opacity-75 hover:opacity-100 transition-opacity duration-150 ease-linear left-0"
           onClick={(e) =>
             toggleNew(e, open - 1 < 0 ? items.length - 1 : open - 1)
           }
         >
-          <i className="text-sm bg-orange-500 rounded-full fas fa-chevron-left flex items-center justify-center w-8 h-8"></i>
+          <i className="text-sm bg-orange-500 rounded-full fas fa-chevron-left flex items-center justify-center w-8 h-8"/>
           <span className="sr-only">Previous</span>
         </a>
 
         <a
-          href="#pablo"
+          // href="#pablo"
           className="absolute z-1 top-0 bottom-0 flex items-center justify-center w-1/6 text-white text-center opacity-75 hover:opacity-100 transition-opacity duration-150 ease-linear right-0"
           onClick={(e) =>
             toggleNew(e, open + 1 > items.length - 1 ? 0 : open + 1)
           }
         >
-          <i className="text-sm bg-orange-500 rounded-full fas fa-chevron-right flex items-center justify-center w-8 h-8"></i>
+          <i className="text-sm bg-orange-500 rounded-full fas fa-chevron-right flex items-center justify-center w-8 h-8"/>
           <span className="sr-only">Next</span>
         </a>
       </div>

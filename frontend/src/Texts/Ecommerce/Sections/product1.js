@@ -5,6 +5,7 @@ import incrementer from "../../Misc/Forms/incrementer.js";
 import select from "../../Misc/Forms/select.js";
 import ratings from "../../Misc/Content/ratings.js";
 
+
 const textProps = {
   heading2: {
     color: "red",

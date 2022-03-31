@@ -40,19 +40,6 @@ export default function Product() {
 
 
     },[])
-    // const requestOptions = {
-    //     method: 'GET',
-    //     headers: {Accept: 'application/json', 'Content-Type': 'application/json'},
-    //
-    // };
-    //
-    // fetch("http://localhost:8080/e-shop/product-get-by-id/"+id,requestOptions)
-    //     .then(response => response.json())
-    //     .then(data => {
-    //             setProduct(data);
-    //             console.log("DATA: "+data);
-    //         }
-    //     );
 
 
     const location = useLocation();
@@ -68,6 +55,7 @@ export default function Product() {
             <NavbarLinks {...navbarlinkslanding2}/>
             {/*<HeaderImageTitleLeft {...headerimagetitleleft} />*/}
             <Product1 {...product1} product={product}/>
+            {/*<Product1 {...product} product={product}/>*/}
             {/*<Testimonials1 {...testimonials1} />*/}
             {/*<Hero8 {...hero8} />*/}
             {/*<PreFooterLarge {...prefooterlarge} />*/}
