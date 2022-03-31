@@ -22,41 +22,37 @@ export default function Product() {
     console.log("PRODUCT ID: "+id);
 
 
-    
-    const requestOptions = {
-        method: 'GET',
-        headers: {Accept: 'application/json', 'Content-Type': 'application/json'},
+    useEffect(()=>{
 
-    };
+        const requestOptions = {
+            method: 'GET',
+            headers: {Accept: 'application/json', 'Content-Type': 'application/json'},
 
-    fetch("http://localhost:8080/e-shop/product-get-by-id/"+id,requestOptions)
-        .then(response => response.json())
-        .then(data => {
-                setProduct(data);
-                console.log("DATA: "+data);
-            }
-        );
+        };
 
-    // useEffect(
-    //     ()=>{
-    //
-    //         const requestOptions = {
-    //             method: 'GET',
-    //             headers: {Accept: 'application/json', 'Content-Type': 'application/json'},
-    //
-    //         };
-    //
-    //         fetch("http://localhost:3000/e-shop/product-id/"+id,requestOptions)
-    //             .then(response => response.json())
-    //             .then(data => {
-    //                 setProduct(data);
-    //                 console.log("DATA: "+data);
-    //             }
-    //         );
-    //
-    //     },[id]
-    // )
+        fetch("http://localhost:8080/e-shop/product-get-by-id/"+id,requestOptions)
+            .then(response => response.json())
+            .then(data => {
+                    setProduct(data);
+                    console.log("DATA: "+data);
+                }
+            );
 
+
+    },[])
+    // const requestOptions = {
+    //     method: 'GET',
+    //     headers: {Accept: 'application/json', 'Content-Type': 'application/json'},
+    //
+    // };
+    //
+    // fetch("http://localhost:8080/e-shop/product-get-by-id/"+id,requestOptions)
+    //     .then(response => response.json())
+    //     .then(data => {
+    //             setProduct(data);
+    //             console.log("DATA: "+data);
+    //         }
+    //     );
 
 
     const location = useLocation();
@@ -65,19 +61,7 @@ export default function Product() {
 
     }, [location]);
 
-
-
     console.log("Product content: "+product);
-
-
-    // fetch(`http://localhost:3000/e-shop/get-product-by-id/${id}`)
-    //     .then(response => {
-    //         return response.json();
-    //     })
-    //     .then(data => {
-    //         setProduct(data);
-    //     })
-
 
     return (
         <>

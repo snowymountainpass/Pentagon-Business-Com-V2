@@ -46,11 +46,28 @@ export default function Product1({
                 {product.productName}
               </h2>
 
-              <div className="pt-2">
-                <Ratings {...ratings} />
-              </div>
+              {/*<div className="pt-2">*/}
+              {/*  <Ratings {...ratings} />*/}
+              {/*</div>*/}
 
-              <h2 className="text-3xl font-normal mt-2 mb-2">{price}</h2>
+              {/*<div className="rating-wrap mb-3">*/}
+              {/*  <ul className="rating-stars">*/}
+              {/*    <li className="stars-active w-80">*/}
+
+              {/*      {[...Array(product.rating)].map((e, i) => <i className="fa fa-star" key={i}/>)}*/}
+
+              {/*    </li>*/}
+              {/*    <li>*/}
+
+              {/*      {[...Array(10)].map((e, i) => <i className="fa fa-star" key={i}/>)}*/}
+
+              {/*    </li>*/}
+              {/*  </ul>*/}
+              {/*  <div className="label-rating">{`${product.rating}/10`}</div>*/}
+              {/*</div>*/}
+
+
+              <h2 className="text-3xl font-normal mt-2 mb-2">{`€${product.productPrice}`}</h2>
               <p className="text-blueGray-500">{product.productDescription}</p>
               {/*<div className="mt-12 mb-6 flex flex-wrap -mx-4">*/}
               {/*  {inputs.map((prop, key) => {*/}
