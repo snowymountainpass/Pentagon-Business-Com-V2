@@ -6,7 +6,7 @@ import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping(path = "/e-shop/registration/")
+@RequestMapping(path = "/e-shop/registration")
 @CrossOrigin(origins = "http://localhost:3000")
 @AllArgsConstructor
 public class RegistrationController {
