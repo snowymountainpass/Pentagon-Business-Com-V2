@@ -159,7 +159,7 @@ public class ProductController {
     }
 
     @GetMapping("/product-get-by-id/{productID}")
-    public ResponseEntity<Product> getProductById(@PathVariable String productID){
+    public ResponseEntity<Product> getProductById(@PathVariable String productID ){
         System.out.println("Product ID: "+productID);
 
         System.out.println("Product: "+ productDBService.getProductByProductID(productID));
