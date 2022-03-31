@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState} from "react";
 import {
   BrowserRouter,
   Routes,
@@ -14,6 +14,9 @@ import RestorePassword from "./Pages/RestorePassword";
 
 
 function App() {
+
+  const [token,setToken]=useState("");
+
   return (
       <div className="App">
 
@@ -22,10 +25,10 @@ function App() {
             <Route path={"/"} element={<Landing/>}/>
             <Route path={"/about-us"}
             /> //TODO: add about us page
-            <Route path={"/e-shop"} element={<EShop/>}/>
+            <Route path={"/e-shop"} element={<EShop token={token} setToken={setToken}/>}/>
             <Route path={"/e-shop/product-id/:id/*"} element={<Product/>}/>
             <Route path={"/e-shop/login"} element={<Login/>}/>
-            <Route path={"/e-shop/register"} element={<Register/>}/>
+            <Route path={"/e-shop/register"} element={<Register setToken={setToken}/>}/>
             <Route path={"/e-shop/restore-password"} element={<RestorePassword/>}/>
           </Routes>
         </BrowserRouter>

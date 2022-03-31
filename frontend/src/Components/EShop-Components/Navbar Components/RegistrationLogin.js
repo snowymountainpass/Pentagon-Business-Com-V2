@@ -1,6 +1,6 @@
 import {Link} from "react-router-dom";
 
-export default function RegistrationLogin(){
+export default function RegistrationLogin({setToken}){
 
     return(
         <div className="widget-header icontext text-white">

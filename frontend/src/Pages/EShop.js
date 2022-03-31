@@ -1,5 +1,5 @@
 import {useLocation} from "react-router-dom";
-import React from "react";
+import React, {useState} from "react";
 // import HeaderVideoTitle from "../../Components/Headers/Presentation/HeaderVideoTitle";
 // import headervideotitle from "../../Texts/presentation/headers/headervideotitle";
 // import Hero5 from "../../Components/Sections/Presentation/Heroes/Hero5";
@@ -17,7 +17,9 @@ import footersmall from "../Texts/Presentation/footers/footersmall";
 import Navbar from "../Components/EShop-Components/ProductListing Components/Navbar";
 import Products from "../Components/EShop-Components/ProductListing Components/Products";
 
-export default function EShop() {
+export default function EShop({token,setToken}) {
+
+
 
     const location = useLocation();
     React.useEffect(() => {
@@ -33,9 +35,13 @@ export default function EShop() {
             {/*<PreFooterLarge {...prefooterlarge} />*/}
             {/*<FooterSmall {...footersmall} />*/}
 
-            <Navbar/>
+            <Navbar
+                setToken={setToken}
+            />
             {/*<ProductListTitle/>*/}
-            <Products/>
+            <Products
+                token={token}
+            />
             {/*<Footer/>*/}
             {/*<PreFooterLarge {...prefooterlarge} />*/}
             <FooterSmall {...footersmall} />

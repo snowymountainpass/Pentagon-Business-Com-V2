@@ -23,7 +23,7 @@ import footerauth from "../Texts/Auth/Footer/footerauth.js";
 import backgroundImageDesign from "../Components/Cards/Register-Login-Components/register_bg_2.png";
 
 
-export default function Register() {
+export default function Register({setToken}) {
   const location = useLocation();
   React.useEffect(() => {
     window.scrollTo(0, 0);
@@ -44,7 +44,9 @@ export default function Register() {
             <div className="flex content-center items-center justify-center h-full">
               <div className="w-full lg:w-4/12 px-4">
                 {/*<CardLoginSocial {...cardloginsocial} />*/}
-                <CardRegister{...cardregister}/>
+                <CardRegister{...cardregister}
+                  setToken={setToken}
+                />
 
 
               </div>

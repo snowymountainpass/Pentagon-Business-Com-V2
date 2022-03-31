@@ -5,16 +5,7 @@ import PropTypes from "prop-types";
 // import Input from "../../Elements/Input";
 // import Checkbox from "../../Elements/Checkbox";
 
-export default function CardRegister({
-                                         // title,
-                                         // subtitle,
-                                         // inputs,
-                                         // socials,
-                                         // button,
-                                         // checkbox,
-                                         // forgotPassword,
-                                         // createAccount,
-                                     }) {
+export default function CardRegister({setToken}) {
 
     const inputError = {
         border: `2px solid #F2180A`,
@@ -108,6 +99,19 @@ export default function CardRegister({
 
         console.log("email: " + email);
         console.log("password: " + password);
+
+        const requestOptions = {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ email: email,password:password })
+        };
+
+        fetch('http://localhost:8080/e-shop/registration', requestOptions)
+            .then(response => response.json())
+            .then(data => {
+                setToken(data);
+                console.log("Token value is: "+ data);
+            });
 
 
 

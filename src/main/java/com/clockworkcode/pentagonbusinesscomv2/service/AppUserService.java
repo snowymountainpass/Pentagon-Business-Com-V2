@@ -52,7 +52,7 @@ public class AppUserService implements UserDetailsService {
                 LocalDateTime.now().plusMinutes(25),appUser
         );
         confirmationTokenService.saveConfirmationToken(confirmationToken);
-        log.info("user has been signed up!");
+        log.info("user has been signed up! - AppUserService");
 
         return token;
     }

@@ -6,7 +6,7 @@ import {useEffect, useState} from "react";
 
 
 
-export default function Products(){
+export default function Products({token}){
 
     const [products,setProducts] = useState([]);
     const [query, setQuery] = useState('');

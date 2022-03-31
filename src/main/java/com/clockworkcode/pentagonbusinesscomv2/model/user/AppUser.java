@@ -30,17 +30,17 @@ public class AppUser implements UserDetails {
 
 
 
-    @Column(nullable = false,columnDefinition = "text")
+//    @Column(nullable = false,columnDefinition = "text")
     private String username;
-    @Column(nullable = false,columnDefinition = "text")
+//    @Column(nullable = false,columnDefinition = "text")
     private String password;
-    @Column(nullable = false,columnDefinition = "text")
+//    @Column(nullable = false,columnDefinition = "text")
     private String firstName;
-    @Column(nullable = false,columnDefinition = "text")
+//    @Column(nullable = false,columnDefinition = "text")
     private String lastName;
-    @Column(nullable = false,columnDefinition = "text")
+//    @Column(nullable = false,columnDefinition = "text")
     private String telephone;
-    @Column(nullable = false,columnDefinition = "text",unique = true)
+//    @Column(nullable = false,columnDefinition = "text",unique = true)
     private String email;
 //    @Column(nullable = false)
 //    private Timestamp createAt;
@@ -71,8 +71,6 @@ public class AppUser implements UserDetails {
 
     public AppUser(String password,  String email) {
         this.password = password;
-        this.firstName = firstName;
-        this.lastName = lastName;
         this.email = email;
         this.appUserRole = AppUserRole.USER;
     }
