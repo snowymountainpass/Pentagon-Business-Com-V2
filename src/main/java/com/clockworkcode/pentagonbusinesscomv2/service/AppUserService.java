@@ -8,10 +8,12 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.security.crypto.bcrypt.BCrypt;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
+import java.util.Optional;
 import java.util.UUID;
 
 @Service
@@ -56,6 +58,32 @@ public class AppUserService implements UserDetailsService {
 
         return token;
     }
+
+//    public String signInUser(String email, String password){
+////
+//        boolean accountExists = appUserRepository.findByEmail(email).isPresent();
+//
+//        if(!accountExists){
+//            throw new IllegalStateException("Account does not exist!");
+//        }
+//
+//        Optional<AppUser> user = appUserRepository.findByEmail(email);
+//
+//
+//        String encodedInputPassword = user.get().getPassword();
+//
+//        if(password.equals(encodedInputPassword)){
+//            String token = UUID.randomUUID().toString();
+//
+//            ConfirmationToken sessionToken = new ConfirmationToken(
+//                    token,
+//                    LocalDateTime.now(),
+//                    LocalDateTime.now().plusMinutes(25),user
+//            );
+//            confirmationTokenService.saveConfirmationToken(confirmationToken);
+//        }
+//
+//    }
 
     public int enableAppUser(String email) {
 

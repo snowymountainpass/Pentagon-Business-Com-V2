@@ -1,5 +1,7 @@
 import React, {useState} from "react";
 import PropTypes from "prop-types";
+import {Navigate} from "react-router-dom";
+
 // components
 // import Button from "../../../Components/Elements/Button";
 // import Input from "../../Elements/Input";
@@ -13,6 +15,8 @@ export default function CardRegister({setToken}) {
     };
 
 
+
+
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [confirmPassword, setConfirmPassword] = useState("");
@@ -22,6 +26,9 @@ export default function CardRegister({setToken}) {
     const [specialCharValid, setSpecialCharValid] = useState(false);
     const [uppercaseValid, setUppercaseValid] = useState(false);
     const [numberValid, setNumberValid] = useState(false);
+
+    const [clicked,setClicked] = useState(false);
+
 
 
     // Check the length of the input
@@ -85,7 +92,7 @@ export default function CardRegister({setToken}) {
         setMatch(null);
     };
 
-    const comparePassword = (event) => {
+    const comparePassword = () => {
         if (password === confirmPassword) {
             setMatch(true);
         } else {
@@ -114,21 +121,25 @@ export default function CardRegister({setToken}) {
             });
 
 
-
     }
 
 
     return (
         <>
+
             <div
                 className="relative flex flex-col min-w-0 break-words w-full mb-6 shadow-lg rounded-lg bg-blueGray-100">
                 <div className="rounded-t-lg bg-blueGray-800 mb-0 px-6 py-6">
                     <div className="text-center mb-3">
-                        <h2 className="text-blueGray-300 text-lg font-bold">Signup</h2>
+                        <h2 className="text-blueGray-300 text-lg font-bold" style={{fontSize: '25px'}}>Signup</h2>
                     </div>
 
                 </div>
                 <div className="flex-auto px-4 lg:px-10 py-6">
+
+                    {clicked && (
+                        <Navigate to="/e-shop" replace={true} />
+                    )}
 
                     <form>
                         {/*  AICI LUCRAM*/}
@@ -189,7 +200,10 @@ export default function CardRegister({setToken}) {
 
 
                             <div className="text-center mt-6">
-                                <button onClick={(event) => handleSubmit(event)} type="button"
+                                <button onClick={(event) => {
+                                    handleSubmit(event);
+                                    setClicked(true);
+                                }} type="button"
                                     // className="inline-block outline-none focus:outline-none align-middle transition-all duration-150 ease-in-out uppercase border border-solid font-bold last:mr-0 mr-2 text-black bg-blueGray-500 border-blueGray-500 active:bg-blueGray-600 active:border-blueGray-600"
                                         className="bg-blue-500 hover:bg-blue-700 text-black-50 font-bold py-2 px-4 rounded"
                                 >
@@ -257,102 +271,3 @@ CardRegister.propTypes = {
 };
 
 
-// const [email,setEmail] = useState("");
-// const [password,setPassword] = useState("");
-// const [passConfirm,setPassConfirm] = useState("");
-//
-// function showCredentials(event){
-//   event.preventDefault();
-//
-//   console.log("Email "+event.target.input);
-//   console.log("Password: "+event.target.value);
-//   console.log("Password Confirm: "+event.target.value);
-//
-// }
-
-
-// <form>
-//   {inputs.map((prop, key) => {
-//     return (
-//         <div key={key} className="relative w-full">
-//           <label className="block uppercase text-blueGray-700 text-xs font-bold mb-2 ml-1">
-//             {prop.label}
-//           </label>
-//           <Input {...prop.input} />
-//         </div>
-//     );
-//   })}
-//   <div className="mt-2 inline-block">
-//     <Checkbox {...checkbox} />
-//   </div>
-//
-//   <div className="text-center mt-6">
-//     <Button {...button} />
-//   </div>
-// </form>
-
-
-// <form>
-//     {/*  AICI LUCRAM*/}
-//
-//     <div className="form">
-//
-//         <div className="relative w-full">
-//             <label className="block uppercase text-blueGray-700 text-xs font-bold mb-2 ml-1" htmlFor="email">Email </label>
-//             <input type="email" id="email"
-//                    className=" w-full placeholder-blueGray-200 text-blueGray-700 relative bg-white rounded-md outline-none focus:ring focus:ring-lightBlue-500 focus:ring-1 focus:border-lightBlue-500 border border-solid transition duration-200 mb-3 "
-//                    value={email} onChange={(e) => handleInputChange(e)} placeholder="Email"
-//             />
-//         </div>
-//         <div className="relative w-full">
-//             <label className="block uppercase text-blueGray-700 text-xs font-bold mb-2 ml-1" htmlFor="password">Password </label>
-//             <input type="password" id="password"
-//                    className=" w-full placeholder-blueGray-200 text-blueGray-700 relative bg-white rounded-md outline-none focus:ring focus:ring-lightBlue-500 focus:ring-1 focus:border-lightBlue-500 border border-solid transition duration-200 mb-3 "
-//                    value={password} onChange={(e) => handleInputChange(e)}
-//                    placeholder="Password"/>
-//         </div>
-//         <div className="relative w-full">
-//             <label className="block uppercase text-blueGray-700 text-xs font-bold mb-2 ml-1" htmlFor="confirmPassword">Confirm Password </label>
-//             <input  type="password" id="confirmPassword"
-//                     className=" w-full placeholder-blueGray-200 text-blueGray-700 relative bg-white rounded-md outline-none focus:ring focus:ring-lightBlue-500 focus:ring-1 focus:border-lightBlue-500 border border-solid transition duration-200 mb-3 "
-//                     value={confirmPassword} onChange={(e) => handleInputChange(e)}
-//                     placeholder="Confirm Password"/>
-//         </div>
-//
-//         <div className="text-center mt-6">
-//             <button onClick={(event) => handleSubmit(event)} type="button"
-//                 // className="inline-block outline-none focus:outline-none align-middle transition-all duration-150 ease-in-out uppercase border border-solid font-bold last:mr-0 mr-2 text-black bg-blueGray-500 border-blueGray-500 active:bg-blueGray-600 active:border-blueGray-600"
-//                     className="bg-blue-500 hover:bg-blue-700 text-black-50 font-bold py-2 px-4 rounded"
-//             >
-//                 Register
-//             </button>
-//         </div>
-//     </div>
-//
-//
-//     {/*  AICI LUCRAM*/}
-// </form>
-
-
-// const handleInputChange = (e) => {
-//     const {id, value} = e.target;
-//
-//     if (id === "email") {
-//         setEmail(value);
-//     }
-//     if (id === "password") {
-//         setPassword(value);
-//     }
-//     if (id === "confirmPassword") {
-//         setConfirmPassword(value);
-//     }
-//
-// }
-//
-// const handleSubmit = (event) => {
-//     event.preventDefault();
-//
-//     console.log("email: "+email);
-//     console.log("password: "+password);
-//     console.log("confirmPassword: "+confirmPassword);
-// }
