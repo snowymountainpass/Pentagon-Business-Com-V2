@@ -36,7 +36,6 @@ export default function Product1({
           <div className="flex flex-wrap -mx-4">
             <div className="mx-auto px-4 relative w-full lg:w-6/12 w-full md:w-full">
               <MediaPlayerImageLeftRightButtons {...mediaplayer} product={product} />
-              
             </div>
 
             <div className="mr-auto px-4 relative w-full lg:w-6/12 w-full md:w-full">
