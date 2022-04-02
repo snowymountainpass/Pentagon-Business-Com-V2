@@ -126,7 +126,7 @@ export default function CardRegister({setToken}) {
                 className="relative flex flex-col min-w-0 break-words w-full mb-6 shadow-lg rounded-lg bg-blueGray-100">
                 <div className="rounded-t-lg bg-blueGray-800 mb-0 px-6 py-6">
                     <div className="text-center mb-3">
-                        <h2 className="text-blueGray-300 text-lg font-bold" style={{fontSize: '25px'}}>Signup</h2>
+                        <h2 className="text-blueGray-300 text-lg font-bold" style={{fontSize: '25px'}}>Create your account</h2>
                     </div>
 
                 </div>
@@ -167,7 +167,7 @@ export default function CardRegister({setToken}) {
                                 <label
                                     className={`block uppercase text-xs  mb-2 ml-1 ${match === false && confirmPassword!=="" ? 'text-red-500 font-extrabold' : 'text-blueGray-700 font-bold'}`}>Confirm Password</label>
                                 <input type="password" id="confirmPassword"
-                                       className={`w-full placeholder-blueGray-200 text-blueGray-700 relative bg-white rounded-md outline-none border-lightBlue-500  border border-solid transition duration-200 mb-3${match === false ? 'border-red-500' : 'border-lightBlue-500'}`}
+                                       className={`w-full placeholder-blueGray-200 text-blueGray-700 relative bg-white rounded-md outline-none transition duration-200 mb-3${match === false && confirmPassword!=="" ? 'border-8 border-red-500' : 'border-2 border-lightBlue-500'}`}
                                        value={confirmPassword}
                                        onChange={(event) => handleConfirmPasswordChange(event)}
                                        onBlur={event =>  comparePassword(event)}
@@ -176,19 +176,19 @@ export default function CardRegister({setToken}) {
                             {/* w-full placeholder-blueGray-200 text-blueGray-700 relative bg-white rounded-md outline-none focus:ring focus:ring-lightBlue-500 focus:ring-1 focus:border-lightBlue-500 border border-solid transition duration-200 mb-3 */}
                             <div className="relative w-full">
                                 <div className="validator">
-                                    <i className={charNumberValid ? "fas fa-check success" : "fas fa-times error"}/>
+                                    <i className={charNumberValid ? "fas fa-check" : "fas fa-times"} style={charNumberValid ?{color: "green"}:{color: "red"}}/>
                                     <p className="validation-item">8-20 characters</p>
                                 </div>
                                 <div className="validator">
-                                    <i className={specialCharValid ? "fas fa-check success" : "fas fa-times error"}/>
+                                    <i className={specialCharValid ? "fas fa-check" : "fas fa-times"} style={specialCharValid ?{color: "green"}:{color: "red"}}/>
                                     <p className="validation-item">1 special character</p>
                                 </div>
                                 <div className="validator">
-                                    <i className={uppercaseValid ? "fas fa-check success" : "fas fa-times error"}/>
+                                    <i className={uppercaseValid ? "fas fa-check" : "fas fa-times"} style={uppercaseValid ?{color: "green"}:{color: "red"}}/>
                                     <p className="validation-item">1 uppercase letter</p>
                                 </div>
                                 <div className="validator">
-                                    <i className={numberValid ? "fas fa-check success" : "fas fa-times error"}/>
+                                    <i className={numberValid ? "fas fa-check" : "fas fa-times"} style={numberValid ?{color: "green"}:{color: "red"}}/>
                                     <p className="validation-item">1 number</p>
                                 </div>
                             </div>
