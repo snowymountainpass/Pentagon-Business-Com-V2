@@ -137,7 +137,7 @@ export default function CardRegister({setToken}) {
                 </div>
                 <div className="flex-auto px-4 lg:px-10 py-6">
 
-                    {clicked && (
+                    {clicked &&  (
                         <Navigate to="/e-shop" replace={true} />
                     )}
 
