@@ -195,9 +195,14 @@ export default function CardRegister({setToken}) {
 
 
                             <div className="text-center mt-6">
-                                <button onClick={(event) => {
-                                    handleSubmit(event);
-                                    setClicked(true);
+                                <button onClick={
+                                    (event) => {
+                                        if(email && match ){
+                                            handleSubmit(event);
+                                            setClicked(true);
+                                        }
+                                    // handleSubmit(event);
+                                    // setClicked(true);
                                 }} type="button"
                                     // className="inline-block outline-none focus:outline-none align-middle transition-all duration-150 ease-in-out uppercase border border-solid font-bold last:mr-0 mr-2 text-black bg-blueGray-500 border-blueGray-500 active:bg-blueGray-600 active:border-blueGray-600"
                                         className="bg-blue-500 hover:bg-blue-700 text-black-50 font-bold py-2 px-4 rounded"

@@ -42,9 +42,9 @@ public class RegistrationService {
 //        log.info("user has been registered!");
         String link = "http://localhost:8080/e-shop/registration/confirm?token=" + token;
         String username = request.getEmail().substring(0,request.getEmail().indexOf("@")+1) ;
-//        emailSender.send(
-//                request.getEmail(),
-//                buildEmail(username, link));
+        emailSender.send(
+                request.getEmail(),
+                buildEmail(username, link));
 
         return token;
 
