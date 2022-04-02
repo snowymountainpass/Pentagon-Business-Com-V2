@@ -5,15 +5,20 @@ import com.clockworkcode.pentagonbusinesscomv2.service.RegistrationService;
 import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
+
 @RestController
-@RequestMapping(path = "/e-shop/registration")
+@RequestMapping(path = "/e-shop")
 @CrossOrigin(origins = "http://localhost:3000")
 @AllArgsConstructor
 public class RegistrationController {
 
     private final RegistrationService registrationService;
 
-    @PostMapping
+
+
+    @PostMapping("/registration")
     public String register(@RequestBody RegistrationRequest request){
 
         System.out.println("Register request: "+ request);
@@ -21,9 +26,11 @@ public class RegistrationController {
         return registrationService.register(request);
     }
 
-    @GetMapping(path = "confirm")
-    public String confirm(@RequestParam("token") String token){
-        return registrationService.confirmToken(token);
+    @GetMapping(path = "/registration/confirm")
+    public void confirm(@RequestParam("token") String token, HttpServletResponse httpResponse) throws IOException {
+
+        registrationService.confirmToken(token);
+        httpResponse.sendRedirect("e-shop");
     }
 
 }

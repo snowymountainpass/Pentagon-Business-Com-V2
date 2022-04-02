@@ -41,7 +41,7 @@ public class RegistrationService {
 
 //        log.info("user has been registered!");
         String link = "http://localhost:8080/e-shop/registration/confirm?token=" + token;
-        String username = request.getEmail().substring(0,request.getEmail().indexOf("@")+1) ;
+        String username = request.getEmail().substring(0,request.getEmail().indexOf("@")) ;
         emailSender.send(
                 request.getEmail(),
                 buildEmail(username, link));
@@ -51,7 +51,7 @@ public class RegistrationService {
     }
 
     @Transactional
-    public String confirmToken(String token){
+    public void confirmToken(String token){
         ConfirmationToken confirmationToken = confirmationTokenService.getToken(token).orElseThrow(
                 ()-> new IllegalStateException("token not found!")
         );
@@ -70,7 +70,10 @@ public class RegistrationService {
 
         appUserService.enableAppUser(confirmationToken.getAppUser().getEmail());
 
-        return "user confirmed!";
+//        System.out.println("User account confirmed!");
+        log.info("User account confirmed!");
+
+//        return "User account confirmed!";
     }
 
     private String buildEmail(String name, String link) {
