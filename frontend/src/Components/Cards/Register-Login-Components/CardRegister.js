@@ -163,7 +163,7 @@ export default function CardRegister({setToken}) {
                                        onChange={(event) => handlePasswordChange(event)}
                                        placeholder="Password"/>
                             </div>
-                            <div className="relative w-full">
+                            <div className="relative w-full mb-2">
                                 <label
                                     className={`block uppercase text-xs  mb-2 ml-1 ${match === false && confirmPassword!=="" ? 'text-red-500 font-extrabold' : 'text-blueGray-700 font-bold'}`}>Confirm Password</label>
                                 <input type="password" id="confirmPassword"
@@ -174,22 +174,22 @@ export default function CardRegister({setToken}) {
                                        placeholder="Confirm Password"/>
                             </div>
                             {/* w-full placeholder-blueGray-200 text-blueGray-700 relative bg-white rounded-md outline-none focus:ring focus:ring-lightBlue-500 focus:ring-1 focus:border-lightBlue-500 border border-solid transition duration-200 mb-3 */}
-                            <div className="relative w-full">
-                                <div className="validator">
+                            <div className="relative w-full flex-column">
+                                <div className="flex">
                                     <i className={charNumberValid ? "fas fa-check" : "fas fa-times"} style={charNumberValid ?{color: "green"}:{color: "red"}}/>
-                                    <p className="validation-item">8-20 characters</p>
+                                    <p className="">8-20 characters</p>
                                 </div>
-                                <div className="validator">
+                                <div className="flex">
                                     <i className={specialCharValid ? "fas fa-check" : "fas fa-times"} style={specialCharValid ?{color: "green"}:{color: "red"}}/>
-                                    <p className="validation-item">1 special character</p>
+                                    <p className="">1 special character</p>
                                 </div>
-                                <div className="validator">
+                                <div className="flex">
                                     <i className={uppercaseValid ? "fas fa-check" : "fas fa-times"} style={uppercaseValid ?{color: "green"}:{color: "red"}}/>
-                                    <p className="validation-item">1 uppercase letter</p>
+                                    <p className="">1 uppercase letter</p>
                                 </div>
-                                <div className="validator">
+                                <div className="flex">
                                     <i className={numberValid ? "fas fa-check" : "fas fa-times"} style={numberValid ?{color: "green"}:{color: "red"}}/>
-                                    <p className="validation-item">1 number</p>
+                                    <p className="">1 number</p>
                                 </div>
                             </div>
 
