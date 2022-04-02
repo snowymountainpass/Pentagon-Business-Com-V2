@@ -3,6 +3,9 @@ package com.clockworkcode.pentagonbusinesscomv2.controller;
 import com.clockworkcode.pentagonbusinesscomv2.model.registration.RegistrationRequest;
 import com.clockworkcode.pentagonbusinesscomv2.service.RegistrationService;
 import lombok.AllArgsConstructor;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletResponse;
@@ -27,10 +30,11 @@ public class RegistrationController {
     }
 
     @GetMapping(path = "/registration/confirm")
-    public void confirm(@RequestParam("token") String token, HttpServletResponse httpResponse) throws IOException {
+    public ResponseEntity<Object> confirm(@RequestParam("token") String token, HttpServletResponse httpResponse) throws IOException {
 
         registrationService.confirmToken(token);
-        httpResponse.sendRedirect("e-shop");
+//        httpResponse.sendRedirect("e-shop");
+        return ResponseEntity.status(HttpStatus.MOVED_PERMANENTLY).header(HttpHeaders.LOCATION, "http://localhost:3000/e-shop").build();
     }
 
 }
