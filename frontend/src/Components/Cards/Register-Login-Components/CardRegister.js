@@ -9,19 +9,13 @@ import {Navigate} from "react-router-dom";
 
 export default function CardRegister({setToken}) {
 
-    const inputError = {
-        border: `2px solid #F2180A`,
-        color: `red !important`
-    };
-
-
-
 
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [confirmPassword, setConfirmPassword] = useState("");
 
     const [match, setMatch] = useState(false);
+
     const [charNumberValid, setCharNumberValid] = useState(false);
     const [specialCharValid, setSpecialCharValid] = useState(false);
     const [uppercaseValid, setUppercaseValid] = useState(false);
@@ -90,17 +84,18 @@ export default function CardRegister({setToken}) {
 
         setConfirmPassword(event.target.value);
         setMatch(null);
+
     };
 
-    const comparePassword = () => {
+     function comparePassword(){
+
         if (password === confirmPassword) {
             setMatch(true);
         } else {
             setMatch(false);
         }
-
-
     }
+
     const handleSubmit = (event) => {
         event.preventDefault();
 
@@ -170,15 +165,15 @@ export default function CardRegister({setToken}) {
                             </div>
                             <div className="relative w-full">
                                 <label
-                                    className={`block uppercase text-blueGray-700 text-xs font-bold mb-2 ml-1 ${match === false ? inputError : null}`}>Confirm Password</label>
+                                    className={`block uppercase text-xs  mb-2 ml-1 ${match === false && confirmPassword!=="" ? 'text-red-500 font-extrabold' : 'text-blueGray-700 font-bold'}`}>Confirm Password</label>
                                 <input type="password" id="confirmPassword"
-                                       className={`w-full placeholder-blueGray-200 text-blueGray-700 relative bg-white rounded-md outline-none focus:ring focus:ring-lightBlue-500 focus:ring-1 focus:border-lightBlue-500 border border-solid transition duration-200 mb-3${match === false ? inputError : ''}`}
+                                       className={`w-full placeholder-blueGray-200 text-blueGray-700 relative bg-white rounded-md outline-none border-lightBlue-500  border border-solid transition duration-200 mb-3${match === false ? 'border-red-500' : 'border-lightBlue-500'}`}
                                        value={confirmPassword}
                                        onChange={(event) => handleConfirmPasswordChange(event)}
                                        onBlur={event =>  comparePassword(event)}
                                        placeholder="Confirm Password"/>
                             </div>
-
+                            {/* w-full placeholder-blueGray-200 text-blueGray-700 relative bg-white rounded-md outline-none focus:ring focus:ring-lightBlue-500 focus:ring-1 focus:border-lightBlue-500 border border-solid transition duration-200 mb-3 */}
                             <div className="relative w-full">
                                 <div className="validator">
                                     <i className={charNumberValid ? "fas fa-check success" : "fas fa-times error"}/>
