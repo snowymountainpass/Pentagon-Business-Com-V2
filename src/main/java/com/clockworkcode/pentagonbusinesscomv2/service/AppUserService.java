@@ -84,6 +84,7 @@ public class AppUserService implements UserDetailsService {
         if(encodedInputPassword.equals(encodedPassword)){
 
             log.info("PASSWORDS MATCH!");
+            System.out.println("PASSWORDS MATCH!");
 
             LoginToken loginToken = new LoginToken(
                     sessionToken,

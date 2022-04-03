@@ -52,7 +52,6 @@ export default function CardLoginSocial({
     fetch('http://localhost:8080/e-shop/login', requestOptions)
         .then(response => response.json())
         .then(data => {
-          console.log(data);
           setTokenValue(data);
 
         });

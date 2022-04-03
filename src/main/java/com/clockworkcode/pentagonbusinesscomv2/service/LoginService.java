@@ -11,7 +11,7 @@ import org.springframework.stereotype.Service;
 public class LoginService {
 
     private final AppUserService appUserService;
-    private final LoginTokenService loginTokenService;
+
 
     public String login(LoginRequest request){
 
