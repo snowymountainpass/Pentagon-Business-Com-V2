@@ -67,6 +67,7 @@ public class AppUserService implements UserDetailsService {
 //        Optional<AppUser> user = appUserRepository.findByEmail(email);
 //        String encodedInputPassword = user.get().getPassword();
 
+        log.info("REACHED signInUser METHOD!");
 
         boolean accountExists = appUserRepository.findByEmail(email).isPresent();
 
@@ -78,10 +79,10 @@ public class AppUserService implements UserDetailsService {
 
         String sessionToken = UUID.randomUUID().toString();
 
-        String encodedPassword = user.getPassword();
-        String encodedInputPassword = bCryptPasswordEncoder.encode(password);
+//        String encodedPassword = user.getPassword();
+//        String encodedInputPassword = bCryptPasswordEncoder.encode(password);
 
-        if(encodedInputPassword.equals(encodedPassword)){
+        if(bCryptPasswordEncoder.matches(password,user.getPassword())){
 
             log.info("PASSWORDS MATCH!");
             System.out.println("PASSWORDS MATCH!");

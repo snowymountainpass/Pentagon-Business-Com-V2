@@ -17,7 +17,7 @@ function App() {
 
   const [token,setToken]=useState("");
 
-  console.log("Token in App: "+ token);
+  // console.log("Token in App: "+ token);
 
   return (
       <div className="App">

@@ -16,7 +16,11 @@ public class LoginController {
     @PostMapping("/login")
     public String login(@RequestBody LoginRequest request){
 
-        return loginService.login(request);
+        String tokenResult = loginService.login(request);
+
+        System.out.println("LoginController token result: "+tokenResult);
+
+        return tokenResult;
     }
 
 
