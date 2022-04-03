@@ -112,7 +112,7 @@ export default function CardRegister({setToken}) {
             .then(response => response.json())
             .then(data => {
                 setToken(data);
-                console.log("Token value is: "+ data);
+                // console.log("Token value is: "+ data);
             });
 
 

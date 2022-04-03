@@ -1,10 +1,9 @@
 package com.clockworkcode.pentagonbusinesscomv2.controller;
 
-import com.clockworkcode.pentagonbusinesscomv2.service.LoginTokenService;
+import com.clockworkcode.pentagonbusinesscomv2.model.login.LoginRequest;
+import com.clockworkcode.pentagonbusinesscomv2.service.LoginService;
 import lombok.AllArgsConstructor;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping(path = "/e-shop")
@@ -12,6 +11,13 @@ import org.springframework.web.bind.annotation.RestController;
 @AllArgsConstructor
 public class LoginController {
 
-    private final LoginTokenService loginTokenService;
+    private final LoginService loginService;
+
+    @PostMapping("/login")
+    public String login(@RequestBody LoginRequest request){
+
+        return loginService.login(request);
+    }
+
 
 }

@@ -1,14 +1,12 @@
 import React, {useState} from "react";
 import PropTypes from "prop-types";
-import { Link } from "react-router-dom";
-// components
-// import Button from "../../../components/Elements/Button.js";
-// import Input from "../../../components/Elements/Input.js";
-// import Checkbox from "../../../components/Elements/Checkbox.js";
+import {Link, useNavigate} from "react-router-dom";
 
-import Button from "../../../Components/Elements/Button";
-import Input from "../../../Components/Elements/Input.js";
-import Checkbox from "../../../Components/Elements/Checkbox.js";
+// components
+
+// import Button from "../../../Components/Elements/Button";
+// import Input from "../../../Components/Elements/Input.js";
+// import Checkbox from "../../../Components/Elements/Checkbox.js";
 
 export default function CardLoginSocial({
   title,
@@ -29,6 +27,9 @@ export default function CardLoginSocial({
 
   const [clicked,setClicked] = useState(false);
 
+
+  let navigate = useNavigate();
+
   const handleEmailChange = (event) => {
     setEmail(event.target.value);
   }
@@ -37,7 +38,7 @@ export default function CardLoginSocial({
     setPassword(event.target.value);
   };
 
-  const handleSubmit = (event) => {
+   function handleSubmit(event){
     event.preventDefault();
 
     console.log("email: " + email);
@@ -48,15 +49,17 @@ export default function CardLoginSocial({
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ email: email,password:password })
     };
-
     fetch('http://localhost:8080/e-shop/login', requestOptions)
         .then(response => response.json())
         .then(data => {
-          setTokenValue(token);
-          console.log("Token value is: "+ data);
+          console.log(data);
+          setTokenValue(data);
+
         });
 
-
+     localStorage.setItem("token", JSON.stringify(token));
+     console.log("Token value is: " + token);
+     console.log("Local Storage token: "+localStorage.getItem("token"))
   }
 
   return (
@@ -104,13 +107,20 @@ export default function CardLoginSocial({
 
               <div className="text-center mt-6">
                 <button onClick={(event) => {
-                  handleSubmit(event);
-                  setClicked(true);
+
+                  if(email && password){
+                    handleSubmit(event);
+                    setClicked(true);
+                  }
+                  if(clicked){
+                    navigate(-1);
+                  }
+
                 }} type="button"
                     // className="inline-block outline-none focus:outline-none align-middle transition-all duration-150 ease-in-out uppercase border border-solid font-bold last:mr-0 mr-2 text-black bg-blueGray-500 border-blueGray-500 active:bg-blueGray-600 active:border-blueGray-600"
                         className="bg-blue-500 hover:bg-blue-700 text-black-50 font-bold py-2 px-4 rounded"
                 >
-                  SIGN IN
+                SIGN IN
                 </button>
               </div>
             </div>

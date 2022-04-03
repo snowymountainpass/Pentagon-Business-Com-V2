@@ -2,6 +2,7 @@ package com.clockworkcode.pentagonbusinesscomv2.service;
 
 import com.clockworkcode.pentagonbusinesscomv2.model.user.AppUser;
 import com.clockworkcode.pentagonbusinesscomv2.repository.AppUserRepository;
+import com.clockworkcode.pentagonbusinesscomv2.security.PasswordEncoder;
 import com.clockworkcode.pentagonbusinesscomv2.security.token.ConfirmationToken;
 import com.clockworkcode.pentagonbusinesscomv2.security.token.LoginToken;
 import lombok.AllArgsConstructor;
@@ -77,10 +78,12 @@ public class AppUserService implements UserDetailsService {
 
         String sessionToken = UUID.randomUUID().toString();
 
-        String encodedInputPassword = user.getPassword();
+        String encodedPassword = user.getPassword();
+        String encodedInputPassword = bCryptPasswordEncoder.encode(password);
 
-        if(password.equals(encodedInputPassword)){
+        if(encodedInputPassword.equals(encodedPassword)){
 
+            log.info("PASSWORDS MATCH!");
 
             LoginToken loginToken = new LoginToken(
                     sessionToken,

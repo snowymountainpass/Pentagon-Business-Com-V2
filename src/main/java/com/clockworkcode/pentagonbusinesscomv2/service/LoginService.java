@@ -15,9 +15,7 @@ public class LoginService {
 
     public String login(LoginRequest request){
 
-        String token = appUserService.signInUser(request.getEmail(),request.getPassword());
-
-        return token;
+        return appUserService.signInUser(request.getEmail(),request.getPassword());
     }
 
 }
