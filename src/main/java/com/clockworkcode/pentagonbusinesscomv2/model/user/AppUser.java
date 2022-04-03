@@ -3,6 +3,7 @@ package com.clockworkcode.pentagonbusinesscomv2.model.user;
 import com.clockworkcode.pentagonbusinesscomv2.model.order.OrderDetail;
 import com.clockworkcode.pentagonbusinesscomv2.model.shopping.ShoppingSession;
 import com.clockworkcode.pentagonbusinesscomv2.security.token.ConfirmationToken;
+import com.clockworkcode.pentagonbusinesscomv2.security.token.LoginToken;
 import lombok.*;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -18,7 +19,6 @@ import java.util.List;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-
 @Entity(name = "AppUser") //singular !!
 @Table(name = "app_users") //plural !!
 public class AppUser implements UserDetails {
@@ -55,6 +55,9 @@ public class AppUser implements UserDetails {
 
     @OneToMany(mappedBy = "appUser")
     private List<ConfirmationToken> confirmationTokens;
+
+    @OneToMany(mappedBy = "appUser")
+    private List<LoginToken> loginTokens;
 
     @OneToOne(mappedBy = "appUser")
     private OrderDetail orderDetail;

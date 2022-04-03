@@ -3,6 +3,7 @@ package com.clockworkcode.pentagonbusinesscomv2.service;
 import com.clockworkcode.pentagonbusinesscomv2.model.user.AppUser;
 import com.clockworkcode.pentagonbusinesscomv2.repository.AppUserRepository;
 import com.clockworkcode.pentagonbusinesscomv2.security.token.ConfirmationToken;
+import com.clockworkcode.pentagonbusinesscomv2.security.token.LoginToken;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -25,6 +26,7 @@ public class AppUserService implements UserDetailsService {
     private final AppUserRepository appUserRepository;
     private final BCryptPasswordEncoder bCryptPasswordEncoder;
     private final ConfirmationTokenService confirmationTokenService;
+    private final LoginTokenService loginTokenService;
 
 
     @Override
@@ -59,31 +61,37 @@ public class AppUserService implements UserDetailsService {
         return token;
     }
 
-//    public String signInUser(String email, String password){
-////
-//        boolean accountExists = appUserRepository.findByEmail(email).isPresent();
-//
-//        if(!accountExists){
-//            throw new IllegalStateException("Account does not exist!");
-//        }
-//
+    public String signInUser(String email, String password){
+
 //        Optional<AppUser> user = appUserRepository.findByEmail(email);
-//
-//
 //        String encodedInputPassword = user.get().getPassword();
-//
-//        if(password.equals(encodedInputPassword)){
-//            String token = UUID.randomUUID().toString();
-//
-//            ConfirmationToken sessionToken = new ConfirmationToken(
-//                    token,
-//                    LocalDateTime.now(),
-//                    LocalDateTime.now().plusMinutes(25),user
-//            );
-//            confirmationTokenService.saveConfirmationToken(confirmationToken);
-//        }
-//
-//    }
+
+
+        boolean accountExists = appUserRepository.findByEmail(email).isPresent();
+
+        if(!accountExists){
+            throw new IllegalStateException("Account does not exist!");
+        }
+
+        AppUser user = appUserRepository.findByEmailAndEnabledIsTrue(email);
+
+        String sessionToken = UUID.randomUUID().toString();
+
+        String encodedInputPassword = user.getPassword();
+
+        if(password.equals(encodedInputPassword)){
+
+
+            LoginToken loginToken = new LoginToken(
+                    sessionToken,
+                    LocalDateTime.now(),
+                    LocalDateTime.now().plusMinutes(100),user
+            );
+            loginTokenService.saveLoginToken(loginToken);
+        }
+
+        return sessionToken;
+    }
 
     public int enableAppUser(String email) {
 
