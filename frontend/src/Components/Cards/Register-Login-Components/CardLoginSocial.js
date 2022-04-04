@@ -24,10 +24,7 @@ export default function CardLoginSocial({
     const [password, setPassword] = useState("");
 
     const [tokenValue, setTokenValue] = useState("");
-
-    const [clicked, setClicked] = useState(false);
-
-
+    
     let navigate = useNavigate();
 
     const handleEmailChange = (event) => {
@@ -38,7 +35,11 @@ export default function CardLoginSocial({
         setPassword(event.target.value);
     };
 
-    function handleSubmit(event) {
+    function handleClick(){
+        navigate(-1);
+    }
+
+   async function handleSubmit(event) {
         event.preventDefault();
 
         console.log("email: " + email);
@@ -49,17 +50,19 @@ export default function CardLoginSocial({
             headers: {'Content-Type': 'application/json'},
             body: JSON.stringify({email: email, password: password})
         };
-        fetch('http://localhost:8080/e-shop/login', requestOptions)
-            .then((response) => response.json())
+       await fetch('http://localhost:8080/e-shop/login', requestOptions)
+            .then((response) => response.text())
             .then((data) => {
                 setTokenValue(data);
+                localStorage.setItem("token", tokenValue);
+                console.log("Token value is: " + tokenValue);
+
             })
             .catch((error) => {
             console.error('Error:', error);
         });
-        localStorage.setItem("token", JSON.stringify(tokenValue));
-        console.log("Token value is: " + tokenValue);
-        // console.log("Local Storage token: "+localStorage.getItem("token"))
+
+
     }
 
     return (
@@ -108,11 +111,9 @@ export default function CardLoginSocial({
                                 <button onClick={(event) => {
 
                                     if (email && password) {
-                                        handleSubmit(event);
-                                        setClicked(true);
-                                    }
-                                    if (clicked) {
                                         navigate(-1);
+                                        handleSubmit(event).then(handleClick);
+
                                     }
 
                                 }} type="button"
@@ -216,22 +217,14 @@ CardLoginSocial.propTypes = {
 };
 
 
-// <form>
-//   {inputs.map((prop, key) => {
-//     return (
-//         <div key={key} className="relative w-full">
-//           <label className="block uppercase text-blueGray-500 text-xs font-bold mb-2 ml-1">
-//             {prop.label}
-//           </label>
-//           <Input {...prop.input} />
-//         </div>
-//     );
-//   })}
-//   <div className="mt-2 inline-block">
-//     <Checkbox {...checkbox} />
-//   </div>
-//
-//   <div className="text-center mt-5">
-//     <Button {...button} />
-//   </div>
-// </form>
+// await fetch('http://localhost:8080/e-shop/login', requestOptions) // WORKING
+//      .then((response) =>{
+//          console.log(response);
+//          return response.text();
+//      })
+//      .then(data=>{
+//          console.log(data);
+//      }); // WORKING - > DISPLAYS THE TOKEN (handleSubmit mthd must be async ; await fetch)
+
+
+// console.log("Local Storage token: "+localStorage.getItem("token"))
