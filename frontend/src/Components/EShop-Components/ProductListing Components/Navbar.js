@@ -4,7 +4,7 @@ import RegistrationLogin from "../Navbar Components/RegistrationLogin";
 import React from "react";
 
 
-export default function Navbar({setToken})
+export default function Navbar({loginToken})
 {
 
 
@@ -63,7 +63,7 @@ export default function Navbar({setToken})
                                     <ShoppingCart/>
 
                                     <RegistrationLogin
-                                        setToken={setToken}
+                                        loginToken={loginToken}
                                     />
 
                                 </div>

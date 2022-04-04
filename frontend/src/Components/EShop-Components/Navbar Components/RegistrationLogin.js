@@ -1,19 +1,42 @@
 import {Link} from "react-router-dom";
+import {useEffect, useState} from "react";
 
-export default function RegistrationLogin({setToken}){
+export default function RegistrationLogin({loginToken}) {
 
-    return(
+    const [loggedInState,setloggedInState] = useState(  loginToken? true:false);
+    const [text,setText] = useState(loggedInState ? "Sign Out":"Sign In");
+    const [pageLink,setPageLink] = useState(loggedInState ? "/e-shop":"/e-shop/login");
+
+    function logout() {
+        setText("Sign In");
+        setPageLink("/e-shop/login");
+        localStorage.clear();
+    }
+
+    function login(){
+        setText("Sign Out");
+        setPageLink("/e-shop");
+    }
+
+
+
+    return (
         <div className="widget-header icontext text-white">
             <a href="#" className="icon icon-sm rounded-circle border"><i className="fa fa-user"/></a>
-            <div className="text text-white-50" >
+            <div className="text text-white-50">
                 <span className="text-muted">Welcome!</span>
                 <div>
-                    <Link to="/e-shop/login">Sign in</Link>
-                    <Link to="/e-shop/register">Register</Link>
 
+                    <div onClick={loggedInState ? logout : login }>
+                        {/*<p>{`loggedinState:${loggedInState}`}</p>*/}
+                        <Link to={pageLink}>{text}</Link>
+                    </div>
+                    <div><Link to="/e-shop/register">Register</Link></div>
                 </div>
             </div>
         </div>
     );
 
 }
+
+

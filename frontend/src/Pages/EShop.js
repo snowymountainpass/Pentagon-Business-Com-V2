@@ -17,7 +17,7 @@ import footersmall from "../Texts/Presentation/footers/footersmall";
 import Navbar from "../Components/EShop-Components/ProductListing Components/Navbar";
 import Products from "../Components/EShop-Components/ProductListing Components/Products";
 
-export default function EShop({token,setToken}) {
+export default function EShop({loginToken}) {
 
 
 
@@ -36,12 +36,10 @@ export default function EShop({token,setToken}) {
             {/*<FooterSmall {...footersmall} />*/}
 
             <Navbar
-                setToken={setToken}
+                loginToken={loginToken}
             />
             {/*<ProductListTitle/>*/}
-            <Products
-
-            />
+            <Products/>
             {/*<Footer/>*/}
             {/*<PreFooterLarge {...prefooterlarge} />*/}
             <FooterSmall {...footersmall} />

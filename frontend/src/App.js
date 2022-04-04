@@ -28,7 +28,7 @@ function App() {
             <Route path={"/"} element={<Landing/>}/>
             <Route path={"/about-us"}
             /> //TODO: add about us page
-            <Route path={"/e-shop"} element={<EShop/>}/>
+            <Route path={"/e-shop"} element={<EShop loginToken={loginToken}/>}/>
             <Route path={"/e-shop/product-id/:id/*"} element={<Product/>}/>
             <Route path={"/e-shop/login"} element={<Login setLoginToken={setLoginToken}/>}/>
             <Route path={"/e-shop/register"} element={<Register setToken={setToken}/>}/>
