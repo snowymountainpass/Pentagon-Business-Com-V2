@@ -40,7 +40,7 @@ export default function EShop({token,setToken}) {
             />
             {/*<ProductListTitle/>*/}
             <Products
-                token={token}
+
             />
             {/*<Footer/>*/}
             {/*<PreFooterLarge {...prefooterlarge} />*/}

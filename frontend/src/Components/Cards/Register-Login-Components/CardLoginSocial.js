@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
 import PropTypes from "prop-types";
 import {Link, useNavigate} from "react-router-dom";
 
@@ -17,7 +17,7 @@ export default function CardLoginSocial({
                                             // checkbox,
                                             forgotPassword,
                                             createAccount,
-                                            token
+                                            setLoginToken
                                         }) {
 
     const [email, setEmail] = useState("");
@@ -35,11 +35,11 @@ export default function CardLoginSocial({
         setPassword(event.target.value);
     };
 
-    function handleClick(){
-        navigate(-1);
-    }
+    // function handleClick(){
+    //     navigate(-1);
+    // }
 
-   async function handleSubmit(event) {
+    function handleSubmit(event) {
         event.preventDefault();
 
         console.log("email: " + email);
@@ -50,20 +50,26 @@ export default function CardLoginSocial({
             headers: {'Content-Type': 'application/json'},
             body: JSON.stringify({email: email, password: password})
         };
-       await fetch('http://localhost:8080/e-shop/login', requestOptions)
+        fetch('http://localhost:8080/e-shop/login', requestOptions)
             .then((response) => response.text())
             .then((data) => {
                 setTokenValue(data);
-                localStorage.setItem("token", tokenValue);
-                console.log("Token value is: " + tokenValue);
+                setLoginToken(data);
 
             })
             .catch((error) => {
             console.error('Error:', error);
         });
 
-
     }
+
+    useEffect(()=>{
+        localStorage.setItem("PTG V2 Login Token", tokenValue);
+        console.log("Token value is: " + tokenValue);
+        if(tokenValue!==""){
+            navigate(-1);
+        }
+    },[tokenValue])
 
     return (
         <>
@@ -111,11 +117,10 @@ export default function CardLoginSocial({
                                 <button onClick={(event) => {
 
                                     if (email && password) {
-                                        navigate(-1);
-                                        handleSubmit(event).then(handleClick);
-
+                                        // handleSubmit(event).then( tokenValue !=="" ? handleClick: console.log("token value is undefined!"));
+                                        handleSubmit(event);
                                     }
-
+                                    // navigate(-1);
                                 }} type="button"
                                     // className="inline-block outline-none focus:outline-none align-middle transition-all duration-150 ease-in-out uppercase border border-solid font-bold last:mr-0 mr-2 text-black bg-blueGray-500 border-blueGray-500 active:bg-blueGray-600 active:border-blueGray-600"
                                         className="bg-blue-500 hover:bg-blue-700 text-black-50 font-bold py-2 px-4 rounded"

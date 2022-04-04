@@ -17,7 +17,7 @@ import footerauth from "../Texts/Auth/Footer/footerauth.js";
 
 import backgroundImageDesign from "../Components/Cards/Register-Login-Components/register_bg_2.png";
 
-export default function Login() {
+export default function Login({setLoginToken}) {
   const location = useLocation();
   React.useEffect(() => {
     window.scrollTo(0, 0);
@@ -39,7 +39,12 @@ export default function Login() {
           <div className="container mx-auto px-4 h-full">
             <div className="flex content-center items-center justify-center h-full">
               <div className="w-full lg:w-4/12 px-4">
-                <CardLoginSocial {...cardloginsocial} />
+
+                <CardLoginSocial
+                    {...cardloginsocial}
+                    setLoginToken={setLoginToken}
+                />
+
               </div>
             </div>
           </div>
