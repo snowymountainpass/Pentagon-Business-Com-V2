@@ -1,9 +1,9 @@
 import {Link} from "react-router-dom";
 import {useEffect, useState} from "react";
 
-export default function RegistrationLogin({loginToken}) {
+export default function RegistrationLogin({}) {
 
-    const [loggedInState, setloggedInState] = useState(loginToken ? true : false);
+    const [loggedInState, setloggedInState] = useState(localStorage.getItem("PTG V2 Login Token")  ? true : false);
     const [text, setText] = useState(loggedInState ? "Sign Out" : "Sign In");
     const [pageLink, setPageLink] = useState(loggedInState ? "/e-shop" : "/e-shop/login");
 
