@@ -4,17 +4,8 @@ import {Link, useNavigate} from "react-router-dom";
 
 // components
 
-// import Button from "../../../Components/Elements/Button";
-// import Input from "../../../Components/Elements/Input.js";
-// import Checkbox from "../../../Components/Elements/Checkbox.js";
-
 export default function CardLoginSocial({
                                             title,
-                                            // subtitle,
-                                            // inputs,
-                                            // socials,
-                                            // button,
-                                            // checkbox,
                                             forgotPassword,
                                             createAccount,
                                             setLoginToken
@@ -27,6 +18,25 @@ export default function CardLoginSocial({
     
     let navigate = useNavigate();
 
+    useEffect(()=>{
+        localStorage.setItem("PTG V2 Login Token", tokenValue);
+        console.log("Token value is: " + tokenValue);
+        if(tokenValue!==""){
+            navigate(-1);
+        }
+    },[tokenValue])
+
+    // useEffect(()=>{
+    //     const loggedInUserToken = localStorage.getItem("PTG V2 Login Token");
+    //
+    //     if(loggedInUserToken){
+    //         setTokenValue(loggedInUserToken);
+    //     }
+    //     console.log("loggedInUserToken: "+loggedInUserToken);
+    // },[tokenValue])
+
+
+
     const handleEmailChange = (event) => {
         setEmail(event.target.value);
     }
@@ -35,9 +45,6 @@ export default function CardLoginSocial({
         setPassword(event.target.value);
     };
 
-    // function handleClick(){
-    //     navigate(-1);
-    // }
 
     function handleSubmit(event) {
         event.preventDefault();
@@ -63,13 +70,8 @@ export default function CardLoginSocial({
 
     }
 
-    useEffect(()=>{
-        localStorage.setItem("PTG V2 Login Token", tokenValue);
-        console.log("Token value is: " + tokenValue);
-        if(tokenValue!==""){
-            navigate(-1);
-        }
-    },[tokenValue])
+
+
 
     return (
         <>
@@ -120,9 +122,7 @@ export default function CardLoginSocial({
                                         // handleSubmit(event).then( tokenValue !=="" ? handleClick: console.log("token value is undefined!"));
                                         handleSubmit(event);
                                     }
-                                    // navigate(-1);
                                 }} type="button"
-                                    // className="inline-block outline-none focus:outline-none align-middle transition-all duration-150 ease-in-out uppercase border border-solid font-bold last:mr-0 mr-2 text-black bg-blueGray-500 border-blueGray-500 active:bg-blueGray-600 active:border-blueGray-600"
                                         className="bg-blue-500 hover:bg-blue-700 text-black-50 font-bold py-2 px-4 rounded"
                                 >
                                     SIGN IN
