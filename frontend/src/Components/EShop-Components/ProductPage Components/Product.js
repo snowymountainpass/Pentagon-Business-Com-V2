@@ -7,6 +7,7 @@ import Product1 from "../../Sections/ECommerce/Product/Product1.js"
 // components
 import NavbarLinks from "../../Navbar/NavbarLinks";
 
+
 import FooterSmall from "../../Footers/Landing/FooterSmall.js";
 
 // texts as props
@@ -14,6 +15,7 @@ import navbarlinkslanding2 from "../../../Texts/Presentation/navbar/navbarlinksl
 import product1 from "../../../Texts/Ecommerce/Sections/product1.js";
 
 import footersmall from "../../../Texts/Presentation/footers/footersmall.js";
+import Navbar from "../ProductListing Components/Navbar";
 
 export default function Product() {
     const {id} = useParams();
@@ -52,16 +54,17 @@ export default function Product() {
 
     return (
         <>
-            <NavbarLinks {...navbarlinkslanding2}/>
-            {/*<HeaderImageTitleLeft {...headerimagetitleleft} />*/}
+            {/*<NavbarLinks {...navbarlinkslanding2}/>*/}
+            <Navbar/>
             <Product1 {...product1} product={product}/>
-            {/*<Product1 {...product} product={product}/>*/}
-            {/*<Testimonials1 {...testimonials1} />*/}
-            {/*<Hero8 {...hero8} />*/}
-            {/*<PreFooterLarge {...prefooterlarge} />*/}
+
             <FooterSmall {...footersmall} />
         </>
     );
 }
 
-
+{/*<HeaderImageTitleLeft {...headerimagetitleleft} />*/}
+{/*<Product1 {...product} product={product}/>*/}
+{/*<Testimonials1 {...testimonials1} />*/}
+{/*<Hero8 {...hero8} />*/}
+{/*<PreFooterLarge {...prefooterlarge} />*/}
