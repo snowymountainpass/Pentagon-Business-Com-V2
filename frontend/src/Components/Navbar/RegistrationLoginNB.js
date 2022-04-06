@@ -70,17 +70,21 @@ export default function RegistrationLoginNB() {
 
             </div>
 
+            <div style={{display:(localStorage.getItem("PTG V2 Login Token")  ? true : false)?"none":"block"}}>
 
-            <Link
+                <Link
 
-                className={
-                    "hover:opacity-75 px-3 py-4 lg:py-2 flex items-center text-xs uppercase font-bold transition-all duration-150 ease-in-out text-white"
-                }
-                to={"/e-shop/register"}
-            >
-                Register
-            </Link>
-            {/*<p className={"text-white"}>{`loggedinState:${loggedInState}`}</p>*/}
+                    className={
+                        "hover:opacity-75 px-3 py-4 lg:py-2 flex items-center text-xs uppercase font-bold transition-all duration-150 ease-in-out text-white"
+                    }
+                    to={"/e-shop/register"}
+                >
+                    Register
+                </Link>
+
+            </div>
+
+            <p className={"text-white"}>{`loggedinState:${(localStorage.getItem("PTG V2 Login Token")  ? true : false)}`}</p>
         </>
 
 
