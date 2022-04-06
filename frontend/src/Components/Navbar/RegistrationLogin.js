@@ -3,7 +3,15 @@ import React, {useEffect, useState} from "react";
 
 export default function RegistrationLogin() {
 
-    const [loggedInState, setloggedInState] = useState(localStorage.getItem("PTG V2 Login Token")  ? true : false);
+    const [loggedInState, setloggedInState] = useState(
+        (localStorage.getItem("PTG V2 Login Token") &&
+        localStorage.getItem("PTG V2 Login Token")!=="invalid credentials") ? true : false
+
+
+    );
+
+
+
     const [text, setText] = useState(loggedInState ? "Sign Out" : "Sign In");
     const [pageLink, setPageLink] = useState(loggedInState ? "/e-shop" : "/e-shop/login");
 
@@ -70,7 +78,8 @@ export default function RegistrationLogin() {
 
             </div>
 
-            <div style={{display:(localStorage.getItem("PTG V2 Login Token")  ? true : false)?"none":"block"}}>
+            <div style={{display:((localStorage.getItem("PTG V2 Login Token") &&
+                    localStorage.getItem("PTG V2 Login Token")!=="invalid credentials") ? true : false)?"none":"block"}}>
 
                 <Link
 
@@ -84,7 +93,8 @@ export default function RegistrationLogin() {
 
             </div>
 
-            <p className={"text-white"}>{`loggedinState:${(localStorage.getItem("PTG V2 Login Token")  ? true : false)}`}</p>
+            <p className={"text-white"}>{`loggedinState:${((localStorage.getItem("PTG V2 Login Token") &&
+                localStorage.getItem("PTG V2 Login Token")!=="invalid credentials") ? true : false)}`}</p>
         </>
 
 

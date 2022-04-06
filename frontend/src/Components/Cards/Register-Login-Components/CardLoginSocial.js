@@ -1,6 +1,7 @@
 import React, {useEffect, useState} from "react";
 import PropTypes from "prop-types";
-import {Link, useNavigate} from "react-router-dom";
+import {Link, useNavigate,Navigate,Redirect} from "react-router-dom";
+import EShop from "../../../Pages/EShop";
 
 // components
 
@@ -21,20 +22,16 @@ export default function CardLoginSocial({
     useEffect(()=>{
         localStorage.setItem("PTG V2 Login Token", tokenValue);
         console.log("Token value is: " + tokenValue);
-        if(tokenValue!==""){
+        if(localStorage.getItem("PTG V2 Login Token")!=="" && localStorage.getItem("PTG V2 Login Token")!=="invalid credentials"){
             navigate(-1);
         }
+        // (localStorage.getItem("PTG V2 Login Token") !== "" && localStorage.getItem("PTG V2 Login Token") !== "invalid credentials") ? <Redirect to="http://localhost:3000/e-shop"/> :<Redirect to="http://localhost:3000/e-shop/login"/>
+
+        // if(localStorage.getItem("PTG V2 Login Token") !== "" && localStorage.getItem("PTG V2 Login Token") !== "invalid credentials"){
+        //     navigate("http://localhost:3000/e-shop",{replace:true})
+        // }
+
     },[tokenValue])
-
-    // useEffect(()=>{
-    //     const loggedInUserToken = localStorage.getItem("PTG V2 Login Token");
-    //
-    //     if(loggedInUserToken){
-    //         setTokenValue(loggedInUserToken);
-    //     }
-    //     console.log("loggedInUserToken: "+loggedInUserToken);
-    // },[tokenValue])
-
 
 
     const handleEmailChange = (event) => {
@@ -121,6 +118,9 @@ export default function CardLoginSocial({
                                     if (email && password) {
                                         // handleSubmit(event).then( tokenValue !=="" ? handleClick: console.log("token value is undefined!"));
                                         handleSubmit(event);
+
+
+
                                     }
                                 }} type="button"
                                         className="bg-blue-500 hover:bg-blue-700 text-black-50 font-bold py-2 px-4 rounded"
