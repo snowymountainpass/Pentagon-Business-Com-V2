@@ -16,6 +16,7 @@ import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
 import java.util.List;
+import java.util.Objects;
 import java.util.Optional;
 import java.util.UUID;
 import java.util.stream.Collectors;
@@ -79,13 +80,15 @@ public class AppUserService implements UserDetailsService {
 
         AppUser user = appUserRepository.findByEmailAndEnabledIsTrue(email);
 
-        String sessionToken = UUID.randomUUID().toString();
+
 
 //        String encodedPassword = user.getPassword();
 //        String encodedInputPassword = bCryptPasswordEncoder.encode(password);
 
-        if(bCryptPasswordEncoder.matches(password,user.getPassword())){
+        String sessionToken="";
 
+        if(bCryptPasswordEncoder.matches(password,user.getPassword())){
+            sessionToken = UUID.randomUUID().toString();
             log.info("PASSWORDS MATCH!");
             System.out.println("PASSWORDS MATCH!");
 
@@ -97,7 +100,14 @@ public class AppUserService implements UserDetailsService {
             loginTokenService.saveLoginToken(loginToken);
         }
 
-        return sessionToken;
+        if(!Objects.equals(sessionToken, "")){
+            return sessionToken;
+        }
+        else{
+//            throw new IllegalStateException(new IllegalStateException("Password don't match"));
+            return "invalid credentials";
+        }
+
     }
 
     public int enableAppUser(String email) {
