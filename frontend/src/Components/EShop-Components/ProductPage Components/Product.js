@@ -54,8 +54,8 @@ export default function Product() {
 
     return (
         <>
-            {/*<NavbarLinks {...navbarlinkslanding2}/>*/}
-            <Navbar/>
+            <NavbarLinks {...navbarlinkslanding2}/>
+            {/*<Navbar/>*/}
             <Product1 {...product1} product={product}/>
 
             <FooterSmall {...footersmall} />

@@ -9,7 +9,6 @@ import Button from "../../../../Components/Elements/Button.js";
 // import Input from "../../../../Components/Elements/Input.js";
 // import Select from "../../../../Components/Elements/Select.js";
 // import Ratings from "../../../../Components/Content/Ratings.js";
-import Carousel from 'react-bootstrap/Carousel'
 
 export default function Product1({
   heading2,

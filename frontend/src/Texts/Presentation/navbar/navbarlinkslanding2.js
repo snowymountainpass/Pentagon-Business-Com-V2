@@ -11,15 +11,31 @@ const textProps = {
     to: "/",
   },
 
-  rightLinks: [
+  leftLinks:[
     {
       href: "/e-shop",
-      children: "E-Shop",
-    },
+      children: "E-Shop",},
     {
       href: "mailto:office@pentagon.ro",
       children: "About Us",
+    }
+  ],
+
+  rightLinks: [
+    {
+      href: "",
+      children: <i className="fa fa-shopping-cart"/>,
     },
+    {
+      href: "",
+      children: <i className="fa fa-user"/>
+    },
+    {
+      href: "",
+      children: "Sign In",
+    },
+
+
     // {
     //   dropdown: true,
     //   ...dropdownnavbar,

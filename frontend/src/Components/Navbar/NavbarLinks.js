@@ -6,14 +6,23 @@ import classnames from "classnames";
 
 // components
 import DropdownNavbar from "../Dropdowns/DropdownNavbar";
+import RegistrationLoginNB from "./RegistrationLoginNB";
+
+
+
+
+
+
+
+
+
 
 export default function NavbarLinks({
-  leftLinks,
-  rightLinks,
+  // leftLinks,
+  // rightLinks,
   logoImage,
   logoText,
   logoLink,
-  socials,
   color,
   type,
 }) {
@@ -140,97 +149,77 @@ export default function NavbarLinks({
             ref={collapseRef}
           >
             <ul className="lg:items-center flex flex-wrap list-none pl-0 mb-0 flex flex-col list-none pl-0 mb-0 lg:flex-row">
-              {leftLinks.map((prop, key) => {
-                if (prop.to) {
-                  <li key={key}>
-                    <Link
-                      {...prop}
-                      className={
-                        "hover:opacity-75 px-3 py-4 lg:py-2 flex items-center text-xs uppercase font-bold transition-all duration-150 ease-in-out " +
-                        linkColors[color]
-                      }
-                    />
-                  </li>;
-                } else if (prop.dropdown) {
-                  return (
-                    <li className="relative" key={key}>
-                      <DropdownNavbar {...prop} navColor={color} />
-                    </li>
-                  );
-                } else {
-                  return (
-                    <li key={key}>
-                      <a
-                        {...prop}
-                        className={
-                          "hover:opacity-75 px-3 py-4 lg:py-2 flex items-center text-xs uppercase font-bold transition-all duration-150 ease-in-out " +
-                          linkColors[color]
-                        }
-                      />
-                    </li>
-                  );
-                }
-              })}
+
+              <Link
+                          className={
+                              "hover:opacity-75 px-3 py-4 lg:py-2 flex items-center text-xs uppercase font-bold transition-all duration-150 ease-in-out " +
+                              linkColors[color]
+                          }
+                          to="/e-shop"
+              >
+                E-Shop
+              </Link>
+
+              <Link
+                  className={
+                      "hover:opacity-75 px-3 py-4 lg:py-2 flex items-center text-xs uppercase font-bold transition-all duration-150 ease-in-out " +
+                      linkColors[color]
+                  }
+                  to="mailto:office@pentagon.ro"
+              >
+                About
+              </Link>
+
             </ul>
 
             <ul className="lg:items-center lg:ml-auto flex flex-wrap list-none pl-0 mb-0 flex flex-col list-none pl-0 mb-0 lg:flex-row">
-              {rightLinks.map((prop, key) => {
-                if (prop.to) {
-                  <li key={key}>
-                    <Link
-                      {...prop}
-                      className={
-                        "hover:opacity-75 px-3 py-4 lg:py-2 flex items-center text-xs uppercase font-bold transition-all duration-150 ease-in-out " +
-                        linkColors[color]
-                      }
-                    />
-                  </li>;
-                } else if (prop.dropdown) {
-                  return (
-                    <li className="relative" key={key}>
-                      <DropdownNavbar {...prop} navColor={color} />
-                    </li>
-                  );
-                } else {
-                  return (
-                    <li key={key}>
-                      <a
-                        {...prop}
-                        className={
-                          "hover:opacity-75 px-3 py-4 lg:py-2 flex items-center text-xs uppercase font-bold transition-all duration-150 ease-in-out " +
-                          linkColors[color]
-                        }
-                      />
-                    </li>
-                  );
-                }
-              })}
-              {socials.map((prop, key) => {
-                return (
-                  <li key={key}>
-                    <a
-                      className={
-                        "px-3 py-2 flex items-center text-xs uppercase font-bold leading-snug hover:opacity-75 transition-all duration-150 ease-in-out " +
-                        linkColors[color]
-                      }
-                      href={prop.link}
-                      target="_blank"
-                    >
-                      <i
-                        className={
-                          "fab fa-" +
-                          prop.icon +
-                          " text-lg leading-lg opacity-75 hover:opacity-50 " +
-                          linkColors[color]
-                        }
-                      ></i>
-                      <span className="lg:hidden lg:ml-0 ml-2">
-                        {prop.text}
-                      </span>
-                    </a>
-                  </li>
-                );
-              })}
+
+              <RegistrationLoginNB/>
+
+              {/*<Link*/}
+
+              {/*            className={*/}
+              {/*                "hover:opacity-75 px-3 py-4 lg:py-2 flex items-center text-xs uppercase font-bold transition-all duration-150 ease-in-out " +*/}
+              {/*                linkColors[color]*/}
+              {/*            }*/}
+              {/*            to={"/e-shop"}*/}
+              {/*>*/}
+              {/*  <i className="fa fa-shopping-cart"/>*/}
+              {/*</Link>*/}
+
+              {/*<Link*/}
+
+              {/*    className={*/}
+              {/*        "hover:opacity-75 px-3 py-4 lg:py-2 flex items-center text-xs uppercase font-bold transition-all duration-150 ease-in-out " +*/}
+              {/*        linkColors[color]*/}
+              {/*    }*/}
+              {/*    to={"/e-shop"}*/}
+              {/*>*/}
+              {/*  <i className="fa fa-user"/>*/}
+              {/*</Link>*/}
+
+              {/*<Link*/}
+
+              {/*    className={*/}
+              {/*        "hover:opacity-75 px-3 py-4 lg:py-2 flex items-center text-xs uppercase font-bold transition-all duration-150 ease-in-out " +*/}
+              {/*        linkColors[color]*/}
+              {/*    }*/}
+              {/*    to={"/e-shop"}*/}
+              {/*>*/}
+              {/*  Sign In*/}
+              {/*</Link>*/}
+
+              {/*<Link*/}
+
+              {/*    className={*/}
+              {/*        "hover:opacity-75 px-3 py-4 lg:py-2 flex items-center text-xs uppercase font-bold transition-all duration-150 ease-in-out " +*/}
+              {/*        linkColors[color]*/}
+              {/*    }*/}
+              {/*    to={"/e-shop"}*/}
+              {/*>*/}
+              {/*  Register*/}
+              {/*</Link>*/}
+
             </ul>
           </div>
         </div>
@@ -296,3 +285,75 @@ NavbarLinks.propTypes = {
     })
   ),
 };
+
+
+// LEFT LINKS & RIGHT LINKS
+
+// <ul className="lg:items-center flex flex-wrap list-none pl-0 mb-0 flex flex-col list-none pl-0 mb-0 lg:flex-row">
+//   {leftLinks.map((prop, key) => {
+//     if (prop.to) {
+//       <li key={key}>
+//         <Link
+//             {...prop}
+//             className={
+//                 "hover:opacity-75 px-3 py-4 lg:py-2 flex items-center text-xs uppercase font-bold transition-all duration-150 ease-in-out " +
+//                 linkColors[color]
+//             }
+//         />
+//       </li>;
+//     } else if (prop.dropdown) {
+//       return (
+//           <li className="relative" key={key}>
+//             <DropdownNavbar {...prop} navColor={color} />
+//           </li>
+//       );
+//     } else {
+//       return (
+//           <li key={key}>
+//             <a
+//                 {...prop}
+//                 className={
+//                     "hover:opacity-75 px-3 py-4 lg:py-2 flex items-center text-xs uppercase font-bold transition-all duration-150 ease-in-out " +
+//                     linkColors[color]
+//                 }
+//             />
+//           </li>
+//       );
+//     }
+//   })}
+// </ul>
+//
+// <ul className="lg:items-center lg:ml-auto flex flex-wrap list-none pl-0 mb-0 flex flex-col list-none pl-0 mb-0 lg:flex-row">
+//   {rightLinks.map((prop, key) => {
+//     if (prop.to) {
+//       <li key={key}>
+//         <Link
+//             {...prop}
+//             className={
+//                 "hover:opacity-75 px-3 py-4 lg:py-2 flex items-center text-xs uppercase font-bold transition-all duration-150 ease-in-out " +
+//                 linkColors[color]
+//             }
+//         />
+//       </li>;
+//     } else if (prop.dropdown) {
+//       return (
+//           <li className="relative" key={key}>
+//             <DropdownNavbar {...prop} navColor={color} />
+//           </li>
+//       );
+//     } else {
+//       return (
+//           <li key={key}>
+//             <a
+//                 {...prop}
+//                 className={
+//                     "hover:opacity-75 px-3 py-4 lg:py-2 flex items-center text-xs uppercase font-bold transition-all duration-150 ease-in-out " +
+//                     linkColors[color]
+//                 }
+//             />
+//           </li>
+//       );
+//     }
+//   })}
+//
+// </ul>
