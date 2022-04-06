@@ -68,7 +68,7 @@ export default function Products({}){
     return(
 
         <section className="section-content padding-y">
-            <div className="container">
+            <div className="container mt-5 padding-top">
                 <div className="row">
 
                     <SidebarComponent

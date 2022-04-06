@@ -173,52 +173,7 @@ export default function NavbarLinks({
             </ul>
 
             <ul className="lg:items-center lg:ml-auto flex flex-wrap list-none pl-0 mb-0 flex flex-col list-none pl-0 mb-0 lg:flex-row">
-
               <RegistrationLoginNB/>
-
-              {/*<Link*/}
-
-              {/*            className={*/}
-              {/*                "hover:opacity-75 px-3 py-4 lg:py-2 flex items-center text-xs uppercase font-bold transition-all duration-150 ease-in-out " +*/}
-              {/*                linkColors[color]*/}
-              {/*            }*/}
-              {/*            to={"/e-shop"}*/}
-              {/*>*/}
-              {/*  <i className="fa fa-shopping-cart"/>*/}
-              {/*</Link>*/}
-
-              {/*<Link*/}
-
-              {/*    className={*/}
-              {/*        "hover:opacity-75 px-3 py-4 lg:py-2 flex items-center text-xs uppercase font-bold transition-all duration-150 ease-in-out " +*/}
-              {/*        linkColors[color]*/}
-              {/*    }*/}
-              {/*    to={"/e-shop"}*/}
-              {/*>*/}
-              {/*  <i className="fa fa-user"/>*/}
-              {/*</Link>*/}
-
-              {/*<Link*/}
-
-              {/*    className={*/}
-              {/*        "hover:opacity-75 px-3 py-4 lg:py-2 flex items-center text-xs uppercase font-bold transition-all duration-150 ease-in-out " +*/}
-              {/*        linkColors[color]*/}
-              {/*    }*/}
-              {/*    to={"/e-shop"}*/}
-              {/*>*/}
-              {/*  Sign In*/}
-              {/*</Link>*/}
-
-              {/*<Link*/}
-
-              {/*    className={*/}
-              {/*        "hover:opacity-75 px-3 py-4 lg:py-2 flex items-center text-xs uppercase font-bold transition-all duration-150 ease-in-out " +*/}
-              {/*        linkColors[color]*/}
-              {/*    }*/}
-              {/*    to={"/e-shop"}*/}
-              {/*>*/}
-              {/*  Register*/}
-              {/*</Link>*/}
 
             </ul>
           </div>

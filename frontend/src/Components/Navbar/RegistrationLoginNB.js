@@ -80,7 +80,7 @@ export default function RegistrationLoginNB() {
             >
                 Register
             </Link>
-            <p className={"text-white"}>{`loggedinState:${loggedInState}`}</p>
+            {/*<p className={"text-white"}>{`loggedinState:${loggedInState}`}</p>*/}
         </>
 
 
