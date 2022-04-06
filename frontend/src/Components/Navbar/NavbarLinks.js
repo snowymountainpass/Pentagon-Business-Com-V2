@@ -6,7 +6,7 @@ import classnames from "classnames";
 
 // components
 import DropdownNavbar from "../Dropdowns/DropdownNavbar";
-import RegistrationLoginNB from "./RegistrationLoginNB";
+import RegistrationLogin from "./RegistrationLogin";
 
 
 
@@ -173,7 +173,7 @@ export default function NavbarLinks({
             </ul>
 
             <ul className="lg:items-center lg:ml-auto flex flex-wrap list-none pl-0 mb-0 flex flex-col list-none pl-0 mb-0 lg:flex-row">
-              <RegistrationLoginNB/>
+              <RegistrationLogin/>
 
             </ul>
           </div>
