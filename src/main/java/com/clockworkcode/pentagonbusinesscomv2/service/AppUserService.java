@@ -67,9 +67,6 @@ public class AppUserService implements UserDetailsService {
 
     public String signInUser(String email, String password){
 
-//        Optional<AppUser> user = appUserRepository.findByEmail(email);
-//        String encodedInputPassword = user.get().getPassword();
-
         log.info("REACHED signInUser METHOD!");
 
         boolean accountExists = appUserRepository.findByEmail(email).isPresent();
@@ -79,11 +76,6 @@ public class AppUserService implements UserDetailsService {
         }
 
         AppUser user = appUserRepository.findByEmailAndEnabledIsTrue(email);
-
-
-
-//        String encodedPassword = user.getPassword();
-//        String encodedInputPassword = bCryptPasswordEncoder.encode(password);
 
         String sessionToken="";
 

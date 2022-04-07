@@ -1,6 +1,13 @@
 import {Link} from "react-router-dom";
 import React, {useEffect, useState} from "react";
 
+
+import Badge from "@material-ui/core/Badge";
+import ShoppingCartIcon from "@material-ui/icons/ShoppingCart";
+import PersonIcon from '@material-ui/icons/Person';
+// import AddIcon from "@material-ui/icons/Add";
+// import RemoveIcon from "@material-ui/icons/Remove";
+
 export default function RegistrationLogin() {
 
     const [loggedInState, setloggedInState] = useState(
@@ -14,6 +21,9 @@ export default function RegistrationLogin() {
 
     const [text, setText] = useState(loggedInState ? "Sign Out" : "Sign In");
     const [pageLink, setPageLink] = useState(loggedInState ? "/e-shop" : "/e-shop/login");
+
+    const [itemCount, setItemCount] = useState(1);
+
 
     function logout() {
         setText("Sign In");
@@ -43,6 +53,23 @@ export default function RegistrationLogin() {
 
     return (
         <>
+            <div className="widgets-wrap float-md-right text-white">
+                <div className="widget-header  mr-3 text-white">
+                    <Link
+
+                        className={
+                            "hover:opacity-75 px-3 py-4 lg:py-2 flex items-center text-xs uppercase font-bold transition-all duration-150 ease-in-out text-white"
+
+                        }
+                        to={"/e-shop"}
+                    >
+                        {/*<i className="fa fa-shopping-cart"/>*/}
+                        <Badge color="secondary" badgeContent={itemCount}>
+                            <ShoppingCartIcon fontSize={"medium"} />{" "}
+                        </Badge>
+                    </Link>
+                </div>
+            </div>
 
             <Link
 
@@ -52,18 +79,8 @@ export default function RegistrationLogin() {
                 }
                 to={"/e-shop"}
             >
-                <i className="fa fa-shopping-cart"/>
-            </Link>
-
-            <Link
-
-                className={
-                    "hover:opacity-75 px-3 py-4 lg:py-2 flex items-center text-xs uppercase font-bold transition-all duration-150 ease-in-out text-white"
-
-                }
-                to={"/e-shop"}
-            >
-                <i className="fa fa-user"/>
+                {/*<i className="fa fa-user"/>*/}
+                <PersonIcon fontSize={"medium"} />
             </Link>
 
             <div onClick={loggedInState ? logout : login}>

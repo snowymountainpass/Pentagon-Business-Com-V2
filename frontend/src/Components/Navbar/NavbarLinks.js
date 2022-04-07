@@ -9,14 +9,6 @@ import DropdownNavbar from "../Dropdowns/DropdownNavbar";
 import RegistrationLogin from "./RegistrationLogin";
 
 
-
-
-
-
-
-
-
-
 export default function NavbarLinks({
   // leftLinks,
   // rightLinks,
