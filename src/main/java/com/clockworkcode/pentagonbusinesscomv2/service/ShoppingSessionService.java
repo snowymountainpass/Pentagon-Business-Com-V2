@@ -36,4 +36,11 @@ public class ShoppingSessionService {
 
     }
 
+    public Long getShoppingSessionIDByLoginToken(String loginToken){
+
+        AppUser user = loginTokenService.getAppUserByLoginToken(loginToken);
+
+        return shoppingSessionRepository.findShoppingSessionByAppUser_AppUserID(user.getAppUserID());
+    }
+
 }
