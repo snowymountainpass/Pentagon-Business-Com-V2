@@ -23,6 +23,7 @@ export default function CardLoginSocial({
         localStorage.setItem("PTG V2 Login Token", tokenValue);
         console.log("Token value is: " + tokenValue);
         if(localStorage.getItem("PTG V2 Login Token")!=="" && localStorage.getItem("PTG V2 Login Token")!=="invalid credentials"){
+            sendLoggedInUserToken();
             navigate(-1);
         }
         // (localStorage.getItem("PTG V2 Login Token") !== "" && localStorage.getItem("PTG V2 Login Token") !== "invalid credentials") ? <Redirect to="http://localhost:3000/e-shop"/> :<Redirect to="http://localhost:3000/e-shop/login"/>
@@ -67,7 +68,20 @@ export default function CardLoginSocial({
 
     }
 
+    function sendLoggedInUserToken(){
 
+        const loggedInUserToken = localStorage.getItem("PTG V2 Login Token");
+
+        const requestOptions = {
+            method: 'POST',
+            headers: {'Content-Type': 'application/json'},
+            // body: JSON.stringify({userToken: email,loggedInUserToken})
+        };
+
+        fetch('http://localhost:8080/e-shop/login/' + loggedInUserToken, requestOptions)
+            .then(response  =>console.log(response));
+
+    }
 
 
     return (

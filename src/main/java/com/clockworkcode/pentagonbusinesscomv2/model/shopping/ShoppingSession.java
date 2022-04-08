@@ -9,6 +9,7 @@ import lombok.Setter;
 import javax.persistence.*;
 import java.math.BigDecimal;
 import java.sql.Timestamp;
+import java.util.Set;
 
 @Getter
 @Setter
@@ -31,12 +32,17 @@ public class ShoppingSession {
     @Column(nullable = false)
     private BigDecimal total;
 
-    @Column(nullable = false)
+//    @Column(nullable = false)
     private Timestamp createdAt;
-    @Column(nullable = false)
+//    @Column(nullable = false)
     private Timestamp modifiedAt;
 
-    @OneToOne(mappedBy = "shoppingSession")
-    private CartItem cartItem;
+    @OneToMany(mappedBy = "shoppingSession")
+    private Set<CartItem> cartItems;
 
+    public ShoppingSession(AppUser appUser, BigDecimal total, Set<CartItem> cartItems) {
+        this.appUser = appUser;
+        this.total = total;
+        this.cartItems = cartItems;
+    }
 }

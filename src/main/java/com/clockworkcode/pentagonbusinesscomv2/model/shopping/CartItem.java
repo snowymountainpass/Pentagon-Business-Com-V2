@@ -23,7 +23,7 @@ public class CartItem {
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "cartitem_sequence")
     private Long cartItemID;
 
-    @OneToOne(cascade = CascadeType.ALL)
+    @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "shopping_sessionid")
     private ShoppingSession shoppingSession;
 
@@ -33,9 +33,9 @@ public class CartItem {
 
     private Integer quantity;
 
-    @Column(nullable = false)
+//    @Column(nullable = false)
     private Timestamp createdAt;
-    @Column(nullable = false)
+//    @Column(nullable = false)
     private Timestamp modifiedAt;
 
 }
