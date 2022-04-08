@@ -61,10 +61,10 @@ export default function RegistrationLogin() {
                             "hover:opacity-75 px-3 py-4 lg:py-2 flex items-center text-xs uppercase font-bold transition-all duration-150 ease-in-out text-white"
 
                         }
-                        to={"/e-shop"}
+                        to={"/shopping-cart"}
                     >
                         {/*<i className="fa fa-shopping-cart"/>*/}
-                        <Badge color="secondary" badgeContent={itemCount}>
+                        <Badge color="secondary" badgeContent={itemCount} overlap="rectangular">
                             <ShoppingCartIcon fontSize={"medium"} />{" "}
                         </Badge>
                     </Link>
