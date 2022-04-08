@@ -5,6 +5,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface ShoppingSessionRepository extends JpaRepository<ShoppingSession,Long> {
 
-    Long findShoppingSessionByAppUser_AppUserID(Long appUserID);
+    ShoppingSession findShoppingSessionByAppUser_AppUserID(Long appUserID);
 
 }

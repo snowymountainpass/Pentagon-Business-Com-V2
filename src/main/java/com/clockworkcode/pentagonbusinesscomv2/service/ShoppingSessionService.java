@@ -36,7 +36,7 @@ public class ShoppingSessionService {
 
     }
 
-    public Long getShoppingSessionIDByLoginToken(String loginToken){
+    public ShoppingSession getShoppingSessionByLoginToken(String loginToken){
 
         AppUser user = loginTokenService.getAppUserByLoginToken(loginToken);
 

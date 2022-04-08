@@ -38,4 +38,11 @@ public class CartItem {
 //    @Column(nullable = false)
     private Timestamp modifiedAt;
 
+    public CartItem(ShoppingSession shoppingSession, Product product, Integer quantity) {
+        this.shoppingSession = shoppingSession;
+        this.product = product;
+        this.quantity = quantity;
+        this.createdAt=new Timestamp(System.currentTimeMillis());
+        this.modifiedAt=new Timestamp(System.currentTimeMillis());
+    }
 }
