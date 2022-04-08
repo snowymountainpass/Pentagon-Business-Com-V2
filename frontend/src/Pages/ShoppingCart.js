@@ -37,8 +37,7 @@ export default function ShoppingCart(){
                             {/*ProductsTable*/}
 
                             <div className="alert alert-success mt-3">
-                                <p className="icontext"><i className="icon text-success fa fa-truck"/> Free Delivery within 1-2
-                                    weeks</p>
+                                <p className="icontext"><i className="icon text-success fa fa-truck"/> Free Delivery for orders above $10.000</p>
                             </div>
 
                         </main>
