@@ -30,20 +30,6 @@ public class ConfirmationTokenService {
         return confirmationTokenRepository.updateConfirmedAt(token, LocalDateTime.now());
     }
 
-    public AppUser getAppUserByConfirmationToken(String token){
 
-//        if(confirmationTokenRepository.findByToken(token).get().getAppUser()!=null){
-//            System.out.println("APPUSER exists!");
-//        }
-//        BigInteger userID = confirmationTokenRepository.findByToken(token).ifPresent( ConfirmationToken -> ConfirmationToken.getAppUser().getAppUserID());
-        ConfirmationToken cftk = confirmationTokenRepository.findByToken(token).get();
-//        Long userID = cftk.getAppUser().getAppUserID();
-
-        if(cftk.getAppUser()!=null){
-            System.out.println("APPUSER exists IN DB!");
-        }
-
-       return confirmationTokenRepository.findByToken(token).get().getAppUser();
-    }
 
 }

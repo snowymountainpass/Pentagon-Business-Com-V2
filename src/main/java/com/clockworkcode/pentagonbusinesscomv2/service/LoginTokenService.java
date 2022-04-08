@@ -1,7 +1,9 @@
 package com.clockworkcode.pentagonbusinesscomv2.service;
 
+import com.clockworkcode.pentagonbusinesscomv2.model.user.AppUser;
 import com.clockworkcode.pentagonbusinesscomv2.repository.LoginTokenRepository;
 
+import com.clockworkcode.pentagonbusinesscomv2.security.token.ConfirmationToken;
 import com.clockworkcode.pentagonbusinesscomv2.security.token.LoginToken;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -25,4 +27,21 @@ public class LoginTokenService {
     }
 
     //TODO ADD METHOD THAT REMOVES THE TOKEN AFTER IT EXPIRES
+
+    public AppUser getAppUserByLoginToken(String token){
+
+//        if(confirmationTokenRepository.findByToken(token).get().getAppUser()!=null){
+//            System.out.println("APPUSER exists!");
+//        }
+//        BigInteger userID = confirmationTokenRepository.findByToken(token).ifPresent( ConfirmationToken -> ConfirmationToken.getAppUser().getAppUserID());
+        LoginToken loginToken = loginTokenRepository.findByToken(token).get();
+//        Long userID = cftk.getAppUser().getAppUserID();
+
+        if(loginToken.getAppUser()!=null){
+            System.out.println("APPUSER exists IN DB!");
+        }
+
+        return loginTokenRepository.findByToken(token).get().getAppUser();
+    }
+
 }

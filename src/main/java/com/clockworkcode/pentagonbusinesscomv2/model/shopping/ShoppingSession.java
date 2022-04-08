@@ -44,5 +44,7 @@ public class ShoppingSession {
         this.appUser = appUser;
         this.total = total;
         this.cartItems = cartItems;
+        this.createdAt=new Timestamp(System.currentTimeMillis());
+        this.modifiedAt=new Timestamp(System.currentTimeMillis());
     }
 }

@@ -15,19 +15,19 @@ import java.util.Set;
 public class ShoppingSessionService {
 
     private final ShoppingSessionRepository shoppingSessionRepository;
-    private final ConfirmationTokenService confirmationTokenService;
+    private final LoginTokenService loginTokenService;
 
     @Autowired
-    public ShoppingSessionService(ShoppingSessionRepository shoppingSessionRepository, ConfirmationTokenService confirmationTokenService) {
+    public ShoppingSessionService(ShoppingSessionRepository shoppingSessionRepository, LoginTokenService loginTokenService) {
         this.shoppingSessionRepository = shoppingSessionRepository;
-        this.confirmationTokenService = confirmationTokenService;
+        this.loginTokenService = loginTokenService;
     }
 
-    public void addNewShoppingSession(String confirmationToken){
+    public void addNewShoppingSession(String loginToken){
 
-        System.out.println("TOKEN: "+ confirmationToken);
+        System.out.println("TOKEN: "+ loginToken);
 
-        AppUser user = confirmationTokenService.getAppUserByConfirmationToken(confirmationToken);
+        AppUser user = loginTokenService.getAppUserByLoginToken(loginToken);
 
         System.out.println("SHOPPING SESSION USER EMAIL: "+user.getEmail());
 
