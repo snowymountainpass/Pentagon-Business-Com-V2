@@ -50,12 +50,15 @@ public class CartItemService {
         List<CartItem> cartItemList = cartItemRepository.findAll().stream().filter(cartItem -> cartItem.getProduct().getProductID().equals(productId)).collect(Collectors.toList());
 
         if( cartItemList.size()!=0 ){
+
+            System.out.println(cartItemList.get(0).getProduct().getProductName()+" has a Q of: "+ cartItemList.get(0).getQuantity() );
+
             cartItemList.get(0).setQuantity( cartItemList.get(0).getQuantity() + quantity);
-            System.out.println("Product "+cartItemList.get(0).getProduct().getProductName()+ "had its quantity updated; current Q: "+ cartItemList.get(0).getQuantity());
+            System.out.println("Product "+cartItemList.get(0).getProduct().getProductName()+ " had its quantity updated; current Q: "+ cartItemList.get(0).getQuantity());
         }
         else {
-            addNewCartItem(loginToken,productId,quantity);
             System.out.println("Product "+ productDBService.getProductByProductID(String.valueOf(productId)).getProductName() + " didn't exist in the cart!" );
+            addNewCartItem(loginToken,productId,quantity);
         }
     }
 
