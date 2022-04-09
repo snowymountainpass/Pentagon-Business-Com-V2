@@ -1,4 +1,4 @@
-package com.clockworkcode.pentagonbusinesscomv2.model.registration;
+package com.clockworkcode.pentagonbusinesscomv2.model.request;
 
 import lombok.*;
 

@@ -17,6 +17,16 @@ public class ShoppingSessionController {
 
     private final ShoppingSessionService shoppingSessionService;
 
+    String userToken;
+
+    public String getUserToken() {
+        return userToken;
+    }
+
+    public void setUserToken(String userToken) {
+        this.userToken = userToken;
+    }
+
     @PostMapping("/login/{userToken}")
     public void getLoggedInUserToken(@PathVariable String userToken){
 
@@ -24,6 +34,7 @@ public class ShoppingSessionController {
 
         shoppingSessionService.addNewShoppingSession(userToken);
 
+        setUserToken(userToken);
     }
 
 

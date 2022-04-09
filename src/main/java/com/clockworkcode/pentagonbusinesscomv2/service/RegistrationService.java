@@ -1,9 +1,8 @@
 package com.clockworkcode.pentagonbusinesscomv2.service;
 
 import com.clockworkcode.pentagonbusinesscomv2.email.EmailSender;
-import com.clockworkcode.pentagonbusinesscomv2.model.registration.RegistrationRequest;
+import com.clockworkcode.pentagonbusinesscomv2.model.request.RegistrationRequest;
 import com.clockworkcode.pentagonbusinesscomv2.model.user.AppUser;
-import com.clockworkcode.pentagonbusinesscomv2.model.user.AppUserRole;
 import com.clockworkcode.pentagonbusinesscomv2.security.token.ConfirmationToken;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;

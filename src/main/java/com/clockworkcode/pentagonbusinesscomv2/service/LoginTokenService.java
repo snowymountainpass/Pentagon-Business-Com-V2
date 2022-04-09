@@ -30,12 +30,7 @@ public class LoginTokenService {
 
     public AppUser getAppUserByLoginToken(String token){
 
-//        if(confirmationTokenRepository.findByToken(token).get().getAppUser()!=null){
-//            System.out.println("APPUSER exists!");
-//        }
-//        BigInteger userID = confirmationTokenRepository.findByToken(token).ifPresent( ConfirmationToken -> ConfirmationToken.getAppUser().getAppUserID());
         LoginToken loginToken = loginTokenRepository.findByToken(token).get();
-//        Long userID = cftk.getAppUser().getAppUserID();
 
         if(loginToken.getAppUser()!=null){
             System.out.println("APPUSER exists IN DB!");

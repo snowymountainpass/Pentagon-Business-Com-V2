@@ -1,6 +1,6 @@
 package com.clockworkcode.pentagonbusinesscomv2.controller;
 
-import com.clockworkcode.pentagonbusinesscomv2.model.registration.RegistrationRequest;
+import com.clockworkcode.pentagonbusinesscomv2.model.request.RegistrationRequest;
 import com.clockworkcode.pentagonbusinesscomv2.service.RegistrationService;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpHeaders;

@@ -10,3 +10,6 @@ public interface CartItemRepository extends JpaRepository<CartItem,Long> {
     void deleteCartItemByCartItemID(Long cartItemID);
 
 }
+
+//1.	Dupa login => avem un token => il trimitem inapoin in backend =>
+// il folosim pt a identifica cine este logat SAU salvam LOCAL rezultatul acelei methode si plecam de acolo
