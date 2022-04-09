@@ -7,6 +7,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.stream.Collectors;
 
 @Service
@@ -36,13 +37,25 @@ public class CartItemService {
 
     public void updateCartItemQuantity(String loginToken, Long productId, Integer quantity){
 
-       CartItem itemInCart = cartItemRepository.findAll().stream().filter(cartItem -> cartItem.getProduct().getProductID().equals(productId)).collect(Collectors.toList()).get(0);
+//        CartItem itemInCart = cartItemRepository.findAll().stream().filter(cartItem -> cartItem.getProduct().getProductID().equals(productId)).collect(Collectors.toList()).get(0);
 
-        if( itemInCart!=null ){
-            itemInCart.setQuantity(quantity);
+//        if( itemInCart!=null ){
+//            itemInCart.setQuantity(quantity);
+//        }
+//        else {
+//            addNewCartItem(loginToken,productId,quantity);
+//        }
+
+
+        List<CartItem> cartItemList = cartItemRepository.findAll().stream().filter(cartItem -> cartItem.getProduct().getProductID().equals(productId)).collect(Collectors.toList());
+
+        if( cartItemList.size()!=0 ){
+            cartItemList.get(0).setQuantity( cartItemList.get(0).getQuantity() + quantity);
+            System.out.println("Product "+cartItemList.get(0).getProduct().getProductName()+ "had its quantity updated; current Q: "+ cartItemList.get(0).getQuantity());
         }
         else {
             addNewCartItem(loginToken,productId,quantity);
+            System.out.println("Product "+ productDBService.getProductByProductID(String.valueOf(productId)).getProductName() + " didn't exist in the cart!" );
         }
     }
 

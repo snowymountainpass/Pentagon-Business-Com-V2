@@ -7,7 +7,7 @@ export default function ProductsListing(props){
 
             {
                 props.products.map(product =>(
-                    <ProductCard product={product} key={product.productID}/>
+                    <ProductCard product={product} pkey={product.productID} key={product.productID}/>
                 ))
 
             }

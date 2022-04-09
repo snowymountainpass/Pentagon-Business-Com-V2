@@ -18,21 +18,14 @@ public class CartItemController {
     private final CartItemService cartItemService;
     private final ShoppingSessionController shoppingSessionController;
 
-//    @PostMapping("/cart-items/add-product/{productId}")
-//    public void addProductToCart(@PathVariable String productId){
-//
-//        cartItemService.updateCartItemQuantity(
-//                shoppingSessionController.getUserToken(),
-//                Long.valueOf(productId),
-//                1
-//
-//
-//        );
-//
-//    }
 
     @PostMapping("/cart-items/add-product")
     public void addProductToCart(@RequestBody CartItemRequest request){
+
+        System.out.println("Request - token: "+request.getUserToken());
+        System.out.println("Request - productID: "+request.getProductID());
+        System.out.println("Request - quantity: "+request.getQuantity());
+
 
         cartItemService.updateCartItemQuantity(
                 request.getUserToken(),

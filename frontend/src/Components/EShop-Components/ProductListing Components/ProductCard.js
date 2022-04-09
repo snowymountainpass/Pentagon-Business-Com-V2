@@ -1,12 +1,30 @@
 
 export default function ProductCard(props){
 
-    // const img = props.product.img.replace("../../Assets/img/","/assets/images/");
 
+    function addToCart(event){
+        event.preventDefault();
+        console.log("addToCart function was called!!");
+        // console.log("product id: "+ event.target.key);
+        console.log("product id (pkey): "+ props.pkey); // ASA MERGE!!!!!!!!
+
+        const requestOptions = {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ userToken: localStorage.getItem("PTG V2 Login Token"),productID:props.pkey,quantity:1 })
+        };
+
+        fetch('http://localhost:8080/e-shop/cart-items/add-product', requestOptions)
+            .then(
+                console.log("Product with ID: "+ props.pkey + " was added to the cart")
+            );
+
+
+    }
 
 
     return(
-        <article className="card card-product-list">
+        <article className="card card-product-list" >
             <div className="row no-gutters">
                 <aside className="col-md-3">
                     <a href="#" className="img-wrap">
@@ -51,7 +69,9 @@ export default function ProductCard(props){
                         <p>
                             <a href={`/e-shop/product-id/${props.product.productID}`} className="btn btn-primary btn-block">Details</a>
 
-                            <a href="#" className="btn btn-light btn-block"><i className="fa fa-shopping-cart"/>
+                            <a className="btn btn-light btn-block" onClick={addToCart}>
+
+                                <i className="fa fa-shopping-cart"/>
                                 <span className="text">Add to Cart</span>
                             </a>
                         </p>
