@@ -7,6 +7,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -26,47 +27,45 @@ public class CartItemService {
     }
 
 
-    public void addNewCartItem(String loginToken, Long productId,Integer quantity){
+    public void addNewCartItem(String loginToken, Long productId, Integer quantity) {
 
         Product product = productDBService.getProductByProductID(String.valueOf(productId));
 
-        cartItemRepository.save(new CartItem(shoppingSessionService.getShoppingSessionByLoginToken(loginToken),product,quantity));
+        cartItemRepository.save(new CartItem(shoppingSessionService.getShoppingSessionByLoginToken(loginToken), product, quantity));
 
-        log.info("New product "+product.getProductName()+" in quantity "+quantity+" was added to the Cart!");
+        log.info("New product " + product.getProductName() + " in quantity " + quantity + " was added to the Cart!");
     }
 
-    public void updateCartItemQuantity(String loginToken, Long productId, Integer quantity){
-
-//        CartItem itemInCart = cartItemRepository.findAll().stream().filter(cartItem -> cartItem.getProduct().getProductID().equals(productId)).collect(Collectors.toList()).get(0);
-
-//        if( itemInCart!=null ){
-//            itemInCart.setQuantity(quantity);
-//        }
-//        else {
-//            addNewCartItem(loginToken,productId,quantity);
-//        }
+    public void updateCartItemQuantity(String loginToken, Long productId, Integer quantity) {
 
 
-//        List<CartItem> cartItemList = cartItemRepository.findAll().stream().filter(cartItem -> cartItem.getProduct().getProductID().equals(productId)).collect(Collectors.toList());
         List<CartItem> cartItemList = cartItemRepository.findAll().stream().filter(cartItem -> cartItem.getProduct().getProductID().equals(productId)).collect(Collectors.toList());
 
-        if( cartItemList.size()!=0 ){
+        if (cartItemList.size() != 0) {
 
-            System.out.println(cartItemList.get(0).getProduct().getProductName()+" has a Q of: "+ cartItemList.get(0).getQuantity() );
-
+            System.out.println(cartItemList.get(0).getProduct().getProductName() + " has a Q of: " + cartItemList.get(0).getQuantity());
 
 
 //            cartItemList.get(0).setQuantity( cartItemList.get(0).getQuantity() + quantity);
-            cartItemRepository.updateIncreaseCartItemQuantity(quantity,cartItemList.get(0).getCartItemID());
-            System.out.println("Product "+cartItemList.get(0).getProduct().getProductName()+ " had its quantity updated; current Q: "+ cartItemList.get(0).getQuantity());
-        }
-        else {
-            System.out.println("Product "+ productDBService.getProductByProductID(String.valueOf(productId)).getProductName() + " didn't exist in the cart!" );
-            addNewCartItem(loginToken,productId,quantity);
+            cartItemRepository.updateIncreaseCartItemQuantity(quantity, cartItemList.get(0).getCartItemID());
+            System.out.println("Product " + cartItemList.get(0).getProduct().getProductName() + " had its quantity updated; current Q: " + cartItemList.get(0).getQuantity());
+        } else {
+            System.out.println("Product " + productDBService.getProductByProductID(String.valueOf(productId)).getProductName() + " didn't exist in the cart!");
+            addNewCartItem(loginToken, productId, quantity);
         }
     }
 
-    public void removeCartItem(Long cartItemID){
+
+    public Integer getNumberItemsInCart() {
+
+        List<Integer> quantities = new ArrayList<>();
+        new ArrayList<>(cartItemRepository.findAll()).forEach(cartItem -> quantities.add(cartItem.getQuantity()));
+
+        return quantities.stream().reduce(0,Integer::sum);
+
+    }
+
+    public void removeCartItem(Long cartItemID) {
 
         cartItemRepository.deleteCartItemByCartItemID(cartItemID);
     }

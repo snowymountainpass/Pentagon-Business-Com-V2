@@ -16,12 +16,16 @@ export default function ProductCard(props){
 
         fetch('http://localhost:8080/e-shop/cart-items/add-product', requestOptions)
             .then(
-                console.log("Product with ID: "+ props.pkey + " was added to the cart")
-            );
+                response => response.json()
+            )
+            .then(data=> {
+                localStorage.setItem("no. items in cart", data);
+                console.log("Number of items in cart: "+ localStorage.getItem("no. items in cart"))
+            });
 
 
     }
-
+    // console.log("Product with ID: "+ props.pkey + " was added to the cart");
 
     return(
         <article className="card card-product-list" >
@@ -69,7 +73,13 @@ export default function ProductCard(props){
                         <p>
                             <a href={`/e-shop/product-id/${props.product.productID}`} className="btn btn-primary btn-block">Details</a>
 
-                            <a className="btn btn-light btn-block" onClick={addToCart}>
+                            <a className="btn btn-light btn-block"
+
+                               onClick={ localStorage.getItem("PTG V2 Login Token") !=null ? addToCart: null}
+                               // onMouseOver={
+                               //  localStorage.getItem("PTG V2 Login Token") ==null ? window.setTimeout('alert("Please log in!");window.close();', 2000) : null
+                               //  }
+                            >
 
                                 <i className="fa fa-shopping-cart"/>
                                 <span className="text">Add to Cart</span>

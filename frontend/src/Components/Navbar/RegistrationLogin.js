@@ -51,6 +51,10 @@ export default function RegistrationLogin() {
 
     },[])
 
+    // useEffect(()=>{
+    //     setItemCount( parseInt( localStorage.getItem("no. items in cart") ) );
+    // },[localStorage.getItem("no. items in cart")])
+
     return (
         <>
             <div className="widgets-wrap float-md-right text-white">

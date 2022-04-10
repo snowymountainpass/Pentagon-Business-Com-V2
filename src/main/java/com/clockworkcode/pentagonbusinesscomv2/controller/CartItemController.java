@@ -20,7 +20,7 @@ public class CartItemController {
 
 
     @PostMapping("/cart-items/add-product")
-    public void addProductToCart(@RequestBody CartItemRequest request){
+    public Integer addProductToCart(@RequestBody CartItemRequest request){
 
         System.out.println("Request - token: "+request.getUserToken());
         System.out.println("Request - productID: "+request.getProductID());
@@ -35,6 +35,7 @@ public class CartItemController {
 
         );
 
+        return cartItemService.getNumberItemsInCart();
     }
 
 
