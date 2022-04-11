@@ -1,6 +1,14 @@
+import {atom, useAtom} from "jotai";
+
+export let CART_AMOUNT_ATOM = atom(0);
 
 export default function ProductCard(props){
 
+    // const [amountData,setAmountData] = useAtom(CART_AMOUNT_ATOM);
+
+    // function getDataToCart(data){
+    //     setAmountData(data);
+    // }
 
     function addToCart(event){
         event.preventDefault();
@@ -20,6 +28,7 @@ export default function ProductCard(props){
             )
             .then(data=> {
                 localStorage.setItem("no. items in cart", data);
+                // getDataToCart(data);
                 console.log("Number of items in cart: "+ localStorage.getItem("no. items in cart"))
             });
 

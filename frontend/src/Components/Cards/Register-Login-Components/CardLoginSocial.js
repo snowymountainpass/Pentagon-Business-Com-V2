@@ -26,11 +26,6 @@ export default function CardLoginSocial({
             sendLoggedInUserToken();
             navigate(-1);
         }
-        // (localStorage.getItem("PTG V2 Login Token") !== "" && localStorage.getItem("PTG V2 Login Token") !== "invalid credentials") ? <Redirect to="http://localhost:3000/e-shop"/> :<Redirect to="http://localhost:3000/e-shop/login"/>
-
-        // if(localStorage.getItem("PTG V2 Login Token") !== "" && localStorage.getItem("PTG V2 Login Token") !== "invalid credentials"){
-        //     navigate("http://localhost:3000/e-shop",{replace:true})
-        // }
 
     },[tokenValue])
 
@@ -132,9 +127,6 @@ export default function CardLoginSocial({
                                     if (email && password) {
                                         // handleSubmit(event).then( tokenValue !=="" ? handleClick: console.log("token value is undefined!"));
                                         handleSubmit(event);
-
-
-
                                     }
                                 }} type="button"
                                         className="bg-blue-500 hover:bg-blue-700 text-black-50 font-bold py-2 px-4 rounded"

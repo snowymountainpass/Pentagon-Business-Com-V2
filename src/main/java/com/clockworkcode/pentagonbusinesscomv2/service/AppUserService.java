@@ -38,7 +38,7 @@ public class AppUserService implements UserDetailsService {
         return appUserRepository.findByEmail(email).orElseThrow(()->new UsernameNotFoundException(String.format(USER_NOT_FOUND_message,email)));
     }
 
-    public String signUpUSer(AppUser appUser){
+    public String signUpUser(AppUser appUser){
 
         boolean userExists = appUserRepository.findByEmail(appUser.getEmail()).isPresent();
 
@@ -84,6 +84,11 @@ public class AppUserService implements UserDetailsService {
             log.info("PASSWORDS MATCH!");
             System.out.println("PASSWORDS MATCH!");
 
+            if(loginTokenService.getTokensForAppUserID(user.getAppUserID()).size()==1){
+                loginTokenService.deleteLoginToken(user.getAppUserID());
+                log.info("Previous login token for appUser "+user.getAppUserID()+" was deleted!");
+            }
+
             LoginToken loginToken = new LoginToken(
                     sessionToken,
                     LocalDateTime.now(),
@@ -96,7 +101,6 @@ public class AppUserService implements UserDetailsService {
             return sessionToken;
         }
         else{
-//            throw new IllegalStateException(new IllegalStateException("Password don't match"));
             return "invalid credentials";
         }
 
