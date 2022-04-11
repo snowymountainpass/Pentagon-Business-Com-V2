@@ -7,12 +7,15 @@ import com.clockworkcode.pentagonbusinesscomv2.repository.ShoppingSessionReposit
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.math.BigDecimal;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 @Service
+@Transactional
 @Slf4j
 public class ShoppingSessionService {
 
@@ -30,6 +33,14 @@ public class ShoppingSessionService {
         System.out.println("TOKEN: "+ loginToken);
 
         AppUser user = loginTokenService.getAppUserByLoginToken(loginToken);
+
+
+        List<ShoppingSession> shoppingSessions = shoppingSessionRepository.findShoppingSessionsByAppUser_AppUserID(user.getAppUserID());
+
+        if(shoppingSessions.size()==1){
+            shoppingSessionRepository.deleteShoppingSessionsByAppUser_AppUserID(user.getAppUserID());
+            log.info("Removed previous SHOPPING CART SESSION - user has logged out and the logging in!  ");
+        }
 
         log.info("SHOPPING SESSION USER EMAIL: "+user.getEmail());
 
