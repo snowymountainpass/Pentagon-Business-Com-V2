@@ -21,11 +21,13 @@ public class ShoppingSessionService {
 
     private final ShoppingSessionRepository shoppingSessionRepository;
     private final LoginTokenService loginTokenService;
+    private final CartItemService cartItemService;
 
     @Autowired
-    public ShoppingSessionService(ShoppingSessionRepository shoppingSessionRepository, LoginTokenService loginTokenService) {
+    public ShoppingSessionService(ShoppingSessionRepository shoppingSessionRepository, LoginTokenService loginTokenService, CartItemService cartItemService) {
         this.shoppingSessionRepository = shoppingSessionRepository;
         this.loginTokenService = loginTokenService;
+        this.cartItemService = cartItemService;
     }
 
     public void addNewShoppingSession(String loginToken){
@@ -40,6 +42,15 @@ public class ShoppingSessionService {
         if(shoppingSessions.size()==1){
             shoppingSessionRepository.deleteShoppingSessionsByAppUser_AppUserID(user.getAppUserID());
             log.info("Removed previous SHOPPING CART SESSION - user has logged out and the logging in!  ");
+
+           if(
+                   cartItemService.getCartItemsBySessionID(shoppingSessionRepository.findShoppingSessionByAppUser_AppUserID(user.getAppUserID()).getShoppingSessionID()).size()!=0
+                   // IF SESSION HAS ANY DEPENDENTS => IF ANY ITEMS HAVE BEEN ADDED TO THE SHOPPING CART UNDER THE CURRENT SESSION
+           ){
+               cartItemService.deleteCartItemsBySessionID( shoppingSessionRepository.findShoppingSessionByAppUser_AppUserID(user.getAppUserID()).getShoppingSessionID() );
+               log.info("Removed CART ITEMS FROM PREVIOUS SHOPPING CART SESSION - since user has logged out no need to keep them!  ");
+               //TODO : AICI AM RAMAS - DE TESTAT!
+           }
         }
 
         log.info("SHOPPING SESSION USER EMAIL: "+user.getEmail());

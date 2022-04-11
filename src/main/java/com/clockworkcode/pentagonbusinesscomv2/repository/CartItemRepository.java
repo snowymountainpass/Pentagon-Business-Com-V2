@@ -7,6 +7,8 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
+
 @Transactional
 public interface CartItemRepository extends JpaRepository<CartItem,Long> {
 
@@ -16,9 +18,8 @@ public interface CartItemRepository extends JpaRepository<CartItem,Long> {
     @Query(value = "update CartItem ci set ci.quantity=ci.quantity+:increaseAmount where ci.cartItemID=:cartItemId")
     void updateIncreaseCartItemQuantity(@Param("increaseAmount") Integer increaseAmount,@Param("cartItemId") Long cartItemId);
 
-    void deleteCartItemByCartItemID(Long cartItemID);
+    List<CartItem> findCartItemsByShoppingSession_ShoppingSessionID(Long shoppingSessionID);
 
+    void deleteCartItemsByShoppingSession_ShoppingSessionID(Long shoppingSessionID);
 }
 
-//1.	Dupa login => avem un token => il trimitem inapoin in backend =>
-// il folosim pt a identifica cine este logat SAU salvam LOCAL rezultatul acelei methode si plecam de acolo

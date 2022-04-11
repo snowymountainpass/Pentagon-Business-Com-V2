@@ -56,7 +56,14 @@ public class CartItemService {
 
     }
 
+    public List<CartItem> getCartItemsBySessionID(Long sessionID){
 
+        return cartItemRepository.findCartItemsByShoppingSession_ShoppingSessionID(sessionID);
+    }
+
+    public void deleteCartItemsBySessionID(Long sessionID) {
+        cartItemRepository.deleteCartItemsByShoppingSession_ShoppingSessionID(sessionID);
+    }
     public Integer getNumberItemsInCart() {
 
         List<Integer> quantities = new ArrayList<>();
@@ -68,7 +75,6 @@ public class CartItemService {
 
     public void removeCartItem(Long cartItemID) {
 
-        cartItemRepository.deleteCartItemByCartItemID(cartItemID);
     }
 
 
