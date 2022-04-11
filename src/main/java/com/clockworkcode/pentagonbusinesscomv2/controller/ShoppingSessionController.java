@@ -5,6 +5,7 @@ import com.clockworkcode.pentagonbusinesscomv2.service.ShoppingSessionService;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -13,6 +14,7 @@ import org.springframework.web.bind.annotation.*;
 @AllArgsConstructor
 @Getter
 @Setter
+@Slf4j
 public class ShoppingSessionController {
     private final ShoppingSessionService shoppingSessionService;
 
@@ -20,7 +22,7 @@ public class ShoppingSessionController {
     @PostMapping("/login/{userToken}")
     public void getLoggedInUserToken(@PathVariable String userToken){
 
-        System.out.println("REACHED ROUTE /login/{userToken}: "+ userToken);
+        log.info("REACHED ROUTE /login/{userToken}: "+ userToken);
 
         shoppingSessionService.addNewShoppingSession(userToken);
 

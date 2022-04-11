@@ -31,7 +31,7 @@ public class AppUserService implements UserDetailsService {
     private final BCryptPasswordEncoder bCryptPasswordEncoder;
     private final ConfirmationTokenService confirmationTokenService;
     private final LoginTokenService loginTokenService;
-
+    private final ShoppingSessionService shoppingSessionService;
 
     @Override
     public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
@@ -86,7 +86,9 @@ public class AppUserService implements UserDetailsService {
 
             if(loginTokenService.getTokensForAppUserID(user.getAppUserID()).size()==1){
                 loginTokenService.deleteLoginToken(user.getAppUserID());
+                
                 log.info("Previous login token for appUser "+user.getAppUserID()+" was deleted!");
+
             }
 
             LoginToken loginToken = new LoginToken(
@@ -95,6 +97,7 @@ public class AppUserService implements UserDetailsService {
                     LocalDateTime.now().plusMinutes(100),user
             );
             loginTokenService.saveLoginToken(loginToken);
+
         }
 
         if(!Objects.equals(sessionToken, "")){

@@ -45,4 +45,15 @@ public class ShoppingSessionService {
         return shoppingSessionRepository.findShoppingSessionByAppUser_AppUserID(user.getAppUserID());
     }
 
+//    public ShoppingSession getShoppingSessionByAppUserID(Long appUserID){
+//
+//        ShoppingSession shoppingSession = shoppingSessionRepository.findShoppingSessionByAppUser_AppUserID(appUserID);
+//
+//        return shoppingSessionRepository.findShoppingSessionByAppUser_AppUserID(appUserID);
+//    }
+//
+//    public void deleteShoppingSession (Long appUserID){
+//        shoppingSessionRepository.delete( getShoppingSessionByAppUserID(appUserID)  );
+//    }
+
 }
