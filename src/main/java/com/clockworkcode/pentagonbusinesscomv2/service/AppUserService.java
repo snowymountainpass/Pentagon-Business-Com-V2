@@ -86,7 +86,7 @@ public class AppUserService implements UserDetailsService {
 
             if(loginTokenService.getTokensForAppUserID(user.getAppUserID()).size()==1){
                 loginTokenService.deleteLoginToken(user.getAppUserID());
-
+                
                 log.info("Previous login token for appUser "+user.getAppUserID()+" was deleted!");
 
             }

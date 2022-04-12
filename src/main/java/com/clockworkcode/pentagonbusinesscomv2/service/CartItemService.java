@@ -53,7 +53,6 @@ public class CartItemService {
             log.info("Product " + productDBService.getProductByProductID(String.valueOf(productId)).getProductName() + " didn't exist in the cart!");
             addNewCartItem(loginToken, productId, quantity);
         }
-
     }
 
     public List<CartItem> getCartItemsBySessionID(Long sessionID){
