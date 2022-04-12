@@ -5,8 +5,7 @@ import React, {useEffect, useState} from "react";
 import Badge from "@material-ui/core/Badge";
 import ShoppingCartIcon from "@material-ui/icons/ShoppingCart";
 import PersonIcon from '@material-ui/icons/Person';
-import {useAtom} from "jotai";
-import CART_AMOUNT_ATOM from "../EShop-Components/ProductListing Components/ProductCard"
+
 
 export default function RegistrationLogin() {
 
@@ -17,14 +16,10 @@ export default function RegistrationLogin() {
 
     );
 
-
-
     const [text, setText] = useState(loggedInState ? "Sign Out" : "Sign In");
     const [pageLink, setPageLink] = useState(loggedInState ? "/e-shop" : "/e-shop/login");
 
     const [itemCount, setItemCount] = useState(0);
-    // const [itemCount, setItemCount] = useAtom(CART_AMOUNT_ATOM);
-
 
     function logout() {
         setText("Sign In");
@@ -77,7 +72,7 @@ export default function RegistrationLogin() {
                     >
                         {/*<i className="fa fa-shopping-cart"/>*/}
                         {/*<Badge color="secondary" badgeContent={ itemCount !=null ? itemCount : 0 } overlap="rectangular">*/}
-                        <Badge color="secondary" badgeContent={ itemCount } overlap="rectangular">
+                        <Badge color="secondary" badgeContent={ localStorage.getItem("no. items in cart")!==null ? parseInt( localStorage.getItem("no. items in cart"))+1 :0 } overlap="rectangular">
                             <ShoppingCartIcon fontSize={"medium"} />{" "}
                         </Badge>
                     </Link>
