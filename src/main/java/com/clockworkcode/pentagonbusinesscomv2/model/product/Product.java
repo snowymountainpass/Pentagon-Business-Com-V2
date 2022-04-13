@@ -73,7 +73,7 @@ public class Product extends Base {
     @OneToOne(mappedBy = "product", orphanRemoval = true)
     private OrderItem orderItem;
 
-    @OneToOne(mappedBy = "product", orphanRemoval = true)
+    @OneToOne(mappedBy = "product")
     @JsonManagedReference
     private CartItem cartItem;
 

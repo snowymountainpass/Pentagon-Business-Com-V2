@@ -29,7 +29,7 @@ public class CartItem {
     @JsonBackReference
     private ShoppingSession shoppingSession;
 
-    @OneToOne(cascade = CascadeType.ALL,orphanRemoval = true)
+    @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "productid")
     @JsonBackReference
     private Product product;

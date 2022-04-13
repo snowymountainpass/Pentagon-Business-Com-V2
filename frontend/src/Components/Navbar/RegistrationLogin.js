@@ -22,14 +22,14 @@ export default function RegistrationLogin() {
     // );
 
     const [productsInCart, setProductsInCart] = useState(
-        localStorage.getItem("PTG V2 Login Token")!=null ? JSON.parse( localStorage.getItem("no. items in cart") ) : 0
-
+        // localStorage.getItem("PTG V2 Login Token")!=null ? JSON.parse( localStorage.getItem("no. items in cart") ) : 0
+        0
     );
 
     const [text, setText] = useState(loggedInState ? "Sign Out" : "Sign In");
     const [pageLink, setPageLink] = useState(loggedInState ? "/e-shop" : "/e-shop/login");
 
-    const [itemCount, setItemCount] = useState(0);
+    // const [itemCount, setItemCount] = useState(0);
 
     function logout() {
         setText("Sign In");
@@ -59,7 +59,18 @@ export default function RegistrationLogin() {
 
 
     useEffect(()=>{
-        console.log( "No. items in cart: " + parseInt( productsInCart ) );
+        if(
+            localStorage.getItem("PTG V2 Login Token")!=null && localStorage.getItem("no. items in cart") !=null
+        )
+        {
+            // setProductsInCart(parseInt( productsInCart ));
+            setProductsInCart(JSON.parse( localStorage.getItem("no. items in cart")));
+        }
+        else {
+            setProductsInCart(0);
+        }
+
+
     },[productsInCart])
 
     return (
