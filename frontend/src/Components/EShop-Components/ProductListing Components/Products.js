@@ -5,25 +5,27 @@ import SidebarComponent from "./SidebarComponent";
 import {useEffect, useState} from "react";
 
 
+export default function Products({}) {
 
-export default function Products({}){
-
-    const [products,setProducts] = useState([]);
+    const [products, setProducts] = useState([]);
     const [query, setQuery] = useState('');
 
     let url = "http://localhost:8080/e-shop";
 
     useEffect(
-        ()=>{
-            if(query!==""){url=url+"/product/"+query;
+        () => {
+            if (query !== "") {
+                url = url + "/product/" + query;
             }
+            console.log("URL: " + url);
+
             fetch(url)
                 .then(response => {
-                   return response.json();
+                    return response.json();
                 })
                 .then(data => setProducts(data))
 
-        },[query]
+        }, [query]
     )
 
     // console.log("Products size: "+products.length);
@@ -33,58 +35,59 @@ export default function Products({}){
     const [brandsList, setBrandsList] = useState([]);
 
     useEffect(
-
-        ()=>{
+        () => {
             fetch("http://localhost:8080/e-shop/unique-brands")
-                .then( res => res.json())
-                .then( data => {setBrandsList(data);} )
-        },[]
-
+                .then(res => res.json())
+                .then(data => {
+                    setBrandsList(data);
+                })
+        }, []
     )
 
-    const [minMaxPrice,setMinMaxPrice] = useState([]);
+    const [minMaxPrice, setMinMaxPrice] = useState([]);
 
     useEffect(
-        ()=>{
+        () => {
             fetch("http://localhost:8080/e-shop/get-min-max-price")
                 .then(res => res.json())
-                .then(data => {setMinMaxPrice(data)})
-        },[]
+                .then(data => {
+                    setMinMaxPrice(data)
+                })
+        }, []
     )
 
 
     const [categoriesList, setCategoriesList] = useState([]);
 
     useEffect(
-
-        ()=>{
+        () => {
             fetch("http://localhost:8080/e-shop/unique-product-categories")
-                .then( res => res.json())
-                .then( data => {setCategoriesList(data);} )
-        },[]
-
+                .then(res => res.json())
+                .then(data => {
+                    setCategoriesList(data);
+                })
+        }, []
     )
 
 
-
-    return(
+    return (
 
         <section className="section-content padding-y">
             <div className="container mt-5 padding-top">
                 <div className="row">
 
                     <SidebarComponent
-                        products = {products}
-                        setChangeProducts = {setProducts}
-                        brandsList = {brandsList}
-                        minmaxPrice = {minMaxPrice}
+                        products={products}
+                        setChangeProducts={setProducts}
+                        brandsList={brandsList}
+                        minmaxPrice={minMaxPrice}
                         categoriesList={categoriesList}
                     />
 
                     <main className="col-md-9">
                         <ProductListingHeader
-                            products = {products}
-                            setChangeQuery = {setQuery}
+                            products={products}
+                            setChangeQuery={setQuery}
                         />
 
                         <ProductsListing products={products}/>

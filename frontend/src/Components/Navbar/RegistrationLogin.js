@@ -16,6 +16,11 @@ export default function RegistrationLogin() {
 
     );
 
+    const [productsInCart, setProductsInCart] = useState(
+        JSON.parse( localStorage.getItem("no. items in cart") )  || 0
+
+    );
+
     const [text, setText] = useState(loggedInState ? "Sign Out" : "Sign In");
     const [pageLink, setPageLink] = useState(loggedInState ? "/e-shop" : "/e-shop/login");
 
@@ -47,16 +52,13 @@ export default function RegistrationLogin() {
 
     },[])
 
-    // useEffect(()=>{
-    //     setItemCount( parseInt( localStorage.getItem("no. items in cart") ) );
-    // },[localStorage.getItem("no. items in cart")])
-    //
+
     useEffect(()=>{
         // setItemCount()
-        console.log( "No. items in cart: " + parseInt( localStorage.getItem("no. items in cart"))+1 );
+        console.log( "No. items in cart: " + parseInt( productsInCart )+1 );
         // setItemCount( parseInt( localStorage.getItem("no. items in cart") ) )
 
-    },[localStorage.getItem("no. items in cart")])
+    },[productsInCart])
 
     return (
         <>

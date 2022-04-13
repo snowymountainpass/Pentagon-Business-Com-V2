@@ -1,9 +1,15 @@
 import {atom, useAtom} from "jotai";
+import {useState} from "react";
 
 
 
 export default function ProductCard(props){
 
+
+    const [productsInCart, setProductsInCart] = useState(
+        JSON.parse( localStorage.getItem("no. items in cart") )  || 0
+
+    );
 
 
     function addToCart(event){
@@ -23,9 +29,9 @@ export default function ProductCard(props){
                 response => response.json()
             )
             .then(data=> {
-                localStorage.setItem("no. items in cart", data);
-
-                console.log("Number of items in cart: "+ localStorage.getItem("no. items in cart"))
+                localStorage.setItem("no. items in cart", JSON.stringify(data));
+                setProductsInCart(data);
+                console.log("Number of items in cart: "+ productsInCart)
             });
 
 
