@@ -34,9 +34,9 @@ export default function PriceIntervalComponent({setChangeProducts, minmaxPrice})
                 .then(data => {
                     setChangeProducts(data);
                 });
-        } else if (minMaxState.minPrice !== null && minMaxState.maxPrice !== null) {
+        } else if (minMaxState.minPrice !== null && minMaxState.minPrice !== '' && minMaxState.maxPrice !== null && minMaxState.maxPrice !=='' ) {
 
-            fetch(`http://localhost:8080/e-shop/min-max-prices/${minMaxState.minPrice}-${minMaxState.maxPrice}`, requestOptions)
+             fetch(`http://localhost:8080/e-shop/min-max-prices/${minMaxState.minPrice}-${minMaxState.maxPrice}`, requestOptions)
                 .then(response => {
                     return response.json();
                 })

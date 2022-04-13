@@ -11,14 +11,16 @@ export default function Products({}){
     const [products,setProducts] = useState([]);
     const [query, setQuery] = useState('');
 
-    let url = "http://localhost:8080/e-shop/";
+    let url = "http://localhost:8080/e-shop";
 
     useEffect(
         ()=>{
-            if(query!==""){url=url+"product/"+query;
+            if(query!==""){url=url+"/product/"+query;
             }
             fetch(url)
-                .then(res => res.json())
+                .then(response => {
+                   return response.json();
+                })
                 .then(data => setProducts(data))
 
         },[query]
