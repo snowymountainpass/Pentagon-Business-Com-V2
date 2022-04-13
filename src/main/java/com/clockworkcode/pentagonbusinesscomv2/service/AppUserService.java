@@ -1,8 +1,8 @@
 package com.clockworkcode.pentagonbusinesscomv2.service;
 
+import com.clockworkcode.pentagonbusinesscomv2.model.shopping.ShoppingSession;
 import com.clockworkcode.pentagonbusinesscomv2.model.user.AppUser;
 import com.clockworkcode.pentagonbusinesscomv2.repository.AppUserRepository;
-import com.clockworkcode.pentagonbusinesscomv2.security.PasswordEncoder;
 import com.clockworkcode.pentagonbusinesscomv2.security.token.ConfirmationToken;
 import com.clockworkcode.pentagonbusinesscomv2.security.token.LoginToken;
 import lombok.AllArgsConstructor;
@@ -10,16 +10,12 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
-import org.springframework.security.crypto.bcrypt.BCrypt;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
-import java.util.List;
 import java.util.Objects;
-import java.util.Optional;
 import java.util.UUID;
-import java.util.stream.Collectors;
 
 @Service
 @AllArgsConstructor
@@ -35,14 +31,14 @@ public class AppUserService implements UserDetailsService {
 
     @Override
     public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
-        return appUserRepository.findByEmail(email).orElseThrow(()->new UsernameNotFoundException(String.format(USER_NOT_FOUND_message,email)));
+        return appUserRepository.findByEmail(email).orElseThrow(() -> new UsernameNotFoundException(String.format(USER_NOT_FOUND_message, email)));
     }
 
-    public String signUpUser(AppUser appUser){
+    public String signUpUser(AppUser appUser) {
 
         boolean userExists = appUserRepository.findByEmail(appUser.getEmail()).isPresent();
 
-        if(userExists){
+        if (userExists) {
             throw new IllegalStateException("email already taken!");
         }
 
@@ -57,53 +53,60 @@ public class AppUserService implements UserDetailsService {
         ConfirmationToken confirmationToken = new ConfirmationToken(
                 token,
                 LocalDateTime.now(),
-                LocalDateTime.now().plusMinutes(25),appUser
+                LocalDateTime.now().plusMinutes(25), appUser
         );
         confirmationTokenService.saveConfirmationToken(confirmationToken);
-        log.info("user has been signed up! - AppUserService");
+        log.info("signUpUser-1 => user has been signed up! - AppUserService");
 
         return token;
     }
 
-    public String signInUser(String email, String password){
+    public String signInUser(String email, String password) {
 
-        log.info("REACHED signInUser METHOD!");
+        log.info("signInUser-1=> REACHED signInUser METHOD!");
 
         boolean accountExists = appUserRepository.findByEmail(email).isPresent();
 
-        if(!accountExists){
+        if (!accountExists) {
             throw new IllegalStateException("Account does not exist!");
         }
 
         AppUser user = appUserRepository.findByEmailAndEnabledIsTrue(email);
 
-        String sessionToken="";
+        String sessionToken = "";
 
-        if(bCryptPasswordEncoder.matches(password,user.getPassword())){
+        if (bCryptPasswordEncoder.matches(password, user.getPassword())) {
             sessionToken = UUID.randomUUID().toString();
-            log.info("PASSWORDS MATCH!");
-            System.out.println("PASSWORDS MATCH!");
+            log.info("signInUser-2=> PASSWORDS MATCH!");
+//            System.out.println("PASSWORDS MATCH!");
 
-            if(loginTokenService.getTokensForAppUserID(user.getAppUserID()).size()==1){
+            if (loginTokenService.getTokensForAppUserID(user.getAppUserID()).size() == 1) {
+                log.info("user already has logged in once! ");
+//                ShoppingSession shoppingSession = shoppingSessionService.getShoppingSessionByLoginToken(loginTokenService.getTokensForAppUserID(user.getAppUserID()).get(0).getToken());
+//
+//                shoppingSessionService.deleteShoppingSession(shoppingSession.getAppUser().getAppUserID());
+
+
                 loginTokenService.deleteLoginToken(user.getAppUserID());
 
-                log.info("Previous login token for appUser "+user.getAppUserID()+" was deleted!");
+                log.info("signInUser-3=> Number of login tokens for appUser " + user.getAppUserID() + " is: "+ loginTokenService.getTokensForAppUserID(user.getAppUserID()).size());
+//                log.info("signInUser-4=> Number of shopping sessions for appUser " + user.getAppUserID() + " is: "+ shoppingSessionService.getShoppingSessionByLoginToken());
+
 
             }
 
             LoginToken loginToken = new LoginToken(
                     sessionToken,
                     LocalDateTime.now(),
-                    LocalDateTime.now().plusMinutes(100),user
+                    LocalDateTime.now().plusMinutes(100), user
             );
             loginTokenService.saveLoginToken(loginToken);
 
         }
 
-        if(!Objects.equals(sessionToken, "")){
+        if (!Objects.equals(sessionToken, "")) {
             return sessionToken;
-        }
-        else{
+        } else {
             return "invalid credentials";
         }
 

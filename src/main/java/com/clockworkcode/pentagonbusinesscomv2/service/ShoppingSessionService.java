@@ -30,22 +30,39 @@ public class ShoppingSessionService {
 
     public void addNewShoppingSession(String loginToken){
 
-        System.out.println("TOKEN: "+ loginToken);
+        log.info("addNewShoppingSession-1 => TOKEN - addNewShoppingSession : "+ loginToken);
 
         AppUser user = loginTokenService.getAppUserByLoginToken(loginToken);
 
 
-        List<ShoppingSession> shoppingSessions = shoppingSessionRepository.findShoppingSessionsByAppUser_AppUserID(user.getAppUserID());
+//        List<ShoppingSession> shoppingSessions = shoppingSessionRepository.findShoppingSessionsByAppUser_AppUserID(user.getAppUserID());
+//        List<ShoppingSession> shoppingSessions = shoppingSessionRepository.findShoppingSessionByLoginToken( loginTokenService.getToken(loginToken));
+
+//        List<ShoppingSession> shoppingSessions = shoppingSessionRepository.findShoppingSessionsByLoginToken_Token(loginToken);
+
+        List<ShoppingSession> shoppingSessions = shoppingSessionRepository.findShoppingSessionsByLoginToken_Id( loginTokenService.getToken( loginToken ).getId() );
+
+        log.info("addNewShoppingSession-2 => shoppingSessions (@ addNewShoppingSession) LIST SIZE:  "+ shoppingSessions.size() + " => NUMBER OF SESSIONS CURRENTLY IN THE DB");
 
         if(shoppingSessions.size()==1){
-            shoppingSessionRepository.deleteShoppingSessionsByAppUser_AppUserID(user.getAppUserID());
-            log.info("Removed previous SHOPPING CART SESSION - user has logged out and the logging in!  ");
+//            shoppingSessionRepository.deleteShoppingSessionsByAppUser_AppUserID(user.getAppUserID());
+            log.info("CASE - shoppingSessions.size()==1");
+            log.info("shoppingSessions.size()==1 -1=> shoppingSessions.get(0).getLoginToken().getId(): "+shoppingSessions.get(0).getLoginToken().getId());
+            log.info("shoppingSessions.size()==1 -2=> Number of shopping sessions (for userID "
+                    +user.getAppUserID()+" BEFORE DELETION is: "
+                    + shoppingSessions.size()
+            );
+
+            log.info("LoginToken_Id to be used in -- shoppingSessionRepository.deleteShoppingSessionByLoginToken_Id : "+shoppingSessions.get(0).getLoginToken().getId());
+            shoppingSessionRepository.deleteShoppingSessionByLoginToken_Id(shoppingSessions.get(0).getLoginToken().getId());
+            log.info("shoppingSessions.size()==1 -3=> Number of shopping sessions (for userID "+user.getAppUserID()+" AFTER DELETION is: " +shoppingSessions);
+            log.info("shoppingSessions.size()==1 -4=> Removed previous SHOPPING CART SESSION - user has logged out and the logging in!  ");
         }
 
-        log.info("SHOPPING SESSION USER EMAIL: "+user.getEmail());
+//        log.info("addNewShoppingSession-3 => SHOPPING SESSION USER EMAIL: "+user.getEmail());
 
         Set<CartItem> cartItems = new HashSet<>();
-        shoppingSessionRepository.save(new ShoppingSession(user, BigDecimal.valueOf(0),cartItems));
+        shoppingSessionRepository.save(new ShoppingSession( loginTokenService.getToken(loginToken) , BigDecimal.valueOf(0),cartItems));
 
     }
 
@@ -53,7 +70,7 @@ public class ShoppingSessionService {
 
         AppUser user = loginTokenService.getAppUserByLoginToken(loginToken);
 
-        return shoppingSessionRepository.findShoppingSessionByAppUser_AppUserID(user.getAppUserID());
+        return shoppingSessionRepository.findShoppingSessionByLoginToken_Token(loginToken);
     }
 
 //    public ShoppingSession getShoppingSessionByAppUserID(Long appUserID){
@@ -62,9 +79,9 @@ public class ShoppingSessionService {
 //
 //        return shoppingSessionRepository.findShoppingSessionByAppUser_AppUserID(appUserID);
 //    }
-//
-//    public void deleteShoppingSession (Long appUserID){
-//        shoppingSessionRepository.delete( getShoppingSessionByAppUserID(appUserID)  );
+
+//    public void deleteShoppingSession (String loginToken){
+//        shoppingSessionRepository.delete( getShoppingSessionByLoginToken(loginToken)  );
 //    }
 
 }

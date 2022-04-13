@@ -16,8 +16,13 @@ export default function RegistrationLogin() {
 
     );
 
+    // const [productsInCart, setProductsInCart] = useState(
+    //     JSON.parse( localStorage.getItem("no. items in cart") )  || 0
+    //
+    // );
+
     const [productsInCart, setProductsInCart] = useState(
-        JSON.parse( localStorage.getItem("no. items in cart") )  || 0
+        localStorage.getItem("PTG V2 Login Token")!=null ? JSON.parse( localStorage.getItem("no. items in cart") ) : 0
 
     );
 

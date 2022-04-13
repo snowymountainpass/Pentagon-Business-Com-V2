@@ -55,20 +55,22 @@ public class AppUser implements UserDetails {
     @OneToMany(mappedBy = "appUser")
     private List<AppUserPayment> appUserPayments;
 
-    @OneToMany(mappedBy = "appUser")
+    @OneToMany(mappedBy = "appUser",orphanRemoval = true)
     @JsonManagedReference
     private List<ConfirmationToken> confirmationTokens;
 
-    @OneToMany(mappedBy = "appUser")
+    @OneToMany(mappedBy = "appUser",orphanRemoval = true)
     @JsonManagedReference
     private List<LoginToken> loginTokens;
 
     @OneToOne(mappedBy = "appUser")
     private OrderDetail orderDetail;
 
-    @OneToOne(mappedBy = "appUser")
-    @JsonManagedReference
-    private ShoppingSession shoppingSession;
+//    @OneToOne(mappedBy = "appUser",orphanRemoval = true)
+//    @JsonManagedReference
+//    private ShoppingSession shoppingSession;
+
+
 
     @Enumerated(EnumType.STRING)
     private AppUserRole appUserRole;
@@ -91,7 +93,7 @@ public class AppUser implements UserDetails {
         this.appUserRole = appUserRole;
     }
 
-    public AppUser(String username, String password, String firstName, String lastName, String telephone, String email, List<AppUserAddress> appUserAddresses, List<AppUserPayment> appUserPayments, OrderDetail orderDetail, ShoppingSession shoppingSession) {
+    public AppUser(String username, String password, String firstName, String lastName, String telephone, String email, List<AppUserAddress> appUserAddresses, List<AppUserPayment> appUserPayments, OrderDetail orderDetail) {
         this.username = username;
         this.password = password;
         this.firstName = firstName;
@@ -101,7 +103,6 @@ public class AppUser implements UserDetails {
         this.appUserAddresses = appUserAddresses;
         this.appUserPayments = appUserPayments;
         this.orderDetail = orderDetail;
-        this.shoppingSession = shoppingSession;
     }
 
     public String getFirstName() {

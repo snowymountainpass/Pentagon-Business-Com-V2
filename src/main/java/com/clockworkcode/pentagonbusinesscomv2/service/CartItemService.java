@@ -33,7 +33,7 @@ public class CartItemService {
 
         cartItemRepository.save(new CartItem(shoppingSessionService.getShoppingSessionByLoginToken(loginToken), product, quantity));
 
-        log.info("New product " + product.getProductName() + " in quantity " + quantity + " was added to the Cart!");
+        log.info("addNewCartItem-1 => New product " + product.getProductName() + " in quantity " + quantity + " was added to the Cart!");
     }
 
     public void updateCartItemQuantity(String loginToken, Long productId, Integer quantity) {
@@ -48,9 +48,9 @@ public class CartItemService {
 
 //            cartItemList.get(0).setQuantity( cartItemList.get(0).getQuantity() + quantity);
             cartItemRepository.updateIncreaseCartItemQuantity(quantity, cartItemList.get(0).getCartItemID());
-            log.info("Product " + cartItemList.get(0).getProduct().getProductName() + " had its quantity updated; current Q: " + cartItemList.get(0).getQuantity());
+            log.info("updateCartItemQuantity-EXISTING => Product " + cartItemList.get(0).getProduct().getProductName() + " had its quantity updated; current Q: " + cartItemList.get(0).getQuantity());
         } else {
-            log.info("Product " + productDBService.getProductByProductID(String.valueOf(productId)).getProductName() + " didn't exist in the cart!");
+            log.info("updateCartItemQuantity-NEW => Product " + productDBService.getProductByProductID(String.valueOf(productId)).getProductName() + " didn't exist in the cart!");
             addNewCartItem(loginToken, productId, quantity);
         }
 

@@ -1,5 +1,6 @@
 package com.clockworkcode.pentagonbusinesscomv2.security.token;
 
+import com.clockworkcode.pentagonbusinesscomv2.model.shopping.ShoppingSession;
 import com.clockworkcode.pentagonbusinesscomv2.model.user.AppUser;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import lombok.Getter;
@@ -27,6 +28,10 @@ public class LoginToken {
     private LocalDateTime createdAt;
     @Column(nullable = false)
     private LocalDateTime expiresAt;
+
+
+    @OneToOne(mappedBy = "loginToken",orphanRemoval = true)
+    private ShoppingSession shoppingSession;
 
     @ManyToOne
     @JoinColumn(nullable = false,name = "app_userid")

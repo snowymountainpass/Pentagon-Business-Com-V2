@@ -18,7 +18,7 @@ public class LoginService {
     public String login(LoginRequest request){
         String requestResult = appUserService.signInUser(request.getEmail(),request.getPassword());
 
-        log.info("LoginService - LOGIN requestResult: "+ requestResult);
+        log.info("LoginService-1 => LoginService - LOGIN requestResult: "+ requestResult);
 
         return requestResult;
     }

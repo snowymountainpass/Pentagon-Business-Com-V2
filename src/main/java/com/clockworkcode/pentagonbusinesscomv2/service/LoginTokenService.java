@@ -8,6 +8,8 @@ import com.clockworkcode.pentagonbusinesscomv2.security.token.LoginToken;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
 
 import java.util.List;
 import java.util.Optional;
@@ -16,6 +18,7 @@ import java.util.stream.Collectors;
 @Service
 @AllArgsConstructor
 @Slf4j
+@Transactional
 public class LoginTokenService {
 
     private final LoginTokenRepository loginTokenRepository;
@@ -24,10 +27,21 @@ public class LoginTokenService {
         loginTokenRepository.save(loginToken);
     }
     public void deleteLoginToken(Long appUserId){
-        loginTokenRepository.deleteById(appUserId);
+//        loginTokenRepository.deleteById(appUserId);
+
+        log.info("LoginTokeService-1 => REACHED LoginTokeService - deleteLoginToken METHOD");
+        log.info("LoginTokeService-2 => Number of login token (BEFORE DELETION) for appUserID "+appUserId+" is: " + (int) loginTokenRepository.findAll().stream().filter(loginToken -> loginToken.getAppUser().getAppUserID().equals(appUserId)).count() );
+
+        loginTokenRepository.deleteLoginTokenByAppUser_AppUserID(appUserId);
+
+        log.info("LoginTokeService-3 =>Number of login token (AFTER DELETION) for appUserID "+appUserId+" is: " + (int) loginTokenRepository.findAll().stream().filter(loginToken -> loginToken.getAppUser().getAppUserID().equals(appUserId)).count());
     }
 
-    public Optional<LoginToken> getToken(String token){
+//    public Optional<LoginToken> getToken(String token){
+//        return loginTokenRepository.findByToken(token);
+//    }
+
+    public LoginToken getToken(String token){
         return loginTokenRepository.findByToken(token);
     }
 
@@ -35,13 +49,15 @@ public class LoginTokenService {
 
     public AppUser getAppUserByLoginToken(String token){
 
-        LoginToken loginToken = loginTokenRepository.findByToken(token).get();
+        LoginToken loginToken = loginTokenRepository.findByToken(token);
 
         if(loginToken.getAppUser()!=null){
-            log.info("APPUSER exists IN DB!");
+            log.info("getAppUserByLoginToken-1 => APPUSER exists IN DB!");
         }
 
-        return loginTokenRepository.findByToken(token).get().getAppUser();
+        log.info("getAppUserByLoginToken-2 => AppUserID - "+loginToken.getAppUser().getAppUserID() + " with token " + loginToken.getToken() );
+
+        return loginTokenRepository.findByToken(token).getAppUser();
     }
 
     public List<LoginToken> getTokensForAppUserID(Long appUserID){

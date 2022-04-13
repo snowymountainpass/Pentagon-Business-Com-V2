@@ -1,6 +1,7 @@
 package com.clockworkcode.pentagonbusinesscomv2.model.shopping;
 
 import com.clockworkcode.pentagonbusinesscomv2.model.user.AppUser;
+import com.clockworkcode.pentagonbusinesscomv2.security.token.LoginToken;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.AllArgsConstructor;
@@ -26,11 +27,13 @@ public class ShoppingSession {
     @SequenceGenerator(name ="shoppingsession_sequence" ,sequenceName ="shoppingsession_sequence" ,allocationSize = 1)
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "shoppingsession_sequence")
     private Long shoppingSessionID;
-
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "app_userid")
-    @JsonBackReference
-    private AppUser appUser;
+//    @OneToOne(cascade = CascadeType.ALL)
+//    @JoinColumn(name = "app_userid")
+//    @JsonBackReference
+//    private AppUser appUser;
+    @OneToOne(cascade = CascadeType.ALL,orphanRemoval = true)
+    @JoinColumn(name = "id")
+    private LoginToken loginToken;
 
     @Column(nullable = false)
     private BigDecimal total;
@@ -40,12 +43,12 @@ public class ShoppingSession {
 //    @Column(nullable = false)
     private Timestamp modifiedAt;
 
-    @OneToMany(mappedBy = "shoppingSession")
+    @OneToMany(mappedBy = "shoppingSession",orphanRemoval = true)
     @JsonManagedReference
     private Set<CartItem> cartItems;
 
-    public ShoppingSession(AppUser appUser, BigDecimal total, Set<CartItem> cartItems) {
-        this.appUser = appUser;
+    public ShoppingSession(LoginToken loginToken, BigDecimal total, Set<CartItem> cartItems) {
+        this.loginToken = loginToken;
         this.total = total;
         this.cartItems = cartItems;
         this.createdAt=new Timestamp(System.currentTimeMillis());
