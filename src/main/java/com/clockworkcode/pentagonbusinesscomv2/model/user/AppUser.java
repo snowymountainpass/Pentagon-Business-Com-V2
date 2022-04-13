@@ -4,6 +4,8 @@ import com.clockworkcode.pentagonbusinesscomv2.model.order.OrderDetail;
 import com.clockworkcode.pentagonbusinesscomv2.model.shopping.ShoppingSession;
 import com.clockworkcode.pentagonbusinesscomv2.security.token.ConfirmationToken;
 import com.clockworkcode.pentagonbusinesscomv2.security.token.LoginToken;
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.*;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -54,15 +56,18 @@ public class AppUser implements UserDetails {
     private List<AppUserPayment> appUserPayments;
 
     @OneToMany(mappedBy = "appUser")
+    @JsonManagedReference
     private List<ConfirmationToken> confirmationTokens;
 
     @OneToMany(mappedBy = "appUser")
+    @JsonManagedReference
     private List<LoginToken> loginTokens;
 
     @OneToOne(mappedBy = "appUser")
     private OrderDetail orderDetail;
 
     @OneToOne(mappedBy = "appUser")
+    @JsonManagedReference
     private ShoppingSession shoppingSession;
 
     @Enumerated(EnumType.STRING)

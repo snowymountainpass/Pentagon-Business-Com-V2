@@ -33,3 +33,4 @@ build/
 .vscode/
 frontend/src/Components/Cards/Register-Login-Components/test.js
 /frontend/src/Components/Cards/Register-Login-Components/test2.js
+frontend/src/Components/Navbar/test

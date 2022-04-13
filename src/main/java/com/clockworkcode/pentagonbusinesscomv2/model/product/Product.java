@@ -4,6 +4,7 @@ import com.clockworkcode.pentagonbusinesscomv2.model.Base;
 import com.clockworkcode.pentagonbusinesscomv2.model.order.OrderItem;
 import com.clockworkcode.pentagonbusinesscomv2.model.shopping.CartItem;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -73,6 +74,7 @@ public class Product extends Base {
     private OrderItem orderItem;
 
     @OneToOne(mappedBy = "product", orphanRemoval = true)
+    @JsonManagedReference
     private CartItem cartItem;
 
     @Column(nullable = false, columnDefinition = "integer")

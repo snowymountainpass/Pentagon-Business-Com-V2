@@ -1,6 +1,8 @@
 package com.clockworkcode.pentagonbusinesscomv2.model.shopping;
 
 import com.clockworkcode.pentagonbusinesscomv2.model.user.AppUser;
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -27,6 +29,7 @@ public class ShoppingSession {
 
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "app_userid")
+    @JsonBackReference
     private AppUser appUser;
 
     @Column(nullable = false)
@@ -38,6 +41,7 @@ public class ShoppingSession {
     private Timestamp modifiedAt;
 
     @OneToMany(mappedBy = "shoppingSession")
+    @JsonManagedReference
     private Set<CartItem> cartItems;
 
     public ShoppingSession(AppUser appUser, BigDecimal total, Set<CartItem> cartItems) {

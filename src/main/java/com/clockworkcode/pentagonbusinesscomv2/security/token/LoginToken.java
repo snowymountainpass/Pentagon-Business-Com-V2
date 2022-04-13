@@ -1,6 +1,7 @@
 package com.clockworkcode.pentagonbusinesscomv2.security.token;
 
 import com.clockworkcode.pentagonbusinesscomv2.model.user.AppUser;
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -29,6 +30,7 @@ public class LoginToken {
 
     @ManyToOne
     @JoinColumn(nullable = false,name = "app_userid")
+    @JsonBackReference
     private AppUser appUser;
 
     public LoginToken(

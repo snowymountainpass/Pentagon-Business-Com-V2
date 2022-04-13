@@ -1,6 +1,7 @@
 package com.clockworkcode.pentagonbusinesscomv2.model.shopping;
 
 import com.clockworkcode.pentagonbusinesscomv2.model.product.Product;
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -25,10 +26,12 @@ public class CartItem {
 
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "shopping_sessionid")
+    @JsonBackReference
     private ShoppingSession shoppingSession;
 
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "productid")
+    @JsonBackReference
     private Product product;
 
     private Integer quantity;

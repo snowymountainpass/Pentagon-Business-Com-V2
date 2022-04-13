@@ -54,10 +54,7 @@ export default function RegistrationLogin() {
 
 
     useEffect(()=>{
-        // setItemCount()
-        console.log( "No. items in cart: " + parseInt( productsInCart )+1 );
-        // setItemCount( parseInt( localStorage.getItem("no. items in cart") ) )
-
+        console.log( "No. items in cart: " + parseInt( productsInCart ) );
     },[productsInCart])
 
     return (
@@ -74,7 +71,8 @@ export default function RegistrationLogin() {
                     >
                         {/*<i className="fa fa-shopping-cart"/>*/}
                         {/*<Badge color="secondary" badgeContent={ itemCount !=null ? itemCount : 0 } overlap="rectangular">*/}
-                        <Badge color="secondary" badgeContent={ localStorage.getItem("no. items in cart")!==null ? parseInt( localStorage.getItem("no. items in cart"))+1 :0 } overlap="rectangular">
+                        {/*<Badge color="secondary" badgeContent={ localStorage.getItem("no. items in cart")!==null ? parseInt( localStorage.getItem("no. items in cart"))+1 :0 } overlap="rectangular">*/}
+                        <Badge color="secondary" badgeContent={ productsInCart } overlap="rectangular">
                             <ShoppingCartIcon fontSize={"medium"} />{" "}
                         </Badge>
                     </Link>
