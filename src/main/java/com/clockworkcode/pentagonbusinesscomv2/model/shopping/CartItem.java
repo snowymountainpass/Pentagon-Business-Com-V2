@@ -33,6 +33,8 @@ public class CartItem {
     @JoinColumn(name = "productid")
     @JsonBackReference
     private Product product;
+    // TODO: TRY ONE-TO-MANY
+    // TODO: TRY MANY-TO-MANY
 
     private Integer quantity;
 

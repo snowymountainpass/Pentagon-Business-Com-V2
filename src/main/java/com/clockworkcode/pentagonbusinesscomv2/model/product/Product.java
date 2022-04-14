@@ -76,6 +76,9 @@ public class Product extends Base {
     @OneToOne(mappedBy = "product")
     @JsonManagedReference
     private CartItem cartItem;
+    // TODO: TRY ONE-TO-MANY
+    // TODO: TRY MANY-TO-MANY
+
 
     @Column(nullable = false, columnDefinition = "integer")
     private Integer rating;
