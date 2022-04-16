@@ -36,6 +36,7 @@ public class CartItem {
 
     @ManyToOne(cascade = { CascadeType.MERGE, CascadeType.PERSIST })
     @JoinColumn(name = "productid")
+    @JsonBackReference
     private Product product;
 
     private Integer quantity;

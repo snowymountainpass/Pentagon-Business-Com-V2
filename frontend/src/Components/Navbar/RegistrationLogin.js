@@ -58,7 +58,23 @@ export default function RegistrationLogin() {
     },[])
 
 
+    // useEffect(()=>{
+    //     if(
+    //         localStorage.getItem("PTG V2 Login Token")!=null && localStorage.getItem("no. items in cart") !=null
+    //     )
+    //     {
+    //         // setProductsInCart(parseInt( productsInCart ));
+    //         setProductsInCart(JSON.parse( localStorage.getItem("no. items in cart")));
+    //     }
+    //     else {
+    //         setProductsInCart(0);
+    //     }
+    //
+    //
+    // },[productsInCart])
+
     useEffect(()=>{
+
         if(
             localStorage.getItem("PTG V2 Login Token")!=null && localStorage.getItem("no. items in cart") !=null
         )
@@ -66,12 +82,9 @@ export default function RegistrationLogin() {
             // setProductsInCart(parseInt( productsInCart ));
             setProductsInCart(JSON.parse( localStorage.getItem("no. items in cart")));
         }
-        else {
-            setProductsInCart(0);
-        }
 
 
-    },[productsInCart])
+    },[localStorage.getItem("no. items in cart")])
 
     return (
         <>

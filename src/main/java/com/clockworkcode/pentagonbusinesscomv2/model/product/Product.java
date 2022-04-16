@@ -79,6 +79,7 @@ public class Product extends Base {
 //    private CartItem cartItem;
 
     @OneToMany(mappedBy = "product")
+    @JsonManagedReference
     private List<CartItem> cartItems;
 
     @Column(nullable = false, columnDefinition = "integer")
