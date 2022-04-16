@@ -34,11 +34,6 @@ export default function ProductCard(props){
 
     function getNumberOfItemsInCart(){
 
-        // const requestOptions = {
-        //     method: 'GET',
-        //     headers: { 'Content-Type': 'application/json' },
-        // }; , requestOptions
-
         fetch('http://localhost:8080/e-shop/cart-items/get-shopping-cart-total-number-of-items')
             .then(
                 response => response.json()
@@ -52,7 +47,7 @@ export default function ProductCard(props){
     }
 
 
-    async function addProductAndGetTotalQuantity(){
+    function addProductAndGetTotalQuantity(){
 
         const requestOptions = {
             method: 'POST',
@@ -61,11 +56,12 @@ export default function ProductCard(props){
         };
 
          fetch('http://localhost:8080/e-shop/cart-items/add-product', requestOptions)
-            .then( response =>  response.json())
-             .then(await getNumberOfItemsInCart());
+             .then(getNumberOfItemsInCart);
 
     }
     //TODO: DE VAZUT CUM SA ORDONAM FETCH-URILE => PROBLEMA ESTE CA FACEM SUM LA QUANTITY INAINTE SA SE ADAUGE IN DB
+    //TODO: https://stackoverflow.com/questions/57376297/how-to-make-a-second-api-call-based-on-the-first-response
+    //TODO: further tests
 
     return(
         <article className="card card-product-list" >
@@ -115,29 +111,7 @@ export default function ProductCard(props){
 
                             <a className="btn btn-light btn-block"
 
-                               // onClick={ localStorage.getItem("PTG V2 Login Token") !=null ? addToCart: null}
-                               onClick={
-                                   localStorage.getItem("PTG V2 Login Token") !=null
-                                       ?
-                                        () => {
-                                           addProductAndGetTotalQuantity().then(
-                                                fetch('http://localhost:8080/e-shop/cart-items/get-shopping-cart-total-number-of-items').then(
-                                                   response => response.json()
-                                               )
-                                                   .then(data => {
-                                                       setProductsInCart(data);
-                                                   })
-                                           )
-
-                                       }
-
-
-                                       : null
-
-
-
-
-                               }
+                               onClick={localStorage.getItem("PTG V2 Login Token") !=null ? addProductAndGetTotalQuantity : null}
 
                             >
 
