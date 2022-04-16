@@ -1,22 +1,28 @@
 import {atom, useAtom} from "jotai";
+
 import {useState} from "react";
 
-
+export const NUMBER_ITEMS_IN_CART = atom(0);
 
 export default function ProductCard(props){
 
 
-    const [productsInCart, setProductsInCart] = useState(
-        JSON.parse( localStorage.getItem("no. items in cart") )  || 0
+    // const [productsInCart, setProductsInCart] = useState(
+    //     JSON.parse( localStorage.getItem("no. items in cart") )  || 0
+    //
+    // );
 
-    );
+    const [productsInCart, setProductsInCart] = useAtom(NUMBER_ITEMS_IN_CART);
 
+    // console.log("productsInCart: "+productsInCart);
 
     function addToCart(event){
         event.preventDefault();
         console.log("addToCart function was called!!");
         // console.log("product id: "+ event.target.key);
         console.log("product id (pkey): "+ props.pkey); // ASA MERGE!!!!!!!!
+
+        console.log("PRODUCTCARD (BEFORE) -- Number of items in cart: "+ productsInCart);
 
         const requestOptions = {
             method: 'POST',
@@ -29,10 +35,12 @@ export default function ProductCard(props){
                 response => response.json()
             )
             .then(data=> {
-                localStorage.setItem("no. items in cart", JSON.stringify(data));
-                setProductsInCart(data);
-                console.log("Number of items in cart: "+ productsInCart)
+                localStorage.setItem("no. items in cart", JSON.stringify(data+1));
+                setProductsInCart(data+1);
+                console.log("PRODUCTCARD (IN FETCH) -- Number of items in cart: "+ productsInCart);
             });
+
+        console.log("PRODUCTCARD (AFTER) -- Number of items in cart: "+ productsInCart);
 
 
     }

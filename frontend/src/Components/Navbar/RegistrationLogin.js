@@ -5,7 +5,9 @@ import React, {useEffect, useState} from "react";
 import Badge from "@material-ui/core/Badge";
 import ShoppingCartIcon from "@material-ui/icons/ShoppingCart";
 import PersonIcon from '@material-ui/icons/Person';
+import {useAtom} from "jotai";
 
+import {NUMBER_ITEMS_IN_CART} from "../EShop-Components/ProductListing Components/ProductCard";
 
 export default function RegistrationLogin() {
 
@@ -16,20 +18,9 @@ export default function RegistrationLogin() {
 
     );
 
-    // const [productsInCart, setProductsInCart] = useState(
-    //     JSON.parse( localStorage.getItem("no. items in cart") )  || 0
-    //
-    // );
-
-    const [productsInCart, setProductsInCart] = useState(
-        // localStorage.getItem("PTG V2 Login Token")!=null ? JSON.parse( localStorage.getItem("no. items in cart") ) : 0
-        0
-    );
-
     const [text, setText] = useState(loggedInState ? "Sign Out" : "Sign In");
     const [pageLink, setPageLink] = useState(loggedInState ? "/e-shop" : "/e-shop/login");
 
-    // const [itemCount, setItemCount] = useState(0);
 
     function logout() {
         setText("Sign In");
@@ -58,33 +49,9 @@ export default function RegistrationLogin() {
     },[])
 
 
-    // useEffect(()=>{
-    //     if(
-    //         localStorage.getItem("PTG V2 Login Token")!=null && localStorage.getItem("no. items in cart") !=null
-    //     )
-    //     {
-    //         // setProductsInCart(parseInt( productsInCart ));
-    //         setProductsInCart(JSON.parse( localStorage.getItem("no. items in cart")));
-    //     }
-    //     else {
-    //         setProductsInCart(0);
-    //     }
-    //
-    //
-    // },[productsInCart])
+    const [numberItemsInCart,setNumberItemsInCart]=useAtom(NUMBER_ITEMS_IN_CART);
 
-    useEffect(()=>{
-
-        if(
-            localStorage.getItem("PTG V2 Login Token")!=null && localStorage.getItem("no. items in cart") !=null
-        )
-        {
-            // setProductsInCart(parseInt( productsInCart ));
-            setProductsInCart(JSON.parse( localStorage.getItem("no. items in cart")));
-        }
-
-
-    },[localStorage.getItem("no. items in cart")])
+    console.log("RegistrationLogin - numberItemsInCart: "+numberItemsInCart);
 
     return (
         <>
@@ -98,10 +65,7 @@ export default function RegistrationLogin() {
                         }
                         to={"/shopping-cart"}
                     >
-                        {/*<i className="fa fa-shopping-cart"/>*/}
-                        {/*<Badge color="secondary" badgeContent={ itemCount !=null ? itemCount : 0 } overlap="rectangular">*/}
-                        {/*<Badge color="secondary" badgeContent={ localStorage.getItem("no. items in cart")!==null ? parseInt( localStorage.getItem("no. items in cart"))+1 :0 } overlap="rectangular">*/}
-                        <Badge color="secondary" badgeContent={ productsInCart } overlap="rectangular">
+                        <Badge color="secondary" badgeContent={ numberItemsInCart }  overlap="rectangular">
                             <ShoppingCartIcon fontSize={"medium"} />{" "}
                         </Badge>
                     </Link>
