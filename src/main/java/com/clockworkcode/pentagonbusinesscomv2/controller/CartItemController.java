@@ -5,6 +5,7 @@ import com.clockworkcode.pentagonbusinesscomv2.service.CartItemService;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -13,6 +14,7 @@ import org.springframework.web.bind.annotation.*;
 @AllArgsConstructor
 @Getter
 @Setter
+@Slf4j
 public class CartItemController {
 
     private final CartItemService cartItemService;
@@ -20,7 +22,7 @@ public class CartItemController {
 
 
     @PostMapping("/cart-items/add-product")
-    public Integer addProductToCart(@RequestBody CartItemRequest request){
+    public void addProductToCart(@RequestBody CartItemRequest request){
 
         System.out.println("Request - token: "+request.getUserToken());
         System.out.println("Request - productID: "+request.getProductID());
@@ -35,8 +37,14 @@ public class CartItemController {
 
         );
 
-        return cartItemService.getNumberItemsInCart();
+
     }
 
+    @GetMapping("/cart-items/get-shopping-cart-total-number-of-items")
+    public Integer getTotalNumberOfItemsInCart(){
 
+        log.info("Number of items in cart: "+cartItemService.getNumberItemsInCart());
+
+        return cartItemService.getNumberItemsInCart();
+    }
 }

@@ -1,28 +1,21 @@
 import {atom, useAtom} from "jotai";
 
-import {useState} from "react";
+import {useEffect, useState} from "react";
 
 export const NUMBER_ITEMS_IN_CART = atom(0);
 
 export default function ProductCard(props){
 
-
-    // const [productsInCart, setProductsInCart] = useState(
-    //     JSON.parse( localStorage.getItem("no. items in cart") )  || 0
-    //
-    // );
-
     const [productsInCart, setProductsInCart] = useAtom(NUMBER_ITEMS_IN_CART);
-
+    const [hasBeenClicked,setHasBeenClicked]=useState(false);
     // console.log("productsInCart: "+productsInCart);
 
-    function addToCart(event){
-        event.preventDefault();
+     function addToCart(){
         console.log("addToCart function was called!!");
         // console.log("product id: "+ event.target.key);
         console.log("product id (pkey): "+ props.pkey); // ASA MERGE!!!!!!!!
 
-        console.log("PRODUCTCARD (BEFORE) -- Number of items in cart: "+ productsInCart);
+        // console.log("PRODUCTCARD (BEFORE) -- Number of items in cart: "+ productsInCart);
 
         const requestOptions = {
             method: 'POST',
@@ -30,21 +23,49 @@ export default function ProductCard(props){
             body: JSON.stringify({ userToken: localStorage.getItem("PTG V2 Login Token"),productID:props.pkey,quantity:1 })
         };
 
-        fetch('http://localhost:8080/e-shop/cart-items/add-product', requestOptions)
+         fetch('http://localhost:8080/e-shop/cart-items/add-product', requestOptions).then(r=>r.json());
+
+
+        // console.log("PRODUCTCARD (AFTER) -- Number of items in cart: "+ productsInCart);
+        console.log("product added to cart!");
+        // setHasBeenClicked(!hasBeenClicked);
+
+    }
+
+    function getNumberOfItemsInCart(){
+
+        // const requestOptions = {
+        //     method: 'GET',
+        //     headers: { 'Content-Type': 'application/json' },
+        // }; , requestOptions
+
+        fetch('http://localhost:8080/e-shop/cart-items/get-shopping-cart-total-number-of-items')
             .then(
                 response => response.json()
             )
             .then(data=> {
-                localStorage.setItem("no. items in cart", JSON.stringify(data+1));
-                setProductsInCart(data+1);
-                console.log("PRODUCTCARD (IN FETCH) -- Number of items in cart: "+ productsInCart);
+                setProductsInCart(data);
             });
 
-        console.log("PRODUCTCARD (AFTER) -- Number of items in cart: "+ productsInCart);
-
+        console.log("current number of items: "+ productsInCart);
 
     }
-    // console.log("Product with ID: "+ props.pkey + " was added to the cart");
+
+
+    async function addProductAndGetTotalQuantity(){
+
+        const requestOptions = {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ userToken: localStorage.getItem("PTG V2 Login Token"),productID:props.pkey,quantity:1 })
+        };
+
+         fetch('http://localhost:8080/e-shop/cart-items/add-product', requestOptions)
+            .then( response =>  response.json())
+             .then(await getNumberOfItemsInCart());
+
+    }
+    //TODO: DE VAZUT CUM SA ORDONAM FETCH-URILE => PROBLEMA ESTE CA FACEM SUM LA QUANTITY INAINTE SA SE ADAUGE IN DB
 
     return(
         <article className="card card-product-list" >
@@ -94,10 +115,30 @@ export default function ProductCard(props){
 
                             <a className="btn btn-light btn-block"
 
-                               onClick={ localStorage.getItem("PTG V2 Login Token") !=null ? addToCart: null}
-                               // onMouseOver={
-                               //  localStorage.getItem("PTG V2 Login Token") ==null ? window.setTimeout('alert("Please log in!");window.close();', 2000) : null
-                               //  }
+                               // onClick={ localStorage.getItem("PTG V2 Login Token") !=null ? addToCart: null}
+                               onClick={
+                                   localStorage.getItem("PTG V2 Login Token") !=null
+                                       ?
+                                        () => {
+                                           addProductAndGetTotalQuantity().then(
+                                                fetch('http://localhost:8080/e-shop/cart-items/get-shopping-cart-total-number-of-items').then(
+                                                   response => response.json()
+                                               )
+                                                   .then(data => {
+                                                       setProductsInCart(data);
+                                                   })
+                                           )
+
+                                       }
+
+
+                                       : null
+
+
+
+
+                               }
+
                             >
 
                                 <i className="fa fa-shopping-cart"/>

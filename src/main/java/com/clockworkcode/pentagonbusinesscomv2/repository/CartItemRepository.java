@@ -14,7 +14,7 @@ public interface CartItemRepository extends JpaRepository<CartItem,Long> {
 //    void UPDATE CART ITEM QUANTITY => https://stackoverflow.com/questions/39741102/how-to-beautifully-update-a-jpa-entity-in-spring-data
 
     @Modifying
-    @Query(value = "update CartItem ci set ci.quantity=ci.quantity+:increaseAmount where ci.cartItemID=:cartItemId")
+    @Query(value = "UPDATE CartItem ci SET ci.quantity=ci.quantity+:increaseAmount WHERE ci.cartItemID=:cartItemId")
     void updateIncreaseCartItemQuantity(@Param("increaseAmount") Integer increaseAmount,@Param("cartItemId") Long cartItemId);
 
     void deleteCartItemByCartItemID(Long cartItemID);
@@ -22,6 +22,9 @@ public interface CartItemRepository extends JpaRepository<CartItem,Long> {
 //    void deleteCartItemsByShoppingSession_AppUser_AppUserID(Long appUserID);
 
     void deleteCartItemsByShoppingSession_LoginToken(LoginToken loginToken);
+
+    @Query("select sum(quantity) from CartItem")
+    Integer getTotalNumberOfItemsInCart();
 
 }
 

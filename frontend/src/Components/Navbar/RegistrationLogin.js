@@ -5,6 +5,7 @@ import React, {useEffect, useState} from "react";
 import Badge from "@material-ui/core/Badge";
 import ShoppingCartIcon from "@material-ui/icons/ShoppingCart";
 import PersonIcon from '@material-ui/icons/Person';
+
 import {useAtom} from "jotai";
 
 import {NUMBER_ITEMS_IN_CART} from "../EShop-Components/ProductListing Components/ProductCard";
@@ -13,9 +14,7 @@ export default function RegistrationLogin() {
 
     const [loggedInState, setloggedInState] = useState(
         (localStorage.getItem("PTG V2 Login Token") &&
-        localStorage.getItem("PTG V2 Login Token")!=="invalid credentials") ? true : false
-
-
+            localStorage.getItem("PTG V2 Login Token") !== "invalid credentials") ? true : false
     );
 
     const [text, setText] = useState(loggedInState ? "Sign Out" : "Sign In");
@@ -35,23 +34,24 @@ export default function RegistrationLogin() {
         setloggedInState(!loggedInState);
     }
 
-    useEffect(()=>{
+    useEffect(() => {
 
-        if(loggedInState){
+        if (loggedInState) {
             setText("Sign Out");
             setPageLink("/e-shop");
-        }else {
+        } else {
             setText("Sign In");
             setPageLink("/e-shop/login");
             setloggedInState(!loggedInState);
         }
 
-    },[])
+    }, [])
 
 
-    const [numberItemsInCart,setNumberItemsInCart]=useAtom(NUMBER_ITEMS_IN_CART);
+    const [numberItemsInCart, setNumberItemsInCart] = useAtom(NUMBER_ITEMS_IN_CART);
 
-    console.log("RegistrationLogin - numberItemsInCart: "+numberItemsInCart);
+
+    // console.log("RegistrationLogin - numberItemsInCart: "+numberItemsInCart);
 
     return (
         <>
@@ -65,8 +65,8 @@ export default function RegistrationLogin() {
                         }
                         to={"/shopping-cart"}
                     >
-                        <Badge color="secondary" badgeContent={ numberItemsInCart }  overlap="rectangular">
-                            <ShoppingCartIcon fontSize={"medium"} />{" "}
+                        <Badge color="secondary" badgeContent={numberItemsInCart} overlap="rectangular">
+                            <ShoppingCartIcon fontSize={"medium"}/>{" "}
                         </Badge>
                     </Link>
                 </div>
@@ -81,7 +81,7 @@ export default function RegistrationLogin() {
                 to={"/e-shop"}
             >
                 {/*<i className="fa fa-user"/>*/}
-                <PersonIcon fontSize={"medium"} />
+                <PersonIcon fontSize={"medium"}/>
             </Link>
 
             <div onClick={loggedInState ? logout : login}>
@@ -96,8 +96,10 @@ export default function RegistrationLogin() {
 
             </div>
 
-            <div style={{display:((localStorage.getItem("PTG V2 Login Token") &&
-                    localStorage.getItem("PTG V2 Login Token")!=="invalid credentials") ? true : false)?"none":"block"}}>
+            <div style={{
+                display: ((localStorage.getItem("PTG V2 Login Token") &&
+                    localStorage.getItem("PTG V2 Login Token") !== "invalid credentials") ? true : false) ? "none" : "block"
+            }}>
 
                 <Link
 
@@ -112,9 +114,8 @@ export default function RegistrationLogin() {
             </div>
 
             <p className={"text-white"}>{`loggedinState:${((localStorage.getItem("PTG V2 Login Token") &&
-                localStorage.getItem("PTG V2 Login Token")!=="invalid credentials") ? true : false)}`}</p>
+                localStorage.getItem("PTG V2 Login Token") !== "invalid credentials") ? true : false)}`}</p>
         </>
-
 
 
     );

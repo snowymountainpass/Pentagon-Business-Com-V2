@@ -59,10 +59,12 @@ public class CartItemService {
 
     public Integer getNumberItemsInCart() {
 
-        List<Integer> quantities = new ArrayList<>();
-        new ArrayList<>(cartItemRepository.findAll()).forEach(cartItem -> quantities.add(cartItem.getQuantity()));
+//        List<Integer> quantities = new ArrayList<>();
+//        new ArrayList<>(cartItemRepository.findAll()).forEach(cartItem -> quantities.add(cartItem.getQuantity()));
 
-        return quantities.stream().reduce(0,Integer::sum);
+//        return quantities.stream().reduce(0,Integer::sum);
+        Integer totalNrItemsCart = cartItemRepository.getTotalNumberOfItemsInCart();
+        return cartItemRepository.getTotalNumberOfItemsInCart();
 
     }
 
