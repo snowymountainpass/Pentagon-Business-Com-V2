@@ -29,12 +29,14 @@ public class CartItem {
     @JsonBackReference
     private ShoppingSession shoppingSession;
 
-    @OneToOne(cascade = CascadeType.ALL)
+//    @OneToOne(cascade = CascadeType.ALL)
+//    @JoinColumn(name = "productid")
+//    @JsonBackReference
+//    private Product product;
+
+    @ManyToOne(cascade = { CascadeType.MERGE, CascadeType.PERSIST })
     @JoinColumn(name = "productid")
-    @JsonBackReference
     private Product product;
-    // TODO: TRY ONE-TO-MANY
-    // TODO: TRY MANY-TO-MANY
 
     private Integer quantity;
 

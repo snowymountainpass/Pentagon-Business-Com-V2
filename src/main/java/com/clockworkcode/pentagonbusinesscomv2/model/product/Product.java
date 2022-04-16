@@ -14,6 +14,7 @@ import javax.persistence.*;
 import java.math.BigInteger;
 import java.sql.Timestamp;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 @Getter
@@ -73,12 +74,12 @@ public class Product extends Base {
     @OneToOne(mappedBy = "product", orphanRemoval = true)
     private OrderItem orderItem;
 
-    @OneToOne(mappedBy = "product")
-    @JsonManagedReference
-    private CartItem cartItem;
-    // TODO: TRY ONE-TO-MANY
-    // TODO: TRY MANY-TO-MANY
+//    @OneToOne(mappedBy = "product")
+//    @JsonManagedReference
+//    private CartItem cartItem;
 
+    @OneToMany(mappedBy = "product")
+    private List<CartItem> cartItems;
 
     @Column(nullable = false, columnDefinition = "integer")
     private Integer rating;
