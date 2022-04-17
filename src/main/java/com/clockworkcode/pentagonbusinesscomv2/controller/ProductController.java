@@ -30,20 +30,8 @@ public class ProductController {
 
     @GetMapping("/product/{productName}")
     public ResponseEntity<List<Product>> getProductsByName(@PathVariable(name = "productName") String productName) {
-
-
-        System.out.println("Product search value: " + productName);
-        List<Product> listOfProducts = productDBService.getAllProducts()
-                .stream()
-                .filter(product -> product.getProductName().toLowerCase().contains( productName.toLowerCase() ) ||
-                        product.getProductBrand().getProductBrandName().toLowerCase().contains( productName.toLowerCase() ) ||
-                        product.getProductCategory().getProductCategoryName().toLowerCase().contains( productName.toLowerCase() )
-                )
-                .collect(Collectors.toList());
-
-
-
-        return ResponseEntity.ok().body(listOfProducts);
+        
+        return ResponseEntity.ok().body(productDBService.getProductsByName(productName));
 
     }
 

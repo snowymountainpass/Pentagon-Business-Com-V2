@@ -28,6 +28,8 @@ public class ProductDBService {
         this.productCategoryRepository = productCategoryRepository;
     }
 
+    public List<Product> getAllProducts(){return productRepository.findAll();}
+
 
     public List<String> getAllProductCategories(){
         List<String> uniqueProductCategoryNames = new ArrayList<>();
@@ -46,10 +48,14 @@ public class ProductDBService {
         return uniqueBrandNames.stream().distinct().collect(Collectors.toList());
     }
 
-    public List<Product> getAllProducts(){return productRepository.findAll();}
-
     public List<Product> getProductsByName(String productName){
-        return productRepository.getProductsByProductName(productName);
+        return getAllProducts()
+                .stream()
+                .filter(product -> product.getProductName().toLowerCase().contains( productName.toLowerCase() ) ||
+                        product.getProductBrand().getProductBrandName().toLowerCase().contains( productName.toLowerCase() ) ||
+                        product.getProductCategory().getProductCategoryName().toLowerCase().contains( productName.toLowerCase() )
+                )
+                .collect(Collectors.toList());
     }
 
     public Product getProductByProductID(String productID){
