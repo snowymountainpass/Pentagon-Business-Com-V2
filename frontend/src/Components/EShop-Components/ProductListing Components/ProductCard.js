@@ -7,7 +7,6 @@ export const NUMBER_ITEMS_IN_CART = atom(0);
 export default function ProductCard(props){
 
     const [productsInCart, setProductsInCart] = useAtom(NUMBER_ITEMS_IN_CART);
-    const [hasBeenClicked,setHasBeenClicked]=useState(false);
     // console.log("productsInCart: "+productsInCart);
 
      function addToCart(){
@@ -59,9 +58,7 @@ export default function ProductCard(props){
              .then(getNumberOfItemsInCart);
 
     }
-    //TODO: DE VAZUT CUM SA ORDONAM FETCH-URILE => PROBLEMA ESTE CA FACEM SUM LA QUANTITY INAINTE SA SE ADAUGE IN DB
-    //TODO: https://stackoverflow.com/questions/57376297/how-to-make-a-second-api-call-based-on-the-first-response
-    //TODO: further tests
+
 
     return(
         <article className="card card-product-list" >

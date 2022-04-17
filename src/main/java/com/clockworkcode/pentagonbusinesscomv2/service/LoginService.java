@@ -1,6 +1,7 @@
 package com.clockworkcode.pentagonbusinesscomv2.service;
 
 import com.clockworkcode.pentagonbusinesscomv2.model.login.LoginRequest;
+import com.clockworkcode.pentagonbusinesscomv2.model.logout.LogoutRequest;
 import com.clockworkcode.pentagonbusinesscomv2.model.user.AppUser;
 import com.clockworkcode.pentagonbusinesscomv2.security.token.ConfirmationToken;
 import lombok.AllArgsConstructor;
@@ -23,5 +24,10 @@ public class LoginService {
         return requestResult;
     }
 
+    public void logout(LogoutRequest logoutRequest){
+//        log.info("logout token - "+ loginToken);
+
+        appUserService.signOut(logoutRequest.getLoginToken());
+    }
 
 }

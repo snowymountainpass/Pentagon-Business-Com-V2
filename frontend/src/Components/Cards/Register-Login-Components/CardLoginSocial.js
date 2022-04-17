@@ -1,7 +1,6 @@
 import React, {useEffect, useState} from "react";
 import PropTypes from "prop-types";
-import {Link, useNavigate,Navigate,Redirect} from "react-router-dom";
-import EShop from "../../../Pages/EShop";
+import {Link, useNavigate} from "react-router-dom";
 
 // components
 

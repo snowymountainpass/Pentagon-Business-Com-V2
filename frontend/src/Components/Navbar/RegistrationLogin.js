@@ -22,10 +22,25 @@ export default function RegistrationLogin() {
 
 
     function logout() {
+
+        if(localStorage.getItem("PTG V2 Login Token")!=null){
+
+            const requestOptions = {
+                method: 'POST',
+                headers: {'Content-Type': 'application/json'},
+                body: JSON.stringify(localStorage.getItem("PTG V2 Login Token"))
+            };
+
+            fetch('http://localhost:8080/e-shop/logout', requestOptions).then(r => r);
+
+        }
+
         setText("Sign In");
         setPageLink("/e-shop/login");
         setloggedInState(!loggedInState);
+
         localStorage.clear();
+        setNumberItemsInCart(0);
     }
 
     function login() {
@@ -50,8 +65,6 @@ export default function RegistrationLogin() {
 
     const [numberItemsInCart, setNumberItemsInCart] = useAtom(NUMBER_ITEMS_IN_CART);
 
-
-    // console.log("RegistrationLogin - numberItemsInCart: "+numberItemsInCart);
 
     return (
         <>
