@@ -30,7 +30,7 @@ public class ProductController {
 
     @GetMapping("/product/{productName}")
     public ResponseEntity<List<Product>> getProductsByName(@PathVariable(name = "productName") String productName) {
-        
+
         return ResponseEntity.ok().body(productDBService.getProductsByName(productName));
 
     }
@@ -65,18 +65,7 @@ public class ProductController {
     @PostMapping("/brands")
     public ResponseEntity<List<Product>> getProductsByBrands(@RequestBody List<String> brandsList){
 
-        List<Product> productsFromBrands = new ArrayList<>();
-
-
-        brandsList
-                .forEach(s -> productsFromBrands
-                        .addAll(getAllProducts().stream()
-                                .filter(product -> product.getProductBrand().getProductBrandName().equals(s))
-                                .collect(Collectors.toList())));
-
-
-
-        return productsFromBrands.size()!=0 ? ResponseEntity.ok().body(productsFromBrands) : ResponseEntity.ok().body(productDBService.getAllProducts());
+        return ResponseEntity.ok().body(productDBService.getProductsByBrandNames(brandsList));
     }
 
     @GetMapping("/get-min-max-price")

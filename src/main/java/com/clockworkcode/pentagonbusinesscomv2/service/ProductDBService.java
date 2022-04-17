@@ -7,6 +7,7 @@ import com.clockworkcode.pentagonbusinesscomv2.repository.ProductBrandRepository
 import com.clockworkcode.pentagonbusinesscomv2.repository.ProductCategoryRepository;
 import com.clockworkcode.pentagonbusinesscomv2.repository.ProductRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -67,9 +68,18 @@ public class ProductDBService {
         return productRepository.getProductsByProductCategory(productCategory);
     }
 
-    public List<Product> getProductsByBrandName(String productBrandName){
-        ProductBrand productBrand = productBrandRepository.getProductBrandByProductBrandName(productBrandName);
-        return productRepository.getProductsByProductBrand(productBrand);
+    public List<Product> getProductsByBrandNames(List<String> productBrandNames){
+
+        List<Product> productsFromBrands = new ArrayList<>();
+
+
+        productBrandNames
+                .forEach(s -> productsFromBrands
+                        .addAll(getAllProducts().stream()
+                                .filter(product -> product.getProductBrand().getProductBrandName().equals(s))
+                                .collect(Collectors.toList())));
+
+        return productsFromBrands.size()!=0 ? productsFromBrands : getAllProducts();
     }
 
     public List<Product> getProductsInStock(){
