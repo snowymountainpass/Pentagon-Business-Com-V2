@@ -6,9 +6,6 @@ export default function ProductCard(props){
 
     const [productsInCart, setProductsInCart] = useAtom(NUMBER_ITEMS_IN_CART);
 
-
-
-
     function getNumberOfItemsInCart(){
 
         fetch('http://localhost:8080/e-shop/cart-items/get-shopping-cart-total-number-of-items')
@@ -51,7 +48,6 @@ export default function ProductCard(props){
                     <div className="info-main">
                         <a className="h5 title"> {props.product.productName} </a>
                         <div className="rating-wrap mb-3">
-
                             <ul className="rating-stars">
                                 <li className="stars-active w-80">
 
@@ -63,12 +59,7 @@ export default function ProductCard(props){
                                     {[...Array(10)].map((e, i) => <i className="fa fa-star" key={i}/>)}
 
                                 </li>
-                            </ul> {/*OLD VERSION*/}
-
-
-
-
-
+                            </ul>
                             <div className="label-rating">{`${props.product.rating}/10`}</div>
                         </div>
 

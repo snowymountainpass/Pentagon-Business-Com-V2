@@ -131,6 +131,8 @@ public class ProductController {
              maxPrice = Integer.parseInt(maxVal);
         }
 
+//        System.out.println("minPrice: "+minPrice+" - "+"maxPrice: "+maxPrice);
+
         return ResponseEntity.ok().body( productDBService.getAllProducts().stream().filter(product -> product.getProductPrice()>=minPrice && product.getProductPrice()<=maxPrice).collect(Collectors.toList()) );
     }
     
