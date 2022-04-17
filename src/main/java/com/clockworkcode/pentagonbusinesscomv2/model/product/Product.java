@@ -91,7 +91,10 @@ public class Product extends Base {
     @Column(nullable = false,columnDefinition = "text")
     private String img;
 
-    public Product(String productName, String productDescription, String productSKU, ProductBrand productBrand, ProductCategory productCategory, Integer productInventory, Integer productPrice, Integer rating, String img) {
+    @Column(nullable = false,columnDefinition = "text")
+    private String datasheet;
+
+    public Product(String productName, String productDescription, String productSKU, ProductBrand productBrand, ProductCategory productCategory, Integer productInventory, Integer productPrice, Integer rating, String img, String datasheet) {
         this.productName = productName;
         this.productDescription = productDescription;
         this.productSKU = productSKU;
@@ -102,6 +105,7 @@ public class Product extends Base {
         this.rating = rating;
         this.deliveryCost = calculateDeliveryCost();
         this.img = img;
+        this.datasheet=datasheet;
         this.createdAt=new Timestamp(System.currentTimeMillis());
         this.modifiedAt=new Timestamp(System.currentTimeMillis());
         this.deletedAt=new Timestamp(System.currentTimeMillis());

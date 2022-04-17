@@ -39,14 +39,14 @@ export default function ProductCard(props){
         <article className="card card-product-list" >
             <div className="row no-gutters">
                 <aside className="col-md-3">
-                    <a href="#" className="img-wrap">
+                    <a className="img-wrap">
                         <span className="badge badge-new"> NEW </span>
                         <img src={props.product.img} alt={props.product.productName}/>
                     </a>
                 </aside>
                 <div className="col-md-6">
                     <div className="info-main">
-                        <a href="#" className="h5 title"> {props.product.productName} </a>
+                        <a className="h5 title"> {props.product.productName} </a>
                         <div className="rating-wrap mb-3">
                             <ul className="rating-stars">
                                 <li className="stars-active w-80">
@@ -79,7 +79,10 @@ export default function ProductCard(props){
                         <p className="text-quantity">{`Quantity Available: ${props.product.productInventory}`}</p>
                         <br/>
                         <p>
-                            <a href={`/e-shop/product-id/${props.product.productID}`} className="btn btn-primary btn-block">Details</a>
+                            {/*<a href={`/e-shop/product-id/${props.product.productID}`} className="btn btn-primary btn-block">Details</a>*/}
+                            <a href={props.product.datasheet} download className="btn btn-primary btn-block"
+                               target="_blank" rel="noreferrer noopener"
+                            >Details</a>
 
                             <a className="btn btn-light btn-block"
 
