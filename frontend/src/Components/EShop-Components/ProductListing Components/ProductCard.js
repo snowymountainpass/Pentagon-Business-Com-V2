@@ -1,35 +1,10 @@
 import {atom, useAtom} from "jotai";
 
-import {useEffect, useState} from "react";
-
 export const NUMBER_ITEMS_IN_CART = atom(0);
 
 export default function ProductCard(props){
 
     const [productsInCart, setProductsInCart] = useAtom(NUMBER_ITEMS_IN_CART);
-    // console.log("productsInCart: "+productsInCart);
-
-     function addToCart(){
-        console.log("addToCart function was called!!");
-        // console.log("product id: "+ event.target.key);
-        console.log("product id (pkey): "+ props.pkey); // ASA MERGE!!!!!!!!
-
-        // console.log("PRODUCTCARD (BEFORE) -- Number of items in cart: "+ productsInCart);
-
-        const requestOptions = {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ userToken: localStorage.getItem("PTG V2 Login Token"),productID:props.pkey,quantity:1 })
-        };
-
-         fetch('http://localhost:8080/e-shop/cart-items/add-product', requestOptions).then(r=>r.json());
-
-
-        // console.log("PRODUCTCARD (AFTER) -- Number of items in cart: "+ productsInCart);
-        console.log("product added to cart!");
-        // setHasBeenClicked(!hasBeenClicked);
-
-    }
 
     function getNumberOfItemsInCart(){
 

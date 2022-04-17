@@ -78,22 +78,6 @@ public class AppUserService implements UserDetailsService {
         if (bCryptPasswordEncoder.matches(password, user.getPassword())) {
             sessionToken = UUID.randomUUID().toString();
             log.info("signInUser-2=> PASSWORDS MATCH!");
-//            System.out.println("PASSWORDS MATCH!");
-
-//            if (loginTokenService.getTokensForAppUserID(user.getAppUserID()).size() == 1) {
-//                log.info("user already has logged in once! ");
-////                ShoppingSession shoppingSession = shoppingSessionService.getShoppingSessionByLoginToken(loginTokenService.getTokensForAppUserID(user.getAppUserID()).get(0).getToken());
-////
-////                shoppingSessionService.deleteShoppingSession(shoppingSession.getAppUser().getAppUserID());
-//
-//
-//                loginTokenService.deleteLoginToken(user.getAppUserID());
-//
-//                log.info("signInUser-3=> Number of login tokens for appUser " + user.getAppUserID() + " is: "+ loginTokenService.getTokensForAppUserID(user.getAppUserID()).size());
-////                log.info("signInUser-4=> Number of shopping sessions for appUser " + user.getAppUserID() + " is: "+ shoppingSessionService.getShoppingSessionByLoginToken());
-//
-//
-//            }
 
             LoginToken loginToken = new LoginToken(
                     sessionToken,

@@ -3,16 +3,13 @@ package com.clockworkcode.pentagonbusinesscomv2.service;
 import com.clockworkcode.pentagonbusinesscomv2.model.user.AppUser;
 import com.clockworkcode.pentagonbusinesscomv2.repository.LoginTokenRepository;
 
-import com.clockworkcode.pentagonbusinesscomv2.security.token.ConfirmationToken;
 import com.clockworkcode.pentagonbusinesscomv2.security.token.LoginToken;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-
 import java.util.List;
-import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
@@ -27,7 +24,6 @@ public class LoginTokenService {
         loginTokenRepository.save(loginToken);
     }
     public void deleteLoginToken(Long appUserId){
-//        loginTokenRepository.deleteById(appUserId);
 
         log.info("LoginTokeService-1 => REACHED LoginTokeService - deleteLoginToken METHOD");
         log.info("LoginTokeService-2 => Number of login token (BEFORE DELETION) for appUserID "+appUserId+" is: " + (int) loginTokenRepository.findAll().stream().filter(loginToken -> loginToken.getAppUser().getAppUserID().equals(appUserId)).count() );
@@ -37,9 +33,7 @@ public class LoginTokenService {
         log.info("LoginTokeService-3 =>Number of login token (AFTER DELETION) for appUserID "+appUserId+" is: " + (int) loginTokenRepository.findAll().stream().filter(loginToken -> loginToken.getAppUser().getAppUserID().equals(appUserId)).count());
     }
 
-//    public Optional<LoginToken> getToken(String token){
-//        return loginTokenRepository.findByToken(token);
-//    }
+
 
     public LoginToken getToken(String token){
         return loginTokenRepository.findByToken(token);

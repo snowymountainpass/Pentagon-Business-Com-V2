@@ -27,10 +27,6 @@ public class LoginController {
 
     @PostMapping("/logout")
     public void logout(@RequestBody LogoutRequest request){
-
-//        log.info("reached logout route with loginToken: "+ request.getLoginToken());
-
-
         loginService.logout(request);
 
     }
