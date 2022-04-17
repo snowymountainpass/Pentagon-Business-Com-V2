@@ -11,6 +11,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -82,12 +83,43 @@ public class ProductDBService {
         return productsFromBrands.size()!=0 ? productsFromBrands : getAllProducts();
     }
 
+    public List<Integer> getMinMaxPrices(){
+        List<Integer> minMaxValuesList = new ArrayList<>();
+
+        minMaxValuesList.add(getAllProducts().stream().min(Comparator.comparingInt(Product::getProductPrice)).get().getProductPrice());
+        minMaxValuesList.add(getAllProducts().stream().max(Comparator.comparingInt(Product::getProductPrice)).get().getProductPrice());
+
+        return minMaxValuesList.stream().distinct().collect(Collectors.toList());
+    }
+
     public List<Product> getProductsInStock(){
         return productRepository.getProductsByProductInventoryGreaterThan(0);
     }
 
     public List<Product> getProductsOutOfStock(){
         return productRepository.getProductsByProductInventoryEquals(0);
+    }
+
+    public List<Product> getProductsByDeliveryTime(String deliveryTime){
+
+        List<Product> products = new ArrayList<>();
+
+        switch (deliveryTime){
+            case "instock":{
+                products=getProductsInStock();
+                break;
+            }
+            case "14days":{
+                products=getProductsOutOfStock();
+                break;
+            }
+            case "all":{
+                products=getAllProducts();
+                break;
+            }
+        }
+        return products;
+
     }
 
     public Integer getAvailableQuantityByProductID(Long productID){

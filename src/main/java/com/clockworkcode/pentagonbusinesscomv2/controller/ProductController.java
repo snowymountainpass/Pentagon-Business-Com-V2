@@ -71,14 +71,8 @@ public class ProductController {
     @GetMapping("/get-min-max-price")
     public ResponseEntity<List<Integer>> getMinPrice(){
 
-        List<Integer> minMaxValuesList = new ArrayList<>();
 
-        minMaxValuesList.add(productDBService.getAllProducts().stream().min(Comparator.comparingInt(Product::getProductPrice)).get().getProductPrice());
-        minMaxValuesList.add(productDBService.getAllProducts().stream().max(Comparator.comparingInt(Product::getProductPrice)).get().getProductPrice());
-
-
-
-        return ResponseEntity.ok().body( minMaxValuesList.stream().distinct().collect(Collectors.toList()) );
+        return ResponseEntity.ok().body( productDBService.getMinMaxPrices() );
     }
     
     @GetMapping("/min-max-prices/{minVal}-{maxVal}")
@@ -115,24 +109,8 @@ public class ProductController {
     
     @GetMapping("/delivery-time/{deliveryTime}")
     public ResponseEntity<List<Product>> getProductsByDeliveryTime(@PathVariable String deliveryTime){
-        
-        List<Product> products = new ArrayList<>();
-        
-        switch (deliveryTime){
-            case "instock":{
-                products=productDBService.getProductsInStock();
-                break;
-            }
-            case "14days":{
-                products=productDBService.getProductsOutOfStock();
-                break;
-            }
-            case "all":{
-                products=productDBService.getAllProducts();
-                break;
-            }
-        }
-        return ResponseEntity.ok().body(products);
+
+        return ResponseEntity.ok().body( productDBService.getProductsByDeliveryTime(deliveryTime) );
     }
 
     @GetMapping("/product-get-by-id/{productID}")
