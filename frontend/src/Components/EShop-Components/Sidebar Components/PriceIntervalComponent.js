@@ -5,16 +5,14 @@ import {useAtom} from "jotai";
 
 export default function PriceIntervalComponent({setChangeProducts, minmaxPrice}) {
 
-    const [minMaxState, setMinMaxState] = useState({
-        minPrice: "",
-        maxPrice: "",
-    })
-
     const [minMaxAtom,setMinMaxAtom] = useAtom(MIN_MAX_PRICES);
 
-    // console.log("minMaxAtom: "+minMaxAtom);
-    // console.log("minMaxAtom (min): "+minMaxAtom[0]);
-    // console.log("minMaxAtom (max): "+minMaxAtom[1]);
+    const [minMaxState, setMinMaxState] = useState({
+        minPrice: minMaxAtom[0],
+        maxPrice: minMaxAtom[1],
+    })
+
+
 
     function handlePriceChange(e){
         e.preventDefault();
@@ -22,33 +20,22 @@ export default function PriceIntervalComponent({setChangeProducts, minmaxPrice})
         setMinMaxState(
             {...minMaxState, [e.target.name]: e.target.value,}
         )
-        // console.log("minMaxState (@handlePriceChange()): "+ minMaxState.minPrice + " - " + minMaxState.maxPrice);
 
         if(minMaxState.minPrice === null && minMaxState.maxPrice === null){
             setMinMaxState({minPrice: minMaxAtom[0]});
-            setMinMaxState({minPrice: minMaxAtom[1]});
-        }
-        //  if(minMaxState.minPrice === '' && minMaxState.maxPrice === ''){
-        //
-        //     if(minMaxState.minPrice === ''){
-        //         setMinMaxState({minPrice: minMaxAtom[0]});
-        //     }
-        //     else if(minMaxState.maxPrice === ''){
-        //         setMinMaxState({minPrice: minMaxAtom[1]});
-        //     }
-        //
-        // }
+            setMinMaxState({maxPrice: minMaxAtom[1]});
+        } // conditie buna
+
+
 
     }
 
-
-    function passPriceValues(event) {
+    function passPriceValues() {
 
         const requestOptions = {
             method: 'GET',
             headers: {Accept: 'application/json', 'Content-Type': 'application/json'},
         };
-        // console.log("minMaxState (@passPriceValues()): "+ minMaxState.minPrice + " - " + minMaxState.maxPrice);
 
         fetch(`http://localhost:8080/e-shop/min-max-prices/${minMaxState.minPrice}-${minMaxState.maxPrice}`, requestOptions)
             .then(response => {
@@ -65,12 +52,7 @@ export default function PriceIntervalComponent({setChangeProducts, minmaxPrice})
 
     useEffect(
         () => {
-
-
-
-
             passPriceValues();
-            // console.log("minMaxState (@useEffect): "+ minMaxState.minPrice + " - " + minMaxState.maxPrice);
         }, [minMaxState]
     )
 
@@ -83,11 +65,11 @@ export default function PriceIntervalComponent({setChangeProducts, minmaxPrice})
                        placeholder={"€" + minmaxPrice[0]}
                        type="number" min={minmaxPrice[0]}
                        max={minmaxPrice[1]}
-                       value={minMaxState.minPrice}
+                       value={minMaxState.minPrice !== null ? minMaxState.minPrice : minMaxAtom[0] }
                        name="minPrice"
                        onChange={event => {
-                           passPriceValues(event)
                            handlePriceChange(event);
+                           passPriceValues(event)
                        }
                        }
                 />
@@ -100,11 +82,11 @@ export default function PriceIntervalComponent({setChangeProducts, minmaxPrice})
                        placeholder={"€" + minmaxPrice[1]}
                        type="number" min={minmaxPrice[0]}
                        max={minmaxPrice[1]}
-                       value={minMaxState.maxPrice}
+                       value={minMaxState.maxPrice !== null ? minMaxState.maxPrice : minMaxAtom[1] }
                        name="maxPrice"
                        onChange={event => {
-                           passPriceValues(event)
                            handlePriceChange(event);
+                           passPriceValues(event)
                        }
                        }
                 />
