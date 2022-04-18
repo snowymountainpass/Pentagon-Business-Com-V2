@@ -3,7 +3,10 @@ import ProductsListing from "./ProductsListing";
 // import ProductsListingPagination from "./ProductsListingPagination";
 import SidebarComponent from "./SidebarComponent";
 import {useEffect, useState} from "react";
+import {atom, useAtom} from "jotai";
 
+
+export const MIN_MAX_PRICES = atom([]);
 
 export default function Products({}) {
 
@@ -44,7 +47,7 @@ export default function Products({}) {
         }, []
     )
 
-    const [minMaxPrice, setMinMaxPrice] = useState([]);
+    const [minMaxPrice, setMinMaxPrice] = useAtom(MIN_MAX_PRICES);
 
     useEffect(
         () => {

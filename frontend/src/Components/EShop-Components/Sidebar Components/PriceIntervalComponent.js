@@ -1,5 +1,7 @@
 import {useEffect, useState} from "react";
 
+import {MIN_MAX_PRICES} from "../ProductListing Components/Products";
+import {useAtom} from "jotai";
 
 export default function PriceIntervalComponent({setChangeProducts, minmaxPrice}) {
 
@@ -8,48 +10,67 @@ export default function PriceIntervalComponent({setChangeProducts, minmaxPrice})
         maxPrice: "",
     })
 
+    const [minMaxAtom,setMinMaxAtom] = useAtom(MIN_MAX_PRICES);
 
-    const handlePriceChange = e => {
+    // console.log("minMaxAtom: "+minMaxAtom);
+    // console.log("minMaxAtom (min): "+minMaxAtom[0]);
+    // console.log("minMaxAtom (max): "+minMaxAtom[1]);
+
+    function handlePriceChange(e){
         e.preventDefault();
 
         setMinMaxState(
             {...minMaxState, [e.target.name]: e.target.value,}
         )
+        // console.log("minMaxState (@handlePriceChange()): "+ minMaxState.minPrice + " - " + minMaxState.maxPrice);
+
+        if(minMaxState.minPrice === null && minMaxState.maxPrice === null){
+            setMinMaxState({minPrice: minMaxAtom[0]});
+            setMinMaxState({minPrice: minMaxAtom[1]});
+        }
+        //  if(minMaxState.minPrice === '' && minMaxState.maxPrice === ''){
+        //
+        //     if(minMaxState.minPrice === ''){
+        //         setMinMaxState({minPrice: minMaxAtom[0]});
+        //     }
+        //     else if(minMaxState.maxPrice === ''){
+        //         setMinMaxState({minPrice: minMaxAtom[1]});
+        //     }
+        //
+        // }
+
     }
 
 
-    function passPriceValues() {
+    function passPriceValues(event) {
 
         const requestOptions = {
             method: 'GET',
             headers: {Accept: 'application/json', 'Content-Type': 'application/json'},
         };
+        // console.log("minMaxState (@passPriceValues()): "+ minMaxState.minPrice + " - " + minMaxState.maxPrice);
 
-        if (minMaxState.minPrice == null && minMaxState.maxPrice == null) {
+        fetch(`http://localhost:8080/e-shop/min-max-prices/${minMaxState.minPrice}-${minMaxState.maxPrice}`, requestOptions)
+            .then(response => {
+                console.log("else cond: "+response.status);
+                return response.json();
+            })
+            .then(data => {
+                setChangeProducts(data);
+            });
 
-            fetch(`http://localhost:8080/e-shop/min-max-prices/${minmaxPrice[0]}-${minmaxPrice[1]}`, requestOptions)
-                .then(response => {
-                    return response.json();
-                })
-                .then(data => {
-                    setChangeProducts(data);
-                });
-        } else if (minMaxState.minPrice !== null && minMaxState.minPrice !== '' && minMaxState.maxPrice !== null && minMaxState.maxPrice !=='' ) {
-
-             fetch(`http://localhost:8080/e-shop/min-max-prices/${minMaxState.minPrice}-${minMaxState.maxPrice}`, requestOptions)
-                .then(response => {
-                    return response.json();
-                })
-                .then(data => {
-                    setChangeProducts(data);
-                });
-        }
+        console.log("minMaxState (@handlePriceChange()): "+ minMaxState.minPrice + " - " + minMaxState.maxPrice);
 
     }
 
     useEffect(
         () => {
+
+
+
+
             passPriceValues();
+            // console.log("minMaxState (@useEffect): "+ minMaxState.minPrice + " - " + minMaxState.maxPrice);
         }, [minMaxState]
     )
 
@@ -65,8 +86,8 @@ export default function PriceIntervalComponent({setChangeProducts, minmaxPrice})
                        value={minMaxState.minPrice}
                        name="minPrice"
                        onChange={event => {
-                           handlePriceChange(event);
                            passPriceValues(event)
+                           handlePriceChange(event);
                        }
                        }
                 />
@@ -82,8 +103,8 @@ export default function PriceIntervalComponent({setChangeProducts, minmaxPrice})
                        value={minMaxState.maxPrice}
                        name="maxPrice"
                        onChange={event => {
-                           handlePriceChange(event);
                            passPriceValues(event)
+                           handlePriceChange(event);
                        }
                        }
                 />
