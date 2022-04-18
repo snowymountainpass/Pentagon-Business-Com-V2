@@ -9,10 +9,12 @@ import com.clockworkcode.pentagonbusinesscomv2.repository.ProductRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.PathVariable;
 
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
+import java.util.Objects;
 import java.util.stream.Collectors;
 
 @Service
@@ -92,6 +94,31 @@ public class ProductDBService {
         return minMaxValuesList.stream().distinct().collect(Collectors.toList());
     }
 
+    public List<Product> getProductsInInterval(String minVal,String maxVal){
+
+        Integer minPrice;
+        Integer maxPrice;
+
+        if(Objects.equals(minVal, "") && Objects.equals(maxVal, "")){
+            minPrice = getMinMaxPrices().get(0);
+            maxPrice = getMinMaxPrices().get(1);
+        }
+        else if( Objects.equals(minVal, "") && !Objects.equals(maxVal, "") ){
+            minPrice = getMinMaxPrices().get(0);
+            maxPrice = Integer.parseInt(maxVal);
+        }
+        else if( !Objects.equals(minVal, "") && Objects.equals(maxVal, "") ){
+            minPrice = Integer.parseInt(minVal);
+            maxPrice = getMinMaxPrices().get(1);
+        }
+        else {
+            minPrice = Integer.parseInt(minVal);
+            maxPrice = Integer.parseInt(maxVal);
+        }
+
+        return  getAllProducts().stream().filter(product -> product.getProductPrice()>=minPrice && product.getProductPrice()<=maxPrice).collect(Collectors.toList());
+    }
+
     public List<Product> getProductsInStock(){
         return productRepository.getProductsByProductInventoryGreaterThan(0);
     }
@@ -121,6 +148,20 @@ public class ProductDBService {
         return products;
 
     }
+
+//    public List<Product> getProductsByAllFilters(String productCategoryName, List<String> productBrandNames, String minVal, String maxVal, String deliveryTime){
+//
+//
+//        List<Product> productsFilteredByCategory = getProductsByProductCategoryName(productCategoryName);
+//        List<Product> filterList = new ArrayList<>();
+//        filterList.addAll(getProductsByBrandNames(productBrandNames));
+//        filterList.addAll(getProductsInInterval(minVal,maxVal));
+//        filterList.addAll(getProductsByDeliveryTime(deliveryTime));
+//
+//        return productsFilteredByCategory.stream().filter(filterList::contains).collect(Collectors.toList());
+//
+//    } } //TODO - UNIFY FILTERS
+
 
     public Integer getAvailableQuantityByProductID(Long productID){
         return productRepository.getById(productID).getProductInventory();

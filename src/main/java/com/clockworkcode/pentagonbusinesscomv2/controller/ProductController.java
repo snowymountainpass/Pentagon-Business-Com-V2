@@ -101,9 +101,7 @@ public class ProductController {
              minPrice = Integer.parseInt(minVal);
              maxPrice = Integer.parseInt(maxVal);
         }
-
-//        System.out.println("minPrice: "+minPrice+" - "+"maxPrice: "+maxPrice);
-
+        
         return ResponseEntity.ok().body( productDBService.getAllProducts().stream().filter(product -> product.getProductPrice()>=minPrice && product.getProductPrice()<=maxPrice).collect(Collectors.toList()) );
     }
     
@@ -121,6 +119,12 @@ public class ProductController {
 
         return ResponseEntity.ok().body( productDBService.getProductByProductID(productID));
     }
+
+//    @GetMapping("/get-products-by-all-filters")
+//    public ResponseEntity<List<Product>> getProductsByAllFilters(){
+//
+//    } //TODO - UNIFY FILTERS
+
 
 //    @GetMapping("/price-descending")
 //    public List<Product> getProductsPriceDecreasing() {
