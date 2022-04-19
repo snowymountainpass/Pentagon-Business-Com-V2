@@ -85,15 +85,15 @@ public class ProductController {
         minMaxValuesList.add(productDBService.getAllProducts().stream().max(Comparator.comparingInt(Product::getProductPrice)).get().getProductPrice());
 
         
-        if(Objects.equals(minVal, "") && Objects.equals(maxVal, "")){
+        if((Objects.equals(minVal, "") || Objects.equals(minVal, "undefined")) && (Objects.equals(maxVal, "")||Objects.equals(maxVal, "undefined"))){
              minPrice = minMaxValuesList.get(0);
              maxPrice = minMaxValuesList.get(1);
         }
-        else if( Objects.equals(minVal, "") && !Objects.equals(maxVal, "") ){
+        else if( (Objects.equals(minVal, "") || Objects.equals(minVal, "undefined")) && !(Objects.equals(maxVal, "")||Objects.equals(maxVal, "undefined")) ){
             minPrice = minMaxValuesList.get(0);
             maxPrice = Integer.parseInt(maxVal);
         }
-        else if( !Objects.equals(minVal, "") && Objects.equals(maxVal, "") ){
+        else if( !(Objects.equals(minVal, "") || Objects.equals(minVal, "undefined")) && (Objects.equals(maxVal, "")||Objects.equals(maxVal, "undefined")) ){
             minPrice = Integer.parseInt(minVal);
             maxPrice = minMaxValuesList.get(1);
         }

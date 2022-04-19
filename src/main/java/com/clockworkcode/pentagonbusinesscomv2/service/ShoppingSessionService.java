@@ -1,5 +1,6 @@
 package com.clockworkcode.pentagonbusinesscomv2.service;
 
+import com.clockworkcode.pentagonbusinesscomv2.model.product.Product;
 import com.clockworkcode.pentagonbusinesscomv2.model.shopping.CartItem;
 import com.clockworkcode.pentagonbusinesscomv2.model.shopping.ShoppingSession;
 import com.clockworkcode.pentagonbusinesscomv2.model.user.AppUser;
@@ -10,9 +11,8 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.math.BigDecimal;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
+import java.util.stream.Collectors;
 
 @Service
 @Transactional
@@ -34,18 +34,11 @@ public class ShoppingSessionService {
 
         AppUser user = loginTokenService.getAppUserByLoginToken(loginToken);
 
-
-//        List<ShoppingSession> shoppingSessions = shoppingSessionRepository.findShoppingSessionsByAppUser_AppUserID(user.getAppUserID());
-//        List<ShoppingSession> shoppingSessions = shoppingSessionRepository.findShoppingSessionByLoginToken( loginTokenService.getToken(loginToken));
-
-//        List<ShoppingSession> shoppingSessions = shoppingSessionRepository.findShoppingSessionsByLoginToken_Token(loginToken);
-
         List<ShoppingSession> shoppingSessions = shoppingSessionRepository.findShoppingSessionsByLoginToken_Id( loginTokenService.getToken( loginToken ).getId() );
 
         log.info("addNewShoppingSession-2 => shoppingSessions (@ addNewShoppingSession) LIST SIZE:  "+ shoppingSessions.size() + " => NUMBER OF SESSIONS CURRENTLY IN THE DB");
 
         if(shoppingSessions.size()==1){
-//            shoppingSessionRepository.deleteShoppingSessionsByAppUser_AppUserID(user.getAppUserID());
             log.info("CASE - shoppingSessions.size()==1");
             log.info("shoppingSessions.size()==1 -1=> shoppingSessions.get(0).getLoginToken().getId(): "+shoppingSessions.get(0).getLoginToken().getId());
             log.info("shoppingSessions.size()==1 -2=> Number of shopping sessions (for userID "
@@ -59,7 +52,6 @@ public class ShoppingSessionService {
             log.info("shoppingSessions.size()==1 -4=> Removed previous SHOPPING CART SESSION - user has logged out and the logging in!  ");
         }
 
-//        log.info("addNewShoppingSession-3 => SHOPPING SESSION USER EMAIL: "+user.getEmail());
 
         Set<CartItem> cartItems = new HashSet<>();
         shoppingSessionRepository.save(new ShoppingSession( loginTokenService.getToken(loginToken) , BigDecimal.valueOf(0),cartItems));
@@ -73,12 +65,19 @@ public class ShoppingSessionService {
         return shoppingSessionRepository.findShoppingSessionByLoginToken_Token(loginToken);
     }
 
-//    public ShoppingSession getShoppingSessionByAppUserID(Long appUserID){
-//
-//        ShoppingSession shoppingSession = shoppingSessionRepository.findShoppingSessionByAppUser_AppUserID(appUserID);
-//
-//        return shoppingSessionRepository.findShoppingSessionByAppUser_AppUserID(appUserID);
-//    }
+    public Hashtable<Product,Integer> getListProductsAndQuantities(String loginToken){
+
+        ShoppingSession shoppingSession = shoppingSessionRepository.findShoppingSessionByLoginToken_Token(loginToken);
+
+        List<CartItem> cartItemsInShoppingSession = new ArrayList<>(shoppingSession.getCartItems());
+
+        Hashtable<Product,Integer> productsQuantitiesInShoppingSession = new Hashtable<>();
+
+        cartItemsInShoppingSession.forEach(cartItem -> productsQuantitiesInShoppingSession.put(cartItem.getProduct(),cartItem.getQuantity()));
+
+        return productsQuantitiesInShoppingSession;
+    }
+
 
 //    public void deleteShoppingSession (String loginToken){
 //        shoppingSessionRepository.delete( getShoppingSessionByLoginToken(loginToken)  );

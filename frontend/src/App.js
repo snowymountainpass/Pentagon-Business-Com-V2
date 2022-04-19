@@ -32,7 +32,7 @@ function App() {
 
             <Route path={"/e-shop"} element={<EShop loginToken={loginToken}/>}/>
             <Route path={"/e-shop/product-id/:id/*"} element={<Product/>}/>
-            <Route path={"/shopping-cart"} element={<ShoppingCart/>}/>
+            <Route path={"/e-shop/shopping-cart"} element={<ShoppingCart/>}/>
 
             <Route path={"/e-shop/login"} element={<Login setLoginToken={setLoginToken}/>}/>
             <Route path={"/e-shop/register"} element={<Register setToken={setToken}/>}/>

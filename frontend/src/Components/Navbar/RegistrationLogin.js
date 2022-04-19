@@ -76,7 +76,7 @@ export default function RegistrationLogin() {
                             "hover:opacity-75 px-3 py-4 lg:py-2 flex items-center text-xs uppercase font-bold transition-all duration-150 ease-in-out text-white"
 
                         }
-                        to={"/shopping-cart"}
+                        to={"/e-shop/shopping-cart"}
                     >
                         <Badge color="secondary" badgeContent={numberItemsInCart} overlap="rectangular">
                             <ShoppingCartIcon fontSize={"medium"}/>{" "}

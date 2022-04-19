@@ -1,12 +1,15 @@
 package com.clockworkcode.pentagonbusinesscomv2.controller;
 
 
+import com.clockworkcode.pentagonbusinesscomv2.model.product.Product;
 import com.clockworkcode.pentagonbusinesscomv2.service.ShoppingSessionService;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.Hashtable;
 
 @RestController
 @RequestMapping(path = "/e-shop")
@@ -28,5 +31,10 @@ public class ShoppingSessionController {
 
     }
 
+    @GetMapping("/shopping-cart/{loginToken}")
+    public Hashtable<Product,Integer> getProductsAndQuantitiesInCart(@PathVariable String loginToken){
 
+
+        return shoppingSessionService.getListProductsAndQuantities(loginToken);
+    }
 }

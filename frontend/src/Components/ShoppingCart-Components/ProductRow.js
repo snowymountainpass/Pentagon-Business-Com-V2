@@ -12,8 +12,26 @@ import RemoveIcon from '@material-ui/icons/Remove';
 
 export default function ProductRow({name,description,price,quantity,setTotalAmount}){
 
+    const [productsInCart,setProductsInCart] = useState([]);
+
     const [productQuantity,setProductQuantity] = useState(quantity);
-    
+
+    function getProductsAndQuantitiesInCart(){
+
+        fetch("http://localhost:8080/e-shop/shopping-cart/"+localStorage.getItem("PTG V2 Login Token"))
+            .then(res => res.json())
+            .then(data => {
+                setProductsInCart(data);
+            })
+
+    }
+
+    useEffect(()=>{
+        getProductsAndQuantitiesInCart();
+
+        console.log("ProductsInCart: "+productsInCart);
+    },[])
+
     useEffect(()=>{
         setTotalAmount(productQuantity*price);
     },[price, productQuantity, setTotalAmount])

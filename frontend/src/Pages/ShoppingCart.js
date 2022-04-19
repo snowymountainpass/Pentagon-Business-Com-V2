@@ -11,6 +11,8 @@ export default function ShoppingCart(){
 
     const [totalAmount,setTotalAmount] = useState(0);
 
+    const [productsInCart,setProductsInCart] = useState([]);
+
     return(
 
         <>
