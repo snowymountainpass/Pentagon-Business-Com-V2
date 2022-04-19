@@ -12,7 +12,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.math.BigDecimal;
 import java.util.*;
-import java.util.stream.Collectors;
+
 
 @Service
 @Transactional
@@ -65,18 +65,46 @@ public class ShoppingSessionService {
         return shoppingSessionRepository.findShoppingSessionByLoginToken_Token(loginToken);
     }
 
-    public Hashtable<Product,Integer> getListProductsAndQuantities(String loginToken){
+    public Hashtable<Long,List<String>> getListProductsAndQuantities(String loginToken){
+
+        log.info("ShoppingSessionService -> reached getListProductsAndQuantities ("+loginToken+")");
+
+//        ShoppingSession shoppingSession = shoppingSessionRepository.findShoppingSessionByLoginToken_Token(loginToken);
+//        List<CartItem> cartItemsInShoppingSession = new ArrayList<>(shoppingSession.getCartItems());
+//        Hashtable<Product,Integer> productsQuantitiesInShoppingSession = new Hashtable<>();
+//        cartItemsInShoppingSession.forEach(cartItem -> productsQuantitiesInShoppingSession.put(cartItem.getProduct(),cartItem.getQuantity()));
+//        log.info("productsQuantitiesInShoppingSession SIZE: "+String.valueOf(productsQuantitiesInShoppingSession.size()));
+//        return productsQuantitiesInShoppingSession;
 
         ShoppingSession shoppingSession = shoppingSessionRepository.findShoppingSessionByLoginToken_Token(loginToken);
-
         List<CartItem> cartItemsInShoppingSession = new ArrayList<>(shoppingSession.getCartItems());
+        Hashtable<Long,List<String>> productsQuantitiesInShoppingSession = new Hashtable<>();
+        cartItemsInShoppingSession
+                .forEach(
+                        cartItem -> {
+                            List<String> newArray = new ArrayList<>();
+                            Collections.addAll(newArray,
+                                    cartItem.getProduct().getProductName(),
+                                    cartItem.getProduct().getProductDescription(),
+                                    cartItem.getProduct().getProductBrand().getProductBrandName(),
+                                    cartItem.getProduct().getProductPrice().toString(),
+//                                    cartItem.getProduct().getDiscounts().stream().findFirst().get().getDiscountPercent().toString(),
+                                    cartItem.getProduct().getImg()
+                            );
+                            productsQuantitiesInShoppingSession
+                                    .put(cartItem.getCartItemID(),newArray );
+                        });
 
-        Hashtable<Product,Integer> productsQuantitiesInShoppingSession = new Hashtable<>();
-
-        cartItemsInShoppingSession.forEach(cartItem -> productsQuantitiesInShoppingSession.put(cartItem.getProduct(),cartItem.getQuantity()));
 
         return productsQuantitiesInShoppingSession;
     }
+
+//    cartItem.getProduct().getProductName(),
+//                                            cartItem.getProduct().getProductBrand(),
+//                                            cartItem.getProduct().getProductPrice(),
+//                                            cartItem.getProduct().getDiscounts(),
+//                                            cartItem.getProduct().getProductDescription(),
+//                                            cartItem.getProduct().getImg() )
 
 
 //    public void deleteShoppingSession (String loginToken){

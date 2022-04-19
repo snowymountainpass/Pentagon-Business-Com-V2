@@ -17,19 +17,34 @@ export default function ProductRow({name,description,price,quantity,setTotalAmou
     const [productQuantity,setProductQuantity] = useState(quantity);
 
     function getProductsAndQuantitiesInCart(){
-
+        console.log("reached getProductsAndQuantitiesInCart()");
+        console.log("login token: "+localStorage.getItem("PTG V2 Login Token"));
         fetch("http://localhost:8080/e-shop/shopping-cart/"+localStorage.getItem("PTG V2 Login Token"))
-            .then(res => res.json())
-            .then(data => {
-                setProductsInCart(data);
+            .then(response =>
+            {
+                console.log(response.status);
+                return response.json();
             })
+            .then(data => {
+                console.log("Data: "+data);
+                setProductsInCart(data);
+                console.log("productsInCart after setProductsInCart: "+ productsInCart);
+            })
+        console.log("productsInCart: "+productsInCart);
+        console.log("getProductsAndQuantitiesInCart() - after fetch  ");
 
     }
 
     useEffect(()=>{
+        console.log("@useEffect");
         getProductsAndQuantitiesInCart();
 
-        console.log("ProductsInCart: "+productsInCart);
+        {
+            Object.keys(productsInCart).map(function (key,index){
+                console.log(productsInCart[key]);
+            })
+        }
+
     },[])
 
     useEffect(()=>{
@@ -37,58 +52,110 @@ export default function ProductRow({name,description,price,quantity,setTotalAmou
     },[price, productQuantity, setTotalAmount])
     
     return(
+        <>
+            <tr>
+                <td>
+                    <figure className="itemside">
+                        {/*<div className="aside"><img src="assets/images/items/1.jpg" className="img-sm"/></div>*/}
+                        <div className="aside"><img src="../public/assets/images/items/1.jpg" className="img-sm" alt={"1.jpg"}/></div>
+                        <figcaption className="info">
+                            <p className="title text-dark">{name}</p>
+                            <p className="text-muted small">{description}</p>
+                        </figcaption>
+                    </figure>
+                </td>
+                <td>
 
-        <tr>
-            <td>
-                <figure className="itemside">
-                    {/*<div className="aside"><img src="assets/images/items/1.jpg" className="img-sm"/></div>*/}
-                    <div className="aside"><img src="../public/assets/images/items/1.jpg" className="img-sm" alt={"1.jpg"}/></div>
-                    <figcaption className="info">
-                        <p className="title text-dark">{name}</p>
-                        <p className="text-muted small">{description}</p>
-                    </figcaption>
-                </figure>
-            </td>
-            <td>
+                    <ButtonGroup  >
+                        <Button
+                            onClick={() => {
+                                setProductQuantity(Math.max(productQuantity - 1, 0));
 
-                <ButtonGroup  >
-                    <Button
-                        onClick={() => {
-                            setProductQuantity(Math.max(productQuantity - 1, 0));
+                            }}
+                            size={"small"}
+                        >
+                            {" "}
+                            <RemoveIcon fontSize="small" />
+                        </Button>
+                        <Button
+                            onClick={() => {
+                                setProductQuantity(productQuantity + 1);
+                                setTotalAmount(productQuantity*price);
+                            }}
+                            size={"small"}
+                        >
+                            {" "}
+                            <AddIcon fontSize="small" />
+                        </Button>
+                    </ButtonGroup>
 
-                        }}
-                        size={"small"}
-                    >
-                        {" "}
-                        <RemoveIcon fontSize="small" />
-                    </Button>
-                    <Button
-                        onClick={() => {
-                            setProductQuantity(productQuantity + 1);
-                            setTotalAmount(productQuantity*price);
-                        }}
-                        size={"small"}
-                    >
-                        {" "}
-                        <AddIcon fontSize="small" />
-                    </Button>
-                </ButtonGroup>
+                </td>
+                <td>
+                    <div className="price-wrap">
+                        <var className="price">${price*productQuantity}</var>
+                        <small className="text-muted">{productQuantity} x ${price} each </small>
+                    </div>
+                </td>
+                <td className="text-right">
+                    <a data-original-title="Save to Wishlist" title="" href="" className="btn btn-light mr-2"
+                       data-toggle="tooltip"> <i className="fa fa-heart"/></a>
+                    <a href="" className="btn btn-light"> Remove</a>
+                </td>
+            </tr>
 
-            </td>
-            <td>
-                <div className="price-wrap">
-                    <var className="price">${price*productQuantity}</var>
-                    <small className="text-muted">{productQuantity} x ${price} each </small>
-                </div>
-            </td>
-            <td className="text-right">
-                <a data-original-title="Save to Wishlist" title="" href="" className="btn btn-light mr-2"
-                   data-toggle="tooltip"> <i className="fa fa-heart"/></a>
-                <a href="" className="btn btn-light"> Remove</a>
-            </td>
-        </tr>
 
+        </>
 
     );
 
 }
+
+// <tr>
+//     <td>
+//         <figure className="itemside">
+//             {/*<div className="aside"><img src="assets/images/items/1.jpg" className="img-sm"/></div>*/}
+//             <div className="aside"><img src="../public/assets/images/items/1.jpg" className="img-sm" alt={"1.jpg"}/></div>
+//             <figcaption className="info">
+//                 <p className="title text-dark">{name}</p>
+//                 <p className="text-muted small">{description}</p>
+//             </figcaption>
+//         </figure>
+//     </td>
+//     <td>
+//
+//         <ButtonGroup  >
+//             <Button
+//                 onClick={() => {
+//                     setProductQuantity(Math.max(productQuantity - 1, 0));
+//
+//                 }}
+//                 size={"small"}
+//             >
+//                 {" "}
+//                 <RemoveIcon fontSize="small" />
+//             </Button>
+//             <Button
+//                 onClick={() => {
+//                     setProductQuantity(productQuantity + 1);
+//                     setTotalAmount(productQuantity*price);
+//                 }}
+//                 size={"small"}
+//             >
+//                 {" "}
+//                 <AddIcon fontSize="small" />
+//             </Button>
+//         </ButtonGroup>
+//
+//     </td>
+//     <td>
+//         <div className="price-wrap">
+//             <var className="price">${price*productQuantity}</var>
+//             <small className="text-muted">{productQuantity} x ${price} each </small>
+//         </div>
+//     </td>
+//     <td className="text-right">
+//         <a data-original-title="Save to Wishlist" title="" href="" className="btn btn-light mr-2"
+//            data-toggle="tooltip"> <i className="fa fa-heart"/></a>
+//         <a href="" className="btn btn-light"> Remove</a>
+//     </td>
+// </tr>
