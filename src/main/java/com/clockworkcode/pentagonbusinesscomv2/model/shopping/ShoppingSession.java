@@ -27,10 +27,7 @@ public class ShoppingSession {
     @SequenceGenerator(name ="shoppingsession_sequence" ,sequenceName ="shoppingsession_sequence" ,allocationSize = 1)
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "shoppingsession_sequence")
     private Long shoppingSessionID;
-//    @OneToOne(cascade = CascadeType.ALL)
-//    @JoinColumn(name = "app_userid")
-//    @JsonBackReference
-//    private AppUser appUser;
+
     @OneToOne(cascade = CascadeType.ALL,orphanRemoval = true)
     @JoinColumn(name = "id")
     private LoginToken loginToken;
@@ -43,7 +40,7 @@ public class ShoppingSession {
 //    @Column(nullable = false)
     private Timestamp modifiedAt;
 
-    @OneToMany(mappedBy = "shoppingSession",orphanRemoval = true)
+    @OneToMany(mappedBy = "shoppingSession") //,orphanRemoval = true
     @JsonManagedReference
     private Set<CartItem> cartItems;
 

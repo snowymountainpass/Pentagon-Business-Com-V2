@@ -24,15 +24,11 @@ public class CartItem {
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "cartitem_sequence")
     private Long cartItemID;
 
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne(cascade = { CascadeType.MERGE, CascadeType.PERSIST }) //cascade = CascadeType.ALL
     @JoinColumn(name = "shopping_sessionid")
     @JsonBackReference
     private ShoppingSession shoppingSession;
 
-//    @OneToOne(cascade = CascadeType.ALL)
-//    @JoinColumn(name = "productid")
-//    @JsonBackReference
-//    private Product product;
 
     @ManyToOne(cascade = { CascadeType.MERGE, CascadeType.PERSIST })
     @JoinColumn(name = "productid")
