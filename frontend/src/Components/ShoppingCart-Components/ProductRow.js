@@ -48,33 +48,35 @@ export default function ProductRow(){
 
 
     // DECREASE QUANTITY METHOD (WIP)
-    function decreaseProductAndGetTotalQuantity(){
+    function decreaseProductAndGetTotalQuantity(selectedProductID){
 
         const requestOptions = {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ userToken: localStorage.getItem("PTG V2 Login Token")
-                // ,productID:props.pkey
+                ,productID:selectedProductID
                 ,quantity:-1 })
         };
 
         fetch('http://localhost:8080/e-shop/cart-items/add-product', requestOptions)
+            .then(r=>r)
             .then(getNumberOfItemsInCart);
 
     }
     // DECREASE QUANTITY METHOD
 
-    function addProductAndGetTotalQuantity(){
+    function addProductAndGetTotalQuantity(selectedProductID){
 
         const requestOptions = {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ userToken: localStorage.getItem("PTG V2 Login Token")
-                // ,productID:props.pkey
+                ,productID:selectedProductID
                 ,quantity:1 })
         };
 
         fetch('http://localhost:8080/e-shop/cart-items/add-product', requestOptions)
+            .then(r=>r)
             .then(getNumberOfItemsInCart);
 
         // getProductsAndQuantitiesInCart();
@@ -130,7 +132,7 @@ export default function ProductRow(){
                                 <Button
                                     onClick={() => {
                                         // setProductQuantity(Math.max(productsInCart[key][3] - 1, 0));
-                                        decreaseProductAndGetTotalQuantity()
+                                        decreaseProductAndGetTotalQuantity(productsInCart[key][0])
                                     }}
                                     size={"small"}
                                 >
@@ -141,7 +143,7 @@ export default function ProductRow(){
                                     onClick={() => {
                                         // setProductQuantity(productsInCart[key][3] + 1);
                                         // setTotalAmount(productQuantity*productsInCart[key][4]);
-                                        addProductAndGetTotalQuantity()
+                                        addProductAndGetTotalQuantity(productsInCart[key][0])
                                     }}
                                     size={"small"}
                                 >
