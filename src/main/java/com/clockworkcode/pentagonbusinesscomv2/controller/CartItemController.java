@@ -47,4 +47,10 @@ public class CartItemController {
 
         return cartItemService.getNumberItemsInCart();
     }
+
+    @GetMapping("/cart-items/{cartItemID}")
+    public void removeCardItemByID(@PathVariable String cartItemID){
+        log.info("Reached - CartItemController - removeCardItemByID: "+ cartItemID);
+        cartItemService.removeCartItem(Long.valueOf(cartItemID));
+    }
 }

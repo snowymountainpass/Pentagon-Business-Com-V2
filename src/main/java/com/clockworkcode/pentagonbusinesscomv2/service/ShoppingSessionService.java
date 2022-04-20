@@ -84,14 +84,15 @@ public class ShoppingSessionService {
                         cartItem -> {
                             List<String> newArray = new ArrayList<>();
                             Collections.addAll(newArray,
-                                    cartItem.getCartItemID().toString(),
+                                    cartItem.getProduct().getProductID().toString(),
                                     cartItem.getProduct().getProductName(),
                                     cartItem.getProduct().getProductDescription(),
                                     cartItem.getProduct().getDatasheet(),
                                     cartItem.getQuantity().toString(),
                                     cartItem.getProduct().getProductPrice().toString(),
 //                                    cartItem.getProduct().getDiscounts().stream().findFirst().get().getDiscountPercent().toString(),
-                                    cartItem.getProduct().getImg()
+                                    cartItem.getProduct().getImg(),
+                                    cartItem.getCartItemID().toString()
                             );
                             productsQuantitiesInShoppingSession
                                     .put(cartItem.getCartItemID(),newArray );

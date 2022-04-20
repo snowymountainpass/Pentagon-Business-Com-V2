@@ -53,6 +53,9 @@ public class CartItemService {
             addNewCartItem(loginToken, productId, quantity);
         }
 
+        // IF CART ITEM QUANTITY REACHES 0 IT IS DELETED FROM THE SHOPPING SESSION
+        cartItemList.stream().filter(cartItem -> cartItem.getQuantity()==0).collect(Collectors.toList()).forEach(cartItem -> removeCartItem(cartItem.getCartItemID()));
+
     }
 
 
@@ -69,6 +72,7 @@ public class CartItemService {
 
     public void removeCartItem(Long cartItemID) {
 
+        log.info("reached ShoppingSessionService - removeCartItem - ID: "+ cartItemID);
         cartItemRepository.deleteCartItemByCartItemID(cartItemID);
     }
 

@@ -41,6 +41,6 @@ public class ShoppingSessionController {
 
         Hashtable<Long,List<String>> productsInCart = shoppingSessionService.getListProductsAndQuantities(loginToken);
 
-        return ResponseEntity.ok().body( shoppingSessionService.getListProductsAndQuantities(loginToken) );
+        return ResponseEntity.ok().body( productsInCart );
     }
 }

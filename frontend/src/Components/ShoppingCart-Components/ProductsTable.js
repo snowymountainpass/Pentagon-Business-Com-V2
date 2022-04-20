@@ -20,13 +20,7 @@ export default function ProductsTable({setTotalAmount}){
 
                 {/*TABLE BODY*/}
                 <tbody>
-                <ProductRow
-                name={"product 1"}
-                description={"product 1 description"}
-                price={10}
-                quantity={0}
-                setTotalAmount={setTotalAmount}
-                />
+                <ProductRow/>
                 </tbody>
                 {/*TABLE BODY*/}
 
