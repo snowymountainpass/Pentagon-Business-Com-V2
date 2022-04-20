@@ -7,9 +7,13 @@ import NavbarLinks from "../Components/Navbar/NavbarLinks";
 import footersmall from "../Texts/Presentation/footers/footersmall";
 import FooterSmall from "../Components/Footers/Landing/FooterSmall";
 
+import {TOTAL_VALUE_IN_CART} from "../Components/ShoppingCart-Components/ProductRow";
+import {useAtom} from "jotai";
+
 export default function ShoppingCart(){
 
-    const [totalAmount,setTotalAmount] = useState(0);
+    // const [totalAmount,setTotalAmount] = useState(0);
+    const [totalAmount,setTotalAmount] = useAtom(TOTAL_VALUE_IN_CART);
 
     const [productsInCart,setProductsInCart] = useState([]);
 
@@ -35,11 +39,11 @@ export default function ShoppingCart(){
                         <main className="col-md-9">
 
                             {/*ProductsTable*/}
-                            <ProductsTable setTotalAmount={setTotalAmount}/>
+                            <ProductsTable/>
                             {/*ProductsTable*/}
 
                             <div className="alert alert-success mt-3">
-                                <p className="icontext"><i className="icon text-success fa fa-truck"/> Free Delivery for orders above $10.000</p>
+                                <p className="icontext"><i className="icon text-success fa fa-truck"/> Free Delivery for orders above €10.000</p>
                             </div>
 
                         </main>
@@ -49,7 +53,7 @@ export default function ShoppingCart(){
                             {/*COUPON*/}
 
                             {/*AMOUNT SUMMARY*/}
-                            <AmountSummary totalAmount={totalAmount} discount={(totalAmount*50)/100}/>
+                            <AmountSummary totalAmount={totalAmount} discount={(totalAmount*5)/100}/>
                             {/*AMOUNT SUMMARY*/}
                         </aside>
                     </div>

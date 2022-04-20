@@ -2,7 +2,7 @@ import ProductRow from "./ProductRow";
 import {Link} from "react-router-dom";
 
 
-export default function ProductsTable({setTotalAmount}){
+export default function ProductsTable({}){
 
     return(
 

@@ -1,19 +1,21 @@
 import {useEffect, useState} from "react";
+import {atom, useAtom} from "jotai";
 
 // import Button from '@mui/material/Button';
 // import AddIcon from '@mui/icons-material/Add';
 // import RemoveIcon from '@mui/icons-material/Remove';
 // import ButtonGroup from '@mui/material/ButtonGroup';
-
 import Button from '@material-ui/core/Button';
 import ButtonGroup from '@material-ui/core/ButtonGroup';
 import AddIcon from '@material-ui/icons/Add';
 import RemoveIcon from '@material-ui/icons/Remove';
 
 import {NUMBER_ITEMS_IN_CART} from "../EShop-Components/ProductListing Components/ProductCard";
-import {useAtom} from "jotai";
+export const TOTAL_VALUE_IN_CART = atom([]);
 
 export default function ProductRow(){
+
+    const [totalAmountInCart,setTotalAmountInCart] = useAtom(TOTAL_VALUE_IN_CART);
 
     const [productsInCart,setProductsInCart] = useState([]);
     const [numberProductsInCart, setNumberProductsInCart] = useAtom(NUMBER_ITEMS_IN_CART);
@@ -91,15 +93,32 @@ export default function ProductRow(){
         // getProductsAndQuantitiesInCart();
     }
 
+    function getCartValueTotal(){
+
+        let totalAmount = [];
+
+        Object.keys(productsInCart).map(function (key){
+           totalAmount.push( parseInt( productsInCart[key][4] ) );
+        })
+
+        console.log("Total Amount @getCartValueTotal: "+ totalAmount);
+
+        setTotalAmountInCart(totalAmount);
+
+        totalAmount=[];
+    }
+
     useEffect(()=>{
         console.log("@useEffect");
         getProductsAndQuantitiesInCart();
 
+        getCartValueTotal();
 
         Object.keys(productsInCart).map(function (key,index){
             console.log(productsInCart[key]);
-        })
-         // MERGE => apare un ARRAY
+        })// MERGE => apare un ARRAY
+
+
 
     },[numberProductsInCart])
 
