@@ -40,7 +40,7 @@ public class ShoppingSession {
 //    @Column(nullable = false)
     private Timestamp modifiedAt;
 
-    @OneToMany(mappedBy = "shoppingSession") //,orphanRemoval = true
+    @OneToMany(mappedBy = "shoppingSession",orphanRemoval = true) //,orphanRemoval = true
     @JsonManagedReference
     private Set<CartItem> cartItems;
 

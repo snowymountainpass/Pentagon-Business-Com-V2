@@ -11,7 +11,7 @@ import AddIcon from '@material-ui/icons/Add';
 import RemoveIcon from '@material-ui/icons/Remove';
 
 import {NUMBER_ITEMS_IN_CART} from "../EShop-Components/ProductListing Components/ProductCard";
-export const TOTAL_VALUE_IN_CART = atom([]);
+export const TOTAL_VALUE_IN_CART = atom(0);
 
 export default function ProductRow(){
 
@@ -95,17 +95,18 @@ export default function ProductRow(){
 
     function getCartValueTotal(){
 
-        let totalAmount = [];
+        let totalAmountList=[];
+        let totalAmount;
 
         Object.keys(productsInCart).map(function (key){
-           totalAmount.push( parseInt( productsInCart[key][4] ) );
+            totalAmountList.push( parseInt( productsInCart[key][4] ) );
         })
+
+        totalAmount = totalAmountList.reduce( (accumulator,current) => accumulator+current );
 
         console.log("Total Amount @getCartValueTotal: "+ totalAmount);
 
         setTotalAmountInCart(totalAmount);
-
-        totalAmount=[];
     }
 
     useEffect(()=>{
