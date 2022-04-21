@@ -1,10 +1,6 @@
 import {useEffect, useState} from "react";
 import {atom, useAtom} from "jotai";
 
-// import Button from '@mui/material/Button';
-// import AddIcon from '@mui/icons-material/Add';
-// import RemoveIcon from '@mui/icons-material/Remove';
-// import ButtonGroup from '@mui/material/ButtonGroup';
 import Button from '@material-ui/core/Button';
 import ButtonGroup from '@material-ui/core/ButtonGroup';
 import AddIcon from '@material-ui/icons/Add';
@@ -49,7 +45,6 @@ export default function ProductRow(){
     }
 
 
-    // DECREASE QUANTITY METHOD (WIP)
     function decreaseProductAndGetTotalQuantity(selectedProductID){
 
         const requestOptions = {
@@ -61,11 +56,10 @@ export default function ProductRow(){
         };
 
         fetch('http://localhost:8080/e-shop/cart-items/add-product', requestOptions)
-            .then(r=>r);
-            // .then(getNumberOfItemsInCart);
+            .then(r=>r)
+            .then(getNumberOfItemsInCart);
 
     }
-    // DECREASE QUANTITY METHOD
 
     function addProductAndGetTotalQuantity(selectedProductID){
 
@@ -78,11 +72,9 @@ export default function ProductRow(){
         };
 
         fetch('http://localhost:8080/e-shop/cart-items/add-product', requestOptions)
-            .then(r=>r);
-            // .then(getNumberOfItemsInCart)
-            // .then(getCartValueTotal);
+            .then(r=>r)
+            .then(getNumberOfItemsInCart);
 
-        // getCartValueTotal();
     }
 
     function deleteCartItem(cartItemID){
@@ -91,29 +83,8 @@ export default function ProductRow(){
 
         console.log("removed cartItem with ID: "+ cartItemID);
 
-        // getProductsAndQuantitiesInCart();
     }
 
-    // function getCartValueTotal(){
-    //
-    //     let totalAmountList=[];
-    //     let totalAmount;
-    //
-    //     Object.keys(productsInCart).map(function (key){
-    //         totalAmountList.push( parseInt( productsInCart[key][4] ) );
-    //     })
-    //
-    //     // totalAmount = totalAmountList.reduce( (accumulator,current) => accumulator+current );
-    //
-    //     console.log("totalAmountList @getCartValueTotal: "+ totalAmountList);
-    //     // totalAmount = totalAmountList.reduce( (accumulator,current) => accumulator+current )
-    //     Object.keys(totalAmountList).map(function (key){
-    //         console.log("value in totalAmountList: "+totalAmountList[key] );
-    //     });
-    //     // console.log("Total Amount @getCartValueTotal: "+ totalAmount);
-    //     console.log("Number of items in cart (@getCartValueTotal): "+numberProductsInCart);
-    //     // setTotalAmountInCart(totalAmount);
-    // }
 
     function getCartValueTotalV2() {
 
@@ -134,20 +105,18 @@ export default function ProductRow(){
 
         Object.keys(productsInCart).map(function (key,index){
             console.log(productsInCart[key]);
-        })// MERGE => apare un ARRAY
+        })
 
         getCartValueTotalV2();
 
     },[numberProductsInCart])
 
     useEffect(()=>{
-        getNumberOfItemsInCart(); // apare valoarea initiala la trecerea de la ProductListingPage -> Shopping Cart Page
+        getNumberOfItemsInCart();
     },[])
 
-    // useEffect(()=>{
-    //     setTotalAmount(productQuantity*price);
-    // },[price, productQuantity, setTotalAmount])
-    
+
+
     return(
         <>
             {
@@ -172,7 +141,6 @@ export default function ProductRow(){
                             <ButtonGroup  >
                                 <Button
                                     onClick={() => {
-                                        // setProductQuantity(Math.max(productsInCart[key][3] - 1, 0));
                                         decreaseProductAndGetTotalQuantity(productsInCart[key][0]);getCartValueTotalV2();
                                     }}
                                     size={"small"}
@@ -182,8 +150,7 @@ export default function ProductRow(){
                                 </Button>
                                 <Button
                                     onClick={() => {
-                                        // setProductQuantity(productsInCart[key][3] + 1);
-                                        // setTotalAmount(productQuantity*productsInCart[key][4]);
+
                                         addProductAndGetTotalQuantity(productsInCart[key][0]);getCartValueTotalV2();
                                     }}
                                     size={"small"}
@@ -208,7 +175,7 @@ export default function ProductRow(){
 
                             <a  className="btn btn-light"
                             onClick={()=>deleteCartItem(productsInCart[key][0])}
-                            > Remove</a> {/* in href vom folosi ruta de DELETE CART ITEM + CART ITEM ID   */}
+                            > Remove</a> 
                         </td>
                     </tr>
 

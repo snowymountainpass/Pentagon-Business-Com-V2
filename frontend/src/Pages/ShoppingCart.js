@@ -12,12 +12,9 @@ import {useAtom} from "jotai";
 
 export default function ShoppingCart(){
 
-    // const [totalAmount,setTotalAmount] = useState(0);
     const [totalAmount,setTotalAmount] = useAtom(TOTAL_VALUE_IN_CART);
 
     // console.log("@ShoppingCart page - totalAmount: "+ totalAmount);
-
-    const [productsInCart,setProductsInCart] = useState([]);
 
     return(
 
@@ -40,9 +37,7 @@ export default function ShoppingCart(){
                     <div className="row">
                         <main className="col-md-9">
 
-                            {/*ProductsTable*/}
                             <ProductsTable/>
-                            {/*ProductsTable*/}
 
                             <div className="alert alert-success mt-3">
                                 <p className="icontext"><i className="icon text-success fa fa-truck"/> Free Delivery for orders above €10.000</p>
@@ -50,13 +45,9 @@ export default function ShoppingCart(){
 
                         </main>
                         <aside className="col-md-3">
-                            {/*COUPON*/}
                             <Coupon/>
-                            {/*COUPON*/}
 
-                            {/*AMOUNT SUMMARY*/}
                             <AmountSummary totalAmount={totalAmount} discount={(totalAmount*5)/100}/>
-                            {/*AMOUNT SUMMARY*/}
                         </aside>
                     </div>
 
