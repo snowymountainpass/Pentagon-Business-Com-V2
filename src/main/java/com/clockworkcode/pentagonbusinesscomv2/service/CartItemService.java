@@ -81,8 +81,11 @@ public class CartItemService {
 
     public Integer getTotalValueAmountProductsInCart(String loginToken) {
 
+
+
         // quantity * price
-       return cartItemRepository.getTotalValueOfItemsInCart(loginToken);
+//       return cartItemRepository.getTotalValueOfItemsInCart(loginToken); // old version
+       return cartItemRepository.getTotalValueOfItemsInCart(shoppingSessionService.getShoppingSessionByLoginToken(loginToken).getShoppingSessionID());
 
 //        return 10;
 

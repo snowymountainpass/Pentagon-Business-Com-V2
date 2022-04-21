@@ -38,14 +38,13 @@ public interface CartItemRepository extends JpaRepository<CartItem,Long> {
 //            value = "SELECT sum( CartItem.product.productPrice*CartItem.quantity )" +
 //                    "from CartItem " +
 //                    "JOIN Product ON Product.productID=CartItem .product.productID JOIN ShoppingSession ON ShoppingSession .shoppingSessionID=CartItem .shoppingSession.shoppingSessionID " +
-//                    "WHERE CartItem .shoppingSession.loginToken.token=:loginToken",nativeQuery = true
+//                    "WHERE CartItem .shoppingSession.loginToken.token=:loginToken",nativeQuery = true // sau cu LIKE :loginToken
 //    )
     @Query(
             value = "SELECT sum( cartitems.quantity * p.product_price )" +
                     "from cartitems " +
-                    "JOIN products p ON p.productid = cartitems.productid JOIN shoppingsessions s ON s.shopping_sessionid = cartitems.shopping_sessionid " +
-                    "WHERE cartitems.shopping_sessionid=:loginToken",nativeQuery = true
+                    "JOIN products p ON p.productid = cartitems.productid JOIN shoppingsessions s ON s.shopping_sessionid = cartitems.shopping_sessionid WHERE cartitems.shopping_sessionid=:sessionID",nativeQuery = true
     )
-    Integer getTotalValueOfItemsInCart(@Param("loginToken") String loginToken);
+    Integer getTotalValueOfItemsInCart(@Param("sessionID") Long sessionID);
 
 }

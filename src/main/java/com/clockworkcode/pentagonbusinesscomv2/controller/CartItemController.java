@@ -59,8 +59,10 @@ public class CartItemController {
 
     @GetMapping("/cart-items/cart-items-amount/{loginToken}")
     public Integer getTotalValueAmountProductsInCart(@PathVariable String loginToken){
-       return cartItemService.getTotalValueAmountProductsInCart(loginToken);
 
+       log.info("RESULT OF /cart-items-amount/{loginToken}: "+ cartItemService.getTotalValueAmountProductsInCart(loginToken));
+       return cartItemService.getTotalValueAmountProductsInCart(loginToken);
+        //RESULT OF /cart-items-amount/{loginToken}
     }
     //TODO : getTotalNumberOfItemsInCart(), removeCardItemByID TREBUIE SA FACA REFERIRE LA UN ANUME SESSION PE LANGA CELELALTE FILTRE !!
 }
