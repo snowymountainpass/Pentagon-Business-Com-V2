@@ -175,7 +175,7 @@ export default function ProductRow(){
 
                             <a  className="btn btn-light"
                             onClick={()=>deleteCartItem(productsInCart[key][0])}
-                            > Remove</a> 
+                            > Remove</a>
                         </td>
                     </tr>
 
