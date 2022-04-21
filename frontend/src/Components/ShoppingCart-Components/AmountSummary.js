@@ -3,7 +3,7 @@
 export default function AmountSummary({totalAmount,discount}){
 
     function calculateAmount(){
-        console.log("@AmountSummary - totalAmount: " + totalAmount);
+        // console.log("@AmountSummary - totalAmount: " + totalAmount);
         // return totalAmount.reduce( (accumulator,current) => accumulator+current );
         // returns the sum of the values in the totalAmount array
 

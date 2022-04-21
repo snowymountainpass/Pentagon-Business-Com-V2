@@ -26,7 +26,26 @@ public interface CartItemRepository extends JpaRepository<CartItem,Long> {
     @Query("select sum(quantity) from CartItem")
     Integer getTotalNumberOfItemsInCart();
 
-}
 
-//1.	Dupa login => avem un token => il trimitem inapoin in backend =>
-// il folosim pt a identifica cine este logat SAU salvam LOCAL rezultatul acelei methode si plecam de acolo
+//    @Query("select sum(CartItem.quantity*Product.productPrice) FROM CartItem WHERE ShoppingSession.loginToken.token=:loginToken")
+//    @Query(value = "select sum(CartItem.quantity*Product.productPrice) FROM CartItem WHERE ShoppingSession.loginToken.token=:loginToken", nativeQuery = true) //cartitem not found - the closest
+//    @Modifying
+//    @Query( value = "SELECT sum( CartItem.product.productPrice*CartItem.quantity ) " +
+//            "from CartItem " +
+//            "JOIN Product ON CartItem.product.productID=Product.productID WHERE CartItem.shoppingSession.loginToken.token=:loginToken",nativeQuery = true)
+
+//    @Query(
+//            value = "SELECT sum( CartItem.product.productPrice*CartItem.quantity )" +
+//                    "from CartItem " +
+//                    "JOIN Product ON Product.productID=CartItem .product.productID JOIN ShoppingSession ON ShoppingSession .shoppingSessionID=CartItem .shoppingSession.shoppingSessionID " +
+//                    "WHERE CartItem .shoppingSession.loginToken.token=:loginToken",nativeQuery = true
+//    )
+    @Query(
+            value = "SELECT sum( cartitems.quantity * p.product_price )" +
+                    "from cartitems " +
+                    "JOIN products p ON p.productid = cartitems.productid JOIN shoppingsessions s ON s.shopping_sessionid = cartitems.shopping_sessionid " +
+                    "WHERE cartitems.shopping_sessionid=:loginToken",nativeQuery = true
+    )
+    Integer getTotalValueOfItemsInCart(@Param("loginToken") String loginToken);
+
+}

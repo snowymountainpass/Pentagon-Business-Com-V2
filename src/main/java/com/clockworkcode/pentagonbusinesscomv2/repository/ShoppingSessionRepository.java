@@ -1,11 +1,9 @@
 package com.clockworkcode.pentagonbusinesscomv2.repository;
 
 import com.clockworkcode.pentagonbusinesscomv2.model.shopping.ShoppingSession;
-import com.clockworkcode.pentagonbusinesscomv2.security.token.LoginToken;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;
-import java.util.Optional;
 
 public interface ShoppingSessionRepository extends JpaRepository<ShoppingSession,Long> {
 

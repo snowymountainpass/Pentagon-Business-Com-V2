@@ -61,8 +61,8 @@ export default function ProductRow(){
         };
 
         fetch('http://localhost:8080/e-shop/cart-items/add-product', requestOptions)
-            .then(r=>r)
-            .then(getNumberOfItemsInCart);
+            .then(r=>r);
+            // .then(getNumberOfItemsInCart);
 
     }
     // DECREASE QUANTITY METHOD
@@ -78,10 +78,11 @@ export default function ProductRow(){
         };
 
         fetch('http://localhost:8080/e-shop/cart-items/add-product', requestOptions)
-            .then(r=>r)
-            .then(getNumberOfItemsInCart);
+            .then(r=>r);
+            // .then(getNumberOfItemsInCart)
+            // .then(getCartValueTotal);
 
-        // getProductsAndQuantitiesInCart();
+        // getCartValueTotal();
     }
 
     function deleteCartItem(cartItemID){
@@ -93,35 +94,55 @@ export default function ProductRow(){
         // getProductsAndQuantitiesInCart();
     }
 
-    function getCartValueTotal(){
+    // function getCartValueTotal(){
+    //
+    //     let totalAmountList=[];
+    //     let totalAmount;
+    //
+    //     Object.keys(productsInCart).map(function (key){
+    //         totalAmountList.push( parseInt( productsInCart[key][4] ) );
+    //     })
+    //
+    //     // totalAmount = totalAmountList.reduce( (accumulator,current) => accumulator+current );
+    //
+    //     console.log("totalAmountList @getCartValueTotal: "+ totalAmountList);
+    //     // totalAmount = totalAmountList.reduce( (accumulator,current) => accumulator+current )
+    //     Object.keys(totalAmountList).map(function (key){
+    //         console.log("value in totalAmountList: "+totalAmountList[key] );
+    //     });
+    //     // console.log("Total Amount @getCartValueTotal: "+ totalAmount);
+    //     console.log("Number of items in cart (@getCartValueTotal): "+numberProductsInCart);
+    //     // setTotalAmountInCart(totalAmount);
+    // }
 
-        let totalAmountList=[];
-        let totalAmount;
+    function getCartValueTotalV2() {
 
-        Object.keys(productsInCart).map(function (key){
-            totalAmountList.push( parseInt( productsInCart[key][4] ) );
-        })
+        fetch('http://localhost:8080/e-shop/cart-items/cart-items-amount/'+localStorage.getItem("PTG V2 Login Token"))
+            .then(response => response.text())
+            .then(data=>{
+                setTotalAmountInCart(parseInt(data));
+            });
 
-        totalAmount = totalAmountList.reduce( (accumulator,current) => accumulator+current );
-
-        console.log("Total Amount @getCartValueTotal: "+ totalAmount);
-
-        setTotalAmountInCart(totalAmount);
+        console.log("Total amount in getCartValueTotalV2: "+ totalAmountInCart);
     }
+
 
     useEffect(()=>{
         console.log("@useEffect");
-        getProductsAndQuantitiesInCart();
 
-        getCartValueTotal();
+        getProductsAndQuantitiesInCart();
 
         Object.keys(productsInCart).map(function (key,index){
             console.log(productsInCart[key]);
         })// MERGE => apare un ARRAY
 
-
+        getCartValueTotalV2();
 
     },[numberProductsInCart])
+
+    useEffect(()=>{
+        getNumberOfItemsInCart(); // apare valoarea initiala la trecerea de la ProductListingPage -> Shopping Cart Page
+    },[])
 
     // useEffect(()=>{
     //     setTotalAmount(productQuantity*price);
@@ -152,7 +173,7 @@ export default function ProductRow(){
                                 <Button
                                     onClick={() => {
                                         // setProductQuantity(Math.max(productsInCart[key][3] - 1, 0));
-                                        decreaseProductAndGetTotalQuantity(productsInCart[key][0])
+                                        decreaseProductAndGetTotalQuantity(productsInCart[key][0]);getCartValueTotalV2();
                                     }}
                                     size={"small"}
                                 >
@@ -163,7 +184,7 @@ export default function ProductRow(){
                                     onClick={() => {
                                         // setProductQuantity(productsInCart[key][3] + 1);
                                         // setTotalAmount(productQuantity*productsInCart[key][4]);
-                                        addProductAndGetTotalQuantity(productsInCart[key][0])
+                                        addProductAndGetTotalQuantity(productsInCart[key][0]);getCartValueTotalV2();
                                     }}
                                     size={"small"}
                                 >

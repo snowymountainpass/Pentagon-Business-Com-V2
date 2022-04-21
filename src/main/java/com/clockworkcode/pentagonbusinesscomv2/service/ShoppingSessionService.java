@@ -92,7 +92,8 @@ public class ShoppingSessionService {
                                     cartItem.getProduct().getProductPrice().toString(),
 //                                    cartItem.getProduct().getDiscounts().stream().findFirst().get().getDiscountPercent().toString(),
                                     cartItem.getProduct().getImg(),
-                                    cartItem.getCartItemID().toString()
+                                    cartItem.getCartItemID().toString(),
+                                    cartItem.getShoppingSession().getShoppingSessionID().toString()
                             );
                             productsQuantitiesInShoppingSession
                                     .put(cartItem.getCartItemID(),newArray );

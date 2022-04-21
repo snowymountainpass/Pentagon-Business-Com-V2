@@ -6,7 +6,10 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+import java.math.BigDecimal;
 
 @RestController
 @RequestMapping(path = "/e-shop")
@@ -53,4 +56,11 @@ public class CartItemController {
         log.info("Reached - CartItemController - removeCardItemByID: "+ cartItemID);
         cartItemService.removeCartItem(Long.valueOf(cartItemID));
     }
+
+    @GetMapping("/cart-items/cart-items-amount/{loginToken}")
+    public Integer getTotalValueAmountProductsInCart(@PathVariable String loginToken){
+       return cartItemService.getTotalValueAmountProductsInCart(loginToken);
+
+    }
+    //TODO : getTotalNumberOfItemsInCart(), removeCardItemByID TREBUIE SA FACA REFERIRE LA UN ANUME SESSION PE LANGA CELELALTE FILTRE !!
 }

@@ -15,7 +15,7 @@ export default function ShoppingCart(){
     // const [totalAmount,setTotalAmount] = useState(0);
     const [totalAmount,setTotalAmount] = useAtom(TOTAL_VALUE_IN_CART);
 
-    console.log("@ShoppingCart page - totalAmount: "+ totalAmount);
+    // console.log("@ShoppingCart page - totalAmount: "+ totalAmount);
 
     const [productsInCart,setProductsInCart] = useState([]);
 
