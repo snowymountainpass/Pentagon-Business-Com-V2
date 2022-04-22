@@ -12,6 +12,7 @@ import Login from "./Pages/Login";
 import Register from "./Pages/Register";
 import RestorePassword from "./Pages/RestorePassword";
 import ShoppingCart from "./Pages/ShoppingCart";
+import UserAccount from "./Pages/UserAccount";
 
 
 function App() {
@@ -37,6 +38,7 @@ function App() {
             <Route path={"/e-shop/login"} element={<Login setLoginToken={setLoginToken}/>}/>
             <Route path={"/e-shop/register"} element={<Register setToken={setToken}/>}/>
             <Route path={"/e-shop/restore-password"} element={<RestorePassword/>}/>
+            <Route path={"/e-shop/user-account"} element={<UserAccount/>}/>
           </Routes>
         </BrowserRouter>
 
