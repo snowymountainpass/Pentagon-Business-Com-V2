@@ -1,4 +1,4 @@
-// import paymentsImg from "../../../public/assets/images/Pentagon Assets/payments-img.png";
+// import paymentsImg from "../../../public/assets/images/Pentagon Assets/payments-UserAccount-AL-Background.png";
 
 export default function AmountSummary({totalAmount,discount}){
 
@@ -25,8 +25,8 @@ export default function AmountSummary({totalAmount,discount}){
                 <hr/>
                 <p className="text-center mb-3">
                     {/*<img src="assets/images/misc/payments.png" height="26"/>*/}
-                    {/*<img src="../public/assets/images/misc/payments-img.png" height="26" alt={"payments-img.png"}/>*/}
-                    {/*<img src={process.env.PUBLIC_URL + "/images/Pentagon Assets/payments-img.png"} height="26" alt={"payments-img.png"}/>*/}
+                    {/*<img src="../public/assets/images/misc/payments-UserAccount-AL-Background.png" height="26" alt={"payments-UserAccount-AL-Background.png"}/>*/}
+                    {/*<img src={process.env.PUBLIC_URL + "/images/Pentagon Assets/payments-UserAccount-AL-Background.png"} height="26" alt={"payments-UserAccount-AL-Background.png"}/>*/}
 
 
                 </p>

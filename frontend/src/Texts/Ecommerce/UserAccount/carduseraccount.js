@@ -1,9 +1,8 @@
 const textProps = {
-  title: "Billing address",
   inputs: [
     {
       width: 6,
-      label: "First name*",
+      label: "First Name*",
       input: {
         type: "text",
         placeholder: "E.g. Smith",
@@ -11,7 +10,7 @@ const textProps = {
     },
     {
       width: 6,
-      label: "Last name*",
+      label: "Last Name*",
       input: {
         type: "text",
         placeholder: "E.g. John",
@@ -19,10 +18,10 @@ const textProps = {
     },
     {
       width: 6,
-      label: "Email address*",
+      label: "Email Address*",
       input: {
         type: "email",
-        placeholder: "E.g. email@email.email",
+        placeholder: "E.g. johnsmith123@yahoo.com",
       },
     },
     {
@@ -38,7 +37,7 @@ const textProps = {
       label: "Street address*",
       input: {
         type: "text",
-        placeholder: "E.g. 420 Long Beach, CA",
+        placeholder: "E.g. Street Somesul Mic, number 1,Bucharest",
       },
     },
     {
@@ -62,7 +61,7 @@ const textProps = {
       label: "City*",
       input: {
         type: "text",
-        placeholder: "E.g. London",
+        placeholder: "E.g. Bucharest",
       },
     },
     {
@@ -71,6 +70,8 @@ const textProps = {
       select: {
         placeholder: "Select Country",
         items: [
+          "Select country",
+          "Romania",
           "Czech Republic",
           "Denmark",
           "Dominican Republic",
@@ -84,13 +85,11 @@ const textProps = {
           "Norway",
           "Poland",
           "Portugal",
-          "Romania",
           "Russian Federation",
           "Saint Lucia",
           "Samoa",
           "San Marino",
           "Saudi Arabia",
-          "Select country",
           "Spain",
           "Swaziland",
           "Sweden",
@@ -100,76 +99,19 @@ const textProps = {
           "United Arab Emirates",
           "United Kingdom",
           "United States",
-          "Viet Nam",
+          "Vietnam",
         ],
       },
     },
   ],
-  paymentTitle: "Payment method",
-  defaultPaymentOpened: 0,
-  paymentOptions: [
-    {
-      tabName: "Credit Card",
-      inputs: [
-        {
-          width: 12,
-          label: "Card Number",
-          input: {
-            type: "tel",
-            inputMode: "numeric",
-            pattern: "[0-9s]{13,19}",
-            maxLength: "19",
-            placeholder: "E.g. 1234 1234 1234 1234",
-          },
-        },
-        {
-          width: 7,
-          label: "Card holder",
-          input: {
-            type: "text",
-            placeholder: "E.g. SMITH JOHN",
-          },
-        },
-        {
-          width: 3,
-          label: "Expiration",
-          input: {
-            type: "text",
-            placeholder: "E.g. 01/24",
-          },
-        },
-        {
-          width: 2,
-          label: "CVC",
-          input: {
-            type: "text",
-            placeholder: "E.g. 123",
-          },
-        },
-      ],
-    },
-    {
-      tabName: "PayPal",
-      inputs: [
-        {
-          width: 12,
-          label: "Email",
-          input: {
-            type: "email",
-            placeholder: "E.g. email@email.email",
-          },
-        },
-      ],
-    },
-  ],
-  paymentTabColor: "pink",
+
   returnButton: {
     color: "light",
     children: "Return to cart",
   },
   orderButton: {
-    color: "pink",
-    children: "Order now",
+    color: "purple",
+    children: "Order Details",
   },
 };
 export default textProps;

@@ -3,14 +3,11 @@ import PropTypes from "prop-types";
 import classnames from "classnames";
 
 // components
-// import Button from "../../../components/Elements/Button.js";
 import Button from "../../Elements/Button";
-// import Input from "../../../components/Elements/Input.js";
 import Input from "../../Elements/Input.js";
-// import Select from "../../../components/Elements/Select.js";
 import Select from "../../Elements/Select.js";
 
-export default function CardBilling({
+export default function CardUserAccount({
   title,
   inputs,
   paymentTitle,
@@ -85,7 +82,7 @@ export default function CardBilling({
         <div className="px-4 py-5 flex-auto">
           <form>
             <div className="container mx-auto px-4">
-              <h3 className="text-3xl font-semibold mt-4 mb-6">{title}</h3>
+              <h3 className="text-3xl font-semibold mt-4 mb-6">Account/Billing Details</h3>
               <div className="flex flex-wrap -mx-4">
                 {inputs.map((prop, key) => (
                   <div
@@ -103,65 +100,24 @@ export default function CardBilling({
                 ))}
               </div>
 
-              <h3 className="text-3xl font-semibold mt-4 mb-6">
-                {paymentTitle}
-              </h3>
-              <ul className="flex-col md:flex-row flex flex-wrap list-none pl-0 mb-0">
-                {paymentOptions.map((prop, key) => (
-                  <li
-                    key={key}
-                    className="-mb-px mr-2 last:mr-0 flex-auto text-center"
-                  >
-                    <a
-                      href="#pablo"
-                      className={classnames(
-                        "text-xs font-bold uppercase px-5 py-3 shadow rounded block leading-normal sm:mb-4 md:mb-0 uppercase duration-500 transition-all ease-in-out",
-                        {
-                          [nonActiveColors[paymentTabColor]]: key !== open,
-                          [activeColors[paymentTabColor]]: key === open,
+              <h3 className="text-3xl font-semibold mt-4 mb-6">Shipping Details</h3>
+              <div className="flex flex-wrap -mx-4">
+                {inputs.map((prop, key) => (
+                    <div
+                        key={key}
+                        className={
+                            "px-4 pb-2 relative w-full " + widths[prop.width]
                         }
-                      )}
-                      onClick={(e) => toggleNew(e, key, prop.tabName)}
                     >
-                      {prop.tabName}
-                    </a>
-                  </li>
-                ))}
-              </ul>
-              <div className="w-full">
-                {paymentOptions.map((prop, key) => (
-                  <div
-                    key={key}
-                    className={classnames(
-                      "my-8 transform duration-500 transition-all ease-in-out",
-                      {
-                        hidden: key !== open,
-                        block: key === open,
-                        "opacity-0 scale-0": key === open && oldInTransition,
-                        "opacity-100 scale-100":
-                          key === open && newInTransition,
-                      }
-                    )}
-                  >
-                    <div className="flex flex-wrap -mx-4">
-                      {prop.inputs.map((inputProp, inputKey) => (
-                        <div
-                          key={inputKey}
-                          className={
-                            "px-4 relative w-full " + widths[inputProp.width]
-                          }
-                        >
-                          <label className="block uppercase text-blueGray-700 text-xs font-bold mb-2 ml-1">
-                            {inputProp.label}
-                          </label>
-                          {inputProp.input && <Input {...inputProp.input} />}
-                          {inputProp.select && <Select {...inputProp.select} />}
-                        </div>
-                      ))}
+                      <label className="block uppercase text-blueGray-700 text-xs font-bold mb-2 ml-1">
+                        {prop.label}
+                      </label>
+                      {prop.input && <Input {...prop.input} />}
+                      {prop.select && <Select {...prop.select} />}
                     </div>
-                  </div>
                 ))}
               </div>
+
               <div className="flex justify-between mt-12 mb-8">
                 <Button {...returnButton} />
                 <Button {...orderButton} />
@@ -199,7 +155,7 @@ const inputsTypes = PropTypes.arrayOf(
   PropTypes.oneOfType([inputsShape, selectsShape])
 );
 
-CardBilling.defaultProps = {
+CardUserAccount.defaultProps = {
   inputs: [],
   paymentOptions: [],
   onPaymentChange: () => {},
@@ -209,7 +165,7 @@ CardBilling.defaultProps = {
   paymentTabColor: "blueGray",
 };
 
-CardBilling.propTypes = {
+CardUserAccount.propTypes = {
   title: PropTypes.string,
   inputs: inputsTypes,
   paymentTitle: PropTypes.string,

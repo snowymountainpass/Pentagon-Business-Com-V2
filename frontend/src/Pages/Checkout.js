@@ -6,14 +6,14 @@ import { useLocation } from "react-router-dom";
 import NavbarLinks from "components/Navbars/NavbarLinks.js";
 import HeaderImageTitleSmallCenter from "components/Headers/Auth/HeaderImageTitleSmallCenter.js";
 import CardProductsCheckout from "components/Cards/ECommerce/CardProductsCheckout.js";
-import CardBilling from "components/Cards/ECommerce/CardBilling.js";
+import CardBilling from "components/Cards/ECommerce/CardUserAccount.js";
 import PreFooterLarge from "components/PreFooters/PreFooterLarge.js";
 import FooterSmall from "components/Footers/Landing/FooterSmall.js";
 // texts as props
 import navbarlinkslanding1 from "_texts/presentation/navbars/navbarlinkslanding1.js";
 import headerimagetitlesmallcentercheckout from "_texts/e-commerce/headers/headerimagetitlesmallcentercheckout.js";
 import cardproductscheckout from "_texts/e-commerce/cards/cardproductscheckout.js";
-import cardbilling from "_texts/e-commerce/cards/cardbilling.js";
+import cardbilling from "_texts/e-commerce/cards/carduseraccount.js";
 import prefooterlarge from "_texts/presentation/prefooters/prefooterlarge.js";
 import footersmall from "_texts/presentation/footers/footersmall.js";
 
