@@ -1,22 +1,16 @@
 import React from "react";
 import PropTypes from "prop-types";
-import classnames from "classnames";
+
+import {useForm} from "react-hook-form";
 
 // components
 import Button from "../../Elements/Button";
 import Input from "../../Elements/Input.js";
-import Select from "../../Elements/Select.js";
 
 export default function CardUserAccount({
-  inputs,
-  defaultPaymentOpened,
-  onPaymentChange,
-  returnButton,
-  orderButton,
+  // returnButton,
+  // detailsButton,
 }) {
-  const [open, setOpen] = React.useState(defaultPaymentOpened);
-  const [oldInTransition, setOldInTransition] = React.useState(false);
-  const [newInTransition, setNewInTransition] = React.useState(false);
   const widths = {
     1: "lg:w-1/12",
     2: "lg:w-2/12",
@@ -31,76 +25,124 @@ export default function CardUserAccount({
     11: "lg:w-11/12",
     12: "lg:w-12/12",
   };
-  const activeColors = {
-    blueGray: "bg-blueGray-500 text-white",
-    red: "bg-red-500 text-white",
-    orange: "bg-orange-500 text-white",
-    amber: "bg-amber-500 text-white",
-    emerald: "bg-emerald-500 text-white",
-    teal: "bg-teal-500 text-white",
-    lightBlue: "bg-lightBlue-500 text-white",
-    indigo: "bg-indigo-500 text-white",
-    purple: "bg-purple-500 text-white",
-    pink: "bg-pink-500 text-white",
-  };
-  const nonActiveColors = {
-    blueGray: "text-blueGray-500 bg-white",
-    red: "text-red-500 bg-white",
-    orange: "text-orange-500 bg-white",
-    amber: "text-amber-500 bg-white",
-    emerald: "text-emerald-500 bg-white",
-    teal: "text-teal-500 bg-white",
-    lightBlue: "text-lightBlue-500 bg-white",
-    indigo: "text-indigo-500 bg-white",
-    purple: "text-purple-500 bg-white",
-    pink: "text-pink-500 bg-white",
-  };
+
+  const {handleSubmit} = useForm();
+
+
+  function saveUserDetails(userDetails){
+    // console.log("userDetails: "+ userDetails.firstName);
+  }
 
   return (
     <>
       <div className="relative flex flex-col min-w-0 break-words bg-white w-full mb-6 shadow-lg rounded-lg">
         <div className="px-4 py-5 flex-auto">
-          <form>
+          <form >
+            {/*onSubmit={handleSubmit(saveUserDetails)}*/}
             <div className="container mx-auto px-4">
               <h3 className="text-3xl font-semibold mt-4 mb-6">Account/Billing Details</h3>
               <div className="flex flex-wrap -mx-4">
-                {inputs.map((prop, key) => (
-                  <div
-                    key={key}
-                    className={
-                      "px-4 pb-2 relative w-full " + widths[prop.width]
-                    }
-                  >
-                    <label className="block uppercase text-blueGray-700 text-xs font-bold mb-2 ml-1">
-                      {prop.label}
-                    </label>
-                    {prop.input && <Input {...prop.input} />}
-                    {prop.select && <Select {...prop.select} />}
-                  </div>
-                ))}
+
+                <div className={"px-4 pb-2 relative w-full " + widths[6]}>
+                  <label className="block uppercase text-blueGray-700 text-xs font-bold mb-2 ml-1">First Name*</label>
+                  <Input name={"firstName"} type={"text"} placeholder={"E.g. John"}/>
+                </div>
+
+                <div className={"px-4 pb-2 relative w-full " + widths[6]}>
+                  <label className="block uppercase text-blueGray-700 text-xs font-bold mb-2 ml-1">Last Name*</label>
+                  <Input name={"lastName"}  type={"text"} placeholder={"E.g. Smith"}/>
+                </div>
+
+                <div className={"px-4 pb-2 relative w-full " + widths[6]}>
+                  <label className="block uppercase text-blueGray-700 text-xs font-bold mb-2 ml-1">Email*</label>
+                  <Input name={"email"} type={"email"} placeholder={"E.g. johnsmith123@yahoo.com"}/>
+                </div>
+
+                <div className={"px-4 pb-2 relative w-full " + widths[6]}>
+                  <label className="block uppercase text-blueGray-700 text-xs font-bold mb-2 ml-1">Phone*</label>
+                  <Input name={"phone"} type={"text"} placeholder={"E.g. +1 (5417) 543 010"}/>
+                </div>
+
+                <div className={"px-4 pb-2 relative w-full " + widths[8]}>
+                  <label className="block uppercase text-blueGray-700 text-xs font-bold mb-2 ml-1">Street Address*</label>
+                  <Input name={"streetAddress"} type={"text"} placeholder={"E.g. Street Somesul Mic, number 1,Bucharest"}/>
+                </div>
+
+                <div className={"px-4 pb-2 relative w-full " + widths[4]}>
+                  <label className="block uppercase text-blueGray-700 text-xs font-bold mb-2 ml-1">POSTCODE/ZIP*</label>
+                  <Input name={"postcode"} type={"text"} placeholder={"E.g. 340112"}/>
+                </div>
+
+                <div className={"px-4 pb-2 relative w-full " + widths[4]}>
+                  <label className="block uppercase text-blueGray-700 text-xs font-bold mb-2 ml-1">APT, SUITE, ETC.</label>
+                  <Input name={"streetAddress2"} type={"text"} placeholder={"E.g. apartment 12"}/>
+                </div>
+
+                <div className={"px-4 pb-2 relative w-full " + widths[4]}>
+                  <label className="block uppercase text-blueGray-700 text-xs font-bold mb-2 ml-1">CITY*</label>
+                  <Input name={"city"} type={"text"} placeholder={"E.g. Bucharest"}/>
+                </div>
+
+                <div className={"px-4 pb-2 relative w-full " + widths[4]}>
+                  <label className="block uppercase text-blueGray-700 text-xs font-bold mb-2 ml-1">COUNTRY*</label>
+                  <Input name={"country"} type={"text"} placeholder={"E.g. Romania"}/>
+                </div>
+
               </div>
 
               <h3 className="text-3xl font-semibold mt-4 mb-6">Shipping Details</h3>
               <div className="flex flex-wrap -mx-4">
-                {inputs.map((prop, key) => (
-                    <div
-                        key={key}
-                        className={
-                            "px-4 pb-2 relative w-full " + widths[prop.width]
-                        }
-                    >
-                      <label className="block uppercase text-blueGray-700 text-xs font-bold mb-2 ml-1">
-                        {prop.label}
-                      </label>
-                      {prop.input && <Input {...prop.input} />}
-                      {prop.select && <Select {...prop.select} />}
-                    </div>
-                ))}
+
+                <div className={"px-4 pb-2 relative w-full " + widths[6]}>
+                  <label className="block uppercase text-blueGray-700 text-xs font-bold mb-2 ml-1">First Name*</label>
+                  <Input name={"shipping_firstName"} type={"text"} placeholder={"E.g. John"}/>
+                </div>
+
+                <div className={"px-4 pb-2 relative w-full " + widths[6]}>
+                  <label className="block uppercase text-blueGray-700 text-xs font-bold mb-2 ml-1">Last Name*</label>
+                  <Input name={"shipping_lastName"} type={"text"} placeholder={"E.g. Smith"}/>
+                </div>
+
+                <div className={"px-4 pb-2 relative w-full " + widths[6]}>
+                  <label className="block uppercase text-blueGray-700 text-xs font-bold mb-2 ml-1">Email*</label>
+                  <Input name={"shipping_email"} type={"email"} placeholder={"E.g. johnsmith123@yahoo.com"}/>
+                </div>
+
+                <div className={"px-4 pb-2 relative w-full " + widths[6]}>
+                  <label className="block uppercase text-blueGray-700 text-xs font-bold mb-2 ml-1">Phone*</label>
+                  <Input name={"shipping_phone"} type={"text"} placeholder={"E.g. +1 (5417) 543 010"}/>
+                </div>
+
+                <div className={"px-4 pb-2 relative w-full " + widths[8]}>
+                  <label className="block uppercase text-blueGray-700 text-xs font-bold mb-2 ml-1">Street Address*</label>
+                  <Input name={"shipping_streetAddress"} type={"text"} placeholder={"E.g. Street Somesul Mic, number 1,Bucharest"}/>
+                </div>
+
+                <div className={"px-4 pb-2 relative w-full " + widths[4]}>
+                  <label className="block uppercase text-blueGray-700 text-xs font-bold mb-2 ml-1">POSTCODE/ZIP*</label>
+                  <Input name={"shipping_postcode"} type={"text"} placeholder={"E.g. 340112"}/>
+                </div>
+
+                <div className={"px-4 pb-2 relative w-full " + widths[4]}>
+                  <label className="block uppercase text-blueGray-700 text-xs font-bold mb-2 ml-1">APT, SUITE, ETC.</label>
+                  <Input name={"shipping_streetAddress2"} type={"text"} placeholder={"E.g. 340112"}/>
+                </div>
+
+                <div className={"px-4 pb-2 relative w-full " + widths[4]}>
+                  <label className="block uppercase text-blueGray-700 text-xs font-bold mb-2 ml-1">CITY*</label>
+                  <Input name={"shipping_city"} type={"text"} placeholder={"E.g. 340112"}/>
+                </div>
+
+                <div className={"px-4 pb-2 relative w-full " + widths[4]}>
+                  <label className="block uppercase text-blueGray-700 text-xs font-bold mb-2 ml-1">COUNTRY*</label>
+                  <Input name={"shipping_country"} type={"text"} placeholder={"E.g. Input Country"}/>
+                </div>
+
               </div>
 
               <div className="flex justify-between mt-12 mb-8">
-                <Button {...returnButton} />
-                <Button {...orderButton} />
+                {/*<Button {...returnButton} />*/}
+                {/*<Button {...detailsButton} />*/}
               </div>
             </div>
           </form>
@@ -113,7 +155,7 @@ export default function CardUserAccount({
 const inputsObject = {
   // NOTE: this width only applies on large devices
   width: PropTypes.oneOf([1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]),
-  // if you wish, you can send somthing like
+  // if you wish, you can send something like
   // <span className="mr-2">Label Name</span><span className="text-red-500">*</span>
   // NOTE: the label tag will be auto generated
   label: PropTypes.node,
@@ -182,3 +224,50 @@ CardUserAccount.propTypes = {
   // props to pass to the Button component on the right
   orderButton: PropTypes.object,
 };
+
+
+
+// <form>
+//   <div className="container mx-auto px-4">
+//     <h3 className="text-3xl font-semibold mt-4 mb-6">Account/Billing Details</h3>
+//     <div className="flex flex-wrap -mx-4">
+//       {inputs.map((prop, key) => (
+//           <div
+//               key={key}
+//               className={
+//                   "px-4 pb-2 relative w-full " + widths[prop.width]
+//               }
+//           >
+//             <label className="block uppercase text-blueGray-700 text-xs font-bold mb-2 ml-1">
+//               {prop.label}
+//             </label>
+//             {prop.input && <Input {...prop.input} />}
+//             {prop.select && <Select {...prop.select} />}
+//           </div>
+//       ))}
+//     </div>
+//
+//     <h3 className="text-3xl font-semibold mt-4 mb-6">Shipping Details</h3>
+//     <div className="flex flex-wrap -mx-4">
+//       {inputs.map((prop, key) => (
+//           <div
+//               key={key}
+//               className={
+//                   "px-4 pb-2 relative w-full " + widths[prop.width]
+//               }
+//           >
+//             <label className="block uppercase text-blueGray-700 text-xs font-bold mb-2 ml-1">
+//               {prop.label}
+//             </label>
+//             {prop.input && <Input {...prop.input} />}
+//             {prop.select && <Select {...prop.select} />}
+//           </div>
+//       ))}
+//     </div>
+//
+//     <div className="flex justify-between mt-12 mb-8">
+//       <Button {...returnButton} />
+//       <Button {...orderButton} />
+//     </div>
+//   </div>
+// </form>
