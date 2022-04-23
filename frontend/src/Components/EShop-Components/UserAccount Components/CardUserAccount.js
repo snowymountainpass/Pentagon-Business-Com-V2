@@ -8,13 +8,9 @@ import Input from "../../Elements/Input.js";
 import Select from "../../Elements/Select.js";
 
 export default function CardUserAccount({
-  title,
   inputs,
-  paymentTitle,
   defaultPaymentOpened,
-  paymentOptions,
   onPaymentChange,
-  paymentTabColor,
   returnButton,
   orderButton,
 }) {
@@ -59,23 +55,7 @@ export default function CardUserAccount({
     purple: "text-purple-500 bg-white",
     pink: "text-pink-500 bg-white",
   };
-  const toggleNew = (e, newOpen, text) => {
-    e.preventDefault();
-    if (!newInTransition && !oldInTransition) {
-      setOldInTransition(true);
-      setTimeout(function () {
-        setOpen(newOpen);
-      }, 500);
-      setTimeout(function () {
-        setOldInTransition(false);
-        setNewInTransition(true);
-      }, 600);
-      setTimeout(function () {
-        setNewInTransition(false);
-      }, 1100);
-    }
-    onPaymentChange(newOpen, text);
-  };
+
   return (
     <>
       <div className="relative flex flex-col min-w-0 break-words bg-white w-full mb-6 shadow-lg rounded-lg">

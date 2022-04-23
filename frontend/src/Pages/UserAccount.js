@@ -25,9 +25,9 @@ export default function UserAccount() {
             <HeaderImageTitleSmallCenter {...headerimagetitlesmallcentercheckout} />
             <section className="relative bg-blueGray-100 py-12 z-2">
                 <div className="container mx-auto px-4 -mt-64">
-                    <div className="flex justify-content-around">
+                    <div className="flex flex-wrap justify-center">
 
-                        <div className="px-4 relative w-full lg:w-8/12">
+                        <div className=" px-4 relative w-full lg:w-8/12">
                             <CardUserAccount {...carduseraccount} />
                         </div>
                     </div>
