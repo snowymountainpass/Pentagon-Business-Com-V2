@@ -1,5 +1,6 @@
 package com.clockworkcode.pentagonbusinesscomv2.service;
 
+import com.clockworkcode.pentagonbusinesscomv2.model.user.AppUser;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -13,7 +14,7 @@ public class AppUserAddressService {
 
     public void addUserAddress(String loginToken){
 
-        Long appUserID = loginTokenService.getAppUserByLoginToken(loginToken).getAppUserID();
+        AppUser appUser = loginTokenService.getAppUserByLoginToken(loginToken);
 
 
 

@@ -42,16 +42,7 @@ public class AppUserAddress {
     private String billingPostalCode;
     @Column(nullable = false,columnDefinition = "text")
     private String billingCountry;
-    @Column(nullable = false,columnDefinition = "text")
-    private String shippingAddress;
-    @Column(nullable = false,columnDefinition = "text")
-    private String shippingCity;
-    @Column(nullable = false,columnDefinition = "text")
-    private String shippingCounty;
-    @Column(nullable = false,columnDefinition = "text")
-    private String shippingPostalCode;
-    @Column(nullable = false,columnDefinition = "text")
-    private String shippingCountry;
+
 
     // ONE TO MANY => One user can have many addresses && one address can belong to many users
     @ManyToOne

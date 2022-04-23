@@ -52,6 +52,9 @@ public class AppUser implements UserDetails {
     @OneToMany(mappedBy = "appUser") //X
     private List<AppUserAddress> appUserAddresses; //O
 
+    @OneToMany(mappedBy = "appUser") //X
+    private List<AppUserShippingAddress> appUserShippingAddresses; //O
+
     @OneToMany(mappedBy = "appUser")
     private List<AppUserPayment> appUserPayments;
 

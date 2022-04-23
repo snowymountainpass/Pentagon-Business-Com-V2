@@ -8,8 +8,8 @@ import Button from "../../Elements/Button";
 import Input from "../../Elements/Input.js";
 
 export default function CardUserAccount({
-  // returnButton,
-  // detailsButton,
+  returnButton,
+  detailsButton,
 }) {
   const widths = {
     1: "lg:w-1/12",
@@ -26,18 +26,54 @@ export default function CardUserAccount({
     12: "lg:w-12/12",
   };
 
-  const {handleSubmit} = useForm();
+  const {handleSubmit, register} = useForm();
 
 
-  function saveUserDetails(userDetails){
-    // console.log("userDetails: "+ userDetails.firstName);
+  function saveUserDetails(data){
+
+    const requestOptions = {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(
+          { loginToken: localStorage.getItem("PTG V2 Login Token"),
+                  firstName:data.firstName,
+                  lastName:data.lastName,
+                  email:data.email,
+                  phone:data.phone,
+                  streetAddress:data.streetAddress,
+                  postcode:data.postcode,
+                  streetAddress2:data.streetAddress2,
+                  city:data.city,
+                  country:data.country,
+
+                  shipping_firstName:data.shipping_firstName,
+                  shipping_lastName:data.shipping_lastName,
+                  shipping_email:data.shipping_email,
+                  shipping_phone:data.shipping_phone,
+                  shipping_streetAddress:data.shipping_streetAddress,
+                  shipping_postcode:data.shipping_postcode,
+                  shipping_streetAddress2:data.shipping_streetAddress2,
+                  shipping_city:data.shipping_city,
+                  shipping_country:data.shipping_country
+      }
+      )
+    };
+
+    fetch('http://localhost:8080/e-shop/user-account/save-details', requestOptions).then(r => r);
+
+    console.log(data);
+    console.log(data.email);
+  }
+
+  function details(){
+    console.log("showing details!");
   }
 
   return (
     <>
       <div className="relative flex flex-col min-w-0 break-words bg-white w-full mb-6 shadow-lg rounded-lg">
         <div className="px-4 py-5 flex-auto">
-          <form >
+          <form onSubmit={handleSubmit(saveUserDetails)}>
             {/*onSubmit={handleSubmit(saveUserDetails)}*/}
             <div className="container mx-auto px-4">
               <h3 className="text-3xl font-semibold mt-4 mb-6">Account/Billing Details</h3>
@@ -45,47 +81,47 @@ export default function CardUserAccount({
 
                 <div className={"px-4 pb-2 relative w-full " + widths[6]}>
                   <label className="block uppercase text-blueGray-700 text-xs font-bold mb-2 ml-1">First Name*</label>
-                  <Input name={"firstName"} type={"text"} placeholder={"E.g. John"}/>
+                  <Input {...register("firstName")} type={"text"} placeholder={"E.g. John"}/>
                 </div>
 
                 <div className={"px-4 pb-2 relative w-full " + widths[6]}>
                   <label className="block uppercase text-blueGray-700 text-xs font-bold mb-2 ml-1">Last Name*</label>
-                  <Input name={"lastName"}  type={"text"} placeholder={"E.g. Smith"}/>
+                  <Input {...register("lastName")} type={"text"} placeholder={"E.g. Smith"}/>
                 </div>
 
                 <div className={"px-4 pb-2 relative w-full " + widths[6]}>
                   <label className="block uppercase text-blueGray-700 text-xs font-bold mb-2 ml-1">Email*</label>
-                  <Input name={"email"} type={"email"} placeholder={"E.g. johnsmith123@yahoo.com"}/>
+                  <Input {...register("email")} type={"email"} placeholder={"E.g. johnsmith123@yahoo.com"}/>
                 </div>
 
                 <div className={"px-4 pb-2 relative w-full " + widths[6]}>
                   <label className="block uppercase text-blueGray-700 text-xs font-bold mb-2 ml-1">Phone*</label>
-                  <Input name={"phone"} type={"text"} placeholder={"E.g. +1 (5417) 543 010"}/>
+                  <Input {...register("phone")} type={"text"} placeholder={"E.g. +1 (5417) 543 010"}/>
                 </div>
 
                 <div className={"px-4 pb-2 relative w-full " + widths[8]}>
                   <label className="block uppercase text-blueGray-700 text-xs font-bold mb-2 ml-1">Street Address*</label>
-                  <Input name={"streetAddress"} type={"text"} placeholder={"E.g. Street Somesul Mic, number 1,Bucharest"}/>
+                  <Input {...register("streetAddress")} type={"text"} placeholder={"E.g. Street Somesul Mic, number 1,Bucharest"}/>
                 </div>
 
                 <div className={"px-4 pb-2 relative w-full " + widths[4]}>
                   <label className="block uppercase text-blueGray-700 text-xs font-bold mb-2 ml-1">POSTCODE/ZIP*</label>
-                  <Input name={"postcode"} type={"text"} placeholder={"E.g. 340112"}/>
+                  <Input {...register("postcode")} type={"text"} placeholder={"E.g. 340112"}/>
                 </div>
 
                 <div className={"px-4 pb-2 relative w-full " + widths[4]}>
                   <label className="block uppercase text-blueGray-700 text-xs font-bold mb-2 ml-1">APT, SUITE, ETC.</label>
-                  <Input name={"streetAddress2"} type={"text"} placeholder={"E.g. apartment 12"}/>
+                  <Input {...register("streetAddress2")} type={"text"} placeholder={"E.g. apartment 12"}/>
                 </div>
 
                 <div className={"px-4 pb-2 relative w-full " + widths[4]}>
                   <label className="block uppercase text-blueGray-700 text-xs font-bold mb-2 ml-1">CITY*</label>
-                  <Input name={"city"} type={"text"} placeholder={"E.g. Bucharest"}/>
+                  <Input {...register("city")} type={"text"} placeholder={"E.g. Bucharest"}/>
                 </div>
 
                 <div className={"px-4 pb-2 relative w-full " + widths[4]}>
                   <label className="block uppercase text-blueGray-700 text-xs font-bold mb-2 ml-1">COUNTRY*</label>
-                  <Input name={"country"} type={"text"} placeholder={"E.g. Romania"}/>
+                  <Input {...register("country")} type={"text"} placeholder={"E.g. Romania"}/>
                 </div>
 
               </div>
@@ -95,54 +131,54 @@ export default function CardUserAccount({
 
                 <div className={"px-4 pb-2 relative w-full " + widths[6]}>
                   <label className="block uppercase text-blueGray-700 text-xs font-bold mb-2 ml-1">First Name*</label>
-                  <Input name={"shipping_firstName"} type={"text"} placeholder={"E.g. John"}/>
+                  <Input {...register("shipping_firstName")} type={"text"} placeholder={"E.g. John"}/>
                 </div>
 
                 <div className={"px-4 pb-2 relative w-full " + widths[6]}>
                   <label className="block uppercase text-blueGray-700 text-xs font-bold mb-2 ml-1">Last Name*</label>
-                  <Input name={"shipping_lastName"} type={"text"} placeholder={"E.g. Smith"}/>
+                  <Input {...register("shipping_lastName")} type={"text"} placeholder={"E.g. Smith"}/>
                 </div>
 
                 <div className={"px-4 pb-2 relative w-full " + widths[6]}>
                   <label className="block uppercase text-blueGray-700 text-xs font-bold mb-2 ml-1">Email*</label>
-                  <Input name={"shipping_email"} type={"email"} placeholder={"E.g. johnsmith123@yahoo.com"}/>
+                  <Input {...register("shipping_email")} type={"email"} placeholder={"E.g. johnsmith123@yahoo.com"}/>
                 </div>
 
                 <div className={"px-4 pb-2 relative w-full " + widths[6]}>
                   <label className="block uppercase text-blueGray-700 text-xs font-bold mb-2 ml-1">Phone*</label>
-                  <Input name={"shipping_phone"} type={"text"} placeholder={"E.g. +1 (5417) 543 010"}/>
+                  <Input {...register("shipping_phone")} type={"text"} placeholder={"E.g. +1 (5417) 543 010"}/>
                 </div>
 
                 <div className={"px-4 pb-2 relative w-full " + widths[8]}>
                   <label className="block uppercase text-blueGray-700 text-xs font-bold mb-2 ml-1">Street Address*</label>
-                  <Input name={"shipping_streetAddress"} type={"text"} placeholder={"E.g. Street Somesul Mic, number 1,Bucharest"}/>
+                  <Input {...register("shipping_streetAddress")} type={"text"} placeholder={"E.g. Street Somesul Mic, number 1,Bucharest"}/>
                 </div>
 
                 <div className={"px-4 pb-2 relative w-full " + widths[4]}>
                   <label className="block uppercase text-blueGray-700 text-xs font-bold mb-2 ml-1">POSTCODE/ZIP*</label>
-                  <Input name={"shipping_postcode"} type={"text"} placeholder={"E.g. 340112"}/>
+                  <Input {...register("shipping_postcode")} type={"text"} placeholder={"E.g. 340112"}/>
                 </div>
 
                 <div className={"px-4 pb-2 relative w-full " + widths[4]}>
                   <label className="block uppercase text-blueGray-700 text-xs font-bold mb-2 ml-1">APT, SUITE, ETC.</label>
-                  <Input name={"shipping_streetAddress2"} type={"text"} placeholder={"E.g. 340112"}/>
+                  <Input {...register("shipping_streetAddress2")} type={"text"} placeholder={"E.g. 340112"}/>
                 </div>
 
                 <div className={"px-4 pb-2 relative w-full " + widths[4]}>
                   <label className="block uppercase text-blueGray-700 text-xs font-bold mb-2 ml-1">CITY*</label>
-                  <Input name={"shipping_city"} type={"text"} placeholder={"E.g. 340112"}/>
+                  <Input {...register("shipping_city")} type={"text"} placeholder={"E.g. 340112"}/>
                 </div>
 
                 <div className={"px-4 pb-2 relative w-full " + widths[4]}>
                   <label className="block uppercase text-blueGray-700 text-xs font-bold mb-2 ml-1">COUNTRY*</label>
-                  <Input name={"shipping_country"} type={"text"} placeholder={"E.g. Input Country"}/>
+                  <Input {...register("shipping_country")} type={"text"} placeholder={"E.g. Input Country"}/>
                 </div>
 
               </div>
 
               <div className="flex justify-between mt-12 mb-8">
-                {/*<Button {...returnButton} />*/}
-                {/*<Button {...detailsButton} />*/}
+                <Button {...returnButton} />
+                <Button {...detailsButton} />
               </div>
             </div>
           </form>
