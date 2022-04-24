@@ -31,17 +31,8 @@ public class AppUserAddress {
     @Column(nullable = false,columnDefinition = "text")
     private String telephone;
     @Column(nullable = false,columnDefinition = "text")
-    private String mobilePhone;
-    @Column(nullable = false,columnDefinition = "text")
-    private String billingAddress;
-    @Column(nullable = false,columnDefinition = "text")
-    private String billingCity;
-    @Column(nullable = false,columnDefinition = "text")
-    private String billingCounty;
-    @Column(nullable = false,columnDefinition = "text")
-    private String billingPostalCode;
-    @Column(nullable = false,columnDefinition = "text")
-    private String billingCountry;
+    private String postalCode;
+
 
 
     // ONE TO MANY => One user can have many addresses && one address can belong to many users
@@ -49,4 +40,13 @@ public class AppUserAddress {
     @JoinColumn(name="app_userID",nullable = false) //O
     private AppUser appUser; //X   //Y- appUserID
 
+    public AppUserAddress(String addressLine1, String addressLine2, String city, String county, String country, String telephone, AppUser appUser) {
+        this.addressLine1 = addressLine1;
+        this.addressLine2 = addressLine2;
+        this.city = city;
+        this.county = county;
+        this.country = country;
+        this.telephone = telephone;
+        this.appUser = appUser;
+    }
 }

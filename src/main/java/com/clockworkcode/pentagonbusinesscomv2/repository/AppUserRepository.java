@@ -24,5 +24,9 @@ public interface AppUserRepository extends JpaRepository<AppUser,Long> {
             "SET a.enabled = TRUE WHERE a.email = ?1")
     int enableAppUser(String email);
 
-//    Object findByLoginTokens(List<LoginToken> loginTokens);
+    @Transactional
+    @Modifying
+    @Query("UPDATE AppUser a SET a.firstName=?1, a.lastName =?2, a.telephone=?3, a.email=?4 WHERE a.appUserID=?5")
+    void saveUserDetails(String firstName,String lastName,String phone,String email,Long appUserID);
+
 }

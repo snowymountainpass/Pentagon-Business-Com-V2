@@ -44,6 +44,7 @@ export default function CardUserAccount({
                   postcode:data.postcode,
                   streetAddress2:data.streetAddress2,
                   city:data.city,
+                  county:data.county,
                   country:data.country,
 
                   shipping_firstName:data.shipping_firstName,
@@ -54,6 +55,7 @@ export default function CardUserAccount({
                   shipping_postcode:data.shipping_postcode,
                   shipping_streetAddress2:data.shipping_streetAddress2,
                   shipping_city:data.shipping_city,
+                  shipping_county:data.shipping_county,
                   shipping_country:data.shipping_country
       }
       )
@@ -99,14 +101,9 @@ export default function CardUserAccount({
                   <Input {...register("phone")} type={"text"} placeholder={"E.g. +1 (5417) 543 010"}/>
                 </div>
 
-                <div className={"px-4 pb-2 relative w-full " + widths[8]}>
+                <div className={"px-4 pb-2 relative w-full " + widths[6]}>
                   <label className="block uppercase text-blueGray-700 text-xs font-bold mb-2 ml-1">Street Address*</label>
                   <Input {...register("streetAddress")} type={"text"} placeholder={"E.g. Street Somesul Mic, number 1,Bucharest"}/>
-                </div>
-
-                <div className={"px-4 pb-2 relative w-full " + widths[4]}>
-                  <label className="block uppercase text-blueGray-700 text-xs font-bold mb-2 ml-1">POSTCODE/ZIP*</label>
-                  <Input {...register("postcode")} type={"text"} placeholder={"E.g. 340112"}/>
                 </div>
 
                 <div className={"px-4 pb-2 relative w-full " + widths[4]}>
@@ -114,9 +111,19 @@ export default function CardUserAccount({
                   <Input {...register("streetAddress2")} type={"text"} placeholder={"E.g. apartment 12"}/>
                 </div>
 
+                <div className={"px-4 pb-2 relative w-full " + widths[2]}>
+                  <label className="block uppercase text-blueGray-700 text-xs font-bold mb-2 ml-1">POSTCODE/ZIP*</label>
+                  <Input {...register("postcode")} type={"text"} placeholder={"E.g. 340112"}/>
+                </div>
+
                 <div className={"px-4 pb-2 relative w-full " + widths[4]}>
                   <label className="block uppercase text-blueGray-700 text-xs font-bold mb-2 ml-1">CITY*</label>
                   <Input {...register("city")} type={"text"} placeholder={"E.g. Bucharest"}/>
+                </div>
+
+                <div className={"px-4 pb-2 relative w-full " + widths[4]}>
+                  <label className="block uppercase text-blueGray-700 text-xs font-bold mb-2 ml-1">COUNTY*</label>
+                  <Input {...register("county")} type={"text"} placeholder={"E.g. Bucharest"}/>
                 </div>
 
                 <div className={"px-4 pb-2 relative w-full " + widths[4]}>
@@ -149,14 +156,9 @@ export default function CardUserAccount({
                   <Input {...register("shipping_phone")} type={"text"} placeholder={"E.g. +1 (5417) 543 010"}/>
                 </div>
 
-                <div className={"px-4 pb-2 relative w-full " + widths[8]}>
+                <div className={"px-4 pb-2 relative w-full " + widths[6]}>
                   <label className="block uppercase text-blueGray-700 text-xs font-bold mb-2 ml-1">Street Address*</label>
                   <Input {...register("shipping_streetAddress")} type={"text"} placeholder={"E.g. Street Somesul Mic, number 1,Bucharest"}/>
-                </div>
-
-                <div className={"px-4 pb-2 relative w-full " + widths[4]}>
-                  <label className="block uppercase text-blueGray-700 text-xs font-bold mb-2 ml-1">POSTCODE/ZIP*</label>
-                  <Input {...register("shipping_postcode")} type={"text"} placeholder={"E.g. 340112"}/>
                 </div>
 
                 <div className={"px-4 pb-2 relative w-full " + widths[4]}>
@@ -164,9 +166,19 @@ export default function CardUserAccount({
                   <Input {...register("shipping_streetAddress2")} type={"text"} placeholder={"E.g. 340112"}/>
                 </div>
 
+                <div className={"px-4 pb-2 relative w-full " + widths[2]}>
+                  <label className="block uppercase text-blueGray-700 text-xs font-bold mb-2 ml-1">POSTCODE/ZIP*</label>
+                  <Input {...register("shipping_postcode")} type={"text"} placeholder={"E.g. 340112"}/>
+                </div>
+
                 <div className={"px-4 pb-2 relative w-full " + widths[4]}>
                   <label className="block uppercase text-blueGray-700 text-xs font-bold mb-2 ml-1">CITY*</label>
                   <Input {...register("shipping_city")} type={"text"} placeholder={"E.g. 340112"}/>
+                </div>
+
+                <div className={"px-4 pb-2 relative w-full " + widths[4]}>
+                  <label className="block uppercase text-blueGray-700 text-xs font-bold mb-2 ml-1">COUNTY*</label>
+                  <Input {...register("shipping_county")} type={"text"} placeholder={"E.g. 340112"}/>
                 </div>
 
                 <div className={"px-4 pb-2 relative w-full " + widths[4]}>

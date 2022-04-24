@@ -14,6 +14,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
+import java.util.List;
 import java.util.Objects;
 import java.util.UUID;
 
@@ -106,7 +107,10 @@ public class AppUserService implements UserDetailsService {
     }
 
 
-
+    public void saveAppUserDetails(String loginToken, List<String> userDetails){
+        Long appUserID = loginTokenService.getAppUserByLoginToken(loginToken).getAppUserID();
+        appUserRepository.saveUserDetails(userDetails.get(0),userDetails.get(1),userDetails.get(2),userDetails.get(4),appUserID);
+    }
 
 
     public int enableAppUser(String email) {

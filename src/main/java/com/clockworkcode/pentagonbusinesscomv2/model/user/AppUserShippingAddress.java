@@ -27,4 +27,16 @@ public class AppUserShippingAddress {
     @JoinColumn(name="app_userID",nullable = false) //O
     private AppUser appUser; //X   //Y- appUserID
 
+    public AppUserShippingAddress(String shippingAddress, String shippingCity, String shippingCounty, String shippingPostalCode, String shippingCountry, AppUser appUser) {
+        this.shippingAddress = shippingAddress;
+        this.shippingCity = shippingCity;
+        this.shippingCounty = shippingCounty;
+        this.shippingPostalCode = shippingPostalCode;
+        this.shippingCountry = shippingCountry;
+        this.appUser = appUser;
+    }
+
+    public AppUserShippingAddress() {
+
+    }
 }
