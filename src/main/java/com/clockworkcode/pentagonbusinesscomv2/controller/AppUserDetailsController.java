@@ -15,7 +15,7 @@ import java.util.List;
 @CrossOrigin(origins = "http://localhost:3000")
 @AllArgsConstructor
 @Slf4j
-public class AppUserAddressController {
+public class AppUserDetailsController {
     private final AppUserService appUserService;
     private final AppUserAddressService appUserAddressService;
     private final AppUserShippingAddressService appUserShippingAddressService;
@@ -23,22 +23,21 @@ public class AppUserAddressController {
     @PostMapping("/user-account/save-details")
     public void saveUserDetails(@RequestBody AppUserDetailsRequest request){
 
-        log.info("loginToken @useraccount: "+ request.getLoginToken());
-        log.info("firstName @useraccount: "+ request.getFirstName());
-        log.info("lastName @useraccount: "+ request.getLastName());
-        log.info("email @useraccount: "+ request.getEmail());
+//        log.info("loginToken @useraccount: "+ request.getLoginToken());
+//        log.info("firstName @useraccount: "+ request.getFirstName());
+//        log.info("lastName @useraccount: "+ request.getLastName());
+//        log.info("email @useraccount: "+ request.getEmail());
 //        log.info("user details list @useraccount: "+ request.getDetails());
 
-        //TODO DE FACUT METODA PRIN CARE ADAUGAM VALORILE PT USER DETAILS
         //TODO DE FACUT METODA PRIN CARE ADAUGAM VALORILE PT USER SHIPPING DETAILS
 
         List<String> appUserDetails =List.of(request.getFirstName(),request.getLastName(),request.getPhone(),request.getEmail());
         appUserService.saveAppUserDetails(request.getLoginToken(),appUserDetails);
 
 
-        List<String> userAddressDetails = List.of(request.getStreetAddress(),request.getStreetAddress2(),request.getPostcode()
+        List<String> appUserAddressDetails = List.of(request.getStreetAddress(),request.getStreetAddress2(),request.getPostcode()
                 ,request.getCity(),request.getCounty(), request.getCountry(),request.getPhone());
-        appUserAddressService.addUserAddress(request.getLoginToken(),userAddressDetails);
+        appUserAddressService.addUserAddress(request.getLoginToken(),appUserAddressDetails);
 
 
 

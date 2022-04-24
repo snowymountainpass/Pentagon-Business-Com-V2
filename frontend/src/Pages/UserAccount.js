@@ -10,7 +10,7 @@ import CardUserAccount from "../Components/EShop-Components/UserAccount Componen
 
 // texts as props
 import navbarlinkslanding2 from "../Texts/Presentation/navbar/navbarlinkslanding2";
-import headerimagetitlesmallcentercheckout from "../Texts/Ecommerce/UserAccount/headerimagetitlesmallcentercheckout";
+// import headerimagetitlesmallcentercheckout from "../Texts/Ecommerce/UserAccount/headerimagetitlesmallcentercheckout";
 import footersmall from "../Texts/Presentation/footers/footersmall";
 import carduseraccount from "../Texts/Ecommerce/UserAccount/carduseraccount";
 
@@ -22,7 +22,7 @@ export default function UserAccount() {
     return (
         <>
             <NavbarLinks {...navbarlinkslanding2} />
-            <HeaderImageTitleSmallCenter {...headerimagetitlesmallcentercheckout} />
+            <HeaderImageTitleSmallCenter/>
             <section className="relative bg-blueGray-100 py-12 z-2">
                 <div className="container mx-auto px-4 -mt-64">
                     <div className="flex flex-wrap justify-center">

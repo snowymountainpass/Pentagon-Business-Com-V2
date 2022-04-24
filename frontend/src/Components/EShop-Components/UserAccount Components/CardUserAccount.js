@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState} from "react";
 import PropTypes from "prop-types";
 
 import {useForm} from "react-hook-form";
@@ -6,6 +6,9 @@ import {useForm} from "react-hook-form";
 // components
 import Button from "../../Elements/Button";
 import Input from "../../Elements/Input.js";
+import {atom, useAtom} from "jotai";
+
+export const FIRSTNAME_LASTNAME = atom("");
 
 export default function CardUserAccount({
   returnButton,
@@ -28,8 +31,11 @@ export default function CardUserAccount({
 
   const {handleSubmit, register} = useForm();
 
+  const [firstNameLastName, setFirstNameLastName] = useAtom(FIRSTNAME_LASTNAME);
 
   function saveUserDetails(data){
+    
+    setFirstNameLastName(data.firstName+" "+data.lastName);
 
     const requestOptions = {
       method: 'POST',
