@@ -18,6 +18,7 @@ public class AppUserDetailsRequest {
     private final String postcode;
     private final String streetAddress2;
     private final String city;
+    private final String county;
     private final String country;
 
 }

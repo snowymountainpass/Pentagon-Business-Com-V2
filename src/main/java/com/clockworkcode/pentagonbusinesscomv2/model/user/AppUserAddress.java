@@ -40,7 +40,7 @@ public class AppUserAddress {
     @JoinColumn(name="app_userID",nullable = false) //O
     private AppUser appUser; //X   //Y- appUserID
 
-    public AppUserAddress(String addressLine1, String addressLine2, String city, String county, String country, String telephone, AppUser appUser) {
+    public AppUserAddress(String addressLine1, String addressLine2, String city, String county, String country, String telephone,String postalCode, AppUser appUser) {
         this.addressLine1 = addressLine1;
         this.addressLine2 = addressLine2;
         this.city = city;
@@ -48,5 +48,6 @@ public class AppUserAddress {
         this.country = country;
         this.telephone = telephone;
         this.appUser = appUser;
+        this.postalCode=postalCode;
     }
 }

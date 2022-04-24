@@ -22,11 +22,18 @@ public class AppUserAddressService {
 
         AppUser appUser = loginTokenService.getAppUserByLoginToken(loginToken);
 
-//        appUserAddressRepository.save(
-//                new AppUserAddress(
-//
-//                )
-//        );
+        appUserAddressRepository.save(
+                new AppUserAddress(
+                    userAddressDetails.get(0),
+                        userAddressDetails.get(1),
+                        userAddressDetails.get(3),
+                        userAddressDetails.get(4),
+                        userAddressDetails.get(5),
+                        userAddressDetails.get(6),
+                        userAddressDetails.get(2),
+                        appUser
+                )
+        );
 
     }
 

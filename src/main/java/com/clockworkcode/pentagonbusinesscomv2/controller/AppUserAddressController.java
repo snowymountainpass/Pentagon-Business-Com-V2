@@ -36,8 +36,8 @@ public class AppUserAddressController {
         appUserService.saveAppUserDetails(request.getLoginToken(),appUserDetails);
 
 
-        List<String> userAddressDetails = List.of(request.getStreetAddress(), request.getPostcode(),
-                                                    request.getStreetAddress2(),request.getCity(), request.getCountry());
+        List<String> userAddressDetails = List.of(request.getStreetAddress(),request.getStreetAddress2(),request.getPostcode()
+                ,request.getCity(),request.getCounty(), request.getCountry(),request.getPhone());
         appUserAddressService.addUserAddress(request.getLoginToken(),userAddressDetails);
 
 
