@@ -32,9 +32,9 @@ export default function CardUserAccount({
   const {handleSubmit, register} = useForm();
 
   const [firstNameLastName, setFirstNameLastName] = useAtom(FIRSTNAME_LASTNAME);
-
+  //TODO: fetch data pt campuri completate sau folosim Atom
   function saveUserDetails(data){
-    
+
     setFirstNameLastName(data.firstName+" "+data.lastName);
 
     const requestOptions = {
@@ -53,16 +53,6 @@ export default function CardUserAccount({
                   county:data.county,
                   country:data.country,
 
-                  shipping_firstName:data.shipping_firstName,
-                  shipping_lastName:data.shipping_lastName,
-                  shipping_email:data.shipping_email,
-                  shipping_phone:data.shipping_phone,
-                  shipping_streetAddress:data.shipping_streetAddress,
-                  shipping_postcode:data.shipping_postcode,
-                  shipping_streetAddress2:data.shipping_streetAddress2,
-                  shipping_city:data.shipping_city,
-                  shipping_county:data.shipping_county,
-                  shipping_country:data.shipping_country
       }
       )
     };
@@ -73,15 +63,41 @@ export default function CardUserAccount({
     console.log(data.email);
   }
 
-  function details(){
-    console.log("showing details!");
+  function saveUserShippingDetails(data){
+
+    const requestOptions = {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(
+          { loginToken: localStorage.getItem("PTG V2 Login Token"),
+            shipping_firstName:data.shipping_firstName,
+            shipping_lastName:data.shipping_lastName,
+            shipping_email:data.shipping_email,
+            shipping_phone:data.shipping_phone,
+            shipping_streetAddress:data.shipping_streetAddress,
+            shipping_postcode:data.shipping_postcode,
+            shipping_streetAddress2:data.shipping_streetAddress2,
+            shipping_city:data.shipping_city,
+            shipping_county:data.shipping_county,
+            shipping_country:data.shipping_country
+          }
+      )
+    };
+
+    fetch('http://localhost:8080/e-shop/user-account/save-shipping-details', requestOptions).then(r => r);
+
+  }
+
+  function details(data){
+    saveUserDetails(data);
+    saveUserShippingDetails(data)
   }
 
   return (
     <>
       <div className="relative flex flex-col min-w-0 break-words bg-white w-full mb-6 shadow-lg rounded-lg">
         <div className="px-4 py-5 flex-auto">
-          <form onSubmit={handleSubmit(saveUserDetails)}>
+          <form onSubmit={handleSubmit(details)}>
             {/*onSubmit={handleSubmit(saveUserDetails)}*/}
             <div className="container mx-auto px-4">
               <h3 className="text-3xl font-semibold mt-4 mb-6">Account/Billing Details</h3>

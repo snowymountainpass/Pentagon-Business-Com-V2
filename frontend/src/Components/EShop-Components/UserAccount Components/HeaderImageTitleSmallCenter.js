@@ -4,7 +4,7 @@ import PropTypes from "prop-types";
 // components
 import Skew from "../../Skews/Skew";
 
-import {FIRSTNAME_LASTNAME} from "../UserAccount Components/CardUserAccount";
+import {FIRSTNAME_LASTNAME} from "./CardUserAccount";
 import {useAtom} from "jotai";
 
 export default function HeaderImageTitleSmallCenter() {

@@ -12,7 +12,18 @@ public class AppUserShippingAddress {
     private Long appUserShippingAddressID;
 
     @Column(nullable = false,columnDefinition = "text")
+    private String shippingFirstName;
+    @Column(nullable = false,columnDefinition = "text")
+    private String shippingLastName;
+    @Column(nullable = false,columnDefinition = "text")
+    private String shippingTelephone;
+    @Column(nullable = false,columnDefinition = "text")
+    private String shippingEmail;
+
+    @Column(nullable = false,columnDefinition = "text")
     private String shippingAddress;
+    @Column(nullable = false,columnDefinition = "text")
+    private String shippingAddress2;
     @Column(nullable = false,columnDefinition = "text")
     private String shippingCity;
     @Column(nullable = false,columnDefinition = "text")
@@ -27,8 +38,15 @@ public class AppUserShippingAddress {
     @JoinColumn(name="app_userID",nullable = false) //O
     private AppUser appUser; //X   //Y- appUserID
 
-    public AppUserShippingAddress(String shippingAddress, String shippingCity, String shippingCounty, String shippingPostalCode, String shippingCountry, AppUser appUser) {
+    public AppUserShippingAddress(String shippingFirstName,String shippingLastName,String shippingEmail ,String shippingTelephone,
+            String shippingAddress,String shippingPostalCode,String shippingAddress2, String shippingCity, String shippingCounty , String shippingCountry, AppUser appUser)
+    {
+        this.shippingFirstName=shippingFirstName;
+        this.shippingLastName=shippingLastName;
+        this.shippingEmail=shippingEmail;
+        this.shippingTelephone=shippingTelephone;
         this.shippingAddress = shippingAddress;
+        this.shippingAddress2 = shippingAddress2;
         this.shippingCity = shippingCity;
         this.shippingCounty = shippingCounty;
         this.shippingPostalCode = shippingPostalCode;

@@ -9,6 +9,7 @@ import lombok.*;
 @ToString
 public class AppUserShippingAddressRequest {
 
+    private final String loginToken;
     private final String shipping_firstName ;
     private final String shipping_lastName ;
     private final String shipping_email;
@@ -17,6 +18,7 @@ public class AppUserShippingAddressRequest {
     private final String shipping_postcode;
     private final String shipping_streetAddress2;
     private final String shipping_city;
+    private final String shipping_county;
     private final String shipping_country;
 
 }
