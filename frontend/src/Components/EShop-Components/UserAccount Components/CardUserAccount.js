@@ -98,7 +98,10 @@ export default function CardUserAccount({
     saveUserShippingDetails(data);
   }
 
-  
+  useEffect(()=>{
+    console.log("userDetails: "+userDetails);
+    console.log("userShippingDetails: "+userShippingDetails);
+  },[userDetails,userShippingDetails])
 
   return (
     <>
