@@ -81,6 +81,7 @@ const textProps = {
   returnButton: {
     color: "light",
     children: "Return to cart",
+
   },
   detailsButton: {
     color: "purple",

@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
 import PropTypes from "prop-types";
 
 import {useForm} from "react-hook-form";
@@ -32,6 +32,10 @@ export default function CardUserAccount({
   const {handleSubmit, register} = useForm();
 
   const [firstNameLastName, setFirstNameLastName] = useAtom(FIRSTNAME_LASTNAME);
+
+  const [userDetails,setUserDetails] = useState([]);
+  const [userShippingDetails,setUserShippingDetails] = useState([]);
+
   //TODO: fetch data pt campuri completate sau folosim Atom
   function saveUserDetails(data){
 
@@ -57,10 +61,9 @@ export default function CardUserAccount({
       )
     };
 
-    fetch('http://localhost:8080/e-shop/user-account/save-details', requestOptions).then(r => r);
+    fetch('http://localhost:8080/e-shop/user-account/save-details', requestOptions).then(r => r.json()).then(data=>{setUserDetails(data)});
 
-    console.log(data);
-    console.log(data.email);
+    // console.log(data.email);
   }
 
   function saveUserShippingDetails(data){
@@ -84,7 +87,9 @@ export default function CardUserAccount({
       )
     };
 
-    fetch('http://localhost:8080/e-shop/user-account/save-shipping-details', requestOptions).then(r => r);
+    fetch('http://localhost:8080/e-shop/user-account/save-shipping-details', requestOptions).then(r => r.json()).then(data=>{setUserShippingDetails(data)});
+
+
 
   }
 
@@ -92,6 +97,12 @@ export default function CardUserAccount({
     saveUserDetails(data);
     saveUserShippingDetails(data)
   }
+
+  useEffect(()=>{
+
+    console.log("returned userDetails data: "+ userDetails);
+    console.log("returned userShippingDetails data: "+ userShippingDetails);
+  },[userDetails,userShippingDetails])
 
   return (
     <>
@@ -105,52 +116,52 @@ export default function CardUserAccount({
 
                 <div className={"px-4 pb-2 relative w-full " + widths[6]}>
                   <label className="block uppercase text-blueGray-700 text-xs font-bold mb-2 ml-1">First Name*</label>
-                  <Input {...register("firstName")} type={"text"} placeholder={"E.g. John"}/>
+                  <Input {...register("firstName")} type={"text"} placeholder={"E.g. John"} value={userDetails[0]} />
                 </div>
 
                 <div className={"px-4 pb-2 relative w-full " + widths[6]}>
                   <label className="block uppercase text-blueGray-700 text-xs font-bold mb-2 ml-1">Last Name*</label>
-                  <Input {...register("lastName")} type={"text"} placeholder={"E.g. Smith"}/>
+                  <Input {...register("lastName")} type={"text"} placeholder={"E.g. Smith"} value={userDetails[1]}/>
                 </div>
 
                 <div className={"px-4 pb-2 relative w-full " + widths[6]}>
                   <label className="block uppercase text-blueGray-700 text-xs font-bold mb-2 ml-1">Email*</label>
-                  <Input {...register("email")} type={"email"} placeholder={"E.g. johnsmith123@yahoo.com"}/>
+                  <Input {...register("email")} type={"email"} placeholder={"E.g. johnsmith123@yahoo.com"} value={userDetails[3]}/>
                 </div>
 
                 <div className={"px-4 pb-2 relative w-full " + widths[6]}>
                   <label className="block uppercase text-blueGray-700 text-xs font-bold mb-2 ml-1">Phone*</label>
-                  <Input {...register("phone")} type={"text"} placeholder={"E.g. +1 (5417) 543 010"}/>
+                  <Input {...register("phone")} type={"text"} placeholder={"E.g. +1 (5417) 543 010"} value={userDetails[2]}/>
                 </div>
 
                 <div className={"px-4 pb-2 relative w-full " + widths[6]}>
                   <label className="block uppercase text-blueGray-700 text-xs font-bold mb-2 ml-1">Street Address*</label>
-                  <Input {...register("streetAddress")} type={"text"} placeholder={"E.g. Street Somesul Mic, number 1,Bucharest"}/>
+                  <Input {...register("streetAddress")} type={"text"} placeholder={"E.g. Street Somesul Mic, number 1,Bucharest"} value={userDetails[4]}/>
                 </div>
 
                 <div className={"px-4 pb-2 relative w-full " + widths[4]}>
                   <label className="block uppercase text-blueGray-700 text-xs font-bold mb-2 ml-1">APT, SUITE, ETC.</label>
-                  <Input {...register("streetAddress2")} type={"text"} placeholder={"E.g. apartment 12"}/>
+                  <Input {...register("streetAddress2")} type={"text"} placeholder={"E.g. apartment 12"} value={userDetails[5]}/>
                 </div>
 
                 <div className={"px-4 pb-2 relative w-full " + widths[2]}>
                   <label className="block uppercase text-blueGray-700 text-xs font-bold mb-2 ml-1">POSTCODE/ZIP*</label>
-                  <Input {...register("postcode")} type={"text"} placeholder={"E.g. 340112"}/>
+                  <Input {...register("postcode")} type={"text"} placeholder={"E.g. 340112"} value={userDetails[6]}/>
                 </div>
 
                 <div className={"px-4 pb-2 relative w-full " + widths[4]}>
                   <label className="block uppercase text-blueGray-700 text-xs font-bold mb-2 ml-1">CITY*</label>
-                  <Input {...register("city")} type={"text"} placeholder={"E.g. Bucharest"}/>
+                  <Input {...register("city")} type={"text"} placeholder={"E.g. Bucharest"} value={userDetails[7]}/>
                 </div>
 
                 <div className={"px-4 pb-2 relative w-full " + widths[4]}>
                   <label className="block uppercase text-blueGray-700 text-xs font-bold mb-2 ml-1">COUNTY*</label>
-                  <Input {...register("county")} type={"text"} placeholder={"E.g. Bucharest"}/>
+                  <Input {...register("county")} type={"text"} placeholder={"E.g. Bucharest"} value={userDetails[8]}/>
                 </div>
 
                 <div className={"px-4 pb-2 relative w-full " + widths[4]}>
                   <label className="block uppercase text-blueGray-700 text-xs font-bold mb-2 ml-1">COUNTRY*</label>
-                  <Input {...register("country")} type={"text"} placeholder={"E.g. Romania"}/>
+                  <Input {...register("country")} type={"text"} placeholder={"E.g. Romania"} value={userDetails[9]}/>
                 </div>
 
               </div>
@@ -160,58 +171,58 @@ export default function CardUserAccount({
 
                 <div className={"px-4 pb-2 relative w-full " + widths[6]}>
                   <label className="block uppercase text-blueGray-700 text-xs font-bold mb-2 ml-1">First Name*</label>
-                  <Input {...register("shipping_firstName")} type={"text"} placeholder={"E.g. John"}/>
+                  <Input {...register("shipping_firstName")} type={"text"} placeholder={"E.g. John"} value={userShippingDetails[1]}/>
                 </div>
 
                 <div className={"px-4 pb-2 relative w-full " + widths[6]}>
                   <label className="block uppercase text-blueGray-700 text-xs font-bold mb-2 ml-1">Last Name*</label>
-                  <Input {...register("shipping_lastName")} type={"text"} placeholder={"E.g. Smith"}/>
+                  <Input {...register("shipping_lastName")} type={"text"} placeholder={"E.g. Smith"} value={userShippingDetails[2]}/>
                 </div>
 
                 <div className={"px-4 pb-2 relative w-full " + widths[6]}>
                   <label className="block uppercase text-blueGray-700 text-xs font-bold mb-2 ml-1">Email*</label>
-                  <Input {...register("shipping_email")} type={"email"} placeholder={"E.g. johnsmith123@yahoo.com"}/>
+                  <Input {...register("shipping_email")} type={"email"} placeholder={"E.g. johnsmith123@yahoo.com"} value={userShippingDetails[3]}/>
                 </div>
 
                 <div className={"px-4 pb-2 relative w-full " + widths[6]}>
                   <label className="block uppercase text-blueGray-700 text-xs font-bold mb-2 ml-1">Phone*</label>
-                  <Input {...register("shipping_phone")} type={"text"} placeholder={"E.g. +1 (5417) 543 010"}/>
+                  <Input {...register("shipping_phone")} type={"text"} placeholder={"E.g. +1 (5417) 543 010"} value={userShippingDetails[4]}/>
                 </div>
 
                 <div className={"px-4 pb-2 relative w-full " + widths[6]}>
                   <label className="block uppercase text-blueGray-700 text-xs font-bold mb-2 ml-1">Street Address*</label>
-                  <Input {...register("shipping_streetAddress")} type={"text"} placeholder={"E.g. Street Somesul Mic, number 1,Bucharest"}/>
+                  <Input {...register("shipping_streetAddress")} type={"text"} placeholder={"E.g. Street Somesul Mic, number 1,Bucharest"} value={userShippingDetails[5]}/>
                 </div>
 
                 <div className={"px-4 pb-2 relative w-full " + widths[4]}>
                   <label className="block uppercase text-blueGray-700 text-xs font-bold mb-2 ml-1">APT, SUITE, ETC.</label>
-                  <Input {...register("shipping_streetAddress2")} type={"text"} placeholder={"E.g. 340112"}/>
+                  <Input {...register("shipping_streetAddress2")} type={"text"} placeholder={"E.g. 340112"} value={userShippingDetails[7]}/>
                 </div>
 
                 <div className={"px-4 pb-2 relative w-full " + widths[2]}>
                   <label className="block uppercase text-blueGray-700 text-xs font-bold mb-2 ml-1">POSTCODE/ZIP*</label>
-                  <Input {...register("shipping_postcode")} type={"text"} placeholder={"E.g. 340112"}/>
+                  <Input {...register("shipping_postcode")} type={"text"} placeholder={"E.g. 340112"} value={userShippingDetails[6]}/>
                 </div>
 
                 <div className={"px-4 pb-2 relative w-full " + widths[4]}>
                   <label className="block uppercase text-blueGray-700 text-xs font-bold mb-2 ml-1">CITY*</label>
-                  <Input {...register("shipping_city")} type={"text"} placeholder={"E.g. 340112"}/>
+                  <Input {...register("shipping_city")} type={"text"} placeholder={"E.g. 340112"} value={userShippingDetails[8]}/>
                 </div>
 
                 <div className={"px-4 pb-2 relative w-full " + widths[4]}>
                   <label className="block uppercase text-blueGray-700 text-xs font-bold mb-2 ml-1">COUNTY*</label>
-                  <Input {...register("shipping_county")} type={"text"} placeholder={"E.g. 340112"}/>
+                  <Input {...register("shipping_county")} type={"text"} placeholder={"E.g. 340112"} value={userShippingDetails[9]}/>
                 </div>
 
                 <div className={"px-4 pb-2 relative w-full " + widths[4]}>
                   <label className="block uppercase text-blueGray-700 text-xs font-bold mb-2 ml-1">COUNTRY*</label>
-                  <Input {...register("shipping_country")} type={"text"} placeholder={"E.g. Input Country"}/>
+                  <Input {...register("shipping_country")} type={"text"} placeholder={"E.g. Input Country"} value={userShippingDetails[10]}/>
                 </div>
 
               </div>
 
               <div className="flex justify-between mt-12 mb-8">
-                <Button {...returnButton} />
+                <Button {...returnButton}/>
                 <Button {...detailsButton} />
               </div>
             </div>
@@ -294,50 +305,3 @@ CardUserAccount.propTypes = {
   // props to pass to the Button component on the right
   orderButton: PropTypes.object,
 };
-
-
-
-// <form>
-//   <div className="container mx-auto px-4">
-//     <h3 className="text-3xl font-semibold mt-4 mb-6">Account/Billing Details</h3>
-//     <div className="flex flex-wrap -mx-4">
-//       {inputs.map((prop, key) => (
-//           <div
-//               key={key}
-//               className={
-//                   "px-4 pb-2 relative w-full " + widths[prop.width]
-//               }
-//           >
-//             <label className="block uppercase text-blueGray-700 text-xs font-bold mb-2 ml-1">
-//               {prop.label}
-//             </label>
-//             {prop.input && <Input {...prop.input} />}
-//             {prop.select && <Select {...prop.select} />}
-//           </div>
-//       ))}
-//     </div>
-//
-//     <h3 className="text-3xl font-semibold mt-4 mb-6">Shipping Details</h3>
-//     <div className="flex flex-wrap -mx-4">
-//       {inputs.map((prop, key) => (
-//           <div
-//               key={key}
-//               className={
-//                   "px-4 pb-2 relative w-full " + widths[prop.width]
-//               }
-//           >
-//             <label className="block uppercase text-blueGray-700 text-xs font-bold mb-2 ml-1">
-//               {prop.label}
-//             </label>
-//             {prop.input && <Input {...prop.input} />}
-//             {prop.select && <Select {...prop.select} />}
-//           </div>
-//       ))}
-//     </div>
-//
-//     <div className="flex justify-between mt-12 mb-8">
-//       <Button {...returnButton} />
-//       <Button {...orderButton} />
-//     </div>
-//   </div>
-// </form>

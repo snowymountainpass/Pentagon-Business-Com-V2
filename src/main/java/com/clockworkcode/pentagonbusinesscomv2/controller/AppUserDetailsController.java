@@ -9,7 +9,10 @@ import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 @RestController
 @RequestMapping(path = "/e-shop")
@@ -22,14 +25,7 @@ public class AppUserDetailsController {
     private final AppUserShippingAddressService appUserShippingAddressService;
 
     @PostMapping("/user-account/save-details")
-    public void saveUserDetails(@RequestBody AppUserDetailsRequest request){
-
-//        log.info("loginToken @useraccount: "+ request.getLoginToken());
-//        log.info("firstName @useraccount: "+ request.getFirstName());
-//        log.info("lastName @useraccount: "+ request.getLastName());
-//        log.info("email @useraccount: "+ request.getEmail());
-//        log.info("user details list @useraccount: "+ request.getDetails());
-
+    public List<String> saveUserDetails(@RequestBody AppUserDetailsRequest request){
 
         List<String> appUserDetails =List.of(request.getFirstName(),request.getLastName(),request.getPhone(),request.getEmail());
         appUserService.saveAppUserDetails(request.getLoginToken(),appUserDetails);
@@ -39,13 +35,11 @@ public class AppUserDetailsController {
                 ,request.getCity(),request.getCounty(), request.getCountry(),request.getPhone());
         appUserAddressService.addUserAddress(request.getLoginToken(),appUserAddressDetails);
 
-        //TODO DE FACUT  facem aici un get un returnam toate valorile !== null sau ""
+        return Stream.concat( appUserDetails.stream(),appUserAddressDetails.stream() ).collect(Collectors.toList());
     }
 
     @PostMapping("/user-account/save-shipping-details")
-    public void saveUserShippingDetails(@RequestBody AppUserShippingAddressRequest request){
-
-        //TODO DE FACUT METODA PRIN CARE ADAUGAM VALORILE PT USER SHIPPING DETAILS
+    public List<String> saveUserShippingDetails(@RequestBody AppUserShippingAddressRequest request){
 
         List<String> appUserShippingDetails = List.of(
                 request.getLoginToken(),
@@ -62,5 +56,7 @@ public class AppUserDetailsController {
         );
 
         appUserShippingAddressService.addUserShippingAddress(appUserShippingDetails);
+
+        return appUserShippingDetails;
     }
 }
