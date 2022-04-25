@@ -9,6 +9,8 @@ import Input from "../../Elements/Input.js";
 import {atom, useAtom} from "jotai";
 
 export const FIRSTNAME_LASTNAME = atom("");
+const USER_DETAILS = atom([]);
+const USER_SHIPPING_DETAILS = atom([]);
 
 export default function CardUserAccount({
   returnButton,
@@ -33,10 +35,9 @@ export default function CardUserAccount({
 
   const [firstNameLastName, setFirstNameLastName] = useAtom(FIRSTNAME_LASTNAME);
 
-  const [userDetails,setUserDetails] = useState([]);
-  const [userShippingDetails,setUserShippingDetails] = useState([]);
+  const [userDetails,setUserDetails] = useAtom(USER_DETAILS);
+  const [userShippingDetails,setUserShippingDetails] = useAtom(USER_SHIPPING_DETAILS);
 
-  //TODO: fetch data pt campuri completate sau folosim Atom
   function saveUserDetails(data){
 
     setFirstNameLastName(data.firstName+" "+data.lastName);
@@ -63,7 +64,6 @@ export default function CardUserAccount({
 
     fetch('http://localhost:8080/e-shop/user-account/save-details', requestOptions).then(r => r.json()).then(data=>{setUserDetails(data)});
 
-    // console.log(data.email);
   }
 
   function saveUserShippingDetails(data){
@@ -95,21 +95,16 @@ export default function CardUserAccount({
 
   function details(data){
     saveUserDetails(data);
-    saveUserShippingDetails(data)
+    saveUserShippingDetails(data);
   }
 
-  useEffect(()=>{
-
-    console.log("returned userDetails data: "+ userDetails);
-    console.log("returned userShippingDetails data: "+ userShippingDetails);
-  },[userDetails,userShippingDetails])
+  
 
   return (
     <>
       <div className="relative flex flex-col min-w-0 break-words bg-white w-full mb-6 shadow-lg rounded-lg">
         <div className="px-4 py-5 flex-auto">
           <form onSubmit={handleSubmit(details)}>
-            {/*onSubmit={handleSubmit(saveUserDetails)}*/}
             <div className="container mx-auto px-4">
               <h3 className="text-3xl font-semibold mt-4 mb-6">Account/Billing Details</h3>
               <div className="flex flex-wrap -mx-4">
