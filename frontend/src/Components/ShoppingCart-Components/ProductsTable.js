@@ -18,18 +18,15 @@ export default function ProductsTable({}){
                 </tr>
                 </thead>
 
-                {/*TABLE BODY*/}
                 <tbody>
                 <ProductRow/>
                 </tbody>
-                {/*TABLE BODY*/}
 
             </table>
 
             <div className="card-body border-top">
                 <a href="#" className="btn btn-primary float-md-right"> Make Purchase <i className="fa fa-chevron-right"/>
                 </a>
-                {/*<a href="/e-shop" className="btn btn-light"> <i className="fa fa-chevron-left"/> Continue shopping </a>*/}
                 <Link to="/e-shop" className="btn btn-light"> <i className="fa fa-chevron-left"/> Continue shopping </Link>
             </div>
         </div>
