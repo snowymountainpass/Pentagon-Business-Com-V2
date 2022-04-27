@@ -4,9 +4,7 @@ import PropTypes from "prop-types";
 
 // components
 import Heading2Badge from "../../../Headings/Heading2Badge";
-// import InfoAreaIconTitleLinkColor from "../../../InfoAreas/Presentation/InfoAreaIconTitleLinkColor";
 import CardInfoFullColor from "../../../Cards/Presentation/CardInfoFullColor";
-import cardinfofullcolor from "../../../../Texts/Presentation/cards/cardinfofullcolor";
 
 export default function Hero5({ heading2badge, infoAreas }) {
   return (
@@ -20,7 +18,6 @@ export default function Hero5({ heading2badge, infoAreas }) {
                 className="text-center px-4 relative w-full lg:w-4/12"
                 key={key}
               >
-                {/*<InfoAreaIconTitleLinkColor {...prop} />*/}
                 <CardInfoFullColor {...prop}/>
               </div>
             );
