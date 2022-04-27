@@ -2,8 +2,8 @@ package com.clockworkcode.pentagonbusinesscomv2.model.user;
 
 import javax.persistence.*;
 
-@Entity(name = "AppUserShippingAddress") //singular !!
-@Table(name = "app_user_shipping_addresses") //plural !!
+@Entity(name = "AppUserShippingAddress")
+@Table(name = "app_user_shipping_addresses")
 public class AppUserShippingAddress {
 
     @Id
@@ -32,8 +32,7 @@ public class AppUserShippingAddress {
     private String shippingPostalCode;
     @Column(nullable = false,columnDefinition = "text")
     private String shippingCountry;
-
-    // ONE TO MANY => One user can have many addresses && one address can belong to many users
+    
     @ManyToOne
     @JoinColumn(name="app_userID",nullable = false) //O
     private AppUser appUser; //X   //Y- appUserID

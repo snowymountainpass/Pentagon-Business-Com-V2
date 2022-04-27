@@ -21,39 +21,27 @@ import java.util.List;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-@Entity(name = "AppUser") //singular !!
-@Table(name = "app_users") //plural !!
+@Entity(name = "AppUser")
+@Table(name = "app_users")
 public class AppUser implements UserDetails {
 
     @Id
     @SequenceGenerator(name ="appuser_sequence" ,sequenceName ="appuser_sequence" ,allocationSize = 1)
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "appuser_sequence")
-    private Long appUserID; //Y - appUserID
+    private Long appUserID;
 
-
-
-//    @Column(nullable = false,columnDefinition = "text")
     private String username;
-//    @Column(nullable = false,columnDefinition = "text")
     private String password;
-//    @Column(nullable = false,columnDefinition = "text")
     private String firstName;
-//    @Column(nullable = false,columnDefinition = "text")
     private String lastName;
-//    @Column(nullable = false,columnDefinition = "text")
     private String telephone;
-//    @Column(nullable = false,columnDefinition = "text",unique = true)
     private String email;
-//    @Column(nullable = false)
-//    private Timestamp createAt;
-//    @Column(nullable = false)
-//    private Timestamp modifiedAt;
 
-    @OneToMany(mappedBy = "appUser") //X
-    private List<AppUserAddress> appUserAddresses; //O
+    @OneToMany(mappedBy = "appUser")
+    private List<AppUserAddress> appUserAddresses;
 
-    @OneToMany(mappedBy = "appUser") //X
-    private List<AppUserShippingAddress> appUserShippingAddresses; //O
+    @OneToMany(mappedBy = "appUser")
+    private List<AppUserShippingAddress> appUserShippingAddresses;
 
     @OneToMany(mappedBy = "appUser")
     private List<AppUserPayment> appUserPayments;
@@ -68,12 +56,6 @@ public class AppUser implements UserDetails {
 
     @OneToOne(mappedBy = "appUser")
     private OrderDetail orderDetail;
-
-//    @OneToOne(mappedBy = "appUser",orphanRemoval = true)
-//    @JsonManagedReference
-//    private ShoppingSession shoppingSession;
-
-
 
     @Enumerated(EnumType.STRING)
     private AppUserRole appUserRole;

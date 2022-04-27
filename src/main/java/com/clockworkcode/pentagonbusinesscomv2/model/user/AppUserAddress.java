@@ -9,8 +9,8 @@ import javax.persistence.*;
 @NoArgsConstructor
 @AllArgsConstructor
 
-@Entity(name = "AppUserAddress") //singular !!
-@Table(name = "app_user_addresses") //plural !!
+@Entity(name = "AppUserAddress")
+@Table(name = "app_user_addresses")
 public class AppUserAddress {
 
     @Id
@@ -33,12 +33,9 @@ public class AppUserAddress {
     @Column(nullable = false,columnDefinition = "text")
     private String postalCode;
 
-
-
-    // ONE TO MANY => One user can have many addresses && one address can belong to many users
     @ManyToOne
-    @JoinColumn(name="app_userID",nullable = false) //O
-    private AppUser appUser; //X   //Y- appUserID
+    @JoinColumn(name="app_userID",nullable = false)
+    private AppUser appUser;
 
     public AppUserAddress(String addressLine1, String addressLine2, String city, String county, String country, String telephone,String postalCode, AppUser appUser) {
         this.addressLine1 = addressLine1;

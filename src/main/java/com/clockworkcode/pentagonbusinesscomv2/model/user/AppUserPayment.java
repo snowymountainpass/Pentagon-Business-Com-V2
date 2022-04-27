@@ -13,8 +13,8 @@ import java.util.Date;
 @NoArgsConstructor
 @AllArgsConstructor
 
-@Entity(name = "AppUserPayment") //singular !!
-@Table(name = "app_user_payments") //plural !!
+@Entity(name = "AppUserPayment")
+@Table(name = "app_user_payments")
 public class AppUserPayment {
 
     @Id
@@ -33,5 +33,5 @@ public class AppUserPayment {
 
     @ManyToOne
     @JoinColumn(name = "app_userID",nullable = false)
-    private AppUser appUser; // ONE TO MANY => One user can have many payments && Many PAYMENTS can belong to one user
+    private AppUser appUser;
 }

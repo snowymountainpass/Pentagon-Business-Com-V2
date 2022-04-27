@@ -13,8 +13,8 @@ import java.sql.Timestamp;
 @NoArgsConstructor
 @AllArgsConstructor
 
-@Entity(name = "AdminType") //singular !!
-@Table(name = "admin_types") //plural !!
+@Entity(name = "AdminType")
+@Table(name = "admin_types")
 public class AdminType {
 
     @Id
@@ -30,9 +30,6 @@ public class AdminType {
     private Timestamp createdAt;
     @Column(nullable = false)
     private Timestamp modifiedAt;
-
-//    @OneToOne(mappedBy = "adminType")
-//    private AdminAppUser adminAppUser;
 
     @OneToOne(mappedBy = "adminType")
     private AdminAppUser adminAppUser;
