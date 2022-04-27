@@ -14,17 +14,14 @@ import java.sql.Timestamp;
 @NoArgsConstructor
 @AllArgsConstructor
 
-@Entity(name = "PaymentDetail") //singular !!
-@Table(name = "paymentdetails") //plural !!
+@Entity(name = "PaymentDetail")
+@Table(name = "paymentdetails")
 public class PaymentDetail {
 
     @Id
     @SequenceGenerator(name ="paymentdetail_sequence" ,sequenceName ="paymentdetail_sequence" ,allocationSize = 1)
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "paymentdetail_sequence")
     private Long paymentDetailID;
-
-
-//    private Long orderID;
 
     @Column(nullable = false)
     private BigDecimal paymentAmount;

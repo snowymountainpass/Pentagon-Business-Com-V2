@@ -16,8 +16,8 @@ import java.util.Set;
 @NoArgsConstructor
 @AllArgsConstructor
 
-@Entity(name = "OrderDetail") //singular !!
-@Table(name = "orderdetails") //plural !!
+@Entity(name = "OrderDetail")
+@Table(name = "orderdetails")
 public class OrderDetail {
 
     @Id

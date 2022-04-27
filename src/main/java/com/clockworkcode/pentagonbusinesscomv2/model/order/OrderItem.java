@@ -14,8 +14,8 @@ import java.sql.Timestamp;
 @NoArgsConstructor
 @AllArgsConstructor
 
-@Entity(name = "OrderItem") //singular !!
-@Table(name = "orderitems") //plural !!
+@Entity(name = "OrderItem")
+@Table(name = "orderitems")
 public class OrderItem {
 
     @Id
