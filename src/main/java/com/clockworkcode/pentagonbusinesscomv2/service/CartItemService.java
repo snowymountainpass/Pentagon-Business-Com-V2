@@ -37,15 +37,12 @@ public class CartItemService {
 
     public void updateCartItemQuantity(String loginToken, Long productId, Integer quantity) {
 
-
         List<CartItem> cartItemList = cartItemRepository.findAll().stream().filter(cartItem -> cartItem.getProduct().getProductID().equals(productId)).collect(Collectors.toList());
 
         if (cartItemList.size() != 0) {
 
             log.info(cartItemList.get(0).getProduct().getProductName() + " has a Q of: " + cartItemList.get(0).getQuantity());
 
-
-//            cartItemList.get(0).setQuantity( cartItemList.get(0).getQuantity() + quantity);
             cartItemRepository.updateIncreaseCartItemQuantity(quantity, cartItemList.get(0).getCartItemID());
             log.info("updateCartItemQuantity-EXISTING => Product " + cartItemList.get(0).getProduct().getProductName() + " had its quantity updated; current Q: " + cartItemList.get(0).getQuantity());
         } else {
@@ -53,41 +50,21 @@ public class CartItemService {
             addNewCartItem(loginToken, productId, quantity);
         }
 
-        // IF CART ITEM QUANTITY REACHES 0 IT IS DELETED FROM THE SHOPPING SESSION
         cartItemList.stream().filter(cartItem -> cartItem.getQuantity()==0).collect(Collectors.toList()).forEach(cartItem -> removeCartItem(cartItem.getCartItemID()));
-
-
 
     }
 
 
     public Integer getNumberItemsInCart() {
-
-//        List<Integer> quantities = new ArrayList<>();
-//        new ArrayList<>(cartItemRepository.findAll()).forEach(cartItem -> quantities.add(cartItem.getQuantity()));
-
-//        return quantities.stream().reduce(0,Integer::sum);
-        Integer totalNrItemsCart = cartItemRepository.getTotalNumberOfItemsInCart();
         return cartItemRepository.getTotalNumberOfItemsInCart();
-
     }
 
     public void removeCartItem(Long cartItemID) {
-
         log.info("reached ShoppingSessionService - removeCartItem - ID: "+ cartItemID);
         cartItemRepository.deleteCartItemByCartItemID(cartItemID);
     }
 
-
     public Integer getTotalValueAmountProductsInCart(String loginToken) {
-
-
-
-        // quantity * price
-//       return cartItemRepository.getTotalValueOfItemsInCart(loginToken); // old version
        return cartItemRepository.getTotalValueOfItemsInCart(shoppingSessionService.getShoppingSessionByLoginToken(loginToken).getShoppingSessionID());
-
-//        return 10;
-
     }
 }

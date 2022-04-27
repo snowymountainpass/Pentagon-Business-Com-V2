@@ -3,11 +3,13 @@ package com.clockworkcode.pentagonbusinesscomv2.service;
 import com.clockworkcode.pentagonbusinesscomv2.model.user.AppUser;
 import com.clockworkcode.pentagonbusinesscomv2.model.user.AppUserAddress;
 import com.clockworkcode.pentagonbusinesscomv2.repository.AppUserAddressRepository;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 @Service
+@Slf4j
 public class AppUserAddressService {
 
     private final LoginTokenService loginTokenService;
@@ -38,7 +40,7 @@ public class AppUserAddressService {
     }
 
     public void updateUserAddress(String loginToken){
-
+        log.info(loginToken);
     }
 
 }

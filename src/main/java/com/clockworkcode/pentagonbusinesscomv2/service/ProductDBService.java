@@ -149,23 +149,6 @@ public class ProductDBService {
 
     }
 
-//    public List<Product> getProductsByAllFilters(String productCategoryName, List<String> productBrandNames, String minVal, String maxVal, String deliveryTime){
-//
-//
-//        List<Product> productsFilteredByCategory = getProductsByProductCategoryName(productCategoryName);
-//        List<Product> filterList = new ArrayList<>();
-//        filterList.addAll(getProductsByBrandNames(productBrandNames));
-//        filterList.addAll(getProductsInInterval(minVal,maxVal));
-//        filterList.addAll(getProductsByDeliveryTime(deliveryTime));
-//
-//        return productsFilteredByCategory.stream().filter(filterList::contains).collect(Collectors.toList());
-//
-//    } } //TODO - UNIFY FILTERS
-
-
-    public Integer getAvailableQuantityByProductID(Long productID){
-        return productRepository.getById(productID).getProductInventory();
-    }
-
+     //TODO - UNIFY FILTERS
 
 }
