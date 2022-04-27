@@ -19,8 +19,8 @@ import java.util.Set;
 @NoArgsConstructor
 @AllArgsConstructor
 
-@Entity(name = "ShoppingSession") //singular !!
-@Table(name = "shoppingsessions") //plural !!
+@Entity(name = "ShoppingSession")
+@Table(name = "shoppingsessions")
 public class ShoppingSession {
 
     @Id
@@ -35,12 +35,10 @@ public class ShoppingSession {
     @Column(nullable = false)
     private BigDecimal total;
 
-//    @Column(nullable = false)
     private Timestamp createdAt;
-//    @Column(nullable = false)
     private Timestamp modifiedAt;
 
-    @OneToMany(mappedBy = "shoppingSession",orphanRemoval = true) //,orphanRemoval = true
+    @OneToMany(mappedBy = "shoppingSession",orphanRemoval = true)
     @JsonManagedReference
     private Set<CartItem> cartItems;
 

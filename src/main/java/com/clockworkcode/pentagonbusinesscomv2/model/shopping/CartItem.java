@@ -15,8 +15,8 @@ import java.sql.Timestamp;
 @NoArgsConstructor
 @AllArgsConstructor
 
-@Entity(name = "CartItem") //singular !!
-@Table(name = "cartitems") //plural !!
+@Entity(name = "CartItem")
+@Table(name = "cartitems")
 public class CartItem {
 
     @Id
@@ -24,7 +24,7 @@ public class CartItem {
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "cartitem_sequence")
     private Long cartItemID;
 
-    @ManyToOne(cascade = { CascadeType.MERGE, CascadeType.PERSIST }) //cascade = CascadeType.ALL
+    @ManyToOne(cascade = { CascadeType.MERGE, CascadeType.PERSIST })
     @JoinColumn(name = "shopping_sessionid")
     @JsonBackReference
     private ShoppingSession shoppingSession;
@@ -36,10 +36,7 @@ public class CartItem {
     private Product product;
 
     private Integer quantity;
-
-//    @Column(nullable = false)
     private Timestamp createdAt;
-//    @Column(nullable = false)
     private Timestamp modifiedAt;
 
     public CartItem(ShoppingSession shoppingSession, Product product, Integer quantity) {
