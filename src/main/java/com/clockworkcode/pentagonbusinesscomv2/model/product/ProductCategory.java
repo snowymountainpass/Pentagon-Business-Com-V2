@@ -16,8 +16,8 @@ import java.util.Set;
 @NoArgsConstructor
 @AllArgsConstructor
 
-@Entity(name = "ProductCategory") //singular !!
-@Table(name = "product_categories") //plural !!
+@Entity(name = "ProductCategory")
+@Table(name = "product_categories")
 public class ProductCategory {
 
 
@@ -31,7 +31,6 @@ public class ProductCategory {
     @Column(nullable = false,columnDefinition = "text")
     private String productCategoryDescription;
 
-    // prod cat
     @OneToMany(cascade = CascadeType.ALL,mappedBy = "productCategory",orphanRemoval = true)
     private Set<Product> products=new HashSet<>();
 
@@ -41,9 +40,7 @@ public class ProductCategory {
     }
 
     public void addProducts(Set<Product> productsSet){
-
         this.products.addAll(productsSet);
-
         productsSet.forEach(product -> product.setProductCategory(this));
 
     }

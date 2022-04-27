@@ -22,8 +22,8 @@ import java.util.Set;
 @NoArgsConstructor
 @AllArgsConstructor
 
-@Entity(name = "Product") //singular !!
-@Table(name = "products") //plural !!
+@Entity(name = "Product")
+@Table(name = "products")
 public class Product extends Base {
 
     @Id
@@ -42,7 +42,6 @@ public class Product extends Base {
     @JsonIgnore
     private ProductBrand productBrand;
 
-    //prod cat
     @ManyToOne(fetch = FetchType.LAZY)
     @JsonIgnore
     private ProductCategory productCategory;
@@ -73,10 +72,6 @@ public class Product extends Base {
 
     @OneToOne(mappedBy = "product", orphanRemoval = true)
     private OrderItem orderItem;
-
-//    @OneToOne(mappedBy = "product")
-//    @JsonManagedReference
-//    private CartItem cartItem;
 
     @OneToMany(mappedBy = "product")
     @JsonManagedReference

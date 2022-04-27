@@ -14,8 +14,8 @@ import java.util.Set;
 @NoArgsConstructor
 @AllArgsConstructor
 
-@Entity(name = "ProductBrand") //singular !!
-@Table(name = "productbrands") //plural !!
+@Entity(name = "ProductBrand")
+@Table(name = "productbrands")
 public class ProductBrand {
 
     @Id
@@ -35,18 +35,13 @@ public class ProductBrand {
     }
 
     public void addProduct(Product product1) {
-
         this.products.add(product1);
         product1.setProductBrand(this);
-
     }
 
     public void addProducts(Set<Product> productsSet){
-
         this.products.addAll(productsSet);
-
         productsSet.forEach(product -> product.setProductBrand(this));
-
     }
 
 }

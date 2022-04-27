@@ -14,10 +14,9 @@ import java.sql.Timestamp;
 @NoArgsConstructor
 @AllArgsConstructor
 
-@Entity(name = "Discount") //singular !!
-@Table(name = "discounts") //plural !!
+@Entity(name = "Discount")
+@Table(name = "discounts")
 public class Discount {
-
 
     @Id
     @SequenceGenerator(name ="discount_sequence" ,sequenceName ="discount_sequence" ,allocationSize = 1)
