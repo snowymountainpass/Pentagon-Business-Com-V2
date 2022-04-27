@@ -11,12 +11,10 @@ export default function Pricing1({
   title,
   firstButtonText,
   secondButtonText,
-  defaultOpen,
   description,
   cardinfoiconProps,
   cardblogimageProps,
   cardcontactustitleProps,
-  cardinfoimageProps,
 }) {
   const [openTab, setOpenTab] = React.useState(1);
   return (
@@ -63,10 +61,6 @@ export default function Pricing1({
                   <div className="px-4 relative w-full md:w-6/12">
                     <CardPricing {...cardcontactustitleProps} />
                   </div>
-
-                  {/*<div className="px-4 relative w-full md:w-6/12">*/}
-                  {/*  <CardPricing {...cardinfoimageProps} />*/}
-                  {/*</div>*/}
                 </div>
               </div>
             </div>

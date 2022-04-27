@@ -3,10 +3,6 @@ import PropTypes from "prop-types";
 import classnames from "classnames";
 
 // components
-// import Heading2 from "../../../../components/Headings/Heading2.js";
-// import InfoAreaIcon from "../../../../components/InfoAreas/Presentation/InfoAreaIcon.js";
-// import Button from "../../../../components/Elements/Button.js";
-
 import Heading2 from "../../../Headings/Heading2";
 import InfoAreaIcon from "../../../InfoAreas/Presentation/InfoAreaIcon";
 import Button from "../../../Elements/Button";
