@@ -62,7 +62,6 @@ public class CartItemController {
 
        log.info("RESULT OF /cart-items-amount/{loginToken}: "+ cartItemService.getTotalValueAmountProductsInCart(loginToken));
        return cartItemService.getTotalValueAmountProductsInCart(loginToken);
-        //RESULT OF /cart-items-amount/{loginToken}
     }
     //TODO : getTotalNumberOfItemsInCart(), removeCardItemByID TREBUIE SA FACA REFERIRE LA UN ANUME SESSION PE LANGA CELELALTE FILTRE !!
 }

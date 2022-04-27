@@ -125,16 +125,4 @@ public class ProductController {
 //
 //    } //TODO - UNIFY FILTERS
 
-
-//    @GetMapping("/price-descending")
-//    public List<Product> getProductsPriceDecreasing() {
-//
-//        return productService.getProductsPriceDecreasing();
-//    }
-//
-//    @GetMapping("/price-ascending")
-//    public List<Product> getProductsPriceIncreasing() {
-//        return productService.getProductsPriceIncreasing();
-//    }
-
 }

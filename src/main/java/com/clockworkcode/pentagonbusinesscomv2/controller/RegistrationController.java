@@ -19,8 +19,6 @@ public class RegistrationController {
 
     private final RegistrationService registrationService;
 
-
-
     @PostMapping("/registration")
     public String register(@RequestBody RegistrationRequest request){
 
@@ -33,7 +31,6 @@ public class RegistrationController {
     public ResponseEntity<Object> confirm(@RequestParam("token") String token, HttpServletResponse httpResponse) throws IOException {
 
         registrationService.confirmToken(token);
-//        httpResponse.sendRedirect("e-shop");
         return ResponseEntity.status(HttpStatus.MOVED_PERMANENTLY).header(HttpHeaders.LOCATION, "http://localhost:3000/e-shop").build();
     }
 

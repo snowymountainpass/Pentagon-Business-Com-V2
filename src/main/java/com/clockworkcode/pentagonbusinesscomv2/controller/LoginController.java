@@ -17,26 +17,14 @@ public class LoginController {
 
     @PostMapping("/login")
     public String login(@RequestBody LoginRequest request){
-
         String tokenResult = loginService.login(request);
-
-        System.out.println("LoginController token result: "+tokenResult);
-
+        log.info("LoginController token result: "+tokenResult);
         return tokenResult;
     }
 
     @PostMapping("/logout")
     public void logout(@RequestBody LogoutRequest request){
         loginService.logout(request);
-
     }
-
-//    @GetMapping("get-user-details/{userToken}")
-//    public ResponseEntity<AppUser> getAppUser(@PathVariable String userToken){
-//
-//        AppUser loggedInUser = (AppUser) appUserService.getUserByToken(userToken);
-//
-//        return ResponseEntity.ok().body ((AppUser) appUserService.getUserByToken(userToken) );
-//    }
 
 }
