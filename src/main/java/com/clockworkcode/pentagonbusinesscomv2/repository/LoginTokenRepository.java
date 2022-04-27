@@ -10,13 +10,7 @@ import java.util.Optional;
 
 @Repository
 public interface LoginTokenRepository extends JpaRepository<LoginToken,Long> {
-
-//    Optional<LoginToken> findByToken(String token);
-
     LoginToken findByToken(String token);
-
-//    void deleteLoginTokenByAppUser_AppUserID(Long appUserID);
-
     void deleteLoginTokenByAppUser_AppUserID(Long appUserID);
 
     //TODO - METHOD FOR REMOVING TOKEN AFTER IT HAS EXPIRED

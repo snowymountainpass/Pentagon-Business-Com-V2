@@ -32,10 +32,10 @@ public class AppUserShippingAddress {
     private String shippingPostalCode;
     @Column(nullable = false,columnDefinition = "text")
     private String shippingCountry;
-    
+
     @ManyToOne
-    @JoinColumn(name="app_userID",nullable = false) //O
-    private AppUser appUser; //X   //Y- appUserID
+    @JoinColumn(name="app_userID",nullable = false)
+    private AppUser appUser;
 
     public AppUserShippingAddress(String shippingFirstName,String shippingLastName,String shippingEmail ,String shippingTelephone,
             String shippingAddress,String shippingPostalCode,String shippingAddress2, String shippingCity, String shippingCounty , String shippingCountry, AppUser appUser)

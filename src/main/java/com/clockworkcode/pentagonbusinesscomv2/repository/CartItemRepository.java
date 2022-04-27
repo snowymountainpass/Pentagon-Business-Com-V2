@@ -11,35 +11,17 @@ import org.springframework.transaction.annotation.Transactional;
 @Transactional
 public interface CartItemRepository extends JpaRepository<CartItem,Long> {
 
-//    void UPDATE CART ITEM QUANTITY => https://stackoverflow.com/questions/39741102/how-to-beautifully-update-a-jpa-entity-in-spring-data
-
     @Modifying
     @Query(value = "UPDATE CartItem ci SET ci.quantity=ci.quantity+:increaseAmount WHERE ci.cartItemID=:cartItemId")
     void updateIncreaseCartItemQuantity(@Param("increaseAmount") Integer increaseAmount,@Param("cartItemId") Long cartItemId);
 
     void deleteCartItemByCartItemID(Long cartItemID);
 
-//    void deleteCartItemsByShoppingSession_AppUser_AppUserID(Long appUserID);
-
     void deleteCartItemsByShoppingSession_LoginToken(LoginToken loginToken);
 
     @Query("select sum(quantity) from CartItem")
     Integer getTotalNumberOfItemsInCart();
 
-
-//    @Query("select sum(CartItem.quantity*Product.productPrice) FROM CartItem WHERE ShoppingSession.loginToken.token=:loginToken")
-//    @Query(value = "select sum(CartItem.quantity*Product.productPrice) FROM CartItem WHERE ShoppingSession.loginToken.token=:loginToken", nativeQuery = true) //cartitem not found - the closest
-//    @Modifying
-//    @Query( value = "SELECT sum( CartItem.product.productPrice*CartItem.quantity ) " +
-//            "from CartItem " +
-//            "JOIN Product ON CartItem.product.productID=Product.productID WHERE CartItem.shoppingSession.loginToken.token=:loginToken",nativeQuery = true)
-
-//    @Query(
-//            value = "SELECT sum( CartItem.product.productPrice*CartItem.quantity )" +
-//                    "from CartItem " +
-//                    "JOIN Product ON Product.productID=CartItem .product.productID JOIN ShoppingSession ON ShoppingSession .shoppingSessionID=CartItem .shoppingSession.shoppingSessionID " +
-//                    "WHERE CartItem .shoppingSession.loginToken.token=:loginToken",nativeQuery = true // sau cu LIKE :loginToken
-//    )
     @Query(
             value = "SELECT sum( cartitems.quantity * p.product_price )" +
                     "from cartitems " +
