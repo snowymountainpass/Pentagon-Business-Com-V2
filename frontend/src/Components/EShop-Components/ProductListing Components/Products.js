@@ -1,6 +1,5 @@
 import ProductListingHeader from "./ProductListingHeader";
 import ProductsListing from "./ProductsListing";
-// import ProductsListingPagination from "./ProductsListingPagination";
 import SidebarComponent from "./SidebarComponent";
 import {useEffect, useState} from "react";
 import {atom, useAtom} from "jotai";
@@ -30,10 +29,6 @@ export default function Products({}) {
 
         }, [query]
     )
-
-    // console.log("Products size: "+products.length);
-    // console.log("Products objects: "+products);
-
 
     const [brandsList, setBrandsList] = useState([]);
 
@@ -92,11 +87,7 @@ export default function Products({}) {
                             products={products}
                             setChangeQuery={setQuery}
                         />
-
                         <ProductsListing products={products}/>
-
-                        {/*<ProductsListingPagination/>*/}
-
                     </main>
                 </div>
             </div>

@@ -12,8 +12,6 @@ export default function DeliveryTimeComponent({setChangeProducts}){
             headers: {Accept: 'application/json', 'Content-Type': 'application/json'},
         };
 
-        console.log(event.target.checked);
-
         if(event.target.checked){
             fetch(`http://localhost:8080/e-shop/delivery-time/`+event.target.value,requestOptions)
                 .then(response => {
@@ -66,8 +64,5 @@ export default function DeliveryTimeComponent({setChangeProducts}){
                 <div className="custom-control-label">All</div>
             </label>
         </div>
-
-
     );
-
 }

@@ -232,23 +232,17 @@ export default function CardUserAccount({
 }
 
 const inputsObject = {
-  // NOTE: this width only applies on large devices
   width: PropTypes.oneOf([1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]),
-  // if you wish, you can send something like
-  // <span className="mr-2">Label Name</span><span className="text-red-500">*</span>
-  // NOTE: the label tag will be auto generated
   label: PropTypes.node,
 };
 
 const inputsShape = PropTypes.shape({
   ...inputsObject,
-  // props to pass to the Input component
   input: PropTypes.object,
 });
 
 const selectsShape = PropTypes.shape({
   ...inputsObject,
-  // props to pass to the Select component
   select: PropTypes.object,
 });
 
@@ -270,10 +264,6 @@ CardUserAccount.propTypes = {
   title: PropTypes.string,
   inputs: inputsTypes,
   paymentTitle: PropTypes.string,
-  // 0 represents the first element
-  // also, you should note that
-  // the number should not be lower then 0
-  // or higher than the number of items - 1
   defaultPaymentOpened: PropTypes.number,
   paymentOptions: PropTypes.arrayOf(
     PropTypes.shape({
@@ -281,10 +271,6 @@ CardUserAccount.propTypes = {
       inputs: inputsTypes,
     })
   ),
-  // this function has two parameters,
-  // index number of the tab that was pressed
-  // and the tabName of that tab
-  // example: onPaymentChange={(index,name) => console.log(index,name)}
   onPaymentChange: PropTypes.func,
   paymentTabColor: PropTypes.oneOf([
     "blueGray",
@@ -298,8 +284,6 @@ CardUserAccount.propTypes = {
     "purple",
     "pink",
   ]),
-  // props to pass to the Button component on the left
   returnButton: PropTypes.object,
-  // props to pass to the Button component on the right
   orderButton: PropTypes.object,
 };

@@ -1,9 +1,6 @@
+export default function ProductsListingPagination() {
 
-
-export default function ProductsListingPagination(){
-
-    return(
-
+    return (
         <nav className="mt-4" aria-label="Page navigation sample">
             <ul className="pagination">
                 <li className="page-item disabled"><a className="page-link" href="#">Previous</a></li>
@@ -13,7 +10,6 @@ export default function ProductsListingPagination(){
                 <li className="page-item"><a className="page-link" href="#">Next</a></li>
             </ul>
         </nav>
-
     );
 
 }

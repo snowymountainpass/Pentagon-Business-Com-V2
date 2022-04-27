@@ -6,7 +6,6 @@ import ProductCategoryComponent from "../Sidebar Components/ProductCategoryCompo
 export default function SidebarComponent({setChangeProducts, categoriesList, brandsList, minmaxPrice}) {
 
     return (
-
         <aside className="col-md-3">
 
             <div className="card">
@@ -83,11 +82,7 @@ export default function SidebarComponent({setChangeProducts, categoriesList, bra
                         </div>
                     </div>
                 </article>
-
             </div>
-            {/*<button className="btn btn-block btn-primary mt-2">Apply</button>*/}
         </aside>
-
     );
-
 }

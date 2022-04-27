@@ -18,7 +18,7 @@ export default function ProductListingHeader({products,setChangeQuery}) {
                 <div className="form-inline">
                     <span className="mr-md-auto">{products.length} Item(s) found </span>
 
-                    <select className="mr-2 form-inline" data-width="auto"> {/*data-width="auto" form-control*/}
+                    <select className="mr-2 form-inline" data-width="auto">
                         <option>Price ↑</option>
                         <option>Price ↓</option>
                         <option>Best Sellers</option>

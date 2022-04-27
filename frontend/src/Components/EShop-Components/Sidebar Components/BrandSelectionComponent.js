@@ -1,7 +1,7 @@
 import {useState} from "react";
 
 
-export default function BrandSelectionComponent({setChangeProducts,brandsList}){
+export default function BrandSelectionComponent({setChangeProducts, brandsList}) {
 
     const [checked, setChecked] = useState([]);
 
@@ -17,14 +17,14 @@ export default function BrandSelectionComponent({setChangeProducts,brandsList}){
         handleBrandClick(updatedList);
     };
 
-    function handleBrandClick(checkedBrandsList){
+    function handleBrandClick(checkedBrandsList) {
         const requestOptions = {
             method: 'POST',
             headers: {Accept: 'application/json', 'Content-Type': 'application/json'},
             body: JSON.stringify(checkedBrandsList)
         };
 
-        fetch( `http://localhost:8080/e-shop/brands`, requestOptions)
+        fetch(`http://localhost:8080/e-shop/brands`, requestOptions)
             .then(response => {
                 return response.json();
             })
@@ -34,15 +34,9 @@ export default function BrandSelectionComponent({setChangeProducts,brandsList}){
 
     }
 
-    return(
+    return (
         <>
             {brandsList.map((item, index) => (
-                // <div key={index}>
-                //
-                //     <input value={item} type="checkbox" onChange={handleCheck} />
-                //     <span>{item}</span>
-                // </div>
-
                 <label key={index} className="custom-control custom-checkbox">
                     <input className="custom-control-input"
                            value={item} type="checkbox" onClick={handleCheck}
@@ -53,24 +47,7 @@ export default function BrandSelectionComponent({setChangeProducts,brandsList}){
                 </label>
 
 
-
             ))}
-
-
-            {/*<label className="custom-control custom-checkbox">*/}
-            {/*    <input type="checkbox" className="custom-control-input"/>*/}
-            {/*    <div className="custom-control-label">ALCATEL-LUCENT*/}
-            {/*        <b className="badge badge-pill badge-light float-right">120</b></div>*/}
-            {/*</label>*/}
-            {/*<label className="custom-control custom-checkbox">*/}
-            {/*    <input type="checkbox" className="custom-control-input"/>*/}
-            {/*    <div className="custom-control-label">KONFTEL*/}
-            {/*        <b className="badge badge-pill badge-light float-right">15</b></div>*/}
-            {/*</label>*/}
-
-
         </>
     );
-
-
 }

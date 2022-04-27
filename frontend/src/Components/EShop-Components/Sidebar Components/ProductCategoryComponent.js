@@ -24,9 +24,7 @@ export default function ProductCategoryComponent({setChangeProducts, categoriesL
 
     return (
         <>
-
             <ul className="list-menu">
-
                 {
                     categoriesList.map(
                         (item, index) =>
@@ -36,7 +34,7 @@ export default function ProductCategoryComponent({setChangeProducts, categoriesL
                                            name="myfilter_radio"
                                            className="custom-control-input"
                                            value={item}
-                                           defaultChecked={item.value==="ALL TYPES"}
+                                           defaultChecked={item.value === "ALL TYPES"}
                                            onChange={
                                                event => {
                                                    handleCategoryClick(event);
@@ -63,7 +61,6 @@ export default function ProductCategoryComponent({setChangeProducts, categoriesL
                     />
                     <div className="custom-control-label">{"ALL TYPES"}</div>
                 </label>
-
             </ul>
 
 

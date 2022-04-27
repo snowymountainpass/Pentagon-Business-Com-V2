@@ -2,41 +2,42 @@ import {atom, useAtom} from "jotai";
 
 export const NUMBER_ITEMS_IN_CART = atom(0);
 
-export default function ProductCard(props){
+export default function ProductCard(props) {
 
     const [productsInCart, setProductsInCart] = useAtom(NUMBER_ITEMS_IN_CART);
 
-    function getNumberOfItemsInCart(){
+    function getNumberOfItemsInCart() {
 
         fetch('http://localhost:8080/e-shop/cart-items/get-shopping-cart-total-number-of-items')
             .then(
                 response => response.json()
             )
-            .then(data=> {
+            .then(data => {
                 setProductsInCart(data);
             });
-
-        console.log("current number of items: "+ productsInCart);
-
     }
 
 
-    function addProductAndGetTotalQuantity(){
+    function addProductAndGetTotalQuantity() {
 
         const requestOptions = {
             method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ userToken: localStorage.getItem("PTG V2 Login Token"),productID:props.pkey,quantity:1 })
+            headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify({
+                userToken: localStorage.getItem("PTG V2 Login Token"),
+                productID: props.pkey,
+                quantity: 1
+            })
         };
 
-         fetch('http://localhost:8080/e-shop/cart-items/add-product', requestOptions)
-             .then(getNumberOfItemsInCart);
+        fetch('http://localhost:8080/e-shop/cart-items/add-product', requestOptions)
+            .then(getNumberOfItemsInCart);
 
     }
 
 
-    return(
-        <article className="card card-product-list" >
+    return (
+        <article className="card card-product-list">
             <div className="row no-gutters">
                 <aside className="col-md-3">
                     <a className="img-wrap">
@@ -51,7 +52,8 @@ export default function ProductCard(props){
                             <ul className="rating-stars">
                                 <li className="stars-active w-80">
 
-                                    {[...Array(props.product.rating)].map((e, i) => <i className="fa fa-star" key={i}/>)}
+                                    {[...Array(props.product.rating)].map((e, i) => <i className="fa fa-star"
+                                                                                       key={i}/>)}
 
                                 </li>
                                 <li>
@@ -70,26 +72,22 @@ export default function ProductCard(props){
                     <div className="info-aside">
                         <div className="price-wrap">
                             <span className="price-new h5"> {`€${props.product.productPrice}`} </span>
-                            <del className="price-old"> {`€${props.product.productPrice+20}`} </del>
+                            <del className="price-old"> {`€${props.product.productPrice + 20}`} </del>
 
 
                         </div>
-                        <p className="text-success">{`Delivery Cost: ${(parseInt(props.product.productPrice)*10)/100}%`}</p>
+                        <p className="text-success">{`Delivery Cost: ${(parseInt(props.product.productPrice) * 10) / 100}%`}</p>
                         <br/>
                         <p className="text-quantity">{`Quantity Available: ${props.product.productInventory}`}</p>
                         <br/>
                         <p>
-                            {/*<a href={`/e-shop/product-id/${props.product.productID}`} className="btn btn-primary btn-block">Details</a>*/}
                             <a href={props.product.datasheet} download className="btn btn-primary btn-block"
                                target="_blank" rel="noreferrer noopener"
                             >Details</a>
 
                             <a className="btn btn-light btn-block"
-
-                               onClick={localStorage.getItem("PTG V2 Login Token") !=null ? addProductAndGetTotalQuantity : null}
-
+                               onClick={localStorage.getItem("PTG V2 Login Token") != null ? addProductAndGetTotalQuantity : null}
                             >
-
                                 <i className="fa fa-shopping-cart"/>
                                 <span className="text">Add to Cart</span>
                             </a>

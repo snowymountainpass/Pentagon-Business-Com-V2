@@ -5,7 +5,7 @@ import {useAtom} from "jotai";
 
 export default function PriceIntervalComponent({setChangeProducts, minmaxPrice}) {
 
-    const [minMaxAtom,setMinMaxAtom] = useAtom(MIN_MAX_PRICES);
+    const [minMaxAtom, setMinMaxAtom] = useAtom(MIN_MAX_PRICES);
 
     const [minMaxState, setMinMaxState] = useState({
         minPrice: minMaxAtom[0],
@@ -13,21 +13,17 @@ export default function PriceIntervalComponent({setChangeProducts, minmaxPrice})
     })
 
 
-
-    function handlePriceChange(e){
+    function handlePriceChange(e) {
         e.preventDefault();
 
         setMinMaxState(
             {...minMaxState, [e.target.name]: e.target.value,}
         )
 
-        if(minMaxState.minPrice === null && minMaxState.maxPrice === null){
+        if (minMaxState.minPrice === null && minMaxState.maxPrice === null) {
             setMinMaxState({minPrice: minMaxAtom[0]});
             setMinMaxState({maxPrice: minMaxAtom[1]});
-        } // conditie buna
-
-
-
+        }
     }
 
     function passPriceValues() {
@@ -39,15 +35,11 @@ export default function PriceIntervalComponent({setChangeProducts, minmaxPrice})
 
         fetch(`http://localhost:8080/e-shop/min-max-prices/${minMaxState.minPrice}-${minMaxState.maxPrice}`, requestOptions)
             .then(response => {
-                console.log("else cond: "+response.status);
                 return response.json();
             })
             .then(data => {
                 setChangeProducts(data);
             });
-
-        console.log("minMaxState (@handlePriceChange()): "+ minMaxState.minPrice + " - " + minMaxState.maxPrice);
-
     }
 
     useEffect(
@@ -65,7 +57,7 @@ export default function PriceIntervalComponent({setChangeProducts, minmaxPrice})
                        placeholder={"€" + minmaxPrice[0]}
                        type="number" min={minmaxPrice[0]}
                        max={minmaxPrice[1]}
-                       value={minMaxState.minPrice !== null ? minMaxState.minPrice : minMaxAtom[0] }
+                       value={minMaxState.minPrice !== null ? minMaxState.minPrice : minMaxAtom[0]}
                        name="minPrice"
                        onChange={event => {
                            handlePriceChange(event);
@@ -82,7 +74,7 @@ export default function PriceIntervalComponent({setChangeProducts, minmaxPrice})
                        placeholder={"€" + minmaxPrice[1]}
                        type="number" min={minmaxPrice[0]}
                        max={minmaxPrice[1]}
-                       value={minMaxState.maxPrice !== null ? minMaxState.maxPrice : minMaxAtom[1] }
+                       value={minMaxState.maxPrice !== null ? minMaxState.maxPrice : minMaxAtom[1]}
                        name="maxPrice"
                        onChange={event => {
                            handlePriceChange(event);

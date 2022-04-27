@@ -15,9 +15,7 @@ export default function HeaderImageTitleSmallCenter() {
     <>
       <section className="flex relative items-center p-0 min-h-screen-60 max-h-440-px">
         <div className="absolute w-full h-full block bg-blueGray-900 opacity-75 z-1 left-0 top-0"/>
-        <div className="bg-blueGray-800 w-full h-full absolute bg-cover bg-50 z-0"
-             // style={{backgroundImage: "url('" + image + "')",}}
-        />
+        <div className="bg-blueGray-800 w-full h-full absolute bg-cover bg-50 z-0"/>
         <div className="relative h-full text-center text-white container mx-auto px-4 z-3 mb-24">
           <div className="justify-center flex flex-wrap -mx-4">
             <div className="px-12 px-4 relative w-full lg:w-6/12 w-full md:w-8/12">
