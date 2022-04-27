@@ -3,11 +3,7 @@ import { useLocation } from "react-router-dom";
 
 // components
 import NavbarLinks from "../Components/Navbar/NavbarLinks.js";
-
-// import CardLoginSocial from "components/Cards/Auth/CardLoginSocial.js";
 import CardResetPassword from "../Components/Cards/Register-Login-Components/CardResetPassword";
-
-// import FooterAuth from "components/Footers/Auth/FooterAuth.js";
 import FooterAuth from "../Components/Footers/Auth/FooterAuth.js";
 // texts
 import navbarlinkslanding1 from "../Texts/Presentation/navbar/navbarlinkslanding2";
@@ -29,8 +25,6 @@ export default function RestorePassword() {
           <div
     className="absolute top-0 w-full h-full bg-blueGray-900 bg-no-repeat bg-full"
     style={{
-      // backgroundImage:
-      //     "url(" + require(backgroundImageDesign).default + ")",
         backgroundImage:
             `url(${backgroundImageDesign})`
     }}
@@ -39,7 +33,6 @@ export default function RestorePassword() {
             <div className="flex content-center items-center justify-center h-full">
               <div className="w-full lg:w-4/12 px-4">
                   <CardResetPassword {...cardresetpassword}/>
-
               </div>
             </div>
           </div>

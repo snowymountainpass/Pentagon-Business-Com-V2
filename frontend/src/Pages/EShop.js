@@ -1,5 +1,5 @@
 import {useLocation} from "react-router-dom";
-import React, {useState} from "react";
+import React from "react";
 
 import FooterSmall from "../Components/Footers/Landing/FooterSmall";
 import footersmall from "../Texts/Presentation/footers/footersmall";
@@ -9,7 +9,7 @@ import Products from "../Components/EShop-Components/ProductListing Components/P
 import navbarlinkslanding2 from "../Texts/Presentation/navbar/navbarlinkslanding2";
 import NavbarLinks from "../Components/Navbar/NavbarLinks";
 
-export default function EShop({loginToken}) {
+export default function EShop() {
 
     const location = useLocation();
     React.useEffect(() => {
@@ -17,13 +17,9 @@ export default function EShop({loginToken}) {
     }, [location]);
     return (
         <>
-
             <NavbarLinks  {...navbarlinkslanding2}/>
-
             <Products/>
-
             <FooterSmall {...footersmall} />
-
         </>
     );
 

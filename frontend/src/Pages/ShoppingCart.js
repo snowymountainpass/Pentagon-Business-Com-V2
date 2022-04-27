@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React from "react";
 import ProductsTable from "../Components/ShoppingCart-Components/ProductsTable";
 import AmountSummary from "../Components/ShoppingCart-Components/AmountSummary";
 import Coupon from "../Components/ShoppingCart-Components/Coupon";
@@ -10,13 +10,9 @@ import FooterSmall from "../Components/Footers/Landing/FooterSmall";
 import {TOTAL_VALUE_IN_CART} from "../Components/ShoppingCart-Components/ProductRow";
 import {useAtom} from "jotai";
 
-export default function ShoppingCart(){
-
-    const [totalAmount,setTotalAmount] = useAtom(TOTAL_VALUE_IN_CART);
-
-    // console.log("@ShoppingCart page - totalAmount: "+ totalAmount);
-
-    return(
+export default function ShoppingCart() {
+    const [totalAmount, setTotalAmount] = useAtom(TOTAL_VALUE_IN_CART);
+    return (
 
         <>
             <NavbarLinks  {...navbarlinkslanding2}/>
@@ -40,14 +36,15 @@ export default function ShoppingCart(){
                             <ProductsTable/>
 
                             <div className="alert alert-success mt-3">
-                                <p className="icontext"><i className="icon text-success fa fa-truck"/> Free Delivery for orders above €10.000</p>
+                                <p className="icontext"><i className="icon text-success fa fa-truck"/> Free Delivery for
+                                    orders above €10.000</p>
                             </div>
 
                         </main>
                         <aside className="col-md-3">
                             <Coupon/>
 
-                            <AmountSummary totalAmount={totalAmount} discount={(totalAmount*5)/100}/>
+                            <AmountSummary totalAmount={totalAmount} discount={(totalAmount * 5) / 100}/>
                         </aside>
                     </div>
 
@@ -69,14 +66,9 @@ export default function ShoppingCart(){
                         consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
                         cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
                         proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-
                 </div>
             </section>
-
-
             <FooterSmall {...footersmall} />
-
-
         </>
 
     );

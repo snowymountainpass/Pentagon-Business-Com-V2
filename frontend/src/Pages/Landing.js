@@ -13,9 +13,6 @@ import HeaderVideoTitle from "../Components/Headers/Presentation/HeaderVideoTitl
 import PreFooterLarge from "../Components/PreFooters/PreFooterLarge";
 import FooterSmall from "../Components/Footers/Landing/FooterSmall";
 
-// texts for sections as props
-
-// import hero5 from "../../Texts/presentation/heroes/hero5";
 import hero5 from "../Texts/Presentation/heroes/hero5";
 import pricing1 from "../Texts/Presentation/pricing/pricing1";
 import contactus2 from "../Texts/Presentation/contactus/contactus2";

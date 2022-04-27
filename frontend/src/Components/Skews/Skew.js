@@ -40,5 +40,3 @@ Skew.defaultProps = {
 Skew.propTypes = {
   color: PropTypes.oneOf(["white", "blueGray", "dark"]),
 };
-
-// {/*  2560 100*/}
