@@ -55,7 +55,7 @@ public class Product extends Base {
             joinColumns = {@JoinColumn(name = "productid")},
             inverseJoinColumns = {@JoinColumn(name = "supplierid")}
     )
-    private Set<Supplier> suppliers = new HashSet<>(); // A product can have many suppliers && a supplier can have many products
+    private Set<Supplier> suppliers = new HashSet<>();
 
     @Column(nullable = false)
     private Integer productPrice;
