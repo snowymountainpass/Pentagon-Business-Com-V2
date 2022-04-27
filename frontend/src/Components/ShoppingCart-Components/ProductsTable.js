@@ -2,7 +2,7 @@ import ProductRow from "./ProductRow";
 import {Link} from "react-router-dom";
 
 
-export default function ProductsTable({}){
+export default function ProductsTable(){
 
     return(
 

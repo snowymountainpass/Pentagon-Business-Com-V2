@@ -3,7 +3,6 @@ import {useLocation} from "react-router-dom";
 
 // sections
 import Hero5 from "../Components/Sections/Presentation/Heroes/Hero5";
-import Features3 from "../Components/Sections/General/Features/Features3";
 import Pricing1 from "../Components/Sections/Presentation/Pricing/Pricing1";
 import ContactUs2 from "../Components/Sections/Presentation/ContactUs/ContactUs2";
 
