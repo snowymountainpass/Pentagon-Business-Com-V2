@@ -25,9 +25,10 @@ export default function ProductsTable(){
             </table>
 
             <div className="card-body border-top">
-                <a href="#" className="btn btn-primary float-md-right"> Make Purchase <i className="fa fa-chevron-right"/>
+                <a href="#" className="btn btn-primary float-md-right"> Checkout <i className="fa fa-chevron-right"/>
                 </a>
-                <Link to="/e-shop" className="btn btn-light"> <i className="fa fa-chevron-left"/> Continue shopping </Link>
+                <Link to="/e-shop" className="btn btn-light"> <i className="fa fa-chevron-left"/>Continue shopping</Link>
+                {/*<Link to="/e-shop" className="btn btn-light"> <i className="fa fa-chevron-left"/>Checkout</Link>*/}
             </div>
         </div>
 

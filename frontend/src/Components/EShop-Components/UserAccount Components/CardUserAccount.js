@@ -35,6 +35,9 @@ export default function CardUserAccount({
 
   const [firstNameLastName, setFirstNameLastName] = useAtom(FIRSTNAME_LASTNAME);
 
+  // const [userDetailsData,setUserDetailsData] = useState([]);
+  // const [userShippingDetailsData,setShippingDetailsData] = useState([]);
+
   const [userDetails,setUserDetails] = useAtom(USER_DETAILS);
   const [userShippingDetails,setUserShippingDetails] = useAtom(USER_SHIPPING_DETAILS);
 
@@ -65,6 +68,11 @@ export default function CardUserAccount({
     fetch('http://localhost:8080/e-shop/user-account/save-details', requestOptions).then(r => r.json()).then(data=>{setUserDetails(data)});
 
   }
+  // TODO: DE VERIFICAT DE CE SE PIERD DATELE DACA FACI REFRESH !!
+  // TODO: TREBUIE DECUPLAT FETCHUL DE DATE DE PARTEA DE DISPLAY
+    // TODO: DE FACUT FETCH GET & POST PT USER DETAILS
+    // TODO: DE FACUT FETCH GET & POST PT USER SHIPPING DETAILS
+    // TODO: ACUM POST-UL FACE RETURN LA VALORILE INPUTTED
 
   function saveUserShippingDetails(data){
 

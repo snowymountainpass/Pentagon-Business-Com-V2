@@ -81,11 +81,12 @@ const textProps = {
   returnButton: {
     color: "light",
     children: "Return to cart",
-
+    href:"/e-shop"
   },
   detailsButton: {
     color: "purple",
     children: "Save Details",
+
   },
 };
 export default textProps;
