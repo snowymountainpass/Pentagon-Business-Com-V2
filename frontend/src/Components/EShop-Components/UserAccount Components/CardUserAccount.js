@@ -35,11 +35,11 @@ export default function CardUserAccount({
 
   const [firstNameLastName, setFirstNameLastName] = useAtom(FIRSTNAME_LASTNAME);
 
-  // const [userDetailsData,setUserDetailsData] = useState([]);
-  // const [userShippingDetailsData,setShippingDetailsData] = useState([]);
-
   const [userDetails,setUserDetails] = useAtom(USER_DETAILS);
   const [userShippingDetails,setUserShippingDetails] = useAtom(USER_SHIPPING_DETAILS);
+
+  const [userDetailsEmpty,setUserDetailsEmpty] = useState(true);
+  const [userShippingDetailsEmpty,setUserShippingDetailsEmpty] = useState(true);
 
   function saveUserDetails(data){
 
@@ -65,14 +65,15 @@ export default function CardUserAccount({
       )
     };
 
-    fetch('http://localhost:8080/e-shop/user-account/save-details', requestOptions).then(r => r.json()).then(data=>{setUserDetails(data)});
+    fetch('http://localhost:8080/e-shop/user-account/save-details', requestOptions)
+        .then(r => r.json())
+        .then(data=>{setUserDetails(data)})
+        .then();
+
+    setUserDetailsEmpty(false);
+
 
   }
-  // TODO: DE VERIFICAT DE CE SE PIERD DATELE DACA FACI REFRESH !!
-  // TODO: TREBUIE DECUPLAT FETCHUL DE DATE DE PARTEA DE DISPLAY
-    // TODO: DE FACUT FETCH GET & POST PT USER DETAILS
-    // TODO: DE FACUT FETCH GET & POST PT USER SHIPPING DETAILS
-    // TODO: ACUM POST-UL FACE RETURN LA VALORILE INPUTTED
 
   function saveUserShippingDetails(data){
 
@@ -97,8 +98,7 @@ export default function CardUserAccount({
 
     fetch('http://localhost:8080/e-shop/user-account/save-shipping-details', requestOptions).then(r => r.json()).then(data=>{setUserShippingDetails(data)});
 
-
-
+    setUserShippingDetailsEmpty(false);
   }
 
   function details(data){
@@ -106,10 +106,82 @@ export default function CardUserAccount({
     saveUserShippingDetails(data);
   }
 
+  // useEffect(()=>{
+  //   console.log("userDetails length: "+userDetails.length);
+  //   console.log("userShippingDetails length: "+userShippingDetails.length);
+  // },[userDetails,userShippingDetails])
+
+  // useEffect(()=>{
+  //
+  //   console.log("@refresh page")
+  //   console.log("@refresh userDetails: "+userDetails.length)
+  //   console.log("@refresh userShippingDetails: "+userShippingDetails.length)
+  //
+  //
+  //   if(userDetails.length===0){
+  //     // console.log("userDetailsData length: "+ userDetailsData.length)
+  //     fetch('http://localhost:8080/e-shop/user-account/get-user-details/' + localStorage.getItem("PTG V2 Login Token"))
+  //         .then(r => r.json()).then(data=>{setUserDetails(data)});
+  //   }
+  //   if(userShippingDetails.length===0){
+  //     // console.log("userShippingDetailsData length: "+ userShippingDetailsData.length);
+  //     // setUserShippingDetails(userShippingDetailsData);
+  //     fetch('http://localhost:8080/e-shop/user-account/get-user-shipping-details/'+ localStorage.getItem("PTG V2 Login Token"))
+  //         .then(r => r.json()).then(data=>{setUserShippingDetails(data)});
+  //   }
+  // },[userDetails,userShippingDetails])
+
+
+  // useEffect(()=>{
+  //
+  //   console.log("@refresh page")
+  //   console.log("@refresh userDetails: "+userDetails.length)
+  //   console.log("@refresh userShippingDetails: "+userShippingDetails.length)
+  //
+  //
+  //   if(userDetails.length===0){
+  //     // console.log("userDetailsData length: "+ userDetailsData.length)
+  //     fetch('http://localhost:8080/e-shop/user-account/get-user-details/' + localStorage.getItem("PTG V2 Login Token"))
+  //         .then(r => r.json()).then(data=>{setUserDetails(data)});
+  //   }
+  //   if(userShippingDetails.length===0){
+  //     // console.log("userShippingDetailsData length: "+ userShippingDetailsData.length);
+  //     // setUserShippingDetails(userShippingDetailsData);
+  //     fetch('http://localhost:8080/e-shop/user-account/get-user-shipping-details/'+ localStorage.getItem("PTG V2 Login Token"))
+  //         .then(r => r.json()).then(data=>{setUserShippingDetails(data)});
+  //   }
+  // },[userDetails,userShippingDetails])
+
+
   useEffect(()=>{
-    console.log("userDetails: "+userDetails);
-    console.log("userShippingDetails: "+userShippingDetails);
-  },[userDetails,userShippingDetails])
+
+    // console.log("@refresh page")
+    // console.log("@refresh userDetails: "+userDetails.length)
+
+    if(userDetailsEmpty===false){
+      console.log("userDetailsEmpty is "+ userDetailsEmpty);
+      fetch('http://localhost:8080/e-shop/user-account/get-user-details/' + localStorage.getItem("PTG V2 Login Token"))
+          .then(r => r.json()).then(data=>{setUserDetails(data)});
+    }
+    else {
+      console.log("userDetailsEmpty is "+ userDetailsEmpty);
+    }
+
+  },[])
+
+  useEffect(()=>{
+    // console.log("@refresh page")
+    // console.log("@refresh userShippingDetails: "+userShippingDetails.length)
+
+    if(userShippingDetailsEmpty===false) {
+      console.log("userShippingDetailsEmpty is "+ userDetailsEmpty);
+      fetch('http://localhost:8080/e-shop/user-account/get-user-shipping-details/'+ localStorage.getItem("PTG V2 Login Token"))
+          .then(r => r.json()).then(data=>{setUserShippingDetails(data)});
+    }
+    else{
+      console.log("userShippingDetailsEmpty is "+ userDetailsEmpty);
+    }
+  },[])
 
   return (
     <>
@@ -295,3 +367,9 @@ CardUserAccount.propTypes = {
   returnButton: PropTypes.object,
   orderButton: PropTypes.object,
 };
+
+// TODO: DE VERIFICAT DE CE SE PIERD DATELE DACA FACI REFRESH !!
+// TODO: TREBUIE DECUPLAT FETCHUL DE DATE DE PARTEA DE DISPLAY
+//   TODO: DE FACUT FETCH GET & POST PT USER DETAILS
+//   TODO: DE FACUT FETCH GET & POST PT USER SHIPPING DETAILS
+//   TODO: ACUM POST-UL FACE RETURN LA VALORILE INPUTTED

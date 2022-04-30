@@ -1,4 +1,5 @@
 import {atom, useAtom} from "jotai";
+import {useEffect} from "react";
 
 export const NUMBER_ITEMS_IN_CART = atom(0);
 
@@ -35,6 +36,12 @@ export default function ProductCard(props) {
 
     }
 
+    useEffect(()=>{
+        if(localStorage.getItem("PTG V2 Login Token")!=null){
+            getNumberOfItemsInCart();
+        }
+        // console.log("NR productsInCart: "+ productsInCart);
+    },[])
 
     return (
         <article className="card card-product-list">

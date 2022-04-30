@@ -20,7 +20,6 @@ function App() {
   const [registrationToken,setToken]=useState("");
 
   const [loginToken,setLoginToken] = useState("");
-  console.log("Login Token in App: "+ loginToken);
   return (
       <div className="App">
 

@@ -43,4 +43,7 @@ public class AppUserAddressService {
         log.info(loginToken);
     }
 
+    public  List<AppUserAddress> getAppUserAddressesByAppUserID(Long appUserID){
+        return appUserAddressRepository.findAppUserAddressesByAppUser_AppUserID(appUserID);
+    }
 }

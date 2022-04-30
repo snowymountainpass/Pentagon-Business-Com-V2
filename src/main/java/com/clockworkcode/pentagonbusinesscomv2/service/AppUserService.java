@@ -118,5 +118,8 @@ public class AppUserService implements UserDetailsService {
         return appUserRepository.enableAppUser(email);
     }
 
+    public AppUser getAppUserByID(Long appUserID){
+        return appUserRepository.findAppUserByAppUserID(appUserID);
+    }
 
 }

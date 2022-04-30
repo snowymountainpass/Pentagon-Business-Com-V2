@@ -46,4 +46,7 @@ public class AppUserShippingAddressService {
         log.info(loginToken);
     }
 
+    public List<AppUserShippingAddress> getAppUserShippingAddressesByAppUserID(Long appUserID) {
+        return appUserShippingAddressRepository.getAppUserShippingAddressesByAppUser_AppUserID(appUserID);
+    }
 }

@@ -1,6 +1,16 @@
 package com.clockworkcode.pentagonbusinesscomv2.model.user;
 
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
 import javax.persistence.*;
+
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
 
 @Entity(name = "AppUserShippingAddress")
 @Table(name = "app_user_shipping_addresses")
@@ -53,7 +63,4 @@ public class AppUserShippingAddress {
         this.appUser = appUser;
     }
 
-    public AppUserShippingAddress() {
-
-    }
 }
