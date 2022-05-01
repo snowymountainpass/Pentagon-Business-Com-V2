@@ -38,7 +38,7 @@ export default function CardUserAccount({
   const [userDetails,setUserDetails] = useAtom(USER_DETAILS);
   const [userShippingDetails,setUserShippingDetails] = useAtom(USER_SHIPPING_DETAILS);
 
-  const [detailsSaved,setDetailsSaved] = useState(false);
+  // const [detailsSaved,setDetailsSaved] = useState(false);
 
   function saveUserDetails(data){
 
@@ -100,12 +100,13 @@ export default function CardUserAccount({
   function details(data){
     saveUserDetails(data);
     saveUserShippingDetails(data);
-    setDetailsSaved(true);
+    // setDetailsSaved(true);
+    localStorage.setItem("savedUsedDetails","true");
   }
 
   useEffect(()=>{
 
-    if(detailsSaved===true){
+    if(localStorage.getItem("savedUsedDetails")==="true"){
 
       fetch('http://localhost:8080/e-shop/user-account/get-user-details/' + localStorage.getItem("PTG V2 Login Token"))
           .then(r => r.json()).then(data=>{setUserDetails(data)});
@@ -113,10 +114,11 @@ export default function CardUserAccount({
       fetch('http://localhost:8080/e-shop/user-account/get-user-shipping-details/'+ localStorage.getItem("PTG V2 Login Token"))
           .then(r => r.json()).then(data=>{setUserShippingDetails(data)});
 
-      console.log("Details have been saved! detailsSaved: "+detailsSaved);
+      // console.log("Details have been saved! detailsSaved: "+detailsSaved);
+      console.log("Details have been saved! detailsSaved: "+localStorage.getItem("savedUsedDetails"));
     }
 
-  },[detailsSaved])
+  },[])
 
   return (
     <>
@@ -235,8 +237,8 @@ export default function CardUserAccount({
               </div>
 
               <div className="flex justify-between mt-12 mb-8">
-                <Button {...returnButton}/>
-                <Button {...detailsButton} />
+                <a href={"/e-shop"}><Button {...returnButton}/></a>
+                <Button {...detailsButton}/>
               </div>
             </div>
           </form>
@@ -302,9 +304,3 @@ CardUserAccount.propTypes = {
   returnButton: PropTypes.object,
   orderButton: PropTypes.object,
 };
-
-// TODO: DE VERIFICAT DE CE SE PIERD DATELE DACA FACI REFRESH !!
-// TODO: TREBUIE DECUPLAT FETCHUL DE DATE DE PARTEA DE DISPLAY
-//   TODO: DE FACUT FETCH GET & POST PT USER DETAILS
-//   TODO: DE FACUT FETCH GET & POST PT USER SHIPPING DETAILS
-//   TODO: ACUM POST-UL FACE RETURN LA VALORILE INPUTTED
