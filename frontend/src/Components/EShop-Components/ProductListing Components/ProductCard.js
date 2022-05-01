@@ -37,10 +37,9 @@ export default function ProductCard(props) {
     }
 
     useEffect(()=>{
-        if(localStorage.getItem("PTG V2 Login Token")!=null){
+        if(localStorage.getItem("PTG V2 Login Token")!==null && productsInCart!==0){
             getNumberOfItemsInCart();
         }
-        // console.log("NR productsInCart: "+ productsInCart);
     },[])
 
     return (

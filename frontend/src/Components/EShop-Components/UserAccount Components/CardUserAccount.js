@@ -38,8 +38,7 @@ export default function CardUserAccount({
   const [userDetails,setUserDetails] = useAtom(USER_DETAILS);
   const [userShippingDetails,setUserShippingDetails] = useAtom(USER_SHIPPING_DETAILS);
 
-  const [userDetailsEmpty,setUserDetailsEmpty] = useState(true);
-  const [userShippingDetailsEmpty,setUserShippingDetailsEmpty] = useState(true);
+  const [detailsSaved,setDetailsSaved] = useState(false);
 
   function saveUserDetails(data){
 
@@ -65,12 +64,9 @@ export default function CardUserAccount({
       )
     };
 
-    fetch('http://localhost:8080/e-shop/user-account/save-details', requestOptions)
-        .then(r => r.json())
-        .then(data=>{setUserDetails(data)})
-        .then();
+    // fetch('http://localhost:8080/e-shop/user-account/save-details', requestOptions).then(r => r.json()).then(data=>{setUserDetails(data)});
+    fetch('http://localhost:8080/e-shop/user-account/save-details', requestOptions).then(r => r);
 
-    setUserDetailsEmpty(false);
 
 
   }
@@ -96,92 +92,31 @@ export default function CardUserAccount({
       )
     };
 
-    fetch('http://localhost:8080/e-shop/user-account/save-shipping-details', requestOptions).then(r => r.json()).then(data=>{setUserShippingDetails(data)});
+    // fetch('http://localhost:8080/e-shop/user-account/save-shipping-details', requestOptions).then(r => r.json()).then(data=>{setUserShippingDetails(data)});
+    fetch('http://localhost:8080/e-shop/user-account/save-shipping-details', requestOptions).then(r => r);
 
-    setUserShippingDetailsEmpty(false);
   }
 
   function details(data){
     saveUserDetails(data);
     saveUserShippingDetails(data);
+    setDetailsSaved(true);
   }
 
-  // useEffect(()=>{
-  //   console.log("userDetails length: "+userDetails.length);
-  //   console.log("userShippingDetails length: "+userShippingDetails.length);
-  // },[userDetails,userShippingDetails])
-
-  // useEffect(()=>{
-  //
-  //   console.log("@refresh page")
-  //   console.log("@refresh userDetails: "+userDetails.length)
-  //   console.log("@refresh userShippingDetails: "+userShippingDetails.length)
-  //
-  //
-  //   if(userDetails.length===0){
-  //     // console.log("userDetailsData length: "+ userDetailsData.length)
-  //     fetch('http://localhost:8080/e-shop/user-account/get-user-details/' + localStorage.getItem("PTG V2 Login Token"))
-  //         .then(r => r.json()).then(data=>{setUserDetails(data)});
-  //   }
-  //   if(userShippingDetails.length===0){
-  //     // console.log("userShippingDetailsData length: "+ userShippingDetailsData.length);
-  //     // setUserShippingDetails(userShippingDetailsData);
-  //     fetch('http://localhost:8080/e-shop/user-account/get-user-shipping-details/'+ localStorage.getItem("PTG V2 Login Token"))
-  //         .then(r => r.json()).then(data=>{setUserShippingDetails(data)});
-  //   }
-  // },[userDetails,userShippingDetails])
-
-
-  // useEffect(()=>{
-  //
-  //   console.log("@refresh page")
-  //   console.log("@refresh userDetails: "+userDetails.length)
-  //   console.log("@refresh userShippingDetails: "+userShippingDetails.length)
-  //
-  //
-  //   if(userDetails.length===0){
-  //     // console.log("userDetailsData length: "+ userDetailsData.length)
-  //     fetch('http://localhost:8080/e-shop/user-account/get-user-details/' + localStorage.getItem("PTG V2 Login Token"))
-  //         .then(r => r.json()).then(data=>{setUserDetails(data)});
-  //   }
-  //   if(userShippingDetails.length===0){
-  //     // console.log("userShippingDetailsData length: "+ userShippingDetailsData.length);
-  //     // setUserShippingDetails(userShippingDetailsData);
-  //     fetch('http://localhost:8080/e-shop/user-account/get-user-shipping-details/'+ localStorage.getItem("PTG V2 Login Token"))
-  //         .then(r => r.json()).then(data=>{setUserShippingDetails(data)});
-  //   }
-  // },[userDetails,userShippingDetails])
-
-
   useEffect(()=>{
 
-    // console.log("@refresh page")
-    // console.log("@refresh userDetails: "+userDetails.length)
+    if(detailsSaved===true){
 
-    if(userDetailsEmpty===false){
-      console.log("userDetailsEmpty is "+ userDetailsEmpty);
       fetch('http://localhost:8080/e-shop/user-account/get-user-details/' + localStorage.getItem("PTG V2 Login Token"))
           .then(r => r.json()).then(data=>{setUserDetails(data)});
-    }
-    else {
-      console.log("userDetailsEmpty is "+ userDetailsEmpty);
-    }
 
-  },[])
-
-  useEffect(()=>{
-    // console.log("@refresh page")
-    // console.log("@refresh userShippingDetails: "+userShippingDetails.length)
-
-    if(userShippingDetailsEmpty===false) {
-      console.log("userShippingDetailsEmpty is "+ userDetailsEmpty);
       fetch('http://localhost:8080/e-shop/user-account/get-user-shipping-details/'+ localStorage.getItem("PTG V2 Login Token"))
           .then(r => r.json()).then(data=>{setUserShippingDetails(data)});
+
+      console.log("Details have been saved! detailsSaved: "+detailsSaved);
     }
-    else{
-      console.log("userShippingDetailsEmpty is "+ userDetailsEmpty);
-    }
-  },[])
+
+  },[detailsSaved])
 
   return (
     <>
