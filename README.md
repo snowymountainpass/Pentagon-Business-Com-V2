@@ -15,7 +15,7 @@ This project will be used as the new company website. The aim is to increase the
 - Clients can add products to the shopping cart (only if an account is created and the client is logged in)
 - Clients can search for products and filter the product by product category, product brand, price and stock availability
 
-## Future Feature
+## Future Features
 - Clients can pay for the products (through the implementation of the Stripe API)
 - Clients can receive the invoice by email
 - Admin Section: an admin user can add and remove product and also change their quantites
