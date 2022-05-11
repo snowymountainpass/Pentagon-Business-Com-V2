@@ -3,6 +3,8 @@ This project will be used as the new company website. The aim is to increase the
 - revamping the look of the website (a better presentation of the company & its products is sure to inquire further) 
 - adding an E-Shop section, in order to open a new sales channel
 
+The Notus React UI kit was used in the development of the frontend side of the project.
+
 ### Technologies Used:
 #### Backend: 
 ![Java](https://img.shields.io/badge/java-%23ED8B00.svg?style=for-the-badge&logo=java&logoColor=white)![Spring](https://img.shields.io/badge/spring-%236DB33F.svg?style=for-the-badge&logo=spring&logoColor=white)![Postgres](https://img.shields.io/badge/postgres-%23316192.svg?style=for-the-badge&logo=postgresql&logoColor=white)
