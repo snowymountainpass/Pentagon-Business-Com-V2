@@ -12,6 +12,7 @@ import Register from "./Pages/Register";
 import RestorePassword from "./Pages/RestorePassword";
 import ShoppingCart from "./Pages/ShoppingCart";
 import UserAccount from "./Pages/UserAccount";
+import Invoice from "./Pages/Invoice";
 // import Checkout from "./Pages/Checkout";
 
 
@@ -31,7 +32,7 @@ function App() {
 
             <Route path={"/e-shop"} element={<EShop loginToken={loginToken}/>}/>
             <Route path={"/e-shop/shopping-cart"} element={<ShoppingCart/>}/>
-            {/*<Route path={"/e-shop/checkout"} element={<Checkout/>}/>*/}
+            <Route path={"/e-shop/invoice"} element={<Invoice/>}/>
             <Route path={"/e-shop/login"} element={<Login setLoginToken={setLoginToken}/>}/>
             <Route path={"/e-shop/register"} element={<Register setToken={setToken}/>}/>
             <Route path={"/e-shop/restore-password"} element={<RestorePassword/>}/>

@@ -9,12 +9,14 @@ import RemoveIcon from '@material-ui/icons/Remove';
 import {NUMBER_ITEMS_IN_CART} from "../EShop-Components/ProductListing Components/ProductCard";
 
 export const TOTAL_VALUE_IN_CART = atom(0);
+export const PRODUCTS_IN_CART = atom([]);
 
 export default function ProductRow() {
 
     const [totalAmountInCart, setTotalAmountInCart] = useAtom(TOTAL_VALUE_IN_CART);
 
-    const [productsInCart, setProductsInCart] = useState([]);
+    // const [productsInCart, setProductsInCart] = useState([]); // OLD VERSION (WORKING)
+    const [productsInCart, setProductsInCart] = useAtom(PRODUCTS_IN_CART);
     const [numberProductsInCart, setNumberProductsInCart] = useAtom(NUMBER_ITEMS_IN_CART);
 
     function getProductsAndQuantitiesInCart() {

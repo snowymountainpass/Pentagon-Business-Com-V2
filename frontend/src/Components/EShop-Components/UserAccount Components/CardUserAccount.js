@@ -38,7 +38,6 @@ export default function CardUserAccount({
   const [userDetails,setUserDetails] = useAtom(USER_DETAILS);
   const [userShippingDetails,setUserShippingDetails] = useAtom(USER_SHIPPING_DETAILS);
 
-  // const [detailsSaved,setDetailsSaved] = useState(false);
 
   function saveUserDetails(data){
 

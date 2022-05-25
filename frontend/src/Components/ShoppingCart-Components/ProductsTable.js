@@ -28,7 +28,7 @@ export default function ProductsTable(){
                 <a href="#" className="btn btn-primary float-md-right"> Checkout <i className="fa fa-chevron-right"/>
                 </a>
                 <Link to="/e-shop" className="btn btn-light"> <i className="fa fa-chevron-left"/>Continue shopping</Link>
-                {/*<Link to="/e-shop" className="btn btn-light"> <i className="fa fa-chevron-left"/>Checkout</Link>*/}
+                <Link to="/e-shop" className="btn btn-light"> <i className="fa fa-chevron-left"/>Get Invoice</Link>
             </div>
         </div>
 
