@@ -30,7 +30,9 @@ export default function CardInvoice({
   const [productsInCart,setProductsInCart] = useAtom(PRODUCTS_IN_CART);
   const [totalAmount, setTotalAmount] = useAtom(TOTAL_VALUE_IN_CART);
 
-  console.log("userDetails: "+userDetails);
+  const current = new Date();
+  const currentDate = `${current.getDate()}/${current.getMonth()+1}/${current.getFullYear()}`;
+  const expirationDate = `${current.getDate()+1}/${current.getMonth()+1}/${current.getFullYear()}`;
 
   return (
     <>
@@ -102,10 +104,12 @@ export default function CardInvoice({
               <div className="flex justify-center py-6 lg:pt-4">
                 <div className="mt-12">
                   <p className="float-left mb-0">{invoiceDate.text}</p>
-                  <p className="ml-4 float-right mb-0">{invoiceDate.date}</p>
+                  {/*<p className="ml-4 float-right mb-0">{invoiceDate.date}</p>*/}
+                  <p className="ml-4 float-right mb-0">{currentDate}</p>
                   <br />
                   <p className="float-left">{dueDate.text}</p>
-                  <p className="ml-4 float-right">{dueDate.date}</p>
+                  {/*<p className="ml-4 float-right">{dueDate.date}</p>*/}
+                  <p className="ml-4 float-right">{expirationDate}</p>
                 </div>
               </div>
             </div>

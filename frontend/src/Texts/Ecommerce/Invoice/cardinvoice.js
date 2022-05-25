@@ -9,11 +9,11 @@ const textProps = {
   },
 
   invoiceDate: {
-    text: "Invoice date:",
+    text: "Invoice Date:",
     date: "06/03/2021",
   },
   dueDate: {
-    text: "Due date:",
+    text: "Expiration Date:",
     date: "11/03/2021",
   },
   footerTitle: "Thank you for buying our products!",
