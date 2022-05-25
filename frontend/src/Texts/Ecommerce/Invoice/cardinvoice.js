@@ -7,11 +7,7 @@ const textProps = {
     text: "Invoice no",
     id: "#0453119",
   },
-  billing: {
-    title: "Billed to:",
-    name: "James Thompson",
-    address: "Bld Mihail Kogalniceanu, 7652 Bucharest, Romania",
-  },
+
   invoiceDate: {
     text: "Invoice date:",
     date: "06/03/2021",
@@ -21,7 +17,7 @@ const textProps = {
     date: "11/03/2021",
   },
   footerTitle: "Thank you for buying our products!",
-  footerDescriprion: "To finalize your order, please send this invoice to office@pentagon.ro with proof of payment(bank statement)!",
+  footerDescriprion: "To finalize your order, please send this invoice to office@pentagon.ro with proof of payment (bank statement)!",
   contact: [
     {
       type: "email:",

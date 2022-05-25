@@ -30,6 +30,8 @@ export default function CardInvoice({
   const [productsInCart,setProductsInCart] = useAtom(PRODUCTS_IN_CART);
   const [totalAmount, setTotalAmount] = useAtom(TOTAL_VALUE_IN_CART);
 
+  console.log("userDetails: "+userDetails);
+
   return (
     <>
       <div className="bg-white shadow-lg rounded-lg relative flex flex-col min-w-0 break-words w-full mb-6 shadow-lg">
@@ -54,15 +56,32 @@ export default function CardInvoice({
               <div className="flex justify-center py-6 lg:pt-6 pt-12">
                 <div className="text-left">
                   <h3 className="text-2xl font-bold leading-normal mt-0 mb-2">
-                    {billing.title}
+                    {"Billed to:"}
                   </h3>
                   {/*<h6 className="block mt-2 mb-0 text-xl">{billing.name}</h6>*/}
                   <h6 className="block mt-2 mb-0 text-xl">{userDetails[0]+" "+ userDetails[1]}</h6>
                   {/*<p className="text-blueGray-500">{billing.address}</p>*/}
-                  <p className="text-blueGray-500">{userDetails[4]+","+ userDetails[5]+","+userDetails[6]+","+ userDetails[7]+","+ userDetails[8]}</p>
+                  <p className="text-blueGray-500">{"Street " + userDetails[4]+ userDetails[5]+", "+userDetails[6]+", "+ userDetails[7]+", "+ userDetails[8]+", "+ userDetails[9]+" | "+" phone: "+userDetails[2]+" | "+" email: "+userDetails[3]}</p>
                 </div>
               </div>
             </div>
+
+            <div className="text-left px-4 relative w-full lg:w-3/12 w-full md:w-5/12">
+              <div className="flex justify-center py-6 lg:pt-6 pt-12">
+                <div className="text-left">
+                  <h3 className="text-2xl font-bold leading-normal mt-0 mb-2">
+                    {"Shipping to:"}
+                  </h3>
+                  {/*<h6 className="block mt-2 mb-0 text-xl">{billing.name}</h6>*/}
+                  <h6 className="block mt-2 mb-0 text-xl">{userShippingDetails[1]+" "+ userShippingDetails[2]}</h6>
+                  {/*<p className="text-blueGray-500">{billing.address}</p>*/}
+                  <p className="text-blueGray-500">
+                    {"Street " + userShippingDetails[5]+", "+userShippingDetails[6]+", "+ userShippingDetails[7]+ userShippingDetails[8]+", "+ userShippingDetails[9]+", "+ userShippingDetails[10]+" | "+" phone: "+userShippingDetails[4]+" | "+" email: "+userShippingDetails[3]}
+                  </p>
+                </div>
+              </div>
+            </div>
+
           </div>
 
           {/*TODO: SHIPPING DETAILS START */}
