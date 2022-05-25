@@ -9,6 +9,7 @@ import {TOTAL_VALUE_IN_CART} from "../ShoppingCart-Components/ProductRow";
 
 import {useAtom} from "jotai";
 
+
 export default function CardInvoice({
   image,
   address,
@@ -33,6 +34,33 @@ export default function CardInvoice({
   const current = new Date();
   const currentDate = `${current.getDate()}/${current.getMonth()+1}/${current.getFullYear()}`;
   const expirationDate = `${current.getDate()+1}/${current.getMonth()+1}/${current.getFullYear()}`;
+
+
+  // TODO: DE RESCRIS
+  // declare all characters
+
+
+  function generateString(length) {
+    const characters ='ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+    let result = ' ';
+    const charactersLength = characters.length;
+    for ( let i = 0; i < length; i++ ) {
+      result += characters.charAt(Math.floor(Math.random() * charactersLength));
+    }
+
+    return result;
+  }
+
+
+  function generateInvoiceNumber(){
+
+    let dateString = `${current.getFullYear()${current.getMonth()+1}}${current.getDate()}`;
+    let initialsClient = `${userDetails[0].substring(0,1)}${userDetails[1].substring(0,1)}`;
+    let randomCode = generateString(9);
+
+    return `${dateString}${initialsClient}${randomCode}`
+  }
+
 
   return (
     <>
@@ -86,9 +114,6 @@ export default function CardInvoice({
 
           </div>
 
-          {/*TODO: SHIPPING DETAILS START */}
-
-          {/*TODO: SHIPPING DETAILS END*/}
 
           <div className="md:justify-between flex flex-wrap -mx-4">
             <div className="text-left px-4 relative w-full md:w-4/12">
@@ -96,7 +121,7 @@ export default function CardInvoice({
                 {invoice.text}
               </h4>
               <h3 className="text-2xl font-normal leading-normal mt-1 mb-2 font-light">
-                {invoice.id}
+                {generateInvoiceNumber()}
               </h3>
             </div>
 
