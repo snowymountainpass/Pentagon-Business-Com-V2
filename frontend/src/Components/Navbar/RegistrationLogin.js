@@ -131,8 +131,8 @@ export default function RegistrationLogin() {
 
             </div>
 
-            <p className={"text-white"}>{`loggedinState:${((localStorage.getItem("PTG V2 Login Token") &&
-                localStorage.getItem("PTG V2 Login Token") !== "invalid credentials") ? true : false)}`}</p>
+            {/*<p className={"text-white"}>{`loggedinState:${((localStorage.getItem("PTG V2 Login Token") &&*/}
+            {/*    localStorage.getItem("PTG V2 Login Token") !== "invalid credentials") ? true : false)}`}</p>*/}
         </>
 
 
