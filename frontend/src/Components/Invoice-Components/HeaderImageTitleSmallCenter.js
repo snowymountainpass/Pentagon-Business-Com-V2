@@ -2,7 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 
 // components
-import Skew from "../../../components/Skews/Skew.js";
+// import Skew from "../../../components/Skews/Skew.js";
 
 export default function HeaderImageTitleSmallCenter({
   title,
@@ -29,7 +29,7 @@ export default function HeaderImageTitleSmallCenter({
           </div>
         </div>
         <div className="w-full bottom-0 absolute z-2">
-          <Skew color={skewColor} />
+          {/*<Skew color={skewColor} />*/}
         </div>
       </section>
     </>

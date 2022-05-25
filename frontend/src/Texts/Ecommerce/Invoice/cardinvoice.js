@@ -1,5 +1,6 @@
 const textProps = {
-  image: require("assets/img/ct-logo-text-black.png").default,
+  // image: require("assets/img/ct-logo-text-black.png").default,
+  image: require("../../../Assets/img/Pentagon Assets/pentagon logo.jpg").default,
   address: "Str. Antiaeriana, Bucharest, Romania",
   phone: "tel: +4 02 13 21 38 08",
   invoice: {
@@ -19,12 +20,12 @@ const textProps = {
     text: "Due date:",
     date: "11/03/2021",
   },
-  footerTitle: "Thank you!",
-  footerDescriprion: "If you encounter any issues can contact us",
+  footerTitle: "Thank you for buying our products!",
+  footerDescriprion: "To finalize your order, please send this invoice to office@pentagon.ro with proof of payment(bank statement)!",
   contact: [
     {
       type: "email:",
-      info: "support@creative-tim.com",
+      info: "office@pentagon.ro",
     },
   ],
   totalCount: {

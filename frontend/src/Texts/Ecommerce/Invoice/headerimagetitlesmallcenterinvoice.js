@@ -1,7 +1,7 @@
 const textProps = {
   title: "Invoice",
-  subtitle: "Everyone’s born confident, and everything’s taken away from",
-  image: require("assets/img/pages/nathan-dumlao.jpg").default,
+  subtitle: "To finalize the order, send the invoice to office@pentagon.ro with proof of payment(bank statement)!",
+  // image: require("assets/img/pages/nathan-dumlao.jpg").default,
   skewColor: "blueGray",
 };
 export default textProps;

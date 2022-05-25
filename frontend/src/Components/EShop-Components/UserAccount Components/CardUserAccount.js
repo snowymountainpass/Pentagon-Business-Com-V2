@@ -9,8 +9,8 @@ import Input from "../../Elements/Input.js";
 import {atom, useAtom} from "jotai";
 
 export const FIRSTNAME_LASTNAME = atom("");
-const USER_DETAILS = atom([]);
-const USER_SHIPPING_DETAILS = atom([]);
+export const USER_DETAILS = atom([]);
+export const USER_SHIPPING_DETAILS = atom([]);
 
 export default function CardUserAccount({
   returnButton,

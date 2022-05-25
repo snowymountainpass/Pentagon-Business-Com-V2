@@ -1,11 +1,11 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-import USER_DETAILS from "../EShop-Components/UserAccount Components/CardUserAccount";
-import USER_SHIPPING_DETAILS from "../EShop-Components/UserAccount Components/CardUserAccount";
+import {USER_DETAILS} from "../EShop-Components/UserAccount Components/CardUserAccount";
+import {USER_SHIPPING_DETAILS} from "../EShop-Components/UserAccount Components/CardUserAccount";
 
-import PRODUCTS_IN_CART from "../ShoppingCart-Components/ProductRow";
-import {TOTAL_VALUE_IN_CART} from "../Components/ShoppingCart-Components/ProductRow";
+import {PRODUCTS_IN_CART} from "../ShoppingCart-Components/ProductRow";
+import {TOTAL_VALUE_IN_CART} from "../ShoppingCart-Components/ProductRow";
 
 import {useAtom} from "jotai";
 
