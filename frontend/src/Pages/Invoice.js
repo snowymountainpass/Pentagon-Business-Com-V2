@@ -39,8 +39,12 @@ export default function Invoice() {
             <div className="mx-auto px-4 relative w-full lg:w-10/12">
                 <CardInvoice {...cardinvoice}/>
                 <div className="float-right">
-                <Button color="blueGray" onClick={() => window.print()}>
-                  <i className="fas fa-save mr-2"></i>
+                <Button color="blueGray" onClick={() => {
+                    window.print();
+                    window.title="Pentagon Business Com";
+                }}
+                >
+                  <i className="fas fa-save mr-2"/>
                   Save Invoice
                 </Button>
               </div>

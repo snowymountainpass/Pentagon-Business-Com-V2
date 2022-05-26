@@ -35,6 +35,9 @@ export default function CardInvoice({
   const currentDate = `${current.getDate()}/${current.getMonth()+1}/${current.getFullYear()}`;
   const expirationDate = `${current.getDate()+1}/${current.getMonth()+1}/${current.getFullYear()}`;
 
+  console.log("userDetails: "+ userDetails);
+  console.log("userShippingDetails: "+ userShippingDetails);
+
 
   function generateString(length) {
     const characters ='ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';

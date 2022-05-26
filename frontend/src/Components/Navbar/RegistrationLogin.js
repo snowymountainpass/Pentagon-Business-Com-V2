@@ -68,20 +68,25 @@ export default function RegistrationLogin() {
 
     return (
         <>
-            <div className="widgets-wrap float-md-right text-white">
-                <div className="widget-header  mr-3 text-white">
-                    <Link
+            <div style={{
+                display: ((localStorage.getItem("PTG V2 Login Token") &&
+                    localStorage.getItem("PTG V2 Login Token") !== "invalid credentials") ? true : false) ? "block" : "none"
+            }}>
+                <div className="widgets-wrap float-md-right text-white">
+                    <div className="widget-header  mr-3 text-white">
+                        <Link
 
-                        className={
-                            "hover:opacity-75 px-3 py-4 lg:py-2 flex items-center text-xs uppercase font-bold transition-all duration-150 ease-in-out text-white"
+                            className={
+                                "hover:opacity-75 px-3 py-4 lg:py-2 flex items-center text-xs uppercase font-bold transition-all duration-150 ease-in-out text-white"
 
-                        }
-                        to={"/e-shop/shopping-cart"}
-                    >
-                        <Badge color="secondary" badgeContent={numberItemsInCart} overlap="rectangular">
-                            <ShoppingCartIcon fontSize={"medium"}/>{" "}
-                        </Badge>
-                    </Link>
+                            }
+                            to={"/e-shop/shopping-cart"}
+                        >
+                            <Badge color="secondary" badgeContent={numberItemsInCart} overlap="rectangular">
+                                <ShoppingCartIcon fontSize={"medium"}/>{" "}
+                            </Badge>
+                        </Link>
+                    </div>
                 </div>
             </div>
 
