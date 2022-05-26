@@ -7,6 +7,7 @@ import {useForm} from "react-hook-form";
 import Button from "../../Elements/Button";
 import Input from "../../Elements/Input.js";
 import {atom, useAtom} from "jotai";
+import {Link} from "react-router-dom";
 
 export const FIRSTNAME_LASTNAME = atom("");
 export const USER_DETAILS = atom([]);
@@ -38,7 +39,6 @@ export default function CardUserAccount({
   const [userDetails,setUserDetails] = useAtom(USER_DETAILS);
   const [userShippingDetails,setUserShippingDetails] = useAtom(USER_SHIPPING_DETAILS);
 
-
   function saveUserDetails(data){
 
     setFirstNameLastName(data.firstName+" "+data.lastName);
@@ -66,7 +66,8 @@ export default function CardUserAccount({
     // fetch('http://localhost:8080/e-shop/user-account/save-details', requestOptions).then(r => r.json()).then(data=>{setUserDetails(data)});
     fetch('http://localhost:8080/e-shop/user-account/save-details', requestOptions).then(r => r);
 
-
+    fetch('http://localhost:8080/e-shop/user-account/get-user-details/' + localStorage.getItem("PTG V2 Login Token"))
+        .then(r => r.json()).then(data=>{setUserDetails(data)});
 
   }
 
@@ -94,6 +95,9 @@ export default function CardUserAccount({
     // fetch('http://localhost:8080/e-shop/user-account/save-shipping-details', requestOptions).then(r => r.json()).then(data=>{setUserShippingDetails(data)});
     fetch('http://localhost:8080/e-shop/user-account/save-shipping-details', requestOptions).then(r => r);
 
+    fetch('http://localhost:8080/e-shop/user-account/get-user-shipping-details/'+ localStorage.getItem("PTG V2 Login Token"))
+        .then(r => r.json()).then(data=>{setUserShippingDetails(data)});
+
   }
 
   function details(data){
@@ -101,9 +105,6 @@ export default function CardUserAccount({
     saveUserShippingDetails(data);
     // setDetailsSaved(true);
     localStorage.setItem("savedUserDetails","true");
-  }
-
-  useEffect(()=>{
 
     if(localStorage.getItem("savedUserDetails")==="true"){
 
@@ -114,10 +115,35 @@ export default function CardUserAccount({
           .then(r => r.json()).then(data=>{setUserShippingDetails(data)});
 
       // console.log("Details have been saved! detailsSaved: "+detailsSaved);
+
       console.log("Details have been saved! detailsSaved: "+localStorage.getItem("savedUserDetails"));
+
     }
 
-  },[])
+    console.log("USER_DETAILS: "+ userDetails);
+    console.log("USER_SHIPPING_DETAILS: " + userShippingDetails);
+
+  }
+
+  useEffect(()=>{
+
+    console.log("reached CardUserAccount useEffect")
+
+    if(localStorage.getItem("savedUserDetails")==="true"){
+
+      fetch('http://localhost:8080/e-shop/user-account/get-user-details/' + localStorage.getItem("PTG V2 Login Token"))
+          .then(r => r.json()).then(data=>{setUserDetails(data)});
+
+      fetch('http://localhost:8080/e-shop/user-account/get-user-shipping-details/'+ localStorage.getItem("PTG V2 Login Token"))
+          .then(r => r.json()).then(data=>{setUserShippingDetails(data)});
+
+      // console.log("Details have been saved! detailsSaved: "+detailsSaved);
+
+      console.log("Details have been saved! detailsSaved: "+localStorage.getItem("savedUserDetails"));
+
+    }
+
+  },[localStorage.getItem("savedUserDetails")==="true"])
 
   return (
     <>
@@ -236,7 +262,8 @@ export default function CardUserAccount({
               </div>
 
               <div className="flex justify-between mt-12 mb-8">
-                <a href={"/e-shop"}><Button {...returnButton}/></a>
+                {/*<a href={"/e-shop"}><Button {...returnButton}/></a>*/}
+                <Link to={"/e-shop"}><Button {...returnButton}/></Link>
                 <Button {...detailsButton}/>
               </div>
             </div>

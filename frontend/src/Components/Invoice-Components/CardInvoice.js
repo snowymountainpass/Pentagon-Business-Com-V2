@@ -1,13 +1,14 @@
-import React from "react";
+import React, {useEffect,useState} from "react";
 import PropTypes from "prop-types";
 
-import {USER_DETAILS} from "../EShop-Components/UserAccount Components/CardUserAccount";
-import {USER_SHIPPING_DETAILS} from "../EShop-Components/UserAccount Components/CardUserAccount";
+// import {USER_DETAILS} from "../EShop-Components/UserAccount Components/CardUserAccount";
+// import {USER_SHIPPING_DETAILS} from "../EShop-Components/UserAccount Components/CardUserAccount";
 
 import {PRODUCTS_IN_CART} from "../ShoppingCart-Components/ProductRow";
 import {TOTAL_VALUE_IN_CART} from "../ShoppingCart-Components/ProductRow";
 
 import {useAtom} from "jotai";
+import {USER_DETAILS, USER_SHIPPING_DETAILS} from "../EShop-Components/UserAccount Components/CardUserAccount";
 
 
 export default function CardInvoice({
@@ -28,6 +29,10 @@ export default function CardInvoice({
 
   const [userDetails,setUserDetails] = useAtom(USER_DETAILS);
   const [userShippingDetails,setUserShippingDetails] = useAtom(USER_SHIPPING_DETAILS);
+
+  // const [userDetails,setUserDetails] = useState([]);
+  // const [userShippingDetails,setUserShippingDetails] = useState([]);
+
   const [productsInCart,setProductsInCart] = useAtom(PRODUCTS_IN_CART);
   const [totalAmount, setTotalAmount] = useAtom(TOTAL_VALUE_IN_CART);
 
@@ -35,8 +40,10 @@ export default function CardInvoice({
   const currentDate = `${current.getDate()}/${current.getMonth()+1}/${current.getFullYear()}`;
   const expirationDate = `${current.getDate()+1}/${current.getMonth()+1}/${current.getFullYear()}`;
 
-  console.log("userDetails: "+ userDetails);
-  console.log("userShippingDetails: "+ userShippingDetails);
+  // console.log("userDetails: "+ userDetails);
+  // console.log("userShippingDetails: "+ userShippingDetails);
+
+  const [isDownloading, setIsDownloading] = useState(true);
 
 
   function generateString(length) {
@@ -57,12 +64,70 @@ export default function CardInvoice({
     let initialsClient = `${userDetails[0].substring(0,1)}${userDetails[1].substring(0,1)}`;
     let randomCode = generateString(9);
 
-    document.title = `${dateString}-${initialsClient}-${randomCode}`;
+    // document.title = `${dateString}-${initialsClient}-${randomCode}`;
 
     return `${dateString}-${initialsClient}-${randomCode}`
 
   }
 
+  let InvoiceNumber;
+  InvoiceNumber = generateInvoiceNumber();
+
+  // setTimeout(() => {
+  //   console.log("OUTSIDE UE - userDetails: "+ userDetails);
+  //   console.log("OUTSIDE UE -  userShippingDetails: "+ userShippingDetails);
+  //
+  //   setTimeout(() => {
+  //     console.log("userDetails: "+ userDetails);
+  //     console.log("userShippingDetails: "+ userShippingDetails);
+  //     InvoiceNumber = generateInvoiceNumber();
+  //     console.log("InvoiceNumber - after 400 ms: "+ InvoiceNumber);
+  //     console.log("time InvoiceNumber:"+ Date.now().valueOf());
+  //
+  //   },400);
+  //   console.log("time OUTSIDE UE:"+ Date.now().valueOf());
+  // },100);
+
+  useEffect(() => {
+
+    // console.log("right away");
+
+    // fetch('http://localhost:8080/e-shop/user-account/get-user-details/' + localStorage.getItem("PTG V2 Login Token"))
+    //     .then(r => r.json()).then(data => {
+    //   setUserDetails(data)
+    // });
+    //
+    // fetch('http://localhost:8080/e-shop/user-account/get-user-shipping-details/' + localStorage.getItem("PTG V2 Login Token"))
+    //     .then(r => r.json()).then(data => {
+    //   setUserShippingDetails(data)
+    // });
+    // console.log("time after fetches:"+ Date.now());
+    // console.log("userDetails: "+ userDetails);
+    // console.log("userShippingDetails: "+ userShippingDetails);
+
+    // setTimeout(() => {
+    //   console.log("INSIDE - userDetails: "+ userDetails);
+    //   console.log("INSIDE - userShippingDetails: "+ userShippingDetails);
+    //   console.log("after 300 ms");
+    // },300);
+
+
+
+    const title = document.title;
+    if (isDownloading) {
+      setTimeout(() => {
+        // InvoiceNumber = generateInvoiceNumber();
+        document.title = InvoiceNumber;
+        window.print();
+        setIsDownloading(false);
+        // console.log("document.title = InvoiceNumber - 500");
+      }, 500);
+      setTimeout(() => {
+        document.title = title;
+        // console.log("document.title = title - 600");
+      }, 600);
+    }
+  },[]);
 
 
   return (
@@ -124,7 +189,7 @@ export default function CardInvoice({
                 {invoice.text}
               </h4>
               <h3 className="text-2xl font-normal leading-normal mt-1 mb-2 font-light">
-                {generateInvoiceNumber()}
+                {InvoiceNumber}
               </h3>
             </div>
 

@@ -12,6 +12,7 @@ import {useAtom} from "jotai";
 
 export default function ShoppingCart() {
     const [totalAmount, setTotalAmount] = useAtom(TOTAL_VALUE_IN_CART);
+
     return (
 
         <>

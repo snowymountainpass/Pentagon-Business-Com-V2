@@ -80,7 +80,7 @@ const textProps = {
 
   returnButton: {
     color: "light",
-    children: "Return to cart",
+    children: "Return to E-Shop",
     // href:"/e-shop",
   },
   detailsButton: {
