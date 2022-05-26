@@ -36,13 +36,9 @@ export default function CardInvoice({
   const expirationDate = `${current.getDate()+1}/${current.getMonth()+1}/${current.getFullYear()}`;
 
 
-  // TODO: DE RESCRIS
-  // declare all characters
-
-
   function generateString(length) {
     const characters ='ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
-    let result = ' ';
+    let result = '';
     const charactersLength = characters.length;
     for ( let i = 0; i < length; i++ ) {
       result += characters.charAt(Math.floor(Math.random() * charactersLength));
@@ -54,12 +50,16 @@ export default function CardInvoice({
 
   function generateInvoiceNumber(){
 
-    let dateString = `${current.getFullYear()${current.getMonth()+1}}${current.getDate()}`;
+    let dateString = `${current.getFullYear()}${current.getMonth()+1}${current.getDate()}`;
     let initialsClient = `${userDetails[0].substring(0,1)}${userDetails[1].substring(0,1)}`;
     let randomCode = generateString(9);
 
-    return `${dateString}${initialsClient}${randomCode}`
+    document.title = `${dateString}-${initialsClient}-${randomCode}`;
+
+    return `${dateString}-${initialsClient}-${randomCode}`
+
   }
+
 
 
   return (

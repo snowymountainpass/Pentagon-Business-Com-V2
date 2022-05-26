@@ -25,6 +25,10 @@ export default function Invoice() {
   React.useEffect(() => {
     window.scrollTo(0, 0);
   }, [location]);
+
+
+
+
   return (
     <>
       <NavbarLinks {...navbarlinkslanding2} />
@@ -33,11 +37,11 @@ export default function Invoice() {
         <div className="container mx-auto px-4 -mt-64">
           <div className="flex flex-wrap -mx-4">
             <div className="mx-auto px-4 relative w-full lg:w-10/12">
-              <CardInvoice {...cardinvoice} />
-              <div className="float-right">
+                <CardInvoice {...cardinvoice}/>
+                <div className="float-right">
                 <Button color="blueGray" onClick={() => window.print()}>
-                  <i className="fas fa-print mr-2"></i>
-                  Print
+                  <i className="fas fa-save mr-2"></i>
+                  Save Invoice
                 </Button>
               </div>
             </div>

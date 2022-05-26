@@ -1,6 +1,7 @@
 const textProps = {
   // image: require("assets/img/ct-logo-text-black.png").default,
-  image: require("../../../Assets/img/Pentagon Assets/pentagon logo.jpg").default,
+  // image: require("../../../Assets/img/Pentagon Assets/pentagon logo.jpg").default,
+  image: require("../../../Assets/img/Pentagon Assets/pentagon logo.jpg"),
   address: "Str. Antiaeriana, Bucharest, Romania",
   phone: "tel: +4 02 13 21 38 08",
   invoice: {

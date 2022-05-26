@@ -28,7 +28,14 @@ export default function ProductsTable(){
                 {/*<a href="#" className="btn btn-primary float-md-right"> Checkout <i className="fa fa-chevron-right"/>*/}
                 {/*</a>*/}
                 <Link to="/e-shop" className="btn btn-light"> <i className="fa fa-chevron-left"/>Continue shopping</Link>
-                <Link to="/e-shop/invoice" className="btn btn-primary float-md-right"> Get Invoice<i className="fa fa-chevron-right"/></Link>
+
+                {localStorage.getItem("savedUserDetails")==="true" ?
+                    <Link to="/e-shop/invoice" className="btn btn-primary float-md-right"> Get Invoice<i className="fa fa-chevron-right"/></Link>
+                    :
+                    <Link to="/e-shop/user-account" className="btn btn-primary float-md-right"> Set User Details<i className="fa fa-chevron-right"/></Link>
+                }
+
+
             </div>
         </div>
 

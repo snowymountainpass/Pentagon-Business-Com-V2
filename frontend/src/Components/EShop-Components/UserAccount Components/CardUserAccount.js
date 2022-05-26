@@ -100,12 +100,12 @@ export default function CardUserAccount({
     saveUserDetails(data);
     saveUserShippingDetails(data);
     // setDetailsSaved(true);
-    localStorage.setItem("savedUsedDetails","true");
+    localStorage.setItem("savedUserDetails","true");
   }
 
   useEffect(()=>{
 
-    if(localStorage.getItem("savedUsedDetails")==="true"){
+    if(localStorage.getItem("savedUserDetails")==="true"){
 
       fetch('http://localhost:8080/e-shop/user-account/get-user-details/' + localStorage.getItem("PTG V2 Login Token"))
           .then(r => r.json()).then(data=>{setUserDetails(data)});
@@ -114,7 +114,7 @@ export default function CardUserAccount({
           .then(r => r.json()).then(data=>{setUserShippingDetails(data)});
 
       // console.log("Details have been saved! detailsSaved: "+detailsSaved);
-      console.log("Details have been saved! detailsSaved: "+localStorage.getItem("savedUsedDetails"));
+      console.log("Details have been saved! detailsSaved: "+localStorage.getItem("savedUserDetails"));
     }
 
   },[])
