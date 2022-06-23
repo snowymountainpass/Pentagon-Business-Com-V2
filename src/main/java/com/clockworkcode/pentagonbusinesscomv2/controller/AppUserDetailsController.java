@@ -71,12 +71,6 @@ public class AppUserDetailsController {
         AppUser appUser = loginTokenService.getAppUserByLoginToken(loginToken);
         int userAddressesListSize = appUserAddressService.getAppUserAddressesByAppUserID(appUser.getAppUserID()).size();
         AppUserAddress userAddress = null;
-//        if(userAddressesListSize==1){
-//             userAddress = appUserAddressService.getAppUserAddressesByAppUserID(appUser.getAppUserID()).get(0);
-//        }
-//        else if (userAddressesListSize>1) {
-//             userAddress = appUserAddressService.getAppUserAddressesByAppUserID(appUser.getAppUserID()).get(userAddressesListSize-1);
-//        }
 
         if(userAddressesListSize>0){
             userAddress = appUserAddressService.getAppUserAddressesByAppUserID(appUser.getAppUserID()).get(userAddressesListSize-1);

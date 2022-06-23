@@ -1,8 +1,6 @@
 package com.clockworkcode.pentagonbusinesscomv2.controller;
 
 
-import com.clockworkcode.pentagonbusinesscomv2.model.product.Product;
-import com.clockworkcode.pentagonbusinesscomv2.model.shopping.CartItem;
 import com.clockworkcode.pentagonbusinesscomv2.service.ShoppingSessionService;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
