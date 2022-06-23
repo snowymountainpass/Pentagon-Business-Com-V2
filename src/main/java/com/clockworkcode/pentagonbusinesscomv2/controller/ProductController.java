@@ -16,7 +16,7 @@ import java.util.stream.Collectors;
 @RequestMapping("e-shop")
 @CrossOrigin(origins = "http://localhost:3000/")
 public class ProductController {
-    
+
     private final ProductDBService productDBService;
 
     @Autowired
@@ -118,10 +118,6 @@ public class ProductController {
 
     @GetMapping("/product-get-by-id/{productID}")
     public ResponseEntity<Product> getProductById(@PathVariable String productID ){
-        System.out.println("Product ID: "+productID);
-
-        System.out.println("Product: "+ productDBService.getProductByProductID(productID));
-
         return ResponseEntity.ok().body( productDBService.getProductByProductID(productID));
     }
 

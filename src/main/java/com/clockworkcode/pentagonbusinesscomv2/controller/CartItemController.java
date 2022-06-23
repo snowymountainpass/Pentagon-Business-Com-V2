@@ -24,11 +24,6 @@ public class CartItemController {
     @PostMapping("/cart-items/add-product")
     public void addProductToCart(@RequestBody CartItemRequest request){
 
-        System.out.println("Request - token: "+request.getUserToken());
-        System.out.println("Request - productID: "+request.getProductID());
-        System.out.println("Request - quantity: "+request.getQuantity());
-
-
         cartItemService.updateCartItemQuantity(
                 request.getUserToken(),
                 Long.valueOf(request.getProductID()),
