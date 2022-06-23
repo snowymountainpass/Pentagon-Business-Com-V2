@@ -16,10 +16,15 @@ import java.util.stream.Collectors;
 @RequestMapping("e-shop")
 @CrossOrigin(origins = "http://localhost:3000/")
 public class ProductController {
+    
+    private final ProductDBService productDBService;
 
     @Autowired
-    ProductDBService productDBService;
-    
+    public ProductController(ProductDBService productDBService) {
+        this.productDBService = productDBService;
+    }
+
+
     @GetMapping()
     public List<Product> getAllProducts() {
 
