@@ -1,15 +1,12 @@
 package com.clockworkcode.pentagonbusinesscomv2.service;
 
 import com.clockworkcode.pentagonbusinesscomv2.model.product.Product;
-import com.clockworkcode.pentagonbusinesscomv2.model.product.ProductBrand;
 import com.clockworkcode.pentagonbusinesscomv2.model.product.ProductCategory;
 import com.clockworkcode.pentagonbusinesscomv2.repository.ProductBrandRepository;
 import com.clockworkcode.pentagonbusinesscomv2.repository.ProductCategoryRepository;
 import com.clockworkcode.pentagonbusinesscomv2.repository.ProductRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.PathVariable;
 
 import java.util.ArrayList;
 import java.util.Comparator;

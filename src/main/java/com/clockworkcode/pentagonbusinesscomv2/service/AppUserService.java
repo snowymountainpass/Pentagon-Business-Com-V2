@@ -1,6 +1,5 @@
 package com.clockworkcode.pentagonbusinesscomv2.service;
 
-import com.clockworkcode.pentagonbusinesscomv2.model.shopping.ShoppingSession;
 import com.clockworkcode.pentagonbusinesscomv2.model.user.AppUser;
 import com.clockworkcode.pentagonbusinesscomv2.repository.AppUserRepository;
 import com.clockworkcode.pentagonbusinesscomv2.security.token.ConfirmationToken;
