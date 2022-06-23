@@ -1,8 +1,6 @@
 package com.clockworkcode.pentagonbusinesscomv2.model.shopping;
 
-import com.clockworkcode.pentagonbusinesscomv2.model.user.AppUser;
 import com.clockworkcode.pentagonbusinesscomv2.security.token.LoginToken;
-import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
