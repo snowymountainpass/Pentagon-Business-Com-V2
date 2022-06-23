@@ -27,7 +27,6 @@ public class AppUserService implements UserDetailsService {
     private final BCryptPasswordEncoder bCryptPasswordEncoder;
     private final ConfirmationTokenService confirmationTokenService;
     private final LoginTokenService loginTokenService;
-    private final ShoppingSessionService shoppingSessionService;
 
     @Override
     public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {

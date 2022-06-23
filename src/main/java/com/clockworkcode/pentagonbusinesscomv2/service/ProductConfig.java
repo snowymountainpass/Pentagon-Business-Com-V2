@@ -19,12 +19,16 @@ import java.util.stream.Stream;
 @Configuration
 public class ProductConfig {
 
+    final ProductRepository productRepository;
+    final ProductCategoryRepository productCategoryRepository;
+    final ProductBrandRepository productBrandRepository;
+
     @Autowired
-    ProductRepository productRepository;
-    @Autowired
-    ProductCategoryRepository productCategoryRepository;
-    @Autowired
-    ProductBrandRepository productBrandRepository;
+    public ProductConfig(ProductRepository productRepository, ProductCategoryRepository productCategoryRepository, ProductBrandRepository productBrandRepository) {
+        this.productRepository = productRepository;
+        this.productCategoryRepository = productCategoryRepository;
+        this.productBrandRepository = productBrandRepository;
+    }
 
 
     @Bean
