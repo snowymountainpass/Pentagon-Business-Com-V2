@@ -42,10 +42,6 @@ public class AppUserShippingAddressService {
 
     }
 
-    public void updateUserShippingAddress(String loginToken){
-        log.info(loginToken);
-    }
-
     public List<AppUserShippingAddress> getAppUserShippingAddressesByAppUserID(Long appUserID) {
         return appUserShippingAddressRepository.getAppUserShippingAddressesByAppUser_AppUserID(appUserID);
     }

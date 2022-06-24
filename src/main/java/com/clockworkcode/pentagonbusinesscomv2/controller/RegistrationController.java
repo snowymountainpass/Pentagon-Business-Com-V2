@@ -25,8 +25,7 @@ public class RegistrationController {
     }
 
     @GetMapping(path = "/registration/confirm")
-    public ResponseEntity<Object> confirm(@RequestParam("token") String token, HttpServletResponse httpResponse) throws IOException {
-
+    public ResponseEntity<Object> confirm(@RequestParam("token") String token) {
         registrationService.confirmToken(token);
         return ResponseEntity.status(HttpStatus.MOVED_PERMANENTLY).header(HttpHeaders.LOCATION, "http://localhost:3000/e-shop").build();
     }
