@@ -7,9 +7,10 @@ import PropTypes from "prop-types";
 import {PRODUCTS_IN_CART} from "../ShoppingCart-Components/ProductRow";
 import {TOTAL_VALUE_IN_CART} from "../ShoppingCart-Components/ProductRow";
 
-import {useAtom} from "jotai";
+import {atom, useAtom} from "jotai";
 import {USER_DETAILS, USER_SHIPPING_DETAILS} from "../EShop-Components/UserAccount Components/CardUserAccount";
 
+export const FILENAME = atom("");
 
 export default function CardInvoice({
   image,
@@ -26,6 +27,8 @@ export default function CardInvoice({
   tableHead,
   tableBody,
 }) {
+
+  const[fileName,setFileName]= useAtom(FILENAME);
 
   const [userDetails,setUserDetails] = useAtom(USER_DETAILS);
   const [userShippingDetails,setUserShippingDetails] = useAtom(USER_SHIPPING_DETAILS);
@@ -70,64 +73,32 @@ export default function CardInvoice({
 
   }
 
-  let InvoiceNumber;
-  InvoiceNumber = generateInvoiceNumber();
-
-  // setTimeout(() => {
-  //   console.log("OUTSIDE UE - userDetails: "+ userDetails);
-  //   console.log("OUTSIDE UE -  userShippingDetails: "+ userShippingDetails);
-  //
-  //   setTimeout(() => {
-  //     console.log("userDetails: "+ userDetails);
-  //     console.log("userShippingDetails: "+ userShippingDetails);
-  //     InvoiceNumber = generateInvoiceNumber();
-  //     console.log("InvoiceNumber - after 400 ms: "+ InvoiceNumber);
-  //     console.log("time InvoiceNumber:"+ Date.now().valueOf());
-  //
-  //   },400);
-  //   console.log("time OUTSIDE UE:"+ Date.now().valueOf());
-  // },100);
+  let InvoiceNumber = generateInvoiceNumber();
 
   useEffect(() => {
 
-    // console.log("right away");
-
-    // fetch('http://localhost:8080/e-shop/user-account/get-user-details/' + localStorage.getItem("PTG V2 Login Token"))
-    //     .then(r => r.json()).then(data => {
-    //   setUserDetails(data)
-    // });
-    //
-    // fetch('http://localhost:8080/e-shop/user-account/get-user-shipping-details/' + localStorage.getItem("PTG V2 Login Token"))
-    //     .then(r => r.json()).then(data => {
-    //   setUserShippingDetails(data)
-    // });
-    // console.log("time after fetches:"+ Date.now());
-    // console.log("userDetails: "+ userDetails);
-    // console.log("userShippingDetails: "+ userShippingDetails);
-
-    // setTimeout(() => {
-    //   console.log("INSIDE - userDetails: "+ userDetails);
-    //   console.log("INSIDE - userShippingDetails: "+ userShippingDetails);
-    //   console.log("after 300 ms");
-    // },300);
-
-
-
-    const title = document.title;
-    if (isDownloading) {
-      setTimeout(() => {
-        // InvoiceNumber = generateInvoiceNumber();
-        document.title = InvoiceNumber;
-        window.print();
-        setIsDownloading(false);
-        // console.log("document.title = InvoiceNumber - 500");
-      }, 500);
-      setTimeout(() => {
-        document.title = title;
-        // console.log("document.title = title - 600");
-      }, 600);
-    }
+    setTimeout(() => {
+      setFileName(InvoiceNumber);
+      console.log("FILENAME is now: "+FILENAME);
+    }, 100);
   },[]);
+
+
+  // useEffect(() => {
+  //
+  //   const title = document.title;
+  //   if (isDownloading) {
+  //     setTimeout(() => {
+  //       // document.title = InvoiceNumber;
+  //       // window.print();
+  //       setFileName(InvoiceNumber);
+  //       setIsDownloading(false);
+  //     }, 500);
+  //     setTimeout(() => {
+  //       document.title = title;
+  //     }, 600);
+  //   }
+  // },[]);
 
 
   return (
