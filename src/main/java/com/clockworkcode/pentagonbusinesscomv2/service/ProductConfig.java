@@ -35,13 +35,19 @@ public class ProductConfig {
     CommandLineRunner commandLineRunner(ProductRepository productRepository,ProductCategoryRepository productCategoryRepository,ProductBrandRepository productBrandRepository) {
         return args -> {
 
-            ProductCategory productCategory1 = new ProductCategory("TELEFONE SIP","telefoane SIP");
-            ProductCategory productCategory2 = new ProductCategory("SISTEME AUDIO CONFERINTA","sisteme audio de conferinta");
-            ProductCategory productCategory3 = new ProductCategory("CASTI CALL-CENTER","casti pentru uz in callcenter");
-            ProductCategory productCategory4 = new ProductCategory("SWITCH","switch");
-            ProductCategory productCategory5 = new ProductCategory("ACCESS POINT WIRELESS","access point-uri wireless");
-            ProductCategory productCategory6 = new ProductCategory("SISTEM VIDEO CONFERINTA","sisteme video pentru conferinta");
+//            ProductCategory productCategory1 = new ProductCategory("TELEFONE SIP","telefoane SIP");
+//            ProductCategory productCategory2 = new ProductCategory("SISTEME AUDIO CONFERINTA","sisteme audio de conferinta");
+//            ProductCategory productCategory3 = new ProductCategory("CASTI CALL-CENTER","casti pentru uz in callcenter");
+//            ProductCategory productCategory4 = new ProductCategory("SWITCH","switch");
+//            ProductCategory productCategory5 = new ProductCategory("ACCESS POINT WIRELESS","access point-uri wireless");
+//            ProductCategory productCategory6 = new ProductCategory("SISTEM VIDEO CONFERINTA","sisteme video pentru conferinta");
 
+            ProductCategory productCategory1 = new ProductCategory("SIP PHONES","SIP telephones");
+            ProductCategory productCategory2 = new ProductCategory("AUDIO CONFERENCE SYSTEMS","audio conference systems");
+            ProductCategory productCategory3 = new ProductCategory("CALL-CENTER HEADPHONES","call-center specific headphones");
+            ProductCategory productCategory4 = new ProductCategory("SWITCHES","switch");
+            ProductCategory productCategory5 = new ProductCategory("WIRELESS ACCESS POINTS","access point-uri wireless");
+            ProductCategory productCategory6 = new ProductCategory("VIDEO CONFERENCE SYSTEMS","video conference systems");
 
             ProductBrand productBrand1 = new ProductBrand("Alcatel-Lucent","https://www.al-enterprise.com/");
             ProductBrand productBrand2 = new ProductBrand("Konftel","https://www.konftel.com/");

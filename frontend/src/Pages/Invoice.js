@@ -1,4 +1,4 @@
-import React, {useEffect} from "react";
+import React from "react";
 import {useLocation} from "react-router-dom";
 
 // sections
@@ -7,16 +7,12 @@ import NavbarLinks from "../Components/Navbar/NavbarLinks";
 import HeaderImageTitleSmallCenter from "../Components/Invoice-Components/HeaderImageTitleSmallCenter";
 import CardInvoice from "../Components/Invoice-Components/CardInvoice";
 import Button from "../Components/Invoice-Components/Button";
-// import PreFooterLarge from "components/PreFooters/PreFooterLarge.js";
 import FooterSmall from "../Components/Footers/Landing/FooterSmall";
 
 // texts as props
 import navbarlinkslanding2 from "../Texts/Presentation/navbar/navbarlinkslanding2";
-// import headerimagetitlesmallcenterinvoice from "_texts/e-commerce/headers/headerimagetitlesmallcenterinvoice.js";
 import headerimagetitlesmallcenterinvoice from "../Texts/Ecommerce/Invoice/headerimagetitlesmallcenterinvoice";
-// import cardinvoice from "_texts/e-commerce/cards/cardinvoice.js";
 import cardinvoice from "../Texts/Ecommerce/Invoice/cardinvoice";
-// import prefooterlarge from "_texts/presentation/prefooters/prefooterlarge.js";
 import footersmall from "../Texts/Presentation/footers/footersmall";
 import {jsPDF} from "jspdf";
 import html2canvas from "html2canvas";
@@ -30,7 +26,7 @@ export default function Invoice() {
         window.scrollTo(0, 0);
     }, [location]);
 
-    const [fileName,setFileName]=useAtom(FILENAME);
+    const [fileName]=useAtom(FILENAME);
 
     const createPDF = async () => {
         console.log("fileName (in createPDF): "+fileName);
@@ -58,12 +54,7 @@ export default function Invoice() {
                             <div className="mx-auto px-4 relative w-full lg:w-10/12">
                                 <CardInvoice {...cardinvoice}/>
                                 <div className="float-right">
-                                    <Button color="blueGray" onClick={createPDF
-                                        // window.print();
-                                        // window.title = "Pentagon Business Com";
-
-                                    }
-                                    >
+                                    <Button color="blueGray" onClick={createPDF}>
                                         <i className="fas fa-save mr-2"/>
                                         Save Invoice
                                     </Button>
@@ -72,7 +63,6 @@ export default function Invoice() {
                         </div>
                     </div>
                 </section>
-                {/*<PreFooterLarge {...prefooterlarge} />*/}
                 <FooterSmall {...footersmall} />
             </div>
         </>

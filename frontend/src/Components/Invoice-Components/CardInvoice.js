@@ -1,8 +1,5 @@
-import React, {useEffect,useState} from "react";
+import React, {useEffect} from "react";
 import PropTypes from "prop-types";
-
-// import {USER_DETAILS} from "../EShop-Components/UserAccount Components/CardUserAccount";
-// import {USER_SHIPPING_DETAILS} from "../EShop-Components/UserAccount Components/CardUserAccount";
 
 import {PRODUCTS_IN_CART} from "../ShoppingCart-Components/ProductRow";
 import {TOTAL_VALUE_IN_CART} from "../ShoppingCart-Components/ProductRow";
@@ -28,26 +25,17 @@ export default function CardInvoice({
   tableBody,
 }) {
 
-  const[fileName,setFileName]= useAtom(FILENAME);
+  const[,setFileName]= useAtom(FILENAME);
 
-  const [userDetails,setUserDetails] = useAtom(USER_DETAILS);
-  const [userShippingDetails,setUserShippingDetails] = useAtom(USER_SHIPPING_DETAILS);
+  const [userDetails] = useAtom(USER_DETAILS);
+  const [userShippingDetails] = useAtom(USER_SHIPPING_DETAILS);
 
-  // const [userDetails,setUserDetails] = useState([]);
-  // const [userShippingDetails,setUserShippingDetails] = useState([]);
-
-  const [productsInCart,setProductsInCart] = useAtom(PRODUCTS_IN_CART);
-  const [totalAmount, setTotalAmount] = useAtom(TOTAL_VALUE_IN_CART);
+  const [productsInCart] = useAtom(PRODUCTS_IN_CART);
+  const [totalAmount] = useAtom(TOTAL_VALUE_IN_CART);
 
   const current = new Date();
   const currentDate = `${current.getDate()}/${current.getMonth()+1}/${current.getFullYear()}`;
   const expirationDate = `${current.getDate()+1}/${current.getMonth()+1}/${current.getFullYear()}`;
-
-  // console.log("userDetails: "+ userDetails);
-  // console.log("userShippingDetails: "+ userShippingDetails);
-
-  const [isDownloading, setIsDownloading] = useState(true);
-
 
   function generateString(length) {
     const characters ='ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
@@ -67,8 +55,6 @@ export default function CardInvoice({
     let initialsClient = `${userDetails[0].substring(0,1)}${userDetails[1].substring(0,1)}`;
     let randomCode = generateString(9);
 
-    // document.title = `${dateString}-${initialsClient}-${randomCode}`;
-
     return `${dateString}-${initialsClient}-${randomCode}`
 
   }
@@ -82,23 +68,6 @@ export default function CardInvoice({
       console.log("FILENAME is now: "+FILENAME);
     }, 100);
   },[]);
-
-
-  // useEffect(() => {
-  //
-  //   const title = document.title;
-  //   if (isDownloading) {
-  //     setTimeout(() => {
-  //       // document.title = InvoiceNumber;
-  //       // window.print();
-  //       setFileName(InvoiceNumber);
-  //       setIsDownloading(false);
-  //     }, 500);
-  //     setTimeout(() => {
-  //       document.title = title;
-  //     }, 600);
-  //   }
-  // },[]);
 
 
   return (
@@ -127,9 +96,7 @@ export default function CardInvoice({
                   <h3 className="text-2xl font-bold leading-normal mt-0 mb-2">
                     {"Billed to:"}
                   </h3>
-                  {/*<h6 className="block mt-2 mb-0 text-xl">{billing.name}</h6>*/}
                   <h6 className="block mt-2 mb-0 text-xl">{userDetails[0]+" "+ userDetails[1]}</h6>
-                  {/*<p className="text-blueGray-500">{billing.address}</p>*/}
                   <p className="text-blueGray-500">{"Street " + userDetails[4]+ userDetails[5]+", "+userDetails[6]+", "+ userDetails[7]+", "+ userDetails[8]+", "+ userDetails[9]+" | "+" phone: "+userDetails[2]+" | "+" email: "+userDetails[3]}</p>
                 </div>
               </div>
@@ -141,9 +108,7 @@ export default function CardInvoice({
                   <h3 className="text-2xl font-bold leading-normal mt-0 mb-2">
                     {"Shipping to:"}
                   </h3>
-                  {/*<h6 className="block mt-2 mb-0 text-xl">{billing.name}</h6>*/}
                   <h6 className="block mt-2 mb-0 text-xl">{userShippingDetails[1]+" "+ userShippingDetails[2]}</h6>
-                  {/*<p className="text-blueGray-500">{billing.address}</p>*/}
                   <p className="text-blueGray-500">
                     {"Street " + userShippingDetails[5]+", "+userShippingDetails[6]+", "+ userShippingDetails[7]+ userShippingDetails[8]+", "+ userShippingDetails[9]+", "+ userShippingDetails[10]+" | "+" phone: "+userShippingDetails[4]+" | "+" email: "+userShippingDetails[3]}
                   </p>
@@ -168,11 +133,9 @@ export default function CardInvoice({
               <div className="flex justify-center py-6 lg:pt-4">
                 <div className="mt-12">
                   <p className="float-left mb-0">{invoiceDate.text}</p>
-                  {/*<p className="ml-4 float-right mb-0">{invoiceDate.date}</p>*/}
                   <p className="ml-4 float-right mb-0">{currentDate}</p>
                   <br />
                   <p className="float-left">{dueDate.text}</p>
-                  {/*<p className="ml-4 float-right">{dueDate.date}</p>*/}
                   <p className="ml-4 float-right">{expirationDate}</p>
                 </div>
               </div>
@@ -191,18 +154,6 @@ export default function CardInvoice({
                 ))}
               </tr>
             </thead>
-
-            {/*<tbody>*/}
-            {/*  {tableBody.map((prop, key) => (*/}
-            {/*    <tr key={key}>*/}
-            {/*      {prop.map((col, colKey) => (*/}
-            {/*        <td key={colKey} className="py-4 p-3 border-t">*/}
-            {/*          {col}*/}
-            {/*        </td>*/}
-            {/*      ))}*/}
-            {/*    </tr>*/}
-            {/*  ))}*/}
-            {/*</tbody>*/}
 
             <tbody>
             {

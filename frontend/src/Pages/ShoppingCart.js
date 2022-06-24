@@ -11,9 +11,7 @@ import {TOTAL_VALUE_IN_CART} from "../Components/ShoppingCart-Components/Product
 import {useAtom} from "jotai";
 
 export default function ShoppingCart() {
-    const [totalAmount, setTotalAmount] = useAtom(TOTAL_VALUE_IN_CART);
-
-
+    const [totalAmount] = useAtom(TOTAL_VALUE_IN_CART);
 
 
     return (
@@ -57,7 +55,7 @@ export default function ShoppingCart() {
 
             <section className="section-name bg padding-y">
                 <div className="container">
-                    <h6>Payment and refund policy</h6>
+                    <h6>Payment and refund policy - DE ADAUGAT!</h6>
                     <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
                         tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
                         quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo

@@ -1,6 +1,5 @@
 package com.clockworkcode.pentagonbusinesscomv2.service;
 
-import com.clockworkcode.pentagonbusinesscomv2.repository.AppUserRepository;
 import com.clockworkcode.pentagonbusinesscomv2.repository.ConfirmationTokenRepository;
 import com.clockworkcode.pentagonbusinesscomv2.security.token.ConfirmationToken;
 import lombok.AllArgsConstructor;
@@ -14,7 +13,6 @@ import java.util.Optional;
 public class ConfirmationTokenService {
 
     private final ConfirmationTokenRepository confirmationTokenRepository;
-    private final AppUserRepository appUserRepository;
 
     public void saveConfirmationToken(ConfirmationToken token){
         confirmationTokenRepository.save(token);
