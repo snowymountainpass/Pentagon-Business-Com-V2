@@ -16,9 +16,7 @@ public interface CartItemRepository extends JpaRepository<CartItem,Long> {
     void updateIncreaseCartItemQuantity(@Param("increaseAmount") Integer increaseAmount,@Param("cartItemId") Long cartItemId);
 
     void deleteCartItemByCartItemID(Long cartItemID);
-
-    void deleteCartItemsByShoppingSession_LoginToken(LoginToken loginToken);
-
+    
     @Query("select sum(quantity) from CartItem")
     Integer getTotalNumberOfItemsInCart();
 
