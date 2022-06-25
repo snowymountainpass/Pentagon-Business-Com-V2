@@ -1,6 +1,5 @@
 package com.clockworkcode.pentagonbusinesscomv2.model.product;
 
-import com.clockworkcode.pentagonbusinesscomv2.model.Base;
 import com.clockworkcode.pentagonbusinesscomv2.model.order.OrderItem;
 import com.clockworkcode.pentagonbusinesscomv2.model.shopping.CartItem;
 import com.fasterxml.jackson.annotation.JsonIgnore;
@@ -23,7 +22,7 @@ import java.util.Set;
 
 @Entity(name = "Product")
 @Table(name = "products")
-public class Product extends Base {
+public class Product {
 
     @Id
     @SequenceGenerator(name ="product_sequence" ,sequenceName ="product_sequence" ,allocationSize = 1)

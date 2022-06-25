@@ -41,7 +41,8 @@ export default function ProductListingHeader({products,setChangeQuery}) {
                     <input
                         id = 'searchBar'
                         type="text"
-                        className="form-control rounded-left"
+                        // className="form-control rounded-left" //old version
+                        className="form-control rounded"
                         placeholder="Search"
                         onChange={event => searchInputChange(event)}
                         onPaste={event => searchInputChange(event)}
