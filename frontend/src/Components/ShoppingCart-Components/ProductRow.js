@@ -1,4 +1,4 @@
-import {useEffect, useState} from "react";
+import {useEffect} from "react";
 import {atom, useAtom} from "jotai";
 
 import Button from '@material-ui/core/Button';
@@ -15,7 +15,6 @@ export default function ProductRow() {
 
     const [totalAmountInCart, setTotalAmountInCart] = useAtom(TOTAL_VALUE_IN_CART);
 
-    // const [productsInCart, setProductsInCart] = useState([]); // OLD VERSION (WORKING)
     const [productsInCart, setProductsInCart] = useAtom(PRODUCTS_IN_CART);
     const [numberProductsInCart, setNumberProductsInCart] = useAtom(NUMBER_ITEMS_IN_CART);
 
