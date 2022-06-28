@@ -1,7 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-// components
 import Skew from "../../Skews/Skew";
 
 import {FIRSTNAME_LASTNAME} from "./CardUserAccount";
