@@ -1,7 +1,7 @@
 import React from "react";
 import {useLocation} from "react-router-dom";
 
-// sections
+
 // components
 import NavbarLinks from "../Components/Navbar/NavbarLinks";
 import HeaderImageTitleSmallCenter from "../Components/Invoice-Components/HeaderImageTitleSmallCenter";

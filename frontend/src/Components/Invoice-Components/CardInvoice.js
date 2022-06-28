@@ -128,6 +128,14 @@ export default function CardInvoice({
                 {InvoiceNumber}
               </h3>
             </div>
+            <div className="text-left px-4 relative w-full md:w-4/12">
+              <h4 className="text-2xl font-semibold leading-normal mb-2 mt-12 text-left">
+                Pentagon Business Com Bank Account
+              </h4>
+              <h3 className="text-2xl font-normal leading-normal mt-1 mb-2 font-light">
+                RO63RZBR8631277756144132
+              </h3>
+            </div>
 
             <div className="text-left px-4 relative w-full lg:w-3/12 w-full md:w-5/12">
               <div className="flex justify-center py-6 lg:pt-4">
