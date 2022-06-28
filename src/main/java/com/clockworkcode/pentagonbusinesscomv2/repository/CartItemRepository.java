@@ -1,7 +1,6 @@
 package com.clockworkcode.pentagonbusinesscomv2.repository;
 
 import com.clockworkcode.pentagonbusinesscomv2.model.shopping.CartItem;
-import com.clockworkcode.pentagonbusinesscomv2.security.token.LoginToken;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
@@ -16,7 +15,7 @@ public interface CartItemRepository extends JpaRepository<CartItem,Long> {
     void updateIncreaseCartItemQuantity(@Param("increaseAmount") Integer increaseAmount,@Param("cartItemId") Long cartItemId);
 
     void deleteCartItemByCartItemID(Long cartItemID);
-    
+
     @Query("select sum(quantity) from CartItem")
     Integer getTotalNumberOfItemsInCart();
 
