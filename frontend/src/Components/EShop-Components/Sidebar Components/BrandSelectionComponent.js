@@ -45,8 +45,6 @@ export default function BrandSelectionComponent({setChangeProducts, brandsList})
                         {item}
                     </div>
                 </label>
-
-
             ))}
         </>
     );

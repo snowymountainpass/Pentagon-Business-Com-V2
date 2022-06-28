@@ -1,9 +1,6 @@
-import React, {useEffect, useState} from "react";
+import React, {useEffect} from "react";
 import PropTypes from "prop-types";
-
 import {useForm} from "react-hook-form";
-
-// components
 import Button from "../../Elements/Button";
 import Input from "../../Elements/Input.js";
 import {atom, useAtom} from "jotai";
@@ -63,7 +60,6 @@ export default function CardUserAccount({
       )
     };
 
-    // fetch('http://localhost:8080/e-shop/user-account/save-details', requestOptions).then(r => r.json()).then(data=>{setUserDetails(data)});
     fetch('http://localhost:8080/e-shop/user-account/save-details', requestOptions).then(r => r);
 
     fetch('http://localhost:8080/e-shop/user-account/get-user-details/' + localStorage.getItem("PTG V2 Login Token"))
@@ -92,7 +88,6 @@ export default function CardUserAccount({
       )
     };
 
-    // fetch('http://localhost:8080/e-shop/user-account/save-shipping-details', requestOptions).then(r => r.json()).then(data=>{setUserShippingDetails(data)});
     fetch('http://localhost:8080/e-shop/user-account/save-shipping-details', requestOptions).then(r => r);
 
     fetch('http://localhost:8080/e-shop/user-account/get-user-shipping-details/'+ localStorage.getItem("PTG V2 Login Token"))
@@ -103,7 +98,6 @@ export default function CardUserAccount({
   function details(data){
     saveUserDetails(data);
     saveUserShippingDetails(data);
-    // setDetailsSaved(true);
     localStorage.setItem("savedUserDetails","true");
 
     if(localStorage.getItem("savedUserDetails")==="true"){
@@ -113,8 +107,6 @@ export default function CardUserAccount({
 
       fetch('http://localhost:8080/e-shop/user-account/get-user-shipping-details/'+ localStorage.getItem("PTG V2 Login Token"))
           .then(r => r.json()).then(data=>{setUserShippingDetails(data)});
-
-      // console.log("Details have been saved! detailsSaved: "+detailsSaved);
 
       console.log("Details have been saved! detailsSaved: "+localStorage.getItem("savedUserDetails"));
 
@@ -136,8 +128,6 @@ export default function CardUserAccount({
 
       fetch('http://localhost:8080/e-shop/user-account/get-user-shipping-details/'+ localStorage.getItem("PTG V2 Login Token"))
           .then(r => r.json()).then(data=>{setUserShippingDetails(data)});
-
-      // console.log("Details have been saved! detailsSaved: "+detailsSaved);
 
       console.log("Details have been saved! detailsSaved: "+localStorage.getItem("savedUserDetails"));
 
@@ -262,7 +252,6 @@ export default function CardUserAccount({
               </div>
 
               <div className="flex justify-between mt-12 mb-8">
-                {/*<a href={"/e-shop"}><Button {...returnButton}/></a>*/}
                 <Link to={"/e-shop"}><Button {...returnButton}/></Link>
                 <Button {...detailsButton}/>
               </div>
