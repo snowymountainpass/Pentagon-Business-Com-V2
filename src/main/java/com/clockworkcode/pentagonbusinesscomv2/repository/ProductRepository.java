@@ -13,6 +13,7 @@ public interface ProductRepository extends JpaRepository<Product,Long> {
 
     Product getProductByProductID(Long productID);
 
+//    List<Product> getProductsByProductCategory(ProductCategory productCategory);
     List<Product> getProductsByProductCategory(ProductCategory productCategory);
 
     List<Product> getProductsByProductBrand(ProductBrand productBrand);
